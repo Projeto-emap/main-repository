@@ -1,4 +1,4 @@
-body{
+body {
     padding: 0;
     margin: 0;
 }
@@ -12,9 +12,10 @@ body{
     color: #000000;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     display: flex;
-    margin-left: 27vw;
-    margin-top: 5vh;
+    justify-content: center;
+    align-items: center;
     font-size: 17px;
+    margin-top: 5vh;
 }
 
 input {
@@ -23,7 +24,10 @@ input {
     background: rgba(217, 217, 217, 0.6);
     border: 0px solid;
     border-radius: 5px;
+    box-shadow: 0px 1px 1px 0px;
+    font-size: 15px;
 }
+
 
 .btnEntrar {
     background-color: #5271FF;
@@ -43,6 +47,7 @@ input {
     font-weight: bold;
     font-size: 20px;
     margin-top: 2vh;
+    box-shadow: 0px 1px 1px 0px;
 }
 
 .btns {
@@ -112,6 +117,34 @@ button:hover {
 
 label {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.seta {
+    width: 5vw;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    margin-top: -0.5vh;
+    margin-left: 3.5vw;
+}
+
+.senha-container {
+    position: relative;
+    width: 45vw; 
+}
+
+.olhoSenha {
+    position: absolute;
+    right: 10px; 
+    top: 50%;
+    transform: translateY(-40%);
+    cursor: pointer;
+    z-index: 1; 
+}
+
+.olho {
+    width: 2vw; 
+    height: 5vh;
 }
 
 
