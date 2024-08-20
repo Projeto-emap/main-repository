@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Cadastro</title>
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/login.css">
 </head>
@@ -32,7 +32,7 @@
     </nav>
 
     <div class="login">
-        <h1>Welcome Back.</h1>
+        <h1>Cadastre-se</h1>
     </div>
     <div class="container">
 
@@ -51,21 +51,22 @@
                 </i>
             </div>
         </div>
+        <br>
+        <div class="senha">
+            <label class="senhaLabel" for="senha">Confirmar senha</label><br>
+            <div class="senha-container">
+                <input type="password" id="senha" placeholder="Insira sua senha aqui.">
+                <i class="olhoSenha" onclick="verSenha()">
+                    <img src="img/invisivel.png" alt="olho" class="olho">
+                </i>
+            </div>
+        </div>
+
 
 
         <div class="btns">
             <button class="btnEntrar">Entrar</button>
             <a href="login.html" class="esqueceuSenha">Esqueceu a senha?</a>
-        </div>
-
-        <div class="separatorio">
-            <div class="line1"></div>
-            <h4>Ou</h4>
-        </div>
-        <div class="line2"></div>
-
-        <div class="criarConta">
-            <button class="btnConta" onclick="cadastro()">Criar conta</button>
         </div>
 
     </div>
@@ -88,7 +89,4 @@
     }
 }
 
-function cadastro(){
-    window.location.href="cadastro.html"
-}
 </script>
