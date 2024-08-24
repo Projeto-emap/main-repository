@@ -39,8 +39,7 @@ nav li a {
 
 nav li a:hover {
     cursor: pointer;
-    text-decoration: underline;
-
+    text-decoration: underline #5271FF;
 }
 
 .logo {
