@@ -14,56 +14,97 @@
 
     <nav>
         <div class="logo">
-            <img src="img/logo.png" alt="logo">
+            <img src="img/logoBranco.png" alt="logo">
         </div>
 
         <ul class="center">
-            <li><a href="#">History</a></li>
-            <li><a href="#">Maps</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="index.html">home</a></li>
+            <li><a href="solucao.html">solução</a></li>
+            <li><a href="#">quem somos</a></li>
         </ul>
 
         <ul class="direita">
-
+            <!-- 
             <div class="seta">
                 <li><a href="login.html" class="seta"><img src="img/arrow.png" alt="seta"></a></li>
-            </div>
+            </div> -->
 
-            <li><a href="login.html">Login</a></li>
+            <li><a href="login.html">login</a></li>
         </ul>
     </nav>
 
-        <div class="btn">
-            <button>Conhecer</button>
+
+    <div class="container" id="container">
+        <div class="textoInicial">
+            <h1>Bem Vindo.</h1> <br>
+            <div class="textoInicial2">
+                <h3>Estamos transformando o futuro da <br>
+                    mobilidade elétrica no Brasil.</h3>
+            </div>
         </div>
 
-        <div class="slogan">
-            <span>IMPACT TEXT HERE</span>
-        </div>
-    
-    
-    <footer>
-    <div class="footerContainer">
-        <div class="footerItem">
-            <span>©️ 2024 emap. Todos os direitos reservados.</span>
-        </div>
-
-        <div class="links">
-            <ul class="center">
-                <li><a href="#">History</a></li>
-                <li><a href="#">Maps</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </div>
-
-        <div class="right">
-            <img src="img/logoBranco.png" alt="logoBranco" class="right">
+        <div class="textoMarketing">
+            <span>Acompanhe o crescimento das aquisições de carros elétricos em todo o país e descubra como nosso
+                serviço pode</span><br>
+            <span> ajudar a sua empresa a tomar decisões estratégicas para a implantação de eletropostos com precisão e
+                eficiência.</span>
         </div>
     </div>
-</footer>
+
+    <div class="conteudoInicio">
+        <div class="valores">
+            <h2>Nossos valores.</h2>
+        </div>
+        <div class="retangulos">
+            <div class="retangulo1"> </div>
+            <div class="retangulo2"> </div>
+            <div class="retangulo3"> </div>
+            <div class="retangulo4"> </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footerContainer">
+            <div class="footerItem">
+                <span>©️ 2024 emap. Todos os direitos reservados.</span>
+            </div>
+
+            <div class="links">
+                <ul class="center">
+                    <li><a href="index.html">home</a></li>
+                    <li><a href="#">termos de uso</a></li>
+                    <li><a href="#">suporte</a></li>
+                </ul>
+            </div>
+
+            <div class="right">
+                <img src="img/logoBranco.png" alt="logoBranco" class="right">
+            </div>
+        </div>
+    </footer>
 
 </body>
 
-
-
 </html>
+
+<!-- <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const links = document.querySelectorAll('nav a[href^="#"]');
+
+        links.forEach(link => {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();
+
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    });
+
+</script> -->
