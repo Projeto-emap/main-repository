@@ -23,8 +23,8 @@ nav ul.direita {
     margin-left: auto;
 }
 
-nav ul.center {
-    margin-left: 35vw;
+nav ul.center { 
+    text-align: center;
 }
 
 
@@ -44,9 +44,9 @@ nav li a:hover {
 }
 
 .logo {
-    width: 5vw;
     height: 18vh;
     display: flex;
     justify-content: flex-start;
+    padding-left: 1vh;
 
 }

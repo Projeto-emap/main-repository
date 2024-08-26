@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/cadastro.css">
 </head>
 
 <body>
@@ -16,7 +16,7 @@
         </div>
 
         <ul class="center">
-            <li><a href="#">History</a></li>
+            <li><a href="#" class="navItem">History</a></li>
             <li><a href="#">Maps</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
@@ -31,44 +31,79 @@
         </ul>
     </nav>
 
-    <div class="login">
-        <h1>Cadastre-se</h1>
+    <div class="cadastro">
+        <div class="miniHeader">
+            <div class="cadastro">
+                <h1>Cadastro.</h1>
+            </div>
+            <span class="passo" id="passo">Passo 1/3</span>
+        </div>
     </div>
     <div class="container">
+        <div class="containerRepresentanteEmpresa">
+            <div id="cadastroRepresentante">
+                <h1>Representante:</h1>
 
-        <div class="email">
-            <label class="emailLabel">Email</label><br>
-            <input type="text" id="email" placeholder="Insira seu email aqui.">
+                <div class="Nome">
+                    <label class="nomeLabel">Nome</label><br>
+                    <input type="text" id="nome" placeholder="Insira seu nome aqui.">
 
-        </div> <br>
+                </div> <br>
 
-        <div class="senha">
-            <label class="senhaLabel" for="senha">Senha</label><br>
-            <div class="senha-container">
-                <input type="password" id="senha" placeholder="Insira sua senha aqui.">
-                <i class="olhoSenha" onclick="verSenha()">
-                    <img src="img/invisivel.png" alt="olho" class="olho">
-                </i>
+                <div class="cpf">
+                    <label class="cpfLabel" for="CPF">CPF</label><br>
+                    <div class="cpf-container">
+                        <input type="text" id="CPF" placeholder="Insira seu CPF aqui.">
+                    </div>
+                </div>
+                <br>
+                <div class="Email">
+                    <label class="emailLabel">Email</label><br>
+                    <input type="text" id="email" placeholder="Insira seu email aqui.">
+                </div>
+                <br>
+                <div class="Celular">
+                    <label class="celularLabel">Núm. celular</label><br>
+                    <input type="text" id="celular" placeholder="(XX) XXXXX-XXXX">
+                </div>
             </div>
         </div>
-        <br>
-        <div class="senha">
-            <label class="senhaLabel" for="senha">Confirmar senha</label><br>
-            <div class="senha-container">
-                <input type="password" id="senha" placeholder="Insira sua senha aqui.">
-                <i class="olhoSenha" onclick="verSenha()">
-                    <img src="img/invisivel.png" alt="olho" class="olho">
-                </i>
+
+        <div id="Empresa">
+
+            <h1>Empresa:</h1>
+            
+            <div class="cnpj">
+                <label class="cnpjLabel" for="CNPJ">CNPJ</label><br>
+                <div class="cnpj-container">
+                    <input type="text" id="CNPJ" placeholder="Insira o CNPJ aqui.">
+                </div>
+            </div> <br>
+            <div class="NomeSocial">
+                <label class="nomeSocialLabel">Nome</label><br>
+                <input type="text" id="nomeSocial" placeholder="Insira o nome da empresa aqui.">
+            </div> <br>
+            <div class="estado">
+                <label class="estadoLabel" for="estado">Estado</label><br>
+                <div class="estado-container">
+                    <input type="text" id="estado" placeholder="Insira o estado que se localiza a empresa.">
+                </div> <br>
             </div>
+            <div class="cep">
+                <label class="cepLabel" for="cep">CEP</label><br>
+                <div class="cep-container">
+                    <input type="text" id="cep" placeholder="Insira o CEP.">
+                </div>
+            </div>
+            <br>
+
         </div>
-
-
-
-        <div class="btns">
-            <button class="btnEntrar">Entrar</button>
-            <a href="login.html" class="esqueceuSenha">Esqueceu a senha?</a>
-        </div>
-
+    </div>
+    <div class="btns">
+        <button class="btnContinuar1" id="btnContinuar1">Continuar</button>
+        <button class="btnContinuar2" id="btnContinuar2">Continuar</button>
+        <button class="btnCriar" id="btnCriar">Criar Conta</button>
+    </div>
     </div>
 
 </body>
@@ -76,17 +111,67 @@
 </html>
 
 <script>
-    function verSenha() {
-    const senhaInput = document.getElementById('senha');
-    const olho = document.querySelector('.olhoSenha img');
+    const btnContinuar1 = document.getElementById('btnContinuar1');
+    const btnContinuar2 = document.getElementById('btnContinuar2');
+    const btnCriar = document.getElementById('btnCriar');
 
-    if (senhaInput.type === 'password') {
-        senhaInput.type = 'text';
-        olho.src = 'img/image 3.png'; 
-    } else {
-       senhaInput.type = 'password';
-        olho.src = 'img/invisivel.png'; 
+    function verSenha() {
+        const senhaInput = document.getElementById('senha');
+        const olho = document.querySelector('.olhoSenha img');
+
+        if (senhaInput.type === 'password') {
+            senhaInput.type = 'text';
+            olho.src = 'img/visivel.png';
+        } else {
+            senhaInput.type = 'password';
+            olho.src = 'img/invisivel.png';
+        }
     }
-}
+
+    function verSenhaConfirmacao() {
+        const senhaInput = document.getElementById('senhaConfirmacao');
+        const olhoConfirmacao = document.querySelector('.olhoSenhaConfirmacao img');
+
+        if (senhaInput.type === 'password') {
+            senhaInput.type = 'text';
+            olhoConfirmacao.src = 'img/visivel.png';
+        } else {
+            senhaInput.type = 'password';
+            olhoConfirmacao.src = 'img/invisivel.png';
+        }
+    }
+
+    function passo2(){
+        passo.innerHTML = `Passo 2/3`;
+    }
+
+    function passo3(){
+        passo.innerHTML = `Passo 3/3`;
+    }
+
+    btnContinuar1.addEventListener('click', passo2);
+    btnContinuar2.addEventListener('click', passo3);
+
 
 </script>
+
+
+            <!-- <div class="Senha">
+                <label class="senhaLabel" for="senha">Senha</label><br>
+                <div class="senha-container">
+                    <input type="password" id="senha" placeholder="Insira sua senha aqui.">
+                    <i class="olhoSenha" onclick="verSenha()">
+                        <img src="img/invisivel.png" alt="olho" class="olho">
+                    </i>
+                </div>
+            </div>
+            <br>
+            <div class="confirmarSenha">
+                <label class="senhaLabel" for="senha">Confirmação de Senha</label><br>
+                <div class="senha-container">
+                    <input type="password" id="senhaConfirmacao" placeholder="Insira novamente sua senha.">
+                    <i class="olhoSenhaConfirmacao" onclick="verSenhaConfirmacao()">
+                        <img src="img/invisivel.png" alt="olho" class="olhoConfirmacao">
+                    </i>
+                </div>
+            </div> -->

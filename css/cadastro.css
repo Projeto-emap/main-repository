@@ -1,0 +1,169 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: rgb(245, 245, 245);
+}
+
+.btn-voltar {
+    font-size: 22px;
+    margin-right: 1vw;
+}
+
+.cadastro {
+    color: #000000;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px;
+    margin-top: 2vh;
+    width: 100%;
+}
+
+input {
+    width: 40vw;
+    height: 5vh;
+    background: rgba(217, 217, 217, 1);
+    border: 0px solid;
+    border-radius: 1px;
+    box-shadow: 0px -1px rgba(150, 150, 150, 1);
+    font-size: 15px;
+}
+
+.btnContinuar1 {
+    display: block;
+}
+
+.btnContinuar2 {
+    display: none;
+}
+
+.btnCriar {
+    display: none;
+}
+
+.btnContinuar1, .btnContinuar2, .btnCriar {
+    background-color: #5271FF;
+    color: white;
+    width: 40vw;
+    height: 7vh;
+    border: 0px solid;
+    font-size: 20px;
+}
+
+.btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.miniHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 30%;
+}
+
+.tituloCadastro h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.passo {
+    font-size: 24px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+#Empresa {
+    display: block;
+}
+
+.containerRepresentanteEmpresa {
+    display: none;
+}
+
+#cadastroRepresentante > h1, #Empresa > h1 {
+    text-align: center;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.btnConta:hover {
+    background-color: #c0c0c0;
+}
+
+.btnContinuar1:hover, .btnContinuar2:hover, .btnCriar:hover {
+    background-color: #3a5df9;
+}
+
+.separatorio {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vh;
+}
+
+.line1 {
+    position: absolute;
+    width: 20vw;
+    height: 0px;
+    border: 1px solid #000000;
+    margin-right: 25vw;
+}
+
+.line2 {
+    position: absolute;
+    width: 20vw;
+    height: 0px;
+    border: 1px solid #000000;
+    margin-bottom: -37.7vh;
+    margin-left: 25vw;
+}
+
+label {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.seta {
+    width: 5vw;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    margin-top: -0.5vh;
+    margin-left: 3.5vw;
+}
+
+.senha-container {
+    position: relative;
+    width: 20vw; 
+}
+
+.olhoSenha, .olhoSenhaConfirmacao {
+    position: absolute;
+    right: 10px; 
+    top: 50%;
+    transform: translateY(-40%);
+    cursor: pointer;
+    z-index: 1; 
+}
+
+.olho, .olhoConfirmacao {
+    width: 2vw; 
+    height: 5vh;
+}
+
+.navItem {
+    text-decoration: none;
+}
