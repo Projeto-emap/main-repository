@@ -9,6 +9,24 @@ body {
     margin-right: 1vw;
 }
 
+nav{
+    background-color: rgba(217, 217, 217, 0.6); 
+}
+
+nav li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 19px;
+}
+
+nav li a:hover {
+    cursor: pointer;
+    text-decoration: underline #000000;
+}
+
 .cadastro {
     color: #000000;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -21,25 +39,15 @@ body {
 }
 
 input {
-    width: 40vw;
-    height: 5vh;
-    background: rgba(217, 217, 217, 1);
+    width: 45vw;
+    height: 8vh;
+    background: rgba(217, 217, 217, 0.6);
     border: 0px solid;
-    border-radius: 1px;
-    box-shadow: 0px -1px rgba(150, 150, 150, 1);
+    border-radius: 5px;
+    box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.5);
     font-size: 15px;
-}
-
-.btnContinuar1 {
-    display: block;
-}
-
-.btnContinuar2 {
-    display: none;
-}
-
-.btnCriar {
-    display: none;
+    padding: 0 10px;
+    box-sizing: border-box;
 }
 
 .btnContinuar1, .btnContinuar2, .btnCriar {
@@ -83,16 +91,10 @@ input {
     white-space: nowrap;
 }
 
-#Empresa {
-    display: block;
-}
-
-.containerRepresentanteEmpresa {
-    display: none;
-}
-
-#cadastroRepresentante > h1, #Empresa > h1 {
+.title {
     text-align: center;
+    font-size: 20px;
+    white-space: nowrap;
 }
 
 button:hover {
@@ -147,14 +149,14 @@ label {
 
 .senha-container {
     position: relative;
-    width: 20vw; 
+    width: 40vw; 
 }
 
 .olhoSenha, .olhoSenhaConfirmacao {
     position: absolute;
     right: 10px; 
     top: 50%;
-    transform: translateY(-40%);
+    transform: translateY(-45%);
     cursor: pointer;
     z-index: 1; 
 }
@@ -164,6 +166,9 @@ label {
     height: 5vh;
 }
 
-.navItem {
-    text-decoration: none;
+.termos > h3 {
+    text-align: center;
+}
+.termos > p {
+    text-align: justify;
 }

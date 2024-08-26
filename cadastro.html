@@ -34,15 +34,46 @@
     <div class="cadastro">
         <div class="miniHeader">
             <div class="cadastro">
-                <h1>Cadastro.</h1>
+                <div style="text-align: center; font-size: 30px; margin-top: 10px;">Cadastro.</div>
             </div>
             <span class="passo" id="passo">Passo 1/3</span>
         </div>
     </div>
     <div class="container">
-        <div class="containerRepresentanteEmpresa">
+        <div id="Empresa">
+            <div class="title">Empresa</div>
+            <br>
+            <div class="cnpj">
+                <label class="cnpjLabel" for="CNPJ">CNPJ</label><br>
+                <div class="cnpj-container">
+                    <input type="text" id="CNPJ" placeholder="Insira o CNPJ aqui.">
+                </div>
+            </div> <br>
+
+            <div class="NomeSocial">
+                <label class="nomeSocialLabel">Nome</label><br>
+                <input type="text" id="nomeSocial" placeholder="Insira o nome da empresa aqui.">
+            </div> <br>
+
+            <div class="estado">
+                <label class="estadoLabel" for="estado">Estado</label><br>
+                <div class="estado-container">
+                    <input type="text" id="estado" placeholder="Insira o estado que se localiza a empresa.">
+                </div> <br>
+
+            </div>
+            <div class="cep">
+                <label class="cepLabel" for="cep">CEP</label><br>
+                <div class="cep-container">
+                    <input type="text" id="cep" placeholder="Insira o CEP.">
+                </div>
+            </div>
+        </div>
+
+        <div class="containerRepresentanteEmpresa" style="display: none;">
             <div id="cadastroRepresentante">
-                <h1>Representante:</h1>
+                <div class="title">Representante</div>
+                <br>
 
                 <div class="Nome">
                     <label class="nomeLabel">Nome</label><br>
@@ -55,13 +86,13 @@
                     <div class="cpf-container">
                         <input type="text" id="CPF" placeholder="Insira seu CPF aqui.">
                     </div>
-                </div>
-                <br>
+                </div> <br>
+
                 <div class="Email">
                     <label class="emailLabel">Email</label><br>
                     <input type="text" id="email" placeholder="Insira seu email aqui.">
-                </div>
-                <br>
+                </div> <br>
+
                 <div class="Celular">
                     <label class="celularLabel">Núm. celular</label><br>
                     <input type="text" id="celular" placeholder="(XX) XXXXX-XXXX">
@@ -69,40 +100,43 @@
             </div>
         </div>
 
-        <div id="Empresa">
-
-            <h1>Empresa:</h1>
-            
-            <div class="cnpj">
-                <label class="cnpjLabel" for="CNPJ">CNPJ</label><br>
-                <div class="cnpj-container">
-                    <input type="text" id="CNPJ" placeholder="Insira o CNPJ aqui.">
-                </div>
-            </div> <br>
-            <div class="NomeSocial">
-                <label class="nomeSocialLabel">Nome</label><br>
-                <input type="text" id="nomeSocial" placeholder="Insira o nome da empresa aqui.">
-            </div> <br>
-            <div class="estado">
-                <label class="estadoLabel" for="estado">Estado</label><br>
-                <div class="estado-container">
-                    <input type="text" id="estado" placeholder="Insira o estado que se localiza a empresa.">
-                </div> <br>
-            </div>
-            <div class="cep">
-                <label class="cepLabel" for="cep">CEP</label><br>
-                <div class="cep-container">
-                    <input type="text" id="cep" placeholder="Insira o CEP.">
-                </div>
-            </div>
+        <div class="divSenha" style="display: none;">
+            <div class="title">Senha para login</div>
             <br>
 
+            <div class="Senha">
+                <label class="senhaLabel" for="senha">Senha</label><br>
+                <div class="senha-container">
+                    <input type="password" id="senha" placeholder="Insira sua senha aqui.">
+                    <i class="olhoSenha" onclick="verSenha()">
+                        <img src="img/invisivel.png" alt="olho" class="olho">
+                    </i>
+                </div>
+            </div> <br>
+
+            <div class="confirmarSenha">
+                <label class="senhaLabel" for="senha">Confirmação de Senha</label><br>
+                <div class="senha-container">
+                    <input type="password" id="senhaConfirmacao" placeholder="Insira novamente sua senha.">
+                    <i class="olhoSenhaConfirmacao" onclick="verSenhaConfirmacao()">
+                        <img src="img/invisivel.png" alt="olhoConfirmacao" class="olhoConfirmacao">
+                    </i>
+                </div>
+            </div> <br>
+
+            <div class="termos">
+                <b>Termos de Uso e Política de Privacidade</b>
+                <p>
+                    ao clicar em "Concordo e Finalizar Cadastro", você concorda com os Termos de Uso e a Política de
+                    Privacidade da emap. Leia atentamente as condições clicando <b>AQUI</b>.
+                </p>
+            </div>
         </div>
     </div>
     <div class="btns">
         <button class="btnContinuar1" id="btnContinuar1">Continuar</button>
-        <button class="btnContinuar2" id="btnContinuar2">Continuar</button>
-        <button class="btnCriar" id="btnCriar">Criar Conta</button>
+        <button style="display: none;" class="btnContinuar2" id="btnContinuar2">Continuar</button>
+        <button style="display: none;" class="btnCriar" id="btnCriar">Concordo e Finalizar Cadastro</button>
     </div>
     </div>
 
@@ -111,6 +145,9 @@
 </html>
 
 <script>
+    const divRepresentante = document.querySelector('.containerRepresentanteEmpresa');
+    const divEmpresa = document.querySelector('#Empresa');
+    const divSenha = document.querySelector('.divSenha');
     const btnContinuar1 = document.getElementById('btnContinuar1');
     const btnContinuar2 = document.getElementById('btnContinuar2');
     const btnCriar = document.getElementById('btnCriar');
@@ -141,12 +178,21 @@
         }
     }
 
-    function passo2(){
+    function passo2() {
         passo.innerHTML = `Passo 2/3`;
+        btnContinuar1.style.display = 'none';
+        divEmpresa.style.display = 'none';
+        btnContinuar2.style.display = 'block';
+        divRepresentante.style.display = 'block';
+
     }
 
-    function passo3(){
+    function passo3() {
         passo.innerHTML = `Passo 3/3`;
+        btnContinuar2.style.display = 'none';
+        divRepresentante.style.display = 'none';
+        btnCriar.style.display = 'block';
+        divSenha.style.display = 'block';
     }
 
     btnContinuar1.addEventListener('click', passo2);
@@ -154,24 +200,3 @@
 
 
 </script>
-
-
-            <!-- <div class="Senha">
-                <label class="senhaLabel" for="senha">Senha</label><br>
-                <div class="senha-container">
-                    <input type="password" id="senha" placeholder="Insira sua senha aqui.">
-                    <i class="olhoSenha" onclick="verSenha()">
-                        <img src="img/invisivel.png" alt="olho" class="olho">
-                    </i>
-                </div>
-            </div>
-            <br>
-            <div class="confirmarSenha">
-                <label class="senhaLabel" for="senha">Confirmação de Senha</label><br>
-                <div class="senha-container">
-                    <input type="password" id="senhaConfirmacao" placeholder="Insira novamente sua senha.">
-                    <i class="olhoSenhaConfirmacao" onclick="verSenhaConfirmacao()">
-                        <img src="img/invisivel.png" alt="olho" class="olhoConfirmacao">
-                    </i>
-                </div>
-            </div> -->
