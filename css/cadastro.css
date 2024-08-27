@@ -1,7 +1,10 @@
+
+
 body {
     padding: 0;
     margin: 0;
     background-color: rgb(245, 245, 245);
+    font-family: "Be Vietnam Pro", sans-serif;
 }
 
 .btn-voltar {
@@ -29,7 +32,6 @@ nav li a:hover {
 
 .cadastro {
     color: #000000;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,10 +55,13 @@ input {
 .btnContinuar1, .btnContinuar2, .btnCriar {
     background-color: #5271FF;
     color: white;
-    width: 40vw;
+    width: 45vw;
     height: 7vh;
     border: 0px solid;
     font-size: 20px;
+    border: 0px solid;
+    border-radius: 5px;
+    box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .btns {
@@ -89,6 +94,9 @@ input {
     font-size: 24px;
     font-weight: bold;
     white-space: nowrap;
+    position: absolute;
+    top: 18%;
+    right: 10%;
 }
 
 .title {
@@ -134,10 +142,6 @@ button:hover {
     margin-left: 25vw;
 }
 
-label {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
 .seta {
     width: 5vw;
     height: 5vh;
@@ -149,12 +153,11 @@ label {
 
 .senha-container {
     position: relative;
-    width: 40vw; 
 }
 
 .olhoSenha, .olhoSenhaConfirmacao {
     position: absolute;
-    right: 10px; 
+    right: 2%; 
     top: 50%;
     transform: translateY(-45%);
     cursor: pointer;
@@ -166,9 +169,147 @@ label {
     height: 5vh;
 }
 
-.termos > h3 {
-    text-align: center;
+.informacaoSenha {
+    display: flex;
+    justify-content: center;
 }
+
+.criterios {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.barra {
+    background-color: black;
+    border-radius: 2px;
+    height: 0.1%;
+    width: 45vw;
+    position: absolute;
+    bottom: 30%;
+}
+
+.termo-container {
+    display: flex;
+    justify-content: center;
+}
+
 .termos > p {
-    text-align: justify;
+    text-align: center;
+    font-size: 10px;
 }
+
+
+
+
+
+
+/* font */
+
+.be-vietnam-pro-thin {
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  .be-vietnam-pro-extralight {
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+  }
+  
+  .be-vietnam-pro-light {
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .be-vietnam-pro-regular {
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .be-vietnam-pro-medium {
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .be-vietnam-pro-semibold {
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  .be-vietnam-pro-bold {
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .be-vietnam-pro-extrabold {
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+  }
+  
+  .be-vietnam-pro-black {
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  .be-vietnam-pro-thin-italic {
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+  }
+  
+  .be-vietnam-pro-extralight-italic {
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 200;
+    font-style: italic;
+  }
+  
+  .be-vietnam-pro-light-italic {
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .be-vietnam-pro-regular-italic {
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .be-vietnam-pro-medium-italic {
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  .be-vietnam-pro-semibold-italic {
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 600;
+    font-style: italic;
+  }
+  
+  .be-vietnam-pro-bold-italic {
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  .be-vietnam-pro-extrabold-italic {
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 800;
+    font-style: italic;
+  }
+  
+  .be-vietnam-pro-black-italic {
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+  }  
