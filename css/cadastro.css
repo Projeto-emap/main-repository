@@ -45,7 +45,7 @@ input {
     height: 8vh;
     background: rgba(217, 217, 217, 0.6);
     border: 0px solid;
-    border-radius: 5px;
+    border-radius: 2px;
     box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.5);
     font-size: 15px;
     padding: 0 10px;
@@ -185,7 +185,8 @@ button:hover {
     border-radius: 2px;
     height: 0.1%;
     width: 45vw;
-    position: absolute;
+    display: flex;
+    margin-left: -12vw;
     bottom: 30%;
 }
 
@@ -198,9 +199,6 @@ button:hover {
     text-align: center;
     font-size: 10px;
 }
-
-
-
 
 
 

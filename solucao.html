@@ -6,18 +6,22 @@
     <title>Solução</title>
     <link rel="stylesheet" href="css/solucao.css">
     <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/header.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    </style>
 </head>
 <body>
     <nav>
         <div class="logo">
-            <img src="img/logoRecortada.png" alt="logo">
+            <img src="img/logoPreta.png" alt="logo">
         </div>
 
         <ul class="center">
             <li><a href="index.html">home</a></li>
             <li><a href="solucao.html">solução</a></li>
-            <li><a href="#">quem somos</a></li>
+            <li><a href="contato.html">contato</a></li>
         </ul>
 
         <ul class="direita">
@@ -90,7 +94,7 @@
         <div class="linha"></div>
         <div class="Interessou">
             <h2>Se interessou por nossa solução?</h2>
-            <button class="btnSim">Sim!</button>
+            <button class="btnSim" onclick="contato()">Sim!</button>
         </div>
     </div>
 
@@ -116,3 +120,9 @@
 
 </body>
 </html>
+
+<script>
+    function contato() {
+        window.location.href = "contato.html";
+    }
+</script>
