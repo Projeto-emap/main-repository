@@ -1,128 +1,171 @@
 body {
-    background-image: url('../img/background.png');
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat;
-    font-family: "Be Vietnam Pro", sans-serif;
-    max-height: 100vh;
-    max-width: 150vw;
-    margin: 0;
-    padding: 0;
+  background-image: url('../img/background.png');
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat;
+  font-family: "Be Vietnam Pro", sans-serif;
+  max-height: 100vh;
+  max-width: 100vw;
+  min-width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 h3, span {
-    color: white;
+  color: white;
 }
 
 .seta {
-    width: 5vw;
-    height: 6vh;
-    display: flex;
-    justify-content: center;
-    margin-top: -0.5vh;
-    margin-left: 3.5vw;
+  width: 5vw;
+  height: 6vh;
+  display: flex;
+  justify-content: center;
+  margin-top: -0.5vh;
+  margin-left: 3.5vw;
+  max-width: 5vw;
+  max-height: 6vh;
+  min-width: 3vw;
+  min-height: 5vh;
+  box-sizing: border-box;
 }
 
-
 .btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 25vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25vh;
 }
 
 button {
-    background-color: #5271FF;
-    color: white;
-    width: 15vw;
-    height: 7vh;
-    border: 0px solid;
-    font-size: 20px;
-    box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    margin-top: 3vh;
-    margin-bottom: 3vh;
+  background-color: #5271FF;
+  color: white;
+  width: 15vw;
+  height: 7vh;
+  border: 0;
+  font-size: 1.5vw;
+  box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  max-width: 20vw;
+  max-height: 8vh;
+  min-width: 10vw;
+  min-height: 6vh;
+  box-sizing: border-box;
 }
 
 button:hover {
-    cursor: pointer;
-    background-color: #3a5df9;
+  cursor: pointer;
+  background-color: #3a5df9;
 }
 
-.container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-top: 20vh;
-   
-}
-.textoInicial{
-    display: grid;
-    place-items: center;
-    color: white;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20vh;
 }
 
-h1{
-    font-size: 80px;
+.textoInicial {
+  display: grid;
+  place-items: center;
+  color: white;
+  font-size: 1.7vw;
 }
 
-.textoInicial2{
-    margin-top: -11vh;
+h1 {
+  font-size: 4vw;
+  max-width: 90vw;
+  min-width: 200px;
 }
 
-.textoMarketing{
-    margin-top: 27vh;
-    font-size: 20px;
+.textoInicial2 {
+  margin-top: -11vh;
+  font-size: 1.1vw;
 }
 
-.conteudoInicio{
-    background-color: #222222;
-    margin-top: 4vh;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    color: white;
-    text-align: center;
+.textoMarketing {
+  margin-top: 27vh;
+  font-size: 1.5vw;
+  max-width: 90vw;
+  min-width: 200px;
 }
 
-.retangulos{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin-bottom: 4vh;
+.conteudoInicio {
+  background-color: #222222;
+  margin-top: 4vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  text-align: center;
+  max-height: 100vh;
+  min-height: 45vh;
 }
 
-.valores{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
+.retangulos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-bottom: 4vh;
 }
 
-.retangulo1, .retangulo2, .retangulo3, .retangulo4{
-    margin-top: 3vh;
-    border-radius: 10px;
-    border: 2px white solid;
-    height: 55vh;
-    width: 20vw;
-    margin-bottom: 3vh;
+.valores {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+.retangulo1, .retangulo2, .retangulo3, .retangulo4 {
+  margin-top: 3vh;
+  border-radius: 10px;
+  border: 2px white solid;
+  height: 55vh;
+  width: 20vw;
+  margin-bottom: 3vh;
+  max-height: 60vh;
+  max-width: 22vw;
+  min-height: 45vh;
+  min-width: 18vw;
+  box-sizing: border-box;
 }
 
 .h1 {
-  font-size: 30px;
+  font-size: 1.6vw;
+  width: 20vw;
+  max-width: 20vw;
+  max-height: 15vh;
+  min-width: 7vw;
+  min-height: 15vh;
 }
 
-.logoRetangulo{
+.logoRetangulo {
   margin-top: 2vh;
   width: 7vw;
   height: 15vh;
+  max-width: 7vw;
+  max-height: 15vh;
+  min-width: 7vw;
+  min-height: 15vh;
+  box-sizing: border-box;
 }
 
-.span{
-  font-size: 20px;
+.spanTexto {
+  font-size: 1vw;
+  width: 35vw;
+  max-height: 1vh;
+  min-height: 1vh;
+  max-width: 35vw;
+  min-width: 7vw;
 }
+
 
 /* font */
 
