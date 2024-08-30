@@ -74,7 +74,7 @@ h1{
 
 .textoMarketing{
     margin-top: 27vh;
- 
+    font-size: 20px;
 }
 
 .conteudoInicio{
@@ -105,9 +105,23 @@ h1{
     margin-top: 3vh;
     border-radius: 10px;
     border: 2px white solid;
-    height: 45vh;
-    width: 18vw;
+    height: 55vh;
+    width: 20vw;
     margin-bottom: 3vh;
+}
+
+.h1 {
+  font-size: 30px;
+}
+
+.logoRetangulo{
+  margin-top: 2vh;
+  width: 7vw;
+  height: 15vh;
+}
+
+.span{
+  font-size: 20px;
 }
 
 /* font */
