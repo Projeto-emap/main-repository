@@ -1,3 +1,8 @@
+html {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
 body {
   background-image: url('../img/background.png');
   background-size: cover; 
@@ -13,6 +18,7 @@ body {
   box-sizing: border-box;
   overflow-y: auto;
   overflow-x: hidden;
+  width: 100%;
 }
 
 h3, span {
@@ -120,7 +126,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px;
+  font-size: 1vw;
 }
 
 .retangulo1, .retangulo2, .retangulo3, .retangulo4 {
@@ -159,10 +165,11 @@ h1 {
 
 .spanTexto {
   font-size: 1vw;
-  width: 35vw;
+  width: 30vw;
+  line-height: 1;
   max-height: 1vh;
   min-height: 1vh;
-  max-width: 35vw;
+  max-width: 30vw;
   min-width: 7vw;
 }
 

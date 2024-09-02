@@ -23,8 +23,9 @@ footer {
 }
 
 .footerItem {
+  margin-left: 10px;
+  width: 33%;
   font-size: 0.9vw;
-  margin-top: 6vh;
   max-width: 30vw;
   min-width: 30px;
   box-sizing: border-box;
@@ -33,7 +34,14 @@ footer {
 .links {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  width: 33%;
+  margin-right: 20vw;
 }
+
+/* .center {
+  margin-right: 100px;
+} */
 
 ul {
   list-style-type: none;
@@ -75,6 +83,7 @@ li a:hover {
 
 .right {
   display: flex;
+  width: 33%;
   align-items: center;
   justify-content: center;
   height: 15vh;
