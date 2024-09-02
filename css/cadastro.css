@@ -22,7 +22,7 @@ nav li a {
   display: block;
   color: black;
   text-align: center;
-  padding: 2vh 2vw;
+  /* padding: 2vh 2vw; */
   text-decoration: none;
   font-size: 1.3vw;
 }
@@ -166,14 +166,20 @@ button:hover {
 .seta {
   width: 5vw;
   height: 5vh;
-  max-width: 8vw;
-  max-height: 8vh;
+  max-width: 20vw;
+  max-height: 20vh;
   min-width: 2vw;
   min-height: 2vh;
   display: flex;
   justify-content: center;
-  margin-top: -0.25vh;
-  margin-left: 3.5vw;
+  margin-top: -0.6vh;
+  margin-right: -2vw;
+  text-decoration: none;
+}
+
+.imgSeta {
+  width: 7vw;
+  height: 10vh;
 }
 
 .senha-container {
