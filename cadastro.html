@@ -51,26 +51,26 @@
             <div class="cnpj">
                 <label class="cnpjLabel tamanhoFonte" for="CNPJ">CNPJ</label><br>
                 <div class="cnpj-container">
-                    <input type="text" id="CNPJ" title="CNPJ" placeholder="Insira o CNPJ aqui.">
+                    <input type="text" id="CNPJ" title="CNPJ" placeholder="Insira o CNPJ aqui." class="tamanhoFonte">
                 </div>
-            </div> <br>
+            </div>
 
-            <div class="NomeSocial">
+            <div class="NomeSocial inputEspacamento">
                 <label class="nomeSocialLabel tamanhoFonte">Nome</label><br>
-                <input type="text" id="nomeSocial" title="Nome Social" placeholder="Insira o nome da empresa aqui.">
-            </div> <br>
+                <input type="text" id="nomeSocial" title="Nome Social" placeholder="Insira o nome da empresa aqui." class="tamanhoFonte">
+            </div>
 
-            <div class="estado">
+            <div class="estado inputEspacamento">
                 <label class="estadoLabel tamanhoFonte" for="estado">Estado</label><br>
                 <div class="estado-container">
-                    <input type="text" id="estado" title="Estado" placeholder="Insira o estado que se localiza a empresa.">
-                </div> <br>
+                    <input type="text" id="estado" title="Estado" placeholder="Insira o estado que se localiza a empresa." class="tamanhoFonte">
+                </div>
 
             </div>
-            <div class="cep">
+            <div class="cep inputEspacamento">
                 <label class="cepLabel tamanhoFonte" for="cep">CEP</label><br>
                 <div class="cep-container">
-                    <input type="text" id="cep" title="CEP" placeholder="Insira o CEP.">
+                    <input type="text" id="cep" title="CEP" placeholder="Insira o CEP." class="tamanhoFonte">
                 </div>
             </div>
         </div>
@@ -82,25 +82,25 @@
 
                 <div class="Nome">
                     <label class="nomeLabel tamanhoFonte">Nome</label><br>
-                    <input type="text" id="nome" title="Nome Representante" placeholder="Insira seu nome aqui.">
+                    <input type="text" id="nome" title="Nome Representante" placeholder="Insira seu nome aqui." class="tamanhoFonte">
 
-                </div> <br>
+                </div>
 
-                <div class="cpf">
+                <div class="cpf inputEspacamento">
                     <label class="cpfLabel tamanhoFonte" for="CPF">CPF</label><br>
                     <div class="cpf-container">
-                        <input type="text" id="CPF" title="CPF" placeholder="Insira seu CPF aqui.">
+                        <input type="text" id="CPF" title="CPF" placeholder="Insira seu CPF aqui." class="tamanhoFonte">
                     </div>
-                </div> <br>
+                </div>
 
-                <div class="Email">
+                <div class="Email inputEspacamento">
                     <label class="emailLabel tamanhoFonte">Email</label><br>
-                    <input type="text" id="email" title="Email para contato" placeholder="Insira seu email aqui.">
-                </div> <br>
+                    <input type="text" id="email" title="Email para contato" placeholder="Insira seu email aqui." class="tamanhoFonte">
+                </div>
 
-                <div class="Celular">
+                <div class="Celular inputEspacamento">
                     <label class="celularLabel tamanhoFonte">Núm. celular</label><br>
-                    <input type="text" id="celular" title="Número de celular para contato" placeholder="(XX) XXXXX-XXXX">
+                    <input type="text" id="celular" title="Número de celular para contato" placeholder="(XX) XXXXX-XXXX" class="tamanhoFonte">
                 </div>
             </div>
         </div>
@@ -112,52 +112,49 @@
             <div class="Senha">
                 <label class="senhaLabel tamanhoFonte" for="senha">Senha</label><br>
                 <div class="senha-container">
-                    <input type="password" id="senha" title="Senha para login" placeholder="Insira sua senha aqui.">
+                    <input type="password" id="senha" title="Senha para login" placeholder="Insira sua senha aqui." class="tamanhoFonte">
                     <i class="olhoSenha" onclick="verSenha()">
                         <img src="img/invisivel.png" alt="olho" class="olho">
                     </i>
                 </div>
-            </div> <br>
+            </div>
 
-            <div class="confirmarSenha">
+            <div class="confirmarSenha inputEspacamento">
                 <label class="senhaLabel tamanhoFonte" for="senha">Confirmação de Senha</label><br>
                 <div class="senha-container">
-                    <input type="password" id="senhaConfirmacao" title="Confirme a sua senha" placeholder="Insira novamente sua senha.">
+                    <input type="password" id="senhaConfirmacao" title="Confirme a sua senha" placeholder="Insira novamente sua senha." class="tamanhoFonte">
                     <i class="olhoSenhaConfirmacao" onclick="verSenhaConfirmacao()">
                         <img src="img/invisivel.png" alt="olhoConfirmacao" class="olhoConfirmacao">
                     </i>
                 </div>
             </div> <br>
 
-            <b class="informacaoSenha tamanhoFonte">Sua senha deve conter ao menos:</b>
+            <b class="informacaoSenha tamanhoFonte">Por favor, insira uma senha que atenda aos seguintes critérios:</b>
             <div class="criterios">
                 <ul class="tamanhoFonte">
-                    <li>6 Dígitos</li>
-                    <li>1 Caractere numérico</li>
-                    <li>1 Letra minúscula</li>
-                </ul>
-                <ul class="tamanhoFonte">
-                    <li>1 Letra maiúscula</li>
-                    <li>1 Caractere especial</li>
-                </ul>
+                    <li>Deve conter pelo menos 6 caracteres.</li>
+                    <li>Deve incluir pelo menos uma letra maiúscula (A-Z).</li>
+                    <li>Deve incluir pelo menos uma letra minúscula (a-z).</li>
+                    <li>Deve incluir pelo menos um número (0-9).</li>
+                </ul> 
             </div>
 
             <div class="termo-container">
                 <div class="termos" style="max-width: 20vw;">
                     <div class="barra tamanhoFonte"></div>
                     <p class="tamanhoFonte">
-                        <b class="tamanhoFonte">Termos de Uso e Política de Privacidade</b><br>
-                        ao clicar em "Concordo e Finalizar Cadastro", você concorda com os Termos de Uso e a Política de
-                        Privacidade da emap. Leia atentamente as condições clicando <b>AQUI</b>.
+                        <b style="font-size: .7vw;">Termos de Uso e Política de Privacidade</b> <br>
+                        <a style="font-size: .7vw;">ao clicar em "Concordo e Finalizar Cadastro", você concorda com os Termos de Uso e a Política de
+                        Privacidade da emap. Leia atentamente as condições clicando</a> <b style="font-size: .7vw;">AQUI</b>.
                     </p>
                 </div>
             </div>
         </div>
     </div>
     <div class="btns">
-        <button class="btnContinuar1" id="btnContinuar1">Continuar</button>
-        <button style="display: none;" class="btnContinuar2" id="btnContinuar2">Continuar</button>
-        <button style="display: none;" class="btnCriar" id="btnCriar">Concordo e Finalizar Cadastro</button>
+        <button class="btnContinuar1" id="btnContinuar1"><a class="tamanhoFonte">Continuar</a></button>
+        <button style="display: none;" class="btnContinuar2" id="btnContinuar2"><a class="tamanhoFonte">Continuar</a></button>
+        <button style="display: none;" class="btnCriar" id="btnCriar"><a class="tamanhoFonte">Concordo e Finalizar Cadastro</a></button>
     </div>
     </div>
 

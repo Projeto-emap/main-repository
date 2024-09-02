@@ -79,6 +79,12 @@ input {
   box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.5);
   max-width: 50vw;
   min-width: 40vw;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.btnEntrar:hover {
+  background-color: #3a5df9;
 }
 
 .btnConta {
@@ -93,6 +99,11 @@ input {
   box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.5);
   max-width: 50vw;
   min-width: 40vw;
+  cursor: pointer;
+}
+
+.btnConta:hover {
+  background-color: #C8C8C8;
 }
 
 .btns {
@@ -113,7 +124,7 @@ input {
 .esqueceuSenha {
   display: flex;
   justify-content: center;
-  margin-top: 4vh;
+  margin-top: 1vh;
   font-size: 20px;
   line-height: 51px;
   text-align: center;
@@ -128,7 +139,6 @@ input {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-top: 2vh;
 }
 
 .line1 {
@@ -146,7 +156,6 @@ input {
   width: 20vw;
   height: 0px;
   border: 1px solid #000000;
-  /* margin-bottom: -37.7vh; */
   margin-left: 25vw;
   max-width: 30vw;
   min-width: 10vw;
@@ -188,6 +197,10 @@ input {
   max-height: 6vh;
   min-width: 1vw;
   min-height: 4vh;
+}
+
+.criarConta {
+  margin-bottom: 15px;
 }
 
 /* font */

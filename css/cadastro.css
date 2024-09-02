@@ -47,7 +47,7 @@ nav li a:hover {
 input {
   width: 45vw;
   height: 15vh;
-  max-width: 400px;
+  max-width: 45vw;
   max-height: 50px;
   min-width: 30vw;
   min-height: 4vh;
@@ -60,6 +60,11 @@ input {
   box-sizing: border-box;
 }
 
+.inputEspacamento {
+  margin-top: 5px;;
+}
+
+
 .btnContinuar1,
 .btnContinuar2,
 .btnCriar {
@@ -67,7 +72,7 @@ input {
   color: white;
   width: 45vw;
   height: 15vh;
-  max-width: 400px;
+  max-width: 45vw;
   max-height: 50px;
   min-width: 30vw;
   min-height: 4vh;
@@ -81,18 +86,17 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 5vh;
+  margin-top: 2vh;
   padding-bottom: 20px;
 }
 
 .container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   width: 100%;
   max-width: 100vw;
-  min-width: 60vw;
+  min-width: 100vw;
 }
 
 .miniHeader {
@@ -144,23 +148,6 @@ button:hover {
   justify-content: center;
   align-items: center;
   margin-top: 2vh;
-}
-
-.line1 {
-  position: absolute;
-  width: 20vw;
-  height: 0px;
-  border: 1px solid #000000;
-  margin-right: 25vw;
-}
-
-.line2 {
-  position: absolute;
-  width: 20vw;
-  height: 0px;
-  border: 1px solid #000000;
-  margin-bottom: -37.7vh;
-  margin-left: 25vw;
 }
 
 .seta {
@@ -221,8 +208,15 @@ button:hover {
 
 .criterios {
   display: flex;
-  flex-direction: row;
   justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px){
+  .criterios{
+    flex-direction: column;
+  }
 }
 
 .barra {
@@ -239,6 +233,7 @@ button:hover {
 
 .termo-container {
   display: flex;
+  flex-direction: row;
   justify-content: center;
 }
 

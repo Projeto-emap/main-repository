@@ -78,10 +78,11 @@ li a:hover {
   align-items: center;
   justify-content: center;
   height: 15vh;
-  width: 8vw;
-  max-width: 8vw;
-  min-width: 8vw;
+  width: 6vw;
+  max-width: 6vw;
+  min-width: 6vw;
   box-sizing: border-box;
+  margin-right: 2vw;
 }
 
 /* Font Styles */
