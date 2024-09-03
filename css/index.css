@@ -166,9 +166,7 @@ h1 {
 .spanTexto {
   font-size: 1vw;
   width: 30vw;
-  line-height: 1;
-  max-height: 1vh;
-  min-height: 1vh;
+  line-height: 1.5;
   max-width: 30vw;
   min-width: 7vw;
 }

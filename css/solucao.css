@@ -10,7 +10,7 @@ body {
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat;
-    height: 100vh;
+    height: 200%;
     width: 100%;
     display: flex;
     align-items: center; 
@@ -18,7 +18,7 @@ body {
     flex-direction: column;
 }
 .container{
-    margin-top: 15vh;
+   margin-top: 15vh;
    display: flex;
    flex-direction: column;
    justify-content: center;
@@ -155,7 +155,6 @@ nav li a:hover {
 .caixa img {
     width: 3vw;
     max-width: 3vw; 
-    margin-bottom: 1vh;
 }
 
 .agrupamentoCaixas1, .agrupamentoCaixas2 {
@@ -171,8 +170,16 @@ nav li a:hover {
     max-width: 100%;
 }
 
+.spanCaixa {
+  font-size: 1vw;
+}
+
+.textoCaixa {
+  font-size: 1.6vw;
+}
+
 .agrupamentoCaixas1 {
-    margin-bottom: 15vh;
+    margin-bottom: 12vh;
 }
 
 .textoTecnologias {
