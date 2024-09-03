@@ -64,10 +64,17 @@ input {
   box-sizing: border-box;
 }
 
+.input-invalido {
+  border: 2px solid red;
+}
+
+.input-valido {
+  border: 2px none;
+}
+
 .inputEspacamento {
   margin-top: 5px;;
 }
-
 
 .btnContinuar1,
 .btnContinuar2,
