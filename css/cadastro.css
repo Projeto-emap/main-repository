@@ -57,11 +57,17 @@ input {
   min-height: 4vh;
   background: rgba(217, 217, 217, 0.6);
   border: 0px solid;
-  border-radius: 2px;
+  border-radius: 5px;
   box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.5);
   font-size: 15px;
   padding: 0 10px;
   box-sizing: border-box;
+}
+
+button {
+  border-radius: 5px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+  border: none;
 }
 
 .input-invalido {
@@ -87,10 +93,7 @@ input {
   max-height: 50px;
   min-width: 30vw;
   min-height: 4vh;
-  border: 0px solid;
   font-size: 100%;
-  border-radius: 5px;
-  box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .btns {

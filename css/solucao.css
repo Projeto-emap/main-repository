@@ -1,113 +1,117 @@
 body {
-    font-family: "Be Vietnam Pro", sans-serif;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
+  font-family: "Be Vietnam Pro", sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 .solucao {
-    background-image: url('../img/solucao.png');
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat;
-    height: 200%;
-    width: 100%;
-    display: flex;
-    align-items: center; 
-    justify-content: center; 
-    flex-direction: column;
+  background-image: url('../img/solucao.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 200%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
-.container{
-   margin-top: 15vh;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
+
+.container {
+  margin-top: 15vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 nav {
-    background-color: rgba(217, 217, 217, 0.6); 
-    backdrop-filter: blur(10px); 
-    overflow: hidden;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 10vh;
-    width: 100%;
-    position: fixed; 
-    top: 0;
-    left: 0;
-    z-index: 1000; 
+  background-color: rgba(217, 217, 217, 0.6);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
 nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
 }
 
 nav ul.direita {
-    margin-left: auto;
-    margin-right: 5vw;
+  margin-left: auto;
+  margin-right: 5vw;
 }
 
 nav ul.center {
-    margin-left: 35vw;
+  margin-left: 35vw;
 }
 
 nav li a {
-    display: block;
-    color: black !important;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 19px;
+  display: block;
+  color: black !important;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 19px;
 }
 
 nav li a:hover {
-    cursor: pointer;
-    text-decoration: underline #000000 !important;
+  cursor: pointer;
+  text-decoration: underline #000000 !important;
 }
 
 .conteudoInicioSolucao {
-    background-color: #ffffff;
-    margin-top: 6vh;
-    height: auto;
-    max-height: auto;
-    max-width: 100%;
-    min-width: 100%;
-    display: flex;
-    flex-direction: column;
-    color: black;
-    text-align: center;
+  background-color: #ffffff;
+  margin-top: 6vh;
+  height: auto;
+  max-height: auto;
+  max-width: 100%;
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  color: black;
+  text-align: center;
 }
 
 .retangulosSolucao {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin-bottom: 4vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-bottom: 4vh;
 }
 
 .processo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
 }
 
-.retangulo1Solucao, .retangulo2Solucao, .retangulo3Solucao, .retangulo4Solucao {
-    border-radius: 10px;
-    border: 3px black solid;
-    height: 55vh;
-    width: 20vw;
-    margin-bottom: 3vh;
-    max-height: 60vh;
-    max-width: 22vw;
-    min-height: 45vh;
-    min-width: 18vw;
-    box-sizing: border-box;
+.retangulo1Solucao,
+.retangulo2Solucao,
+.retangulo3Solucao,
+.retangulo4Solucao {
+  border-radius: 10px;
+  border: 3px black solid;
+  height: 55vh;
+  width: 20vw;
+  margin-bottom: 3vh;
+  max-height: 60vh;
+  max-width: 22vw;
+  min-height: 45vh;
+  min-width: 18vw;
+  box-sizing: border-box;
 
 }
 
@@ -120,7 +124,7 @@ nav li a:hover {
   min-height: 15vh;
 }
 
-.textoSolucao{
+.textoSolucao {
   font-size: 1.4vw;
   width: 20vw;
   max-width: 20vw;
@@ -130,44 +134,45 @@ nav li a:hover {
 }
 
 .linha {
-    border: 1px solid black; 
-    display: flex;
-    flex-direction: column; 
-    width: 100vw; 
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
 }
 
 .caixa {
-    border-radius: 25px; 
-    backdrop-filter: blur(10px); 
-    background: rgba(255, 255, 255, 0);
-    padding: 20px; 
-    text-align: center; 
-    width: 24vw; 
-    height: 22vh;
-    max-width: 24vw;
-    max-height: 22vh;
-    min-width: 22vw;
-    min-height: 20vh;
-    color: white;
-    box-shadow: inset 0px -2px rgba(0, 0, 0, 0.3);
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0);
+  padding: 20px;
+  text-align: center;
+  width: 24vw;
+  height: 22vh;
+  max-width: 24vw;
+  max-height: 22vh;
+  min-width: 22vw;
+  min-height: 20vh;
+  color: white;
+  box-shadow: inset 0px -2px rgba(0, 0, 0, 0.3);
 }
 
 .caixa img {
-    width: 3vw;
-    max-width: 3vw; 
+  width: 3vw;
+  max-width: 3vw;
 }
 
-.agrupamentoCaixas1, .agrupamentoCaixas2 {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 400px; 
-    margin-bottom: 5vh;
-    height: 30vh;
-    max-height: 30vh;
-    min-height: 30vh;
-    width: 100%;
-    max-width: 100%;
+.agrupamentoCaixas1,
+.agrupamentoCaixas2 {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 400px;
+  margin-bottom: 5vh;
+  height: 30vh;
+  max-height: 30vh;
+  min-height: 30vh;
+  width: 100%;
+  max-width: 100%;
 }
 
 .spanCaixa {
@@ -179,54 +184,54 @@ nav li a:hover {
 }
 
 .agrupamentoCaixas1 {
-    margin-bottom: 12vh;
+  margin-bottom: 12vh;
 }
 
 .textoTecnologias {
-    display: flex;
-    align-items: center;
-    border-radius: 10px; 
-    backdrop-filter: blur(10px); 
-    background: rgba(255, 255, 255, 0);
-    color: white;
-    width: 18vw;
-    max-width: 18vw;
-    min-width: 15vw;
-    height: 5vh;
-    max-height: 5vh;
-    min-height: 5vh;
-    margin-bottom: 5vh;
-    box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.5);
-    padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0);
+  color: white;
+  width: 18vw;
+  max-width: 18vw;
+  min-width: 15vw;
+  height: 5vh;
+  max-height: 5vh;
+  min-height: 5vh;
+  margin-bottom: 5vh;
+  box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.5);
+  padding: 6px 10px;
 }
 
-.textoTecnologias > h2{
-    font-size: 1.5vw;
-    position: relative;
-    left: 4%;
+.textoTecnologias>h2 {
+  font-size: 1.5vw;
+  position: relative;
+  left: 4%;
 }
 
 button {
-    background-color: #5271FF;
-    color: white;
-    width: 15vw;
-    max-width: 15vw;
-    max-height: 7vh;
-    height: 7vh;
-    border: 0px solid;
-    font-size: 1.5vw;
-    box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    margin-top: 3vh;
-    margin-bottom: 3vh;
+  background-color: #5271FF;
+  color: white;
+  width: 15vw;
+  max-width: 15vw;
+  max-height: 7vh;
+  height: 7vh;
+  font-size: 1.5vw;
+  border-radius: 5px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+  border: none;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
 }
 
 button:hover {
-    cursor: pointer;
-    background-color: #3a5df9;
+  cursor: pointer;
+  background-color: #3a5df9;
 }
 
-.interessou{
+.interessou {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -237,109 +242,109 @@ button:hover {
 /* font */
 
 .be-vietnam-pro-thin {
-    font-family: "Be Vietnam Pro", sans-serif;
-    font-weight: 100;
-    font-style: normal;
-  }
-  
-  .be-vietnam-pro-extralight {
-    font-family: "Be Vietnam Pro", sans-serif;
-    font-weight: 200;
-    font-style: normal;
-  }
-  
-  .be-vietnam-pro-light {
-    font-family: "Be Vietnam Pro", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-  }
-  
-  .be-vietnam-pro-regular {
-    font-family: "Be Vietnam Pro", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-  
-  .be-vietnam-pro-medium {
-    font-family: "Be Vietnam Pro", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-  }
-  
-  .be-vietnam-pro-semibold {
-    font-family: "Be Vietnam Pro", sans-serif;
-    font-weight: 600;
-    font-style: normal;
-  }
-  
-  .be-vietnam-pro-bold {
-    font-family: "Be Vietnam Pro", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-  }
-  
-  .be-vietnam-pro-extrabold {
-    font-family: "Be Vietnam Pro", sans-serif;
-    font-weight: 800;
-    font-style: normal;
-  }
-  
-  .be-vietnam-pro-black {
-    font-family: "Be Vietnam Pro", sans-serif;
-    font-weight: 900;
-    font-style: normal;
-  }
-  
-  .be-vietnam-pro-thin-italic {
-    font-family: "Be Vietnam Pro", sans-serif;
-    font-weight: 100;
-    font-style: italic;
-  }
-  
-  .be-vietnam-pro-extralight-italic {
-    font-family: "Be Vietnam Pro", sans-serif;
-    font-weight: 200;
-    font-style: italic;
-  }
-  
-  .be-vietnam-pro-light-italic {
-    font-family: "Be Vietnam Pro", sans-serif;
-    font-weight: 300;
-    font-style: italic;
-  }
-  
-  .be-vietnam-pro-regular-italic {
-    font-family: "Be Vietnam Pro", sans-serif;
-    font-weight: 400;
-    font-style: italic;
-  }
-  
-  .be-vietnam-pro-medium-italic {
-    font-family: "Be Vietnam Pro", sans-serif;
-    font-weight: 500;
-    font-style: italic;
-  }
-  
-  .be-vietnam-pro-semibold-italic {
-    font-family: "Be Vietnam Pro", sans-serif;
-    font-weight: 600;
-    font-style: italic;
-  }
-  
-  .be-vietnam-pro-bold-italic {
-    font-family: "Be Vietnam Pro", sans-serif;
-    font-weight: 700;
-    font-style: italic;
-  }
-  
-  .be-vietnam-pro-extrabold-italic {
-    font-family: "Be Vietnam Pro", sans-serif;
-    font-weight: 800;
-    font-style: italic;
-  }
-  
-  .be-vietnam-pro-black-italic {
-    font-family: "Be Vietnam Pro", sans-serif;
-    font-weight: 900;
-    font-style: italic;
-  }  
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.be-vietnam-pro-extralight {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.be-vietnam-pro-light {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.be-vietnam-pro-regular {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.be-vietnam-pro-medium {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.be-vietnam-pro-semibold {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.be-vietnam-pro-bold {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.be-vietnam-pro-extrabold {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.be-vietnam-pro-black {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.be-vietnam-pro-thin-italic {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.be-vietnam-pro-extralight-italic {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.be-vietnam-pro-light-italic {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.be-vietnam-pro-regular-italic {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.be-vietnam-pro-medium-italic {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.be-vietnam-pro-semibold-italic {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.be-vietnam-pro-bold-italic {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.be-vietnam-pro-extrabold-italic {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.be-vietnam-pro-black-italic {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
