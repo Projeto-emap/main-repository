@@ -185,6 +185,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (senhaValida && senhaConfirmacaoValida) {
             alert("Todas as informações estão corretas!");
+            window.location.href="login.html";
         }
     });
 });
