@@ -13,6 +13,10 @@ body {
   font-size: 1vw;
 }
 
+.tamanhoFontePequeno {
+  font-size: .7vw;
+}
+
 .btn-voltar {
   font-size: 1.3vw;
   margin-right: 1vw;
@@ -41,7 +45,7 @@ nav li a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.3vw;
+  font-size: 1.5vw;
   margin-top: 2vh;
   width: 100%;
   max-width: 100vw;
@@ -266,6 +270,16 @@ button:hover {
   font-size: 10px;
   max-width: 20vw;
   min-width: 20vw;
+}
+
+.checkbox {
+  height: 100%;
+}
+
+.checkboxdiv {
+  display: flex;
+  justify-content: center;
+  max-width: 10vw;
 }
 
 
