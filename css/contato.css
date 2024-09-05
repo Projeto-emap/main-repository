@@ -1,3 +1,8 @@
+html {
+  overflow-y:auto;
+  overflow-x: hidden;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -7,7 +12,6 @@ body {
   min-width: 320px;
   min-height: 100vh;
   box-sizing: border-box;
-  overflow-y:auto;
 }
 
 .btn-voltar {
@@ -52,10 +56,9 @@ nav li a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 1.5vw;
+  font-size: 1.2vw;
   max-width: 100vw;
   box-sizing: border-box;
-  margin-top: -2vh;
 }
 
 input, textarea {
