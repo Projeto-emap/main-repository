@@ -122,6 +122,8 @@ h1 {
   margin-bottom: 4vh;
 }
 
+
+
 .valores {
   display: flex;
   justify-content: center;
@@ -143,14 +145,68 @@ h1 {
   box-sizing: border-box;
 }
 
-.h1 {
+.card {
+  display: flex;
+  justify-content: center;
+  width: 350px;
+  height: 300px;
+  position: relative;
+  border-radius: 20px;
+  box-shadow: 0px 35px 80px rgba(0, 0, 0, 0.15);
+  transition: 0.5s;
+}
+
+.card:hover {
+  height: 400px;
+}
+
+.card .img-box {
+  position: absolute;
+  width: 250px;
+  height: auto;
+  top: 0px;
+  transition: 0.5s;
+}
+
+.card:hover .img-box {
+  top: -28%;
+  scale: 0.75;
+}
+
+.card .img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card .content {
+  display: flex;
+  flex-direction: column;
+  gap: 3%;
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  padding: 0px 30px;
+  text-align: center;
+  height: 30%;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.card:hover .content {
+  top: 100px;
+  height: 300px;
+}
+
+
+.texto {
   font-size: 1.6vw;
   width: 20vw;
   max-width: 20vw;
   max-height: 15vh;
   min-width: 7vw;
   min-height: 15vh;
-}
+} 
 
 .logoRetangulo {
   margin-top: 2vh;
@@ -164,11 +220,7 @@ h1 {
 }
 
 .spanTexto {
-  font-size: 1vw;
-  width: 30vw;
-  line-height: 1.5;
-  max-width: 30vw;
-  min-width: 7vw;
+  flex-wrap: wrap;
 }
 
 .solucao {
