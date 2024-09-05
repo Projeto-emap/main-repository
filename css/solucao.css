@@ -24,6 +24,9 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  max-height: 100vh;
+  min-height: 100vh;
 }
 
 nav {
@@ -84,6 +87,27 @@ nav li a:hover {
   text-align: center;
 }
 
+
+.spanTexto {
+  font-size: 1vw;
+  width: 30vw;
+  line-height: 1.5;
+  max-width: 30vw;
+  min-width: 7vw;
+  font-size: 18px;
+}
+
+.logoRetangulo {
+  margin-top: 2vh;
+  width: 7vw;
+  height: 15vh;
+  max-width: 7vw;
+  max-height: 15vh;
+  min-width: 7vw;
+  min-height: 15vh;
+  box-sizing: border-box;
+}
+
 .retangulosSolucao {
   display: flex;
   flex-direction: row;
@@ -119,9 +143,9 @@ nav li a:hover {
   font-size: 1.4vw;
   width: 20vw;
   max-width: 20vw;
-  max-height: 15vh;
+  max-height: 10vh;
   min-width: 7vw;
-  min-height: 15vh;
+  min-height: 10vh;
 }
 
 .textoSolucao {
@@ -208,6 +232,7 @@ nav li a:hover {
 .textoTecnologias>h2 {
   font-size: 1.5vw;
   position: relative;
+  height: 2vh;
   left: 4%;
 }
 
