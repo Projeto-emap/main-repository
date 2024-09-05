@@ -63,7 +63,7 @@ input, textarea {
   height: 8vh;
   background: rgba(217, 217, 217, 0.6);
   border: 0px solid;
-  border-radius: 2px;
+  border-radius: 5px;
   box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.5);
   font-size: 15px;
   padding: 0 10px;
@@ -98,14 +98,14 @@ textarea::placeholder {
   color: white;
   width: 45vw;
   height: 7vh;
-  border: 0px solid;
   font-size: 20px;
-  box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+  border: none;
   max-width: 45vw;
   min-width: 7vw;
   max-height: 8vh;
   min-height: 7vh;
-  border-radius: 2px;
+  border-radius: 5px;
 }
 
 .btns {

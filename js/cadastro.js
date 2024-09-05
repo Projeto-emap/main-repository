@@ -45,37 +45,37 @@ document.addEventListener('DOMContentLoaded', function () {
     const cepInput = document.getElementById('cep');
     const btnContinuar = document.getElementById('btnContinuar1');
 
-    function validarCampos1() {
+    // function validarCampos1() {
 
-        const cnpj = cnpjInput.value.replace(/[.\-/]/g, ''); // Remove pontos, barras e traços
-        const cnpjValido = cnpj.length === 14 && /^\d{14}$/.test(cnpj);
-        cnpjInput.classList.toggle('input-invalido', !cnpjValido);
-        cnpjInput.classList.toggle('input-valido', cnpjValido);
+    //     const cnpj = cnpjInput.value.replace(/[.\-/]/g, ''); // Remove pontos, barras e traços
+    //     const cnpjValido = cnpj.length === 14 && /^\d{14}$/.test(cnpj);
+    //     cnpjInput.classList.toggle('input-invalido', !cnpjValido);
+    //     cnpjInput.classList.toggle('input-valido', cnpjValido);
 
-        const nomeValido = nomeInput.value.trim() !== '';
-        nomeInput.classList.toggle('input-invalido', !nomeValido);
-        nomeInput.classList.toggle('input-valido', nomeValido);
+    //     const nomeValido = nomeInput.value.trim() !== '';
+    //     nomeInput.classList.toggle('input-invalido', !nomeValido);
+    //     nomeInput.classList.toggle('input-valido', nomeValido);
 
-        const estadoValido = estadoInput.value.trim() !== '';
-        estadoInput.classList.toggle('input-invalido', !estadoValido);
-        estadoInput.classList.toggle('input-valido', estadoValido);
+    //     const estadoValido = estadoInput.value.trim() !== '';
+    //     estadoInput.classList.toggle('input-invalido', !estadoValido);
+    //     estadoInput.classList.toggle('input-valido', estadoValido);
 
-        const cep = cepInput.value.replace(/-/g, ''); // Remove traços
-        const cepValido = cep.length === 8 && /^\d{8}$/.test(cep);
-        cepInput.classList.toggle('input-invalido', !cepValido);
-        cepInput.classList.toggle('input-valido', cepValido);
+    //     const cep = cepInput.value.replace(/-/g, ''); // Remove traços
+    //     const cepValido = cep.length === 8 && /^\d{8}$/.test(cep);
+    //     cepInput.classList.toggle('input-invalido', !cepValido);
+    //     cepInput.classList.toggle('input-valido', cepValido);
 
-        return cnpjValido && nomeValido && estadoValido && cepValido;
-    }
+    //     return cnpjValido && nomeValido && estadoValido && cepValido;
+    // }
 
     btnContinuar.addEventListener('click', function (event) {
-        event.preventDefault();
+        // event.preventDefault();
 
-        if (validarCampos1()) {
+        // if (validarCampos1()) {
             passo2();
-        } else {
-            alert("Erro: verifique todos os campos");
-        }
+    //     } else {
+    //         alert("Erro: verifique todos os campos");
+    //     }
     });
 });
 
@@ -98,37 +98,37 @@ document.addEventListener('DOMContentLoaded', function () {
     const celularInput = document.getElementById('celular');
     const btnContinuar = document.getElementById('btnContinuar2');
 
-    function validarCampos2() {
-        const nomeValido = /^[A-Za-z\s]+$/.test(nomeInput.value.trim());
-        nomeInput.classList.toggle('input-invalido', !nomeValido);
-        nomeInput.classList.toggle('input-valido', nomeValido);
+    // function validarCampos2() {
+    //     const nomeValido = /^[A-Za-z\s]+$/.test(nomeInput.value.trim());
+    //     nomeInput.classList.toggle('input-invalido', !nomeValido);
+    //     nomeInput.classList.toggle('input-valido', nomeValido);
 
-        const cpf = cpfInput.value.replace(/[.\-]/g, ''); // Remove pontos e hífens
-        const cpfValido = cpf.length === 11 && /^\d{11}$/.test(cpf);
-        cpfInput.classList.toggle('input-invalido', !cpfValido);
-        cpfInput.classList.toggle('input-valido', cpfValido);
+    //     const cpf = cpfInput.value.replace(/[.\-]/g, ''); // Remove pontos e hífens
+    //     const cpfValido = cpf.length === 11 && /^\d{11}$/.test(cpf);
+    //     cpfInput.classList.toggle('input-invalido', !cpfValido);
+    //     cpfInput.classList.toggle('input-valido', cpfValido);
 
-        const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim());
-        emailInput.classList.toggle('input-invalido', !emailValido);
-        emailInput.classList.toggle('input-valido', emailValido);
+    //     const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim());
+    //     emailInput.classList.toggle('input-invalido', !emailValido);
+    //     emailInput.classList.toggle('input-valido', emailValido);
 
-        const celular = celularInput.value.replace(/[\(\)\-]/g, '');
-        const celularEsterilizado = celular.replaceAll(" ", "");
-        const celularValido = celularEsterilizado.length === 11 && /^\d{11}$/.test(celularEsterilizado);
-        celularInput.classList.toggle('input-invalido', !celularValido);
-        celularInput.classList.toggle('input-valido', celularValido);
+    //     const celular = celularInput.value.replace(/[\(\)\-]/g, '');
+    //     const celularEsterilizado = celular.replaceAll(" ", "");
+    //     const celularValido = celularEsterilizado.length === 11 && /^\d{11}$/.test(celularEsterilizado);
+    //     celularInput.classList.toggle('input-invalido', !celularValido);
+    //     celularInput.classList.toggle('input-valido', celularValido);
 
-        return nomeValido && cpfValido && emailValido && celularValido;
-    }
+    //     return nomeValido && cpfValido && emailValido && celularValido;
+    // }
 
     btnContinuar.addEventListener('click', function (event) {
-        event.preventDefault();
+        // event.preventDefault();
 
-        if (validarCampos2()) {
+        // if (validarCampos2()) {
             passo3();
-        } else {
-            alert("Erro: verifique todos os campos");
-        }
+    //     } else {
+    //         alert("Erro: verifique todos os campos");
+    //     }
     });
 });
 
