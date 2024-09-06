@@ -21,3 +21,24 @@ function cadastro(){
 // Validação dos campos
 
 
+document.addEventListener('DOMContentLoaded', function(){
+    const btnLogar = document.querySelector(".btnEntrar");
+    
+    btnLogar.addEventListener('click', function(event){
+        event.preventDefault();
+
+        const inputEmail = document.getElementById("email");
+        const inputSenha = document.getElementById("senha");
+
+        const email = inputEmail.value.trim();
+        const senha = inputSenha.value.trim();
+
+        const validacaoEmail =  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        inputEmail.classList.toggle('input-invalido', !validacaoEmail);
+        inputEmail.classList.toggle('input-valido', validacaoEmail);
+
+        const validacaoSenha = senha != '';
+        inputSenha.classList.toggle('input-invalido', !validacaoSenha);
+        inputSenha.classList.toggle('input-valido', validacaoSenha);
+    })
+})
