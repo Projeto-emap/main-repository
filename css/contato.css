@@ -50,8 +50,6 @@ nav li a:hover {
   text-decoration: underline #000000;
 }
 
-
-
 .contato {
   color: #000000;
   display: flex;
@@ -79,12 +77,28 @@ input, textarea {
   min-height: 8vh;
 }
 
+.input-invalido {
+  border: 2px solid red;
+}
+
+.input-valido {
+  border: 2px none;
+}
+
 textarea {
   resize: none;
   height: 23vh;
   max-height: 23vh;
   min-height: 20vh;
   padding-top: 10px;
+}
+
+#contador {
+  font-size: 0.8vw;
+  color: #555;
+  position: relative;
+  bottom: 3.5vh;
+  left: 42vw;
 }
 
 .spanContato {

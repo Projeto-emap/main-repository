@@ -101,6 +101,10 @@ button {
   font-size: 100%;
 }
 
+button > a {
+  font-size: 1.3vw;
+}
+
 .btnContinuar1,
 .btnContinuar2 {
   margin-top: 2vh;
