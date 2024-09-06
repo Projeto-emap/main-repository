@@ -183,7 +183,15 @@ document.addEventListener('DOMContentLoaded', function () {
         senhaConfirmacaoInput.classList.toggle('input-invalido', !senhaConfirmacaoValida);
         senhaConfirmacaoInput.classList.toggle('input-valido', senhaConfirmacaoValida);
 
-        if (senhaValida && senhaConfirmacaoValida) {
+        const checkbox = document.querySelector('.custom-checkbox');
+        const checkboxValue = document.querySelector('.custom-checkbox').checked;
+
+        if(!checkboxValue){
+            checkbox.classList.add('notChecked');
+        } else{
+            checkbox.classList.remove('notChecked');
+        }
+        if (senhaValida && senhaConfirmacaoValida && checkboxValue) {
             alert("Todas as informações estão corretas!");
             window.location.href="login.html";
         }
