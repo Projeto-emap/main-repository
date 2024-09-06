@@ -44,9 +44,16 @@ document.addEventListener('DOMContentLoaded', function () {
             mensagem.length <= 500;
         inputMensagem.classList.toggle('input-invalido', !validacaoMensagem);
         inputMensagem.classList.toggle('input-valido', validacaoMensagem);
+        const dialogo = document.getElementById('dialogo');
 
         if(validacaoEmail && validacaoNome && validacaoMensagem){
-            alert("Todas as inforções estão corretas!");
+            dialogo.showModal();
+        } else {
+            alert("Por favor, preencha todos os campos corretamente!")
         }
     })
 })
+
+function contato(){
+    window.location.href="contato.html"
+}

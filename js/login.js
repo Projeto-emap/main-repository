@@ -40,5 +40,17 @@ document.addEventListener('DOMContentLoaded', function(){
         const validacaoSenha = senha != '';
         inputSenha.classList.toggle('input-invalido', !validacaoSenha);
         inputSenha.classList.toggle('input-valido', validacaoSenha);
+        const dialogo = document.getElementById('dialogo');
+
+        if(validacaoEmail && validacaoSenha){
+           dialogo.showModal();
+        } 
+        else {
+        alert("Por favor, preencha todos os campos corretamente!")
+        }
     })
 })
+
+function index(){
+    window.location.href="index.html"
+}

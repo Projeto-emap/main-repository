@@ -185,6 +185,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const checkbox = document.querySelector('.custom-checkbox');
         const checkboxValue = document.querySelector('.custom-checkbox').checked;
+        const dialogo = document.getElementById('dialogo');
 
         if(!checkboxValue){
             checkbox.classList.add('notChecked');
@@ -192,8 +193,13 @@ document.addEventListener('DOMContentLoaded', function () {
             checkbox.classList.remove('notChecked');
         }
         if (senhaValida && senhaConfirmacaoValida && checkboxValue) {
-            alert("Todas as informações estão corretas!");
-            window.location.href="login.html";
+            dialogo.showModal();
+        } else {
+            alert("Erro: verifique todos os campos e os critérios de senha");
         }
     });
 });
+
+function login(){
+    window.location.href="login.html"
+}

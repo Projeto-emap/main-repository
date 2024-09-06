@@ -1,0 +1,58 @@
+/* <dialog id="dialogo">
+<div class="modal">
+    <p id="p">Login efetuado com sucesso!</p>
+</div>
+<button onclick="index()">Ok</button>
+</dialog> */
+.dialogo{
+   border-radius: 10px;
+   border: 1.5px solid;
+}
+
+.containerModal {
+    margin-top: -1vh;
+    width: 20vw;
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: none;
+}
+
+.modal{
+    background-color: white;
+    width: 100%;
+    border: none;
+}
+
+.p{
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+.btnModal{
+    background-color: #5271FF;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    width: 10vw;
+    height: 3.5vh;
+    border-radius: 5px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+    border: none;
+}
+
+.divBtn{
+     display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10vw;
+    border-radius: 5px;
+}
+
+.btnModal:hover {
+    background-color: #3a5df9;
+  }

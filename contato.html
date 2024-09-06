@@ -7,6 +7,7 @@
     <title>Contato</title>
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/contato.css">
+    <link rel="stylesheet" href="css/modal.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" type="image/png" href="img/logo fundo preto (1).png">
@@ -71,6 +72,17 @@
         </div>
 
     </div>
+
+    <dialog class="dialogo" id="dialogo">
+        <div class="containerModal">
+              <div class="modal">
+            <p id="p">Mensagem enviada com sucesso!</p>
+        </div>
+        <div class="divBtn">
+            <button onclick="contato()" class="btnModal">Seguir</button>
+        </div>
+        </div>
+    </dialog>
 </body>
 <script src="js/contato.js"></script>
 </html>
