@@ -63,6 +63,7 @@ nav li a:hover {
     min-width: 2vw;
     min-height: 13vh;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 .sublinhado {
