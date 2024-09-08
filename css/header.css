@@ -64,3 +64,34 @@ nav li a:hover {
     min-height: 13vh;
     box-sizing: border-box;
 }
+
+.sublinhado {
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  .sublinhado:hover {
+    text-decoration: none !important;
+  }
+  
+  .sublinhado::after {
+    content: "";
+    position: absolute;
+    left: 10%;
+    bottom: 0;
+    width: 80%;
+    height: 2px;
+    background-color: currentColor;
+    border-radius: 2px;
+    transform: translateY(-2px);
+    transition: .3s;
+  }
+  
+  .sublinhado:hover::after {
+    text-decoration: none;
+    height: 3px;
+    width: 90%;
+    left: 4%;
+    transition: .3s;
+  }

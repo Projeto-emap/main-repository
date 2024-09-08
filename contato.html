@@ -7,6 +7,7 @@
     <title>Contato</title>
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/contato.css">
+    <link rel="stylesheet" href="css/modal.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" type="image/png" href="img/logo fundo preto (1).png">
@@ -25,7 +26,7 @@
         <ul class="center">
             <li><a href="index.html">home</a></li>
             <li><a href="solucao.html">solução</a></li>
-            <li><a href="contato.html">contato</a></li>
+            <li><a href="contato.html" class="sublinhado">contato</a></li>
         </ul>
 
         <ul class="direita">
@@ -51,16 +52,17 @@
         </div>
 
         <div class="email" style="margin-top: 10px;">
-            <label class="emailLabel" for="senha">Email</label><br>
+            <label class="emailLabel" for="email">Email</label><br>
             <div class="email-container">
-                <input type="email" id="senha" placeholder="Insira seu email aqui.">
+                <input type="email" id="email" placeholder="Insira seu email aqui.">
             </div>
         </div>
 
         <div class="mensagem" style="margin-top: 10px;">
             <label class="mensagemLabel" for="mensagem">Mensagem</label><br>
             <div class="mensagem-container">
-                <textarea name="mensagem" id="mensagem" placeholder="Insira sua mensagem aqui."></textarea>
+                <textarea maxlength="500" name="mensagem" id="mensagem" placeholder="Insira sua mensagem aqui."></textarea>
+                <div id="contador">0/500</div>
             </div>
         </div>
 
@@ -70,6 +72,17 @@
         </div>
 
     </div>
-</body>
 
+    <dialog class="dialogo" id="dialogo">
+        <div class="containerModal">
+              <div class="modal">
+            <p id="p">Mensagem enviada com sucesso!</p>
+        </div>
+        <div class="divBtn">
+            <button onclick="contato()" class="btnModal">Seguir</button>
+        </div>
+        </div>
+    </dialog>
+</body>
+<script src="js/contato.js"></script>
 </html>

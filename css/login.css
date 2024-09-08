@@ -73,6 +73,14 @@ input {
   min-width: 40vw;
 }
 
+.input-invalido {
+  border: 2px solid red;
+}
+
+.input-valido {
+  border: 2px none;
+}
+
 button {
   border-radius: 5px;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
@@ -84,7 +92,7 @@ button {
   color: white;
   width: 45vw;
   height: 7vh;
-  font-size: 20px;
+  font-size: 1.3vw;
   max-width: 50vw;
   min-width: 40vw;
   cursor: pointer;
@@ -100,7 +108,7 @@ button {
   width: 45vw;
   height: 7vh;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 1.3vw;
   margin-top: 2vh;
   max-width: 50vw;
   min-width: 40vw;
