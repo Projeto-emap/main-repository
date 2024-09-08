@@ -24,8 +24,8 @@
 
         <ul class="center">
             <li><a href="index.html">home</a></li>
-            <li><a href="solucao.html" target="_blank">solução</a></li>
-            <li><a href="contato.html" target="_blank">contato</a></li>
+            <li><a href="solucao.html">solução</a></li>
+            <li><a href="contato.html">contato</a></li>
         </ul>
 
         <ul class="direita">
@@ -191,6 +191,17 @@
         <button style="display: none;" class="btnCriar" id="btnCriar"><a>Finalizar Cadastro</a></button>
     </div>
     </div>
+
+    <dialog class="dialogoCadastro" id="dialogoCadastro">
+        <div class="containerCadastro">
+            <div class="modalCadastro">
+                <p id="pCadastro">Preencha todos os campos corretamente!</p>
+            </div>
+            <div class="divBtnCadastro">
+                <button onclick="erro()" class="btnModalCadastro">Ok</button>
+            </div>
+        </div>
+    </dialog>
 
 </body>
 <script src="js/cadastro.js"></script>

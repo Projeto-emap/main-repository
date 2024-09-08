@@ -41,16 +41,21 @@ document.addEventListener('DOMContentLoaded', function(){
         inputSenha.classList.toggle('input-invalido', !validacaoSenha);
         inputSenha.classList.toggle('input-valido', validacaoSenha);
         const dialogo = document.getElementById('dialogo');
+        const dialogoErro = document.getElementById('dialogoErro');
 
         if(validacaoEmail && validacaoSenha){
            dialogo.showModal();
         } 
         else {
-        alert("Por favor, preencha todos os campos corretamente!")
+        dialogoErro.showModal();
         }
     })
 })
 
 function index(){
     window.location.href="index.html"
+}
+
+function login(){
+  dialogoErro.close();
 }

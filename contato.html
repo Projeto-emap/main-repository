@@ -30,10 +30,6 @@
         </ul>
 
         <ul class="direita">
-            <!-- 
-            <div class="seta">
-                <li><a href="login.html" class="seta"><img src="img/arrow.png" alt="seta"></a></li>
-            </div> -->
 
             <li><a href="login.html">login</a></li>
         </ul>
@@ -61,7 +57,8 @@
         <div class="mensagem" style="margin-top: 10px;">
             <label class="mensagemLabel" for="mensagem">Mensagem</label><br>
             <div class="mensagem-container">
-                <textarea maxlength="500" name="mensagem" id="mensagem" placeholder="Insira sua mensagem aqui."></textarea>
+                <textarea maxlength="500" name="mensagem" id="mensagem"
+                    placeholder="Insira sua mensagem aqui."></textarea>
                 <div id="contador">0/500</div>
             </div>
         </div>
@@ -75,14 +72,26 @@
 
     <dialog class="dialogo" id="dialogo">
         <div class="containerModal">
-              <div class="modal">
-            <p id="p">Mensagem enviada com sucesso!</p>
+            <div class="modal">
+                <p id="p">Mensagem enviada com sucesso!</p>
+            </div>
+            <div class="divBtn">
+                <button onclick="contato()" class="btnModal">Seguir</button>
+            </div>
         </div>
-        <div class="divBtn">
-            <button onclick="contato()" class="btnModal">Seguir</button>
-        </div>
+    </dialog>
+
+    <dialog class="dialogoErro" id="dialogoErro">
+        <div class="containerErro">
+            <div class="modalErro">
+                <p id="pErro">Preencha todos os campos corretamente!</p>
+            </div>
+            <div class="divBtnErro">
+                <button onclick="fecharModal()" class="btnModalErro">Ok</button>
+            </div>
         </div>
     </dialog>
 </body>
 <script src="js/contato.js"></script>
+
 </html>

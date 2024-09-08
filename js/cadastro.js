@@ -7,6 +7,7 @@ const divSenha = document.querySelector('.divSenha');
 const btnContinuar1 = document.getElementById('btnContinuar1');
 const btnContinuar2 = document.getElementById('btnContinuar2');
 const btnCriar = document.getElementById('btnCriar');
+const dialogoCadastro = document.getElementById('dialogoCadastro');
 
 function verSenha() {
     const senhaInput = document.getElementById('senha');
@@ -74,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (validarCampos1()) {
             passo2();
         } else {
-            alert("Erro: verifique todos os campos");
+           dialogoCadastro.showModal();
         }
     });
 });
@@ -127,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (validarCampos2()) {
             passo3();
         } else {
-            alert("Erro: verifique todos os campos");
+            dialogoCadastro.showModal();
         }
     });
 });
@@ -195,11 +196,15 @@ document.addEventListener('DOMContentLoaded', function () {
         if (senhaValida && senhaConfirmacaoValida && checkboxValue) {
             dialogo.showModal();
         } else {
-            alert("Erro: verifique todos os campos e os critérios de senha");
+            dialogoCadastro.showModal();
         }
     });
 });
 
 function login(){
     window.location.href="login.html"
+}
+
+function erro(){
+    dialogoCadastro.close();
 }

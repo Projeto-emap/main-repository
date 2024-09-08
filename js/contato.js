@@ -49,11 +49,15 @@ document.addEventListener('DOMContentLoaded', function () {
         if(validacaoEmail && validacaoNome && validacaoMensagem){
             dialogo.showModal();
         } else {
-            alert("Por favor, preencha todos os campos corretamente!")
+           dialogoErro.showModal();
         }
     })
 })
 
 function contato(){
     window.location.href="contato.html"
+}
+
+function fecharModal(){
+    dialogoErro.close();
 }
