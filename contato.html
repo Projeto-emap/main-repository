@@ -44,7 +44,7 @@
 
                 <div class="nome">
                     <label class="nomeLabel">Nome Completo</label><br>
-                    <input type="text" id="nome" oninput="validarInputNomeRepresentante(this)"
+                    <input type="text" id="nome" oninput="validarInputNomeRepresentante(this)" maxlength="100"
                         placeholder="Insira seu nome completo aqui.">
 
                 </div>
@@ -52,7 +52,7 @@
                 <div class="email" style="margin-top: 10px;">
                     <label class="emailLabel" for="email">Email</label><br>
                     <div class="email-container">
-                        <input type="email" id="email" placeholder="exemplo@dominio.com">
+                        <input type="email" id="email" placeholder="exemplo@dominio.com" maxlength="100">
                     </div>
                 </div>
 
@@ -61,7 +61,7 @@
                     <div class="mensagem-container">
                         <textarea maxlength="500" name="mensagem" id="mensagem"
                             placeholder="Insira sua mensagem aqui."></textarea>
-                        <div id="contador">0/500</div>
+                        <div id="contador">000/500</div>
                     </div>
                 </div>
 

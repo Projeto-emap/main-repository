@@ -58,21 +58,21 @@
                         <label class="cnpjLabel tamanhoFonte" for="CNPJ">CNPJ</label><br>
                         <div class="cnpj-container">
                             <input type="text" id="CNPJ" oninput="validarInputcnpj(this)" title="CNPJ"
-                                placeholder="12.345.678/0001-12" class="tamanhoFonte">
+                                placeholder="12.345.678/0001-12" class="tamanhoFonte" maxlength="18">
                         </div>
                     </div>
 
                     <div class="NomeSocial inputEspacamento">
                         <label class="nomeSocialLabel tamanhoFonte">Nome</label><br>
                         <input type="text" id="nomeSocial" title="Nome Social"
-                            placeholder="Insira o nome da empresa aqui." class="tamanhoFonte">
+                            placeholder="Insira o nome da empresa aqui." class="tamanhoFonte" maxlength="100">
                     </div>
 
                     <div class="estado inputEspacamento">
                         <label class="estadoLabel tamanhoFonte" for="estado">Estado</label><br>
                         <div class="estado-container">
                             <input type="text" id="estado" oninput="validarInputEstado(this)" title="Estado"
-                                placeholder="Insira o estado que se localiza a empresa." class="tamanhoFonte">
+                                placeholder="Insira o estado que se localiza a empresa." class="tamanhoFonte" maxlength="100">
                         </div>
 
                     </div>
@@ -80,7 +80,7 @@
                         <label class="cepLabel tamanhoFonte" for="cep">CEP</label><br>
                         <div class="cep-container">
                             <input type="text" id="cep" oninput="validarInputcep(this)" title="CEP"
-                                placeholder="12345-678" class="tamanhoFonte">
+                                placeholder="12345-678" class="tamanhoFonte" maxlength="9">
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                         <div class="Nome">
                             <label class="nomeLabel tamanhoFonte">Nome</label><br>
                             <input type="text" id="nome" oninput="validarInputNomeRepresentante(this)"
-                                title="Nome Representante" placeholder="Insira seu nome aqui." class="tamanhoFonte">
+                                title="Nome Representante" placeholder="Insira seu nome aqui." class="tamanhoFonte" maxlength="100">
 
                         </div>
 
@@ -101,21 +101,21 @@
                             <label class="cpfLabel tamanhoFonte" for="CPF">CPF</label><br>
                             <div class="cpf-container">
                                 <input type="text" id="CPF" oninput="validarInputcpf(this)" title="CPF"
-                                    placeholder="123.456.789-12" class="tamanhoFonte">
+                                    placeholder="123.456.789-12" class="tamanhoFonte" maxlength="14">
                             </div>
                         </div>
 
                         <div class="Email inputEspacamento">
                             <label class="emailLabel tamanhoFonte">Email</label><br>
                             <input type="text" id="email" title="Email para contato" placeholder="exemplo@dominio.com"
-                                class="tamanhoFonte">
+                                class="tamanhoFonte" maxlength="100">
                         </div>
 
                         <div class="Celular inputEspacamento">
                             <label class="celularLabel tamanhoFonte">Núm. celular</label><br>
                             <input type="text" id="celular" oninput="validarInputCelular(this)"
                                 title="Número de celular para contato" placeholder="(12) 12345-6789"
-                                class="tamanhoFonte">
+                                class="tamanhoFonte" maxlength="15">
                         </div>
                     </div>
                 </div>
@@ -128,7 +128,7 @@
                         <label class="senhaLabel tamanhoFonte" for="senha">Senha</label><br>
                         <div class="senha-container">
                             <input type="password" id="senha" title="Senha para login"
-                                placeholder="Insira sua senha aqui." class="tamanhoFonte">
+                                placeholder="Insira sua senha aqui." class="tamanhoFonte" maxlength="255">
                             <i class="olhoSenha" onclick="verSenha()">
                                 <img src="img/invisivel.png" alt="olho" class="olho">
                             </i>
@@ -139,7 +139,7 @@
                         <label class="senhaLabel tamanhoFonte" for="senha">Confirmação de Senha</label><br>
                         <div class="senha-container">
                             <input type="password" id="senhaConfirmacao" title="Confirme a sua senha"
-                                placeholder="Insira novamente sua senha." class="tamanhoFonte">
+                                placeholder="Insira novamente sua senha." class="tamanhoFonte" maxlength="255">
                             <i class="olhoSenhaConfirmacao" onclick="verSenhaConfirmacao()">
                                 <img src="img/invisivel.png" alt="olhoConfirmacao" class="olhoConfirmacao">
                             </i>
