@@ -54,8 +54,19 @@ nav li a:hover {
   text-decoration: underline #000000;
 }
 
+.cobrirTudo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .entrarContato {
-  display: ;
+  margin-top: 2vh;
+  padding-bottom: 2vh;
+  width: 50%;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
 }
 
 .contato {
