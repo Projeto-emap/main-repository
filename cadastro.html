@@ -38,142 +38,155 @@
 
         </ul>
     </nav>
-
-    <div class="cadastro">
-        <div class="miniHeader">
+    <div class="cobrirTudo">
+        <div class="cadastrar">
             <div class="cadastro">
-                <div style="text-align: center; margin-top: 10px;">
-                    <h1>Cadastro.</h1>
+                <div class="miniHeader">
+                    <div class="cadastro">
+                        <div style="text-align: center; margin-top: 10px;">
+                            <h1>Cadastro.</h1>
+                        </div>
+                    </div>
+                    <span class="passo" id="passo" title="Passos">Passo 1/3</span>
                 </div>
             </div>
-            <span class="passo" id="passo" title="Passos">Passo 1/3</span>
-        </div>
-    </div>
-    <div class="container">
-        <div id="Empresa">
-            <div class="title" title="Empresa">empresa</div>
-            <br>
-            <div class="cnpj">
-                <label class="cnpjLabel tamanhoFonte" for="CNPJ">CNPJ</label><br>
-                <div class="cnpj-container">
-                    <input type="text" id="CNPJ" oninput="validarInputcnpj(this)" title="CNPJ"
-                        placeholder="12.345.678/0001-12" class="tamanhoFonte">
-                </div>
-            </div>
+            <div class="container">
+                <div id="Empresa">
+                    <div class="title" title="Empresa">empresa</div>
+                    <br>
+                    <div class="cnpj">
+                        <label class="cnpjLabel tamanhoFonte" for="CNPJ">CNPJ</label><br>
+                        <div class="cnpj-container">
+                            <input type="text" id="CNPJ" oninput="validarInputcnpj(this)" title="CNPJ"
+                                placeholder="12.345.678/0001-12" class="tamanhoFonte">
+                        </div>
+                    </div>
 
-            <div class="NomeSocial inputEspacamento">
-                <label class="nomeSocialLabel tamanhoFonte">Nome</label><br>
-                <input type="text" id="nomeSocial" title="Nome Social" placeholder="Insira o nome da empresa aqui."
-                    class="tamanhoFonte">
-            </div>
+                    <div class="NomeSocial inputEspacamento">
+                        <label class="nomeSocialLabel tamanhoFonte">Nome</label><br>
+                        <input type="text" id="nomeSocial" title="Nome Social"
+                            placeholder="Insira o nome da empresa aqui." class="tamanhoFonte">
+                    </div>
 
-            <div class="estado inputEspacamento">
-                <label class="estadoLabel tamanhoFonte" for="estado">Estado</label><br>
-                <div class="estado-container">
-                    <input type="text" id="estado" oninput="validarInputEstado(this)" title="Estado"
-                        placeholder="Insira o estado que se localiza a empresa." class="tamanhoFonte">
-                </div>
+                    <div class="estado inputEspacamento">
+                        <label class="estadoLabel tamanhoFonte" for="estado">Estado</label><br>
+                        <div class="estado-container">
+                            <input type="text" id="estado" oninput="validarInputEstado(this)" title="Estado"
+                                placeholder="Insira o estado que se localiza a empresa." class="tamanhoFonte">
+                        </div>
 
-            </div>
-            <div class="cep inputEspacamento">
-                <label class="cepLabel tamanhoFonte" for="cep">CEP</label><br>
-                <div class="cep-container">
-                    <input type="text" id="cep" oninput="validarInputcep(this)" title="CEP" placeholder="12345-678"
-                        class="tamanhoFonte">
-                </div>
-            </div>
-        </div>
-
-        <div class="containerRepresentanteEmpresa" style="display: none;">
-            <div id="cadastroRepresentante">
-                <div class="title">representante</div>
-                <br>
-
-                <div class="Nome">
-                    <label class="nomeLabel tamanhoFonte">Nome</label><br>
-                    <input type="text" id="nome" oninput="validarInputNomeRepresentante(this)"
-                        title="Nome Representante" placeholder="Insira seu nome aqui." class="tamanhoFonte">
-
-                </div>
-
-                <div class="cpf inputEspacamento">
-                    <label class="cpfLabel tamanhoFonte" for="CPF">CPF</label><br>
-                    <div class="cpf-container">
-                        <input type="text" id="CPF" oninput="validarInputcpf(this)" title="CPF"
-                            placeholder="123.456.789-12" class="tamanhoFonte">
+                    </div>
+                    <div class="cep inputEspacamento">
+                        <label class="cepLabel tamanhoFonte" for="cep">CEP</label><br>
+                        <div class="cep-container">
+                            <input type="text" id="cep" oninput="validarInputcep(this)" title="CEP"
+                                placeholder="12345-678" class="tamanhoFonte">
+                        </div>
                     </div>
                 </div>
 
-                <div class="Email inputEspacamento">
-                    <label class="emailLabel tamanhoFonte">Email</label><br>
-                    <input type="text" id="email" title="Email para contato" placeholder="exemplo@dominio.com"
-                        class="tamanhoFonte">
-                </div>
+                <div class="containerRepresentanteEmpresa" style="display: none;">
+                    <div id="cadastroRepresentante">
+                        <div class="title">representante</div>
+                        <br>
 
-                <div class="Celular inputEspacamento">
-                    <label class="celularLabel tamanhoFonte">Núm. celular</label><br>
-                    <input type="text" id="celular" oninput="validarInputCelular(this)"
-                        title="Número de celular para contato" placeholder="(12) 12345-6789" class="tamanhoFonte">
-                </div>
-            </div>
-        </div>
+                        <div class="Nome">
+                            <label class="nomeLabel tamanhoFonte">Nome</label><br>
+                            <input type="text" id="nome" oninput="validarInputNomeRepresentante(this)"
+                                title="Nome Representante" placeholder="Insira seu nome aqui." class="tamanhoFonte">
 
-        <div class="divSenha" style="display: none;">
-            <div class="title">senha para login</div>
-            <br>
+                        </div>
 
-            <div class="Senha">
-                <label class="senhaLabel tamanhoFonte" for="senha">Senha</label><br>
-                <div class="senha-container">
-                    <input type="password" id="senha" title="Senha para login" placeholder="Insira sua senha aqui."
-                        class="tamanhoFonte">
-                    <i class="olhoSenha" onclick="verSenha()">
-                        <img src="img/invisivel.png" alt="olho" class="olho">
-                    </i>
-                </div>
-            </div>
+                        <div class="cpf inputEspacamento">
+                            <label class="cpfLabel tamanhoFonte" for="CPF">CPF</label><br>
+                            <div class="cpf-container">
+                                <input type="text" id="CPF" oninput="validarInputcpf(this)" title="CPF"
+                                    placeholder="123.456.789-12" class="tamanhoFonte">
+                            </div>
+                        </div>
 
-            <div class="confirmarSenha inputEspacamento">
-                <label class="senhaLabel tamanhoFonte" for="senha">Confirmação de Senha</label><br>
-                <div class="senha-container">
-                    <input type="password" id="senhaConfirmacao" title="Confirme a sua senha"
-                        placeholder="Insira novamente sua senha." class="tamanhoFonte">
-                    <i class="olhoSenhaConfirmacao" onclick="verSenhaConfirmacao()">
-                        <img src="img/invisivel.png" alt="olhoConfirmacao" class="olhoConfirmacao">
-                    </i>
-                </div>
-            </div> <br>
+                        <div class="Email inputEspacamento">
+                            <label class="emailLabel tamanhoFonte">Email</label><br>
+                            <input type="text" id="email" title="Email para contato" placeholder="exemplo@dominio.com"
+                                class="tamanhoFonte">
+                        </div>
 
-            <b class="informacaoSenha tamanhoFontePequeno">Por favor, insira uma senha que atenda aos seguintes
-                critérios:</b>
-            <div class="criterios">
-                <ul class="tamanhoFontePequeno">
-                    <li>Deve conter pelo menos 6 caracteres.</li>
-                    <li>Deve incluir pelo menos uma letra maiúscula (A-Z).</li>
-                    <li>Deve incluir pelo menos uma letra minúscula (a-z).</li>
-                    <li>Deve incluir pelo menos um número (0-9).</li>
-                    <li>As senhas devem se coincidir.</li>
-                </ul>
-            </div>
-
-            <div class="termo-container">
-                <div class="termos" style="max-width: 20vw;">
-                    <div class="barra tamanhoFonte"></div>
-                    <p class="tamanhoFonte">
-                        <b class="tamanhoFontePequeno">Termos de Uso e Política de Privacidade</b> <br>
-                        <a class="tamanhoFontePequeno">ao clicar em "Concordo e Finalizar Cadastro", você concorda com
-                            os
-                            Termos de Uso e a Política de
-                            Privacidade da emap. Leia atentamente as condições clicando</a> <b
-                            class="tamanhoFontePequeno" style="cursor: pointer;"><a class="linkTermo"
-                                href="documents/termo de uso e política de privacidade.pdf"
-                                target="_blank">AQUI</a></b>.
-                    </p>
-                    <div class="checkboxdiv">
-                        <input type="checkbox" class="custom-checkbox">
-                        <p class="tamanhoFonte">Eu li e aceito os termos e condições e a política de privacidade</p>
+                        <div class="Celular inputEspacamento">
+                            <label class="celularLabel tamanhoFonte">Núm. celular</label><br>
+                            <input type="text" id="celular" oninput="validarInputCelular(this)"
+                                title="Número de celular para contato" placeholder="(12) 12345-6789"
+                                class="tamanhoFonte">
+                        </div>
                     </div>
                 </div>
+
+                <div class="divSenha" style="display: none;">
+                    <div class="title">senha para login</div>
+                    <br>
+
+                    <div class="Senha">
+                        <label class="senhaLabel tamanhoFonte" for="senha">Senha</label><br>
+                        <div class="senha-container">
+                            <input type="password" id="senha" title="Senha para login"
+                                placeholder="Insira sua senha aqui." class="tamanhoFonte">
+                            <i class="olhoSenha" onclick="verSenha()">
+                                <img src="img/invisivel.png" alt="olho" class="olho">
+                            </i>
+                        </div>
+                    </div>
+
+                    <div class="confirmarSenha inputEspacamento">
+                        <label class="senhaLabel tamanhoFonte" for="senha">Confirmação de Senha</label><br>
+                        <div class="senha-container">
+                            <input type="password" id="senhaConfirmacao" title="Confirme a sua senha"
+                                placeholder="Insira novamente sua senha." class="tamanhoFonte">
+                            <i class="olhoSenhaConfirmacao" onclick="verSenhaConfirmacao()">
+                                <img src="img/invisivel.png" alt="olhoConfirmacao" class="olhoConfirmacao">
+                            </i>
+                        </div>
+                    </div> <br>
+
+                    <b class="informacaoSenha tamanhoFontePequeno">Por favor, insira uma senha que atenda aos seguintes
+                        critérios:</b>
+                    <div class="criterios">
+                        <ul class="tamanhoFontePequeno">
+                            <li>Deve conter pelo menos 6 caracteres.</li>
+                            <li>Deve incluir pelo menos uma letra maiúscula (A-Z).</li>
+                            <li>Deve incluir pelo menos uma letra minúscula (a-z).</li>
+                            <li>Deve incluir pelo menos um número (0-9).</li>
+                            <li>As senhas devem se coincidir.</li>
+                        </ul>
+                    </div>
+
+                    <div class="termo-container">
+                        <div class="termos" style="max-width: 20vw;">
+                            <div class="barra tamanhoFonte"></div>
+                            <p class="tamanhoFonte">
+                                <b class="tamanhoFontePequeno">Termos de Uso e Política de Privacidade</b> <br>
+                                <a class="tamanhoFontePequeno">ao clicar em "Concordo e Finalizar Cadastro", você
+                                    concorda
+                                    com
+                                    os
+                                    Termos de Uso e a Política de
+                                    Privacidade da emap. Leia atentamente as condições clicando</a> <b
+                                    class="tamanhoFontePequeno" style="cursor: pointer;"><a class="linkTermo"
+                                        href="documents/termo de uso e política de privacidade.pdf"
+                                        target="_blank">AQUI</a></b>.
+                            </p>
+                            <div class="checkboxdiv">
+                                <input type="checkbox" class="custom-checkbox">
+                                <p class="tamanhoFonte">Eu li e aceito os termos e condições e a política de privacidade
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btns">
+                <button class="btnContinuar1" id="btnContinuar1"><a>Continuar</a></button>
+                <button style="display: none;" class="btnContinuar2" id="btnContinuar2"><a>Continuar</a></button>
+                <button style="display: none;" class="btnCriar" id="btnCriar"><a>Finalizar Cadastro</a></button>
+            </div>
             </div>
         </div>
     </div>
@@ -187,12 +200,6 @@
             </div>
         </div>
     </dialog>
-    <div class="btns">
-        <button class="btnContinuar1" id="btnContinuar1"><a>Continuar</a></button>
-        <button style="display: none;" class="btnContinuar2" id="btnContinuar2"><a>Continuar</a></button>
-        <button style="display: none;" class="btnCriar" id="btnCriar"><a>Finalizar Cadastro</a></button>
-    </div>
-    </div>
 
     <dialog class="dialogoCadastro" id="dialogoCadastro">
         <div class="containerCadastro">
