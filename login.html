@@ -29,68 +29,71 @@
         <ul class="direita">
         </ul>
     </nav>
+    <div class="cobrirTudo">
+        <div class="logar">
+            <div class="login">
+                <h1>Bem-vindo de volta.</h1>
+            </div>
+            <div class="container">
 
-    <div class="login">
-        <h1>Bem-vindo de volta.</h1>
-    </div>
-    <div class="container">
+                <div class="email">
+                    <label class="emailLabel">Email</label><br>
+                    <input type="text" id="email" placeholder="exemplo@dominio.com">
 
-        <div class="email">
-            <label class="emailLabel">Email</label><br>
-            <input type="text" id="email" placeholder="exemplo@dominio.com">
+                </div> <br>
 
-        </div> <br>
+                <div class="senha">
+                    <label class="senhaLabel" for="senha">Senha</label><br>
+                    <div class="senha-container">
+                        <input type="password" id="senha" placeholder="Insira sua senha aqui.">
+                        <i class="olhoSenha" onclick="verSenha()">
+                            <img src="img/invisivel.png" alt="olho" class="olho">
+                        </i>
+                    </div>
+                </div>
 
-        <div class="senha">
-            <label class="senhaLabel" for="senha">Senha</label><br>
-            <div class="senha-container">
-                <input type="password" id="senha" placeholder="Insira sua senha aqui.">
-                <i class="olhoSenha" onclick="verSenha()">
-                    <img src="img/invisivel.png" alt="olho" class="olho">
-                </i>
+
+                <div class="btns">
+                    <button class="btnEntrar">Entrar</button>
+                </div>
+                <a href="login.html" class="esqueceuSenha">Esqueceu a senha?</a>
+
+                <div class="separatorio">
+                    <div class="line1"></div>
+                    <h4>Ou</h4>
+                    <div class="line2"></div>
+                </div>
+
+                <div class="criarConta">
+                    <button class="btnConta" onclick="cadastro()">Criar conta</button>
+                </div>
             </div>
         </div>
-
-
-        <div class="btns">
-            <button class="btnEntrar">Entrar</button>
-        </div>
-        <a href="login.html" class="esqueceuSenha">Esqueceu a senha?</a>
-
-        <div class="separatorio">
-            <div class="line1"></div>
-            <h4>Ou</h4>
-            <div class="line2"></div>
-        </div>
-
-        <div class="criarConta">
-            <button class="btnConta" onclick="cadastro()">Criar conta</button>
-        </div>
-
     </div>
     <dialog class="dialogo" id="dialogo">
         <div class="containerModal">
-              <div class="modal">
-            <p id="p">Login efetuado com sucesso!</p>
-        </div>
-        <div class="divBtn">
-            <button onclick="index()" class="btnModal">Seguir</button>
-        </div>
+            <div class="modal">
+                <p id="p">Login efetuado com sucesso!</p>
+            </div>
+            <div class="divBtn">
+                <button onclick="index()" class="btnModal">Seguir</button>
+            </div>
         </div>
     </dialog>
 
     <dialog class="dialogoErro" id="dialogoErro">
         <div class="containerErro">
-              <div class="modalErro">
-            <p id="pErro">Preencha todos os campos corretamente!</p>
-        </div>
-        <div class="divBtnErro">
-            <button onclick="login()" class="btnModalErro">Ok</button>
-        </div>
+            <div class="modalErro">
+                <p id="pErro">Preencha todos os campos corretamente!</p>
+            </div>
+            <div class="divBtnErro">
+                <button onclick="login()" class="btnModalErro">Ok</button>
+            </div>
         </div>
     </dialog>
 
 </body>
 <script src="js/login.js"></script>
 <script src="js/voltarIndex.js"></script>
+
 </html>

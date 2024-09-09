@@ -4,12 +4,15 @@ html{
 }
 
 body {
+  background-image: url(../img/logincadastro-background.png);
+  background-size: cover; 
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100%;
   padding: 0;
   margin: 0;
   font-family: "Be Vietnam Pro", sans-serif;
-  background-image: url(../img/logincadastro-background.png);
-  max-width: 100vw;
-  max-height: 100vh;
 }
 
 .btn-voltar {
@@ -49,6 +52,21 @@ nav li a:hover {
   text-decoration: underline #000000;
 }
 
+.cobrirTudo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logar {
+  margin-top: 2vh;
+  padding-bottom: 2vh;
+  width: 50%;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
 
 .login {
   color: #000000;
