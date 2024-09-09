@@ -1,10 +1,10 @@
-.dialogo{
-   border-radius: 10px;
-   border: 1.5px solid;
+.dialogo {
+    border-radius: 10px;
+    border: 1.5px solid;
 }
 
 .containerModal {
-    margin-top: -1vh;
+    margin-top: -2vh;
     width: 20vw;
     height: 15vh;
     display: flex;
@@ -15,18 +15,19 @@
     border: none;
 }
 
-.modal{
+.modal {
     background-color: white;
     width: 100%;
     border: none;
 }
 
-.p{
+.p {
     text-align: center;
     font-size: 25px;
     font-weight: bold;
 }
-.btnModal{
+
+.btnModal {
     background-color: #5271FF;
     color: white;
     cursor: pointer;
@@ -39,8 +40,8 @@
     border: none;
 }
 
-.divBtn{
-     display: flex;
+.divBtn {
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 10vw;
@@ -49,112 +50,114 @@
 
 .btnModal:hover {
     background-color: #3a5df9;
-  }
+}
 
 
-  .dialogoErro{
+.dialogoErro {
     border-radius: 10px;
     border: 1.5px solid;
- }
- 
- .containerErro {
-     margin-top: -1vh;
-     width: 20vw;
-     height: 15vh;
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-     text-align: center;
-     border: none;
- }
- 
- .modalErro{
-     background-color: white;
-     width: 100%;
-     border: none;
- }
- 
- .pErro{
-     text-align: center;
-     font-size: 25px;
-     font-weight: bold;
- }
- .btnModalErro{
-     background-color: #5271FF;
-     color: white;
-     cursor: pointer;
-     font-weight: bold;
-     text-align: center;
-     width: 10vw;
-     height: 3.5vh;
-     border-radius: 5px;
-     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
-     border: none;
- }
- 
- .divBtnErro{
-      display: flex;
-     justify-content: center;
-     align-items: center;
-     width: 10vw;
-     border-radius: 5px;
- }
- 
- .btnModalErro:hover {
-     background-color: #3a5df9;
-   }
-   
+}
 
-   .dialogoCadastro{
+.containerErro {
+    margin-top: -2vh;
+    width: 20vw;
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: none;
+}
+
+.modalErro {
+    background-color: white;
+    width: 100%;
+    border: none;
+}
+
+.pErro {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.btnModalErro {
+    background-color: #5271FF;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    width: 10vw;
+    height: 3.5vh;
+    border-radius: 5px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+    border: none;
+}
+
+.divBtnErro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10vw;
+    border-radius: 5px;
+}
+
+.btnModalErro:hover {
+    background-color: #3a5df9;
+}
+
+
+.dialogoCadastro {
     border-radius: 10px;
     border: 1.5px solid;
- }
- 
- .containerCadastro {
-     margin-top: -1vh;
-     width: 20vw;
-     height: 15vh;
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-     text-align: center;
-     border: none;
- }
- 
- .modalCadastro{
-     background-color: white;
-     width: 100%;
-     border: none;
- }
- 
- .pCadastro{
-     text-align: center;
-     font-size: 25px;
-     font-weight: bold;
- }
- .btnModalCadastro{
-     background-color: #5271FF;
-     color: white;
-     cursor: pointer;
-     font-weight: bold;
-     text-align: center;
-     width: 10vw;
-     height: 3.5vh;
-     border-radius: 5px;
-     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
-     border: none;
- }
- 
- .divBtnCadastro{
-      display: flex;
-     justify-content: center;
-     align-items: center;
-     width: 10vw;
-     border-radius: 5px;
- }
- 
- .btnModalErro:hover {
-     background-color: #3a5df9;
-   }
+}
+
+.containerCadastro {
+    margin-top: -2vh;
+    width: 20vw;
+    height: 18vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: none;
+}
+
+.modalCadastro {
+    background-color: white;
+    width: 100%;
+    border: none;
+}
+
+.pCadastro {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.btnModalCadastro {
+    background-color: #5271FF;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    width: 10vw;
+    height: 3.5vh;
+    border-radius: 5px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+    border: none;
+}
+
+.divBtnCadastro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10vw;
+    border-radius: 5px;
+}
+
+.btnModalErro:hover {
+    background-color: #3a5df9;
+}

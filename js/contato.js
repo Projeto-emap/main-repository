@@ -2,13 +2,13 @@
 
 
 const textarea = document.getElementById('mensagem');
-        const contador = document.getElementById('contador');
+const contador = document.getElementById('contador');
 
-        textarea.addEventListener('input', function() {
-            const caracteresDigitados = textarea.value.length;
-            const limiteCaracteres = textarea.getAttribute('maxlength');
-            contador.textContent = `${caracteresDigitados}/${limiteCaracteres}`;
-        });
+textarea.addEventListener('input', function () {
+    const caracteresDigitados = textarea.value.length;
+    const limiteCaracteres = textarea.getAttribute('maxlength');
+    contador.textContent = `${caracteresDigitados}/${limiteCaracteres}`;
+});
 
 
 // Função do botão
@@ -17,7 +17,7 @@ const textarea = document.getElementById('mensagem');
 document.addEventListener('DOMContentLoaded', function () {
     const btnEnviarMensagem = document.querySelector(".btnEnviar");
 
-    btnEnviarMensagem.addEventListener('click', function(event) {
+    btnEnviarMensagem.addEventListener('click', function (event) {
         event.preventDefault();
 
         const inputNome = document.getElementById('nome');
@@ -46,18 +46,39 @@ document.addEventListener('DOMContentLoaded', function () {
         inputMensagem.classList.toggle('input-valido', validacaoMensagem);
         const dialogo = document.getElementById('dialogo');
 
-        if(validacaoEmail && validacaoNome && validacaoMensagem){
+        if (validacaoEmail && validacaoNome && validacaoMensagem) {
             dialogo.showModal();
         } else {
-           dialogoErro.showModal();
+            let errosModal = "";
+            if (inputNome.value == '') {
+                errosModal += "Por favor, insira o seu nome.<br>";
+            } else if (!validacaoNome) {
+                errosModal += "O nome inserido não é válido!<br>";
+            }
+            if (inputEmail.value == '') {
+                errosModal += "Por favor, insira o seu email.<br>";
+            } else if (!validacaoEmail) {
+                errosModal += "O email inserido não é válido!<br>";
+            }
+            if (inputMensagem.value == '') {
+                errosModal += "Por favor, insira a sua mensagem.";
+            } else if (!validacaoMensagem) {
+                errosModal += "A mensagem inserida não é válida!";
+            }
+            pErro.innerHTML = errosModal;
+            dialogoErro.showModal();
         }
     })
-})
+});
 
-function contato(){
-    window.location.href="contato.html"
+function validarInputNomeRepresentante(input) {
+    input.value = input.value.replace(/[^a-zA-ZÀ-ÿ/s]/g, '');
 }
 
-function fecharModal(){
+function contato() {
+    window.location.href = "contato.html"
+}
+
+function fecharModal() {
     dialogoErro.close();
 }

@@ -56,7 +56,8 @@
             <div class="cnpj">
                 <label class="cnpjLabel tamanhoFonte" for="CNPJ">CNPJ</label><br>
                 <div class="cnpj-container">
-                    <input type="text" id="CNPJ" title="CNPJ" placeholder="Insira o CNPJ aqui." class="tamanhoFonte">
+                    <input type="text" id="CNPJ" oninput="validarInputcnpj(this)" title="CNPJ"
+                        placeholder="12.345.678/0001-12" class="tamanhoFonte">
                 </div>
             </div>
 
@@ -69,7 +70,7 @@
             <div class="estado inputEspacamento">
                 <label class="estadoLabel tamanhoFonte" for="estado">Estado</label><br>
                 <div class="estado-container">
-                    <input type="text" id="estado" title="Estado"
+                    <input type="text" id="estado" oninput="validarInputEstado(this)" title="Estado"
                         placeholder="Insira o estado que se localiza a empresa." class="tamanhoFonte">
                 </div>
 
@@ -77,7 +78,8 @@
             <div class="cep inputEspacamento">
                 <label class="cepLabel tamanhoFonte" for="cep">CEP</label><br>
                 <div class="cep-container">
-                    <input type="text" id="cep" title="CEP" placeholder="Insira o CEP." class="tamanhoFonte">
+                    <input type="text" id="cep" oninput="validarInputcep(this)" title="CEP" placeholder="12345-678"
+                        class="tamanhoFonte">
                 </div>
             </div>
         </div>
@@ -89,28 +91,29 @@
 
                 <div class="Nome">
                     <label class="nomeLabel tamanhoFonte">Nome</label><br>
-                    <input type="text" id="nome" title="Nome Representante" placeholder="Insira seu nome aqui."
-                        class="tamanhoFonte">
+                    <input type="text" id="nome" oninput="validarInputNomeRepresentante(this)"
+                        title="Nome Representante" placeholder="Insira seu nome aqui." class="tamanhoFonte">
 
                 </div>
 
                 <div class="cpf inputEspacamento">
                     <label class="cpfLabel tamanhoFonte" for="CPF">CPF</label><br>
                     <div class="cpf-container">
-                        <input type="text" id="CPF" title="CPF" placeholder="Insira seu CPF aqui." class="tamanhoFonte">
+                        <input type="text" id="CPF" oninput="validarInputcpf(this)" title="CPF"
+                            placeholder="123.456.789-12" class="tamanhoFonte">
                     </div>
                 </div>
 
                 <div class="Email inputEspacamento">
                     <label class="emailLabel tamanhoFonte">Email</label><br>
-                    <input type="text" id="email" title="Email para contato" placeholder="Insira seu email aqui."
+                    <input type="text" id="email" title="Email para contato" placeholder="exemplo@dominio.com"
                         class="tamanhoFonte">
                 </div>
 
                 <div class="Celular inputEspacamento">
                     <label class="celularLabel tamanhoFonte">Núm. celular</label><br>
-                    <input type="text" id="celular" title="Número de celular para contato" placeholder="(XX) XXXXX-XXXX"
-                        class="tamanhoFonte">
+                    <input type="text" id="celular" oninput="validarInputCelular(this)"
+                        title="Número de celular para contato" placeholder="(12) 12345-6789" class="tamanhoFonte">
                 </div>
             </div>
         </div>
@@ -162,8 +165,7 @@
                             os
                             Termos de Uso e a Política de
                             Privacidade da emap. Leia atentamente as condições clicando</a> <b
-                            class="tamanhoFontePequeno" style="cursor: pointer;"><a
-                                style="text-decoration: none; color: black;"
+                            class="tamanhoFontePequeno" style="cursor: pointer;"><a class="linkTermo"
                                 href="documents/termo de uso e política de privacidade.pdf"
                                 target="_blank">AQUI</a></b>.
                     </p>
@@ -177,12 +179,12 @@
     </div>
     <dialog class="dialogo" id="dialogo">
         <div class="containerModal">
-              <div class="modal">
-            <p id="p">Cadastro efetuado com sucesso!</p>
-        </div>
-        <div class="divBtn">
-            <button onclick="login()" class="btnModal">Seguir</button>
-        </div>
+            <div class="modal">
+                <p id="p">Cadastro efetuado com sucesso!</p>
+            </div>
+            <div class="divBtn">
+                <button onclick="login()" class="btnModal">Seguir</button>
+            </div>
         </div>
     </dialog>
     <div class="btns">
@@ -195,7 +197,7 @@
     <dialog class="dialogoCadastro" id="dialogoCadastro">
         <div class="containerCadastro">
             <div class="modalCadastro">
-                <p id="pCadastro">Preencha todos os campos corretamente!</p>
+                <p id="pCadastro"></p>
             </div>
             <div class="divBtnCadastro">
                 <button onclick="erro()" class="btnModalCadastro">Ok</button>
@@ -206,4 +208,5 @@
 </body>
 <script src="js/cadastro.js"></script>
 <script src="js/voltarIndex.js"></script>
+
 </html>

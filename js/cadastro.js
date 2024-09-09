@@ -75,7 +75,40 @@ document.addEventListener('DOMContentLoaded', function () {
         if (validarCampos1()) {
             passo2();
         } else {
-           dialogoCadastro.showModal();
+            const cnpjInput = document.getElementById('CNPJ');
+            const nomeInput = document.getElementById('nomeSocial');
+            const estadoInput = document.getElementById('estado');
+            const cepInput = document.getElementById('cep');
+            const cnpj = cnpjInput.value.replace(/[.\-/]/g, '');
+            const cnpjValido = cnpj.length === 14 && /^\d{14}$/.test(cnpj);
+            const nomeValido = nomeInput.value.trim() !== '';
+            const estadoValido = estadoInput.value.trim() !== '';
+            const cep = cepInput.value.replace(/-/g, '');
+            const cepValido = cep.length === 8 && /^\d{8}$/.test(cep);
+
+            let errosModal = "";
+            if (cnpjInput.value == '') {
+                errosModal += "Por favor, insira o CNPJ.<br/>";
+            } else if (!cnpjValido) {
+                errosModal += "O CNPJ inserido não é válido!<br/>";
+            }
+            if (nomeInput.value == '') {
+                errosModal += "Por favor, insira o nome social.<br/>";
+            } else if (!nomeValido) {
+                errosModal += "O nome social inserido não é válido!<br/>";
+            }
+            if (estadoInput.value == '') {
+                errosModal += "Por favor, insira o estado.<br/>";
+            } else if (!estadoValido) {
+                errosModal += "O estado inserido não é válido!<br/>";
+            }
+            if (cepInput.value == '') {
+                errosModal += "Por favor, insira o CEP.";
+            } else if (!cepValido) {
+                errosModal += "O CEP inserido não é válido!";
+            }
+            pCadastro.innerHTML = errosModal;
+            dialogoCadastro.showModal();
         }
     });
 });
@@ -128,6 +161,40 @@ document.addEventListener('DOMContentLoaded', function () {
         if (validarCampos2()) {
             passo3();
         } else {
+            const nomeInput = document.getElementById('nome');
+            const cpfInput = document.getElementById('CPF');
+            const emailInput = document.getElementById('email');
+            const celularInput = document.getElementById('celular');
+            const nomeValido = /^[A-Za-z\s]+$/.test(nomeInput.value.trim());
+            const cpf = cpfInput.value.replace(/[.\-]/g, '');
+            const cpfValido = cpf.length === 11 && /^\d{11}$/.test(cpf);
+            const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim());
+            const celular = celularInput.value.replace(/[\(\)\-]/g, '');
+            const celularEsterilizado = celular.replaceAll(" ", "");
+            const celularValido = celularEsterilizado.length === 11 && /^\d{11}$/.test(celularEsterilizado);
+
+            let errosModal = "";
+            if (nomeInput.value == '') {
+                errosModal += "Por favor, insira o seu nome.<br/>";
+            } else if (!nomeValido) {
+                errosModal += "O nome inserido não é válido!<br/>";
+            }
+            if (cpfInput.value == '') {
+                errosModal += "Por favor, insira o seu CPF.<br/>";
+            } else if (!cpfValido) {
+                errosModal += "O CPF inserido não é válido!<br/>";
+            }
+            if (emailInput.value == '') {
+                errosModal += "Por favor, insira o seu email para contato.<br/>";
+            } else if (!emailValido) {
+                errosModal += "O email inserido não é válido!<br/>";
+            }
+            if (celularInput.value == '') {
+                errosModal += "Por favor, insira o seu número de celular para contato.";
+            } else if (!celularValido) {
+                errosModal += "O número de celular inserido não é válido!";
+            }
+            pCadastro.innerHTML = errosModal;
             dialogoCadastro.showModal();
         }
     });
@@ -188,23 +255,125 @@ document.addEventListener('DOMContentLoaded', function () {
         const checkboxValue = document.querySelector('.custom-checkbox').checked;
         const dialogo = document.getElementById('dialogo');
 
-        if(!checkboxValue){
+        if (!checkboxValue) {
             checkbox.classList.add('notChecked');
-        } else{
+        } else {
             checkbox.classList.remove('notChecked');
         }
         if (senhaValida && senhaConfirmacaoValida && checkboxValue) {
             dialogo.showModal();
         } else {
+            let errosModal = "";
+            if (!senhaValida) {
+                errosModal += "Sua senha não passa nos requisitos, por favor, verifique os critérios.<br/>";
+            } else {
+                if (!senhaConfirmacaoValida) {
+                    errosModal += "As senhas não coincidem.<br/>";
+                }
+            }
+            if (!checkboxValue) {
+                errosModal += `Você deve aceitar os termos e condições.`;
+            }
+            pCadastro.innerHTML = errosModal;
             dialogoCadastro.showModal();
         }
     });
 });
 
-function login(){
-    window.location.href="login.html"
+function login() {
+    window.location.href = "login.html"
 }
 
-function erro(){
+function erro() {
     dialogoCadastro.close();
+}
+
+
+// Preenchimento dos campos (mascara)
+
+
+function validarInputcnpj(input) {
+    input.value = input.value.replace(/[^0-9]/g, '');
+
+    let valorInput = input.value;
+
+    if (valorInput.length > 2) {
+        valorInput = valorInput.replace(/^(\d{2})(\d)/, '$1.$2');
+    }
+    if (valorInput.length > 6) {
+        valorInput = valorInput.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+    }
+    if (valorInput.length > 10) {
+        valorInput = valorInput.replace(/^(\d{2})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3/$4');
+    }
+    if (valorInput.length > 15) {
+        valorInput = valorInput.replace(/^(\d{2})\.(\d{3})\.(\d{3})\/(\d{4})(\d)/, '$1.$2.$3/$4-$5');
+    }
+    input.value = valorInput
+    console.log(input.value.length);
+    if (valorInput.length > 18) {
+        input.value = input.value.substring(0, 18);
+    }
+}
+
+function validarInputNomeRepresentante(input) {
+    input.value = input.value.replace(/[^a-zA-ZÀ-ÿ/s]/g, '');
+}
+
+function validarInputEstado(input) {
+    input.value = input.value.replace(/[^a-zA-ZÀ-ÿ\s'-]/g, '');
+}
+
+function validarInputcep(input) {
+    input.value = input.value.replace(/[^0-9]/g, '');
+    let valorInput = input.value;
+
+    if (valorInput.length > 5) {
+        valorInput = valorInput.replace(/^(\d{5})(\d)/, '$1-$2');
+    }
+
+    input.value = valorInput;
+    if (valorInput.length > 9) {
+        input.value = input.value.substring(0, 9);
+    }
+}
+
+function validarInputcpf(input) {
+    input.value = input.value.replace(/[^0-9]/g, '');
+    let valorInput = input.value;
+
+    if (valorInput.length > 3) {
+        valorInput = valorInput.replace(/^(\d{3})(\d)/, '$1.$2');
+    }
+    if (valorInput.length > 7) {
+        valorInput = valorInput.replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3');
+    }
+    if (valorInput.length > 10) {
+        valorInput = valorInput.replace(/^(\d{3})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3-$4');
+    }
+
+    input.value = valorInput;
+    if (valorInput.length > 14) {
+        input.value = input.value.substring(0, 14);
+    }
+}
+
+function validarInputCelular(input) {
+    const numeros = input.value.replace(/\D/g, '');
+    let valorInput = '';
+
+    if (numeros.length > 0) {
+        valorInput = '(' + numeros.substring(0, 2);
+    }
+    if (numeros.length > 2) {
+        valorInput += ') ' + numeros.substring(2, 7);
+    }
+    if (numeros.length > 7) {
+        valorInput += '-' + numeros.substring(7, 11);
+    }
+
+    input.value = valorInput;
+    if (valorInput.length > 15) {
+        input.value = input.value.substring(0, 15);
+    }
 }

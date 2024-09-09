@@ -278,6 +278,17 @@ button:hover {
   min-width: 20vw;
 }
 
+.linkTermo {
+  text-decoration: underline;
+  color: black;
+  transition: .1s;
+}
+
+.linkTermo:hover {
+  opacity: .8;
+  transition: .1s;
+}
+
 .checkboxdiv {
   display: flex;
   justify-content: center;
