@@ -365,7 +365,7 @@ button {
   max-height: 7vh;
   height: 7vh;
   font-size: 1.5vw;
-  border-radius: 5px;
+  border-radius: 100px;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
   border: none;
   margin-top: -7vh;
