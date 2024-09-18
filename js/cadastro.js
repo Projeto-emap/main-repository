@@ -5,7 +5,9 @@ const divRepresentante = document.querySelector('.containerRepresentanteEmpresa'
 const divEmpresa = document.querySelector('#Empresa');
 const divSenha = document.querySelector('.divSenha');
 const btnContinuar1 = document.getElementById('btnContinuar1');
+const btnVoltarContinuar2 = document.getElementById('btnVoltarContinuar2');
 const btnContinuar2 = document.getElementById('btnContinuar2');
+const btnVoltarCriar = document.getElementById('btnVoltarCriar');
 const btnCriar = document.getElementById('btnCriar');
 const dialogoCadastro = document.getElementById('dialogoCadastro');
 
@@ -33,6 +35,19 @@ function verSenhaConfirmacao() {
         senhaInput.type = 'password';
         olhoConfirmacao.src = 'img/invisivel.png';
     }
+}
+
+
+// Passo 1
+
+
+function passo1(){
+    passo.innerHTML = `Passo 1/3`;
+    btnContinuar2.style.display = 'none';
+    divRepresentante.style.display = 'none';
+    btnVoltarContinuar2.style.display = 'none';
+    btnContinuar1.style.display = 'block';
+    divEmpresa.style.display = 'block';
 }
 
 
@@ -117,8 +132,12 @@ function passo2() {
     passo.innerHTML = `Passo 2/3`;
     btnContinuar1.style.display = 'none';
     divEmpresa.style.display = 'none';
+    btnCriar.style.display = 'none';
+    divSenha.style.display = 'none';
+    btnVoltarCriar.style.display = 'none';
     btnContinuar2.style.display = 'block';
     divRepresentante.style.display = 'block';
+    btnVoltarContinuar2.style.display = 'block';
 }
 
 
@@ -204,8 +223,10 @@ function passo3() {
     passo.innerHTML = `Passo 3/3`;
     btnContinuar2.style.display = 'none';
     divRepresentante.style.display = 'none';
+    btnVoltarContinuar2.style.display = 'none';
     btnCriar.style.display = 'block';
     divSenha.style.display = 'block';
+    btnVoltarCriar.style.display = 'block';
 }
 
 

@@ -50,7 +50,7 @@ nav li a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 90vh;
 }
 
 .cadastrar {
@@ -114,7 +114,6 @@ button {
   height: 15vh;
   max-width: 45vw;
   max-height: 50px;
-  min-width: 30vw;
   min-height: 4vh;
   font-size: 100%;
 }
@@ -128,11 +127,23 @@ button > a {
   margin-top: 2vh;
 }
 
+.btnCriar,
+.btnContinuar2 {
+  width: 20.3vw;
+}
+
+.btnVoltar {
+  color: #5271FF;
+  border: 2px solid #5271FF;
+  background-color: transparent;
+}
+
 .btns {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  margin-top: 2vh;
+  justify-content: space-evenly;
+  /* margin-top: 2vh; */
   padding-bottom: 20px;
 }
 
@@ -179,6 +190,11 @@ button:hover {
 .btnContinuar2:hover,
 .btnCriar:hover {
   background-color: #3a5df9;
+}
+
+.btnVoltar:hover {
+  border-color: #3a5df9;
+  background-color: rgba(217, 217, 217, 0.6);
 }
 
 .separatorio {
