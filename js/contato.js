@@ -1,13 +1,21 @@
-//Contador do textarea
+document.addEventListener('DOMContentLoaded', function () {
+    const textarea = document.getElementById('mensagem');
+    const contador = document.getElementById('contador');
 
+    textarea.addEventListener('input', function () {
+        const caracteresDigitados = textarea.value.length;
+        const limiteCaracteres = textarea.getAttribute('maxlength');
+        const formatarNumero = (numero) => numero.toString().padStart(3, '0');
 
-const textarea = document.getElementById('mensagem');
-const contador = document.getElementById('contador');
+        contador.textContent = `${formatarNumero(caracteresDigitados)}/${limiteCaracteres}`;
 
-textarea.addEventListener('input', function () {
-    const caracteresDigitados = textarea.value.length;
-    const limiteCaracteres = textarea.getAttribute('maxlength');
-    contador.textContent = `${caracteresDigitados}/${limiteCaracteres}`;
+        if (caracteresDigitados >= limiteCaracteres) {
+            contador.style.color = 'red';
+            dialogoTexto.showModal();
+        } else {
+            contador.style.color = 'black';
+        }
+    });
 });
 
 
