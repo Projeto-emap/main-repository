@@ -6,10 +6,10 @@ function verSenha() {
 
     if (senhaInput.type === 'password') {
         senhaInput.type = 'text';
-        olho.src = 'img/visivel.png';
+        olho.src = 'assets/img/visivel.png';
     } else {
         senhaInput.type = 'password';
-        olho.src = 'img/invisivel.png';
+        olho.src = 'assets/img/invisivel.png';
     }
 }
 
