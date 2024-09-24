@@ -44,7 +44,43 @@ document.addEventListener('DOMContentLoaded', function () {
         const dialogoErro = document.getElementById('dialogoErro');
 
         if (validacaoEmail && validacaoSenha) {
-            dialogo.showModal();
+            // dialogo.showModal();
+
+            fetch("/usuarios/logar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: email,
+                    senhaServer: senha
+                })
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN da funcção de login!")
+
+                if (resposta.ok) {
+                    console.log(resposta)
+
+                    resposta.json().then(json => {
+                        console.log(json)
+                        console.log(JSON.stringify(json))
+                        sessionStorage.EMAIL_USUARIO = json.email;
+                        sessionStorage.NOME_USUARIO = json.nome;
+                        sessionStorage.ID_USUARIO = json.idUsuario;
+                    })
+                    dialogo.showModal();
+                } else {
+                    console.log("Houve um erro ao tentar realizar o login!");
+                    
+                    resposta.text().then(texto => {
+                        console.error(texto)
+                    })
+
+                    alert("Erro ao realizar o login!")
+                }
+            }).catch(function (erro) {
+                console.log(erro)
+            })
         }
         else {
             let errosModal = "";
