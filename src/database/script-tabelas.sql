@@ -11,9 +11,9 @@ use emap;
 
 create table usuario(
 idUsuario int primary key auto_increment,
-nome varchar(100),
+nomeUsuario varchar(100),
 cpf char(11),
-email varchar(100),
+emailUsuario varchar(100),
 numeroCelular char(11),
 senha varchar(100)
 );
@@ -21,17 +21,19 @@ senha varchar(100)
 create table empresa(
 idEmpresa int primary key auto_increment,
 cnpj char(14),
-nome varchar(100),
+nomeEmpresa varchar(100),
 estado varchar(100),
 cep char(8)
 );
 
 create table mensagem(
 idMensagem int primary key auto_increment,
-nome varchar(100),
-email varchar(100),
+nomeMensagem varchar(100),
+emailMensagem varchar(100),
 mensagem varchar(500)
 );
 
-insert into empresa (cnpj, nome, estado, cep) values ('12345678901234', 'Eletroposto 1', 'São Paulo', '12345678');
-insert into usuario (nome, cpf, email, numeroCelular, senha) values ('Usuario 1', '12345678901', 'usuario1@gmail.com', '12345678901', 'usuario1');
+insert into empresa (cnpj, nomeEmpresa, estado, cep) values ('12345678901234', 'Eletroposto 1', 'São Paulo', '12345678');
+insert into usuario (nomeUsuario, cpf, email, numeroCelular, senha) values ('Usuario 1', '12345678901', 'usuario1@gmail.com', '12345678901', 'usuario1');
+
+select * from usuario;

@@ -68,11 +68,13 @@ document.addEventListener('DOMContentLoaded', function () {
         cnpjInput.classList.toggle('input-invalido', !cnpjValido);
         cnpjInput.classList.toggle('input-valido', cnpjValido);
 
-        const nomeValido = nomeInput.value.trim() !== '';
+        const nomeEmpresa = nomeInput.value;
+        const nomeValido = nomeEmpresa.trim() !== '';
         nomeInput.classList.toggle('input-invalido', !nomeValido);
         nomeInput.classList.toggle('input-valido', nomeValido);
 
-        const estadoValido = estadoInput.value.trim() !== '';
+        const estado = estadoInput.value;
+        const estadoValido = estado.trim() !== '';
         estadoInput.classList.toggle('input-invalido', !estadoValido);
         estadoInput.classList.toggle('input-valido', estadoValido);
 
@@ -397,4 +399,39 @@ function validarInputCelular(input) {
     if (valorInput.length > 15) {
         input.value = input.value.substring(0, 15);
     }
+}
+
+function cadastrar(){
+    fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js 
+          cnpjServer: cnpj,
+          nomeEmpresaServer: nomeEmpresa,
+          estadoServer: estado,
+          cepServer: cep,  
+
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+  
+          if (resposta.ok) {
+  
+            setTimeout(() => {
+              window.location = "login.html";
+            }, "2000");
+  
+          } else {
+            throw "Houve um erro ao tentar realizar o cadastro!";
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+        });
+
 }
