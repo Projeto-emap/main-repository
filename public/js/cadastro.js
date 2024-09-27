@@ -154,7 +154,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const btnContinuar = document.getElementById('btnContinuar2');
 
     function validarCampos2() {
-        const nomeValido = /^[A-Za-z\s]+$/.test(nomeInput.value.trim());
+        const nome = nomeInput.value;
+        const nomeValido = /^[A-Za-z\s]+$/.test(nome.trim());
         nomeInput.classList.toggle('input-invalido', !nomeValido);
         nomeInput.classList.toggle('input-valido', nomeValido);
 
@@ -163,7 +164,8 @@ document.addEventListener('DOMContentLoaded', function () {
         cpfInput.classList.toggle('input-invalido', !cpfValido);
         cpfInput.classList.toggle('input-valido', cpfValido);
 
-        const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim());
+        const email = emailInput.value;
+        const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
         emailInput.classList.toggle('input-invalido', !emailValido);
         emailInput.classList.toggle('input-valido', emailValido);
 
@@ -299,6 +301,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             pCadastro.innerHTML = errosModal;
             dialogoCadastro.showModal();
+            cadastrar();
         }
     });
 });
@@ -413,8 +416,17 @@ function cadastrar(){
           cnpjServer: cnpj,
           nomeEmpresaServer: nomeEmpresa,
           estadoServer: estado,
-          cepServer: cep,  
+          cepServer: cep,
+          
+          nomeServer: nome,
+          cpfServer: cpf,
+          celularServer: celular, 
+          
+          emailServer: email,
+          senhaServer: senha,
 
+
+     
         }),
       })
         .then(function (resposta) {

@@ -53,27 +53,42 @@ function autenticar(req, res) {
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    console.log("pau na buceta")
+    var cnpj = req.body.cnpjServer; 
+    var nomeEmpresa = req.body.nomeEmpresaServer;
+    var estado = req.body.estadoServer;
+    var cep = req.body.cepServer;
+
     var nome = req.body.nomeServer;
     var cpf = req.body.cpfServer;
+    var numero = req.body.numeroCelularServer;
+
     var email = req.body.emailServer;
-    var numeroCelular = req.body.numeroCelularServer;
     var senha = req.body.senhaServer;
 
     // Faça as validações dos valores
-    if (nome == undefined) {
+    if(cnpj == undefined){
+        res.status(400).send("Seu cnpj está undefined"); 
+    }else if(nomeEmpresa == undefined){
+        res.status(400).send("O nome da empresa está undefined");
+    }else if(estado == undefined){
+        res.status(400).send("O estado está undefined");
+    }else if(cep == undefined){
+        res.status(400).send("Seu cep está undefined");
+    }else if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
     }else if(cpf == undefined){
         res.status(400).send("Seu cpf está undefined!");
     }else if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
-    }else if(numeroCelular == undefined){
+    }else if(numero == undefined){
         res.status(400).send("Seu número de celular está undefined!");
     }else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, cpf, email, numeroCelular, senha, fkEmpresa)
+        usuarioModel.cadastrar(cnpj, nomeEmpresa, estado, cep, nome, cpf, numero, email, senha)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -93,5 +108,6 @@ function cadastrar(req, res) {
 
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    cadastrarEmpresa
 }
