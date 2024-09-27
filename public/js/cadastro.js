@@ -61,24 +61,29 @@ document.addEventListener('DOMContentLoaded', function () {
     const cepInput = document.getElementById('cep');
     const btnContinuar = document.getElementById('btnContinuar1');
 
+    let cnpj;
+    let nomeEmpresa;
+    let estado;
+    let cep
+
     function validarCampos1() {
 
-        const cnpj = cnpjInput.value.replace(/[.\-/]/g, ''); // Remove pontos, barras e traços
+        cnpj = cnpjInput.value.replace(/[.\-/]/g, ''); // Remove pontos, barras e traços
         const cnpjValido = cnpj.length === 14 && /^\d{14}$/.test(cnpj);
         cnpjInput.classList.toggle('input-invalido', !cnpjValido);
         cnpjInput.classList.toggle('input-valido', cnpjValido);
 
-        const nomeEmpresa = nomeInput.value;
+        nomeEmpresa = nomeInput.value;
         const nomeValido = nomeEmpresa.trim() !== '';
         nomeInput.classList.toggle('input-invalido', !nomeValido);
         nomeInput.classList.toggle('input-valido', nomeValido);
 
-        const estado = estadoInput.value;
+        estado = estadoInput.value;
         const estadoValido = estado.trim() !== '';
         estadoInput.classList.toggle('input-invalido', !estadoValido);
         estadoInput.classList.toggle('input-valido', estadoValido);
 
-        const cep = cepInput.value.replace(/-/g, ''); // Remove traços
+        cep = cepInput.value.replace(/-/g, ''); // Remove traços
         const cepValido = cep.length === 8 && /^\d{8}$/.test(cep);
         cepInput.classList.toggle('input-invalido', !cepValido);
         cepInput.classList.toggle('input-valido', cepValido);
@@ -90,7 +95,38 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
 
         if (validarCampos1()) {
-            passo2();
+            // passo2();
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  // crie um atributo que recebe o valor recuperado aqui
+                  // Agora vá para o arquivo routes/usuario.js 
+                  cnpjServer: cnpj,
+                  nomeEmpresaServer: nomeEmpresa,
+                  estadoServer: estado,
+                  cepServer: cep,  
+        
+                }),
+              })
+                .then(function (resposta) {
+                  console.log("resposta: ", resposta);
+          
+                  if (resposta.ok) {
+                    console.log("Foi!")
+                    // setTimeout(() => {
+                    //   window.location = "login.html";
+                    // }, "2000");
+          
+                  } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                  }
+                })
+                .catch(function (resposta) {
+                  console.log(`#ERRO: ${resposta}`);
+                });
         } else {
             const cnpjInput = document.getElementById('CNPJ');
             const nomeInput = document.getElementById('nomeSocial');
@@ -401,37 +437,37 @@ function validarInputCelular(input) {
     }
 }
 
-function cadastrar(){
-    fetch("/usuarios/cadastrar", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          // crie um atributo que recebe o valor recuperado aqui
-          // Agora vá para o arquivo routes/usuario.js 
-          cnpjServer: cnpj,
-          nomeEmpresaServer: nomeEmpresa,
-          estadoServer: estado,
-          cepServer: cep,  
+// function cadastrar(){
+//     fetch("/usuarios/cadastrar", {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({
+//           // crie um atributo que recebe o valor recuperado aqui
+//           // Agora vá para o arquivo routes/usuario.js 
+//           cnpjServer: cnpj,
+//           nomeEmpresaServer: nomeEmpresa,
+//           estadoServer: estado,
+//           cepServer: cep,  
 
-        }),
-      })
-        .then(function (resposta) {
-          console.log("resposta: ", resposta);
+//         }),
+//       })
+//         .then(function (resposta) {
+//           console.log("resposta: ", resposta);
   
-          if (resposta.ok) {
+//           if (resposta.ok) {
   
-            setTimeout(() => {
-              window.location = "login.html";
-            }, "2000");
+//             setTimeout(() => {
+//               window.location = "login.html";
+//             }, "2000");
   
-          } else {
-            throw "Houve um erro ao tentar realizar o cadastro!";
-          }
-        })
-        .catch(function (resposta) {
-          console.log(`#ERRO: ${resposta}`);
-        });
+//           } else {
+//             throw "Houve um erro ao tentar realizar o cadastro!";
+//           }
+//         })
+//         .catch(function (resposta) {
+//           console.log(`#ERRO: ${resposta}`);
+//         });
 
-}
+// }
