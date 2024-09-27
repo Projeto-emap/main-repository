@@ -45,6 +45,14 @@ nav li a:hover {
     justify-content: space-between;
     height: 10vh;
 }
+.imagemBtn{
+    height: 4vh;
+    width: 2.5vw;
+}
+
+.divIcones{
+    padding: 3px 3px 3px 3px;
+}
 
 .div_group{
     display: flex;
@@ -138,10 +146,14 @@ main {
     margin-bottom: 5vh;
 }
 
-.divVoltar{
+.divElementos{
     display: flex;
     justify-content: center;
     margin-right: -25vw;
+}
+
+.divVoltar{
+    margin-top: 8vh;
 }
 
 .btnVoltar:hover{
@@ -153,13 +165,17 @@ main {
 .imagem{
     display: flex;
     justify-content: flex-end;
-    height: 5.5vh;
+    height: 7.0vh;
 }
 
 .divContainerIcones {
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     width: 28vh;
+    max-width: 28vh;
     height: 5vh;
+    max-height: 5vh;
     background-color: #ccc;
     margin-left: 1vw;
 }
@@ -206,7 +222,9 @@ main {
     width: 8.5vw;
     height: 5vh;
     cursor: pointer;
+    
 }
+
 
 .btnEditar {
     background-color: #5271FF;

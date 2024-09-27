@@ -17,13 +17,13 @@
         </div>
 
         <ul class="center">
-            <li><a href="cadastroEletroposto.html">sarah</a></li>
-            <li><a href="cadastroEletroposto.html">mapa</a></li>
-            <li><a href="cadastroEletroposto.html" class="sublinhado">postos</a></li>
+            <li><a href="cadastroEletropostoParte1.html">sarah</a></li>
+            <li><a href="cadastroEletropostoParte1.html">mapa</a></li>
+            <li><a href="cadastroEletropostoParte1.html" class="sublinhado">postos</a></li>
         </ul>
 
         <ul class="direita">
-            <li><a href="cadastroEletroposto.html">Henrique</a></li>
+            <h3>Henrique</h3>
             <div class="imagem"><img src="assets/img/usuario.png" alt=""></div>
         </ul>
 
@@ -46,13 +46,24 @@
                 </div>
             </div>
 
-            <div class="divVoltar">
-                <button class="btnVoltar">Voltar</button>
+            <div class="divElementos">
+                <div class="divVoltar">
+                    <button class="btnVoltar" onclick="voltar()">Voltar</button>
+                </div>
 
-                <div class="divContainerIcones">
-                    <div class="divIcones"></div>
-                    <div class="divIcones"></div>
-                    <div class="divIcones"></div>
+                <div class="container">
+                    <h1>ferramentas</h1>
+                    <div class="divContainerIcones">
+                        <div class="divIcones">
+                            <img class="imagemBtn" src="assets/img/recarregar.png" alt="recarregar">
+                        </div>
+                        <div class="divIcones">
+                            <img class="imagemBtn" src="assets/img/carregar.png" alt="recarregar">
+                        </div>
+                        <div class="divIcones">
+                            <img class="imagemBtn" src="assets/img/anexar.png" alt="recarregar">
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -65,7 +76,7 @@
                     <div class="div_group">
                         <span class="units"><span class="bold">14</span> <br>UNIDADES</span>
                         <span class="units"><span class="bold">5</span> <br> OPORTUNIDADES</span>
-                        <button class="btnAdicionar">Adicionar</button>
+                        <button class="btnAdicionar" onclick="adicionar()">Adicionar</button>
                     </div>
                 </li>
                 <li class="grupoInformacoes">
@@ -74,7 +85,7 @@
                     <div class="div_group">
                         <span class="units"><span class="bold">14</span> <br> UNIDADES</span>
                         <span class="units"><span class="bold">5</span> <br> OPORTUNIDADES</span>
-                        <button class="btnAdicionar">Adicionar</button>
+                        <button class="btnAdicionar" onclick="adicionar()">Adicionar</button>
                     </div>
                 </li>
                 <li class="grupoInformacoes">
@@ -83,7 +94,7 @@
                     <div class="div_group">
                         <span class="units"><span class="bold">14</span> <br> UNIDADES</span>
                         <span class="units"><span class="bold">5</span> <br> OPORTUNIDADES</span>
-                        <button class="btnAdicionar">Adicionar</button>
+                        <button class="btnAdicionar" onclick="adicionar()">Adicionar</button>
                     </div>
                     
                 </li>
@@ -93,7 +104,7 @@
                     <div class="div_group">
                         <span class="units"><span class="bold">14</span> <br>UNIDADES</span>
                         <span class="units"><span class="bold">5</span> <br> OPORTUNIDADES</span>
-                        <button class="btnAdicionar">Adicionar</button>
+                        <button class="btnAdicionar" onclick="adicionar()">Adicionar</button>
                     </div>
                 </li>
                 <li class="grupoInformacoes">
@@ -102,7 +113,7 @@
                     <div class="div_group">
                         <span class="units"><span class="bold">14</span> <br>UNIDADES</span>
                         <span class="units"><span class="bold">5</span> <br> OPORTUNIDADES</span>
-                        <button class="btnAdicionar">Adicionar</button>
+                        <button class="btnAdicionar" onclick="adicionar()">Adicionar</button>
                     </div>
                 </li>
             </ul>
@@ -110,3 +121,13 @@
     </main>
 </body>
 </html>
+
+<script>
+    function adicionar() {
+    window.location.href="cadastroEletropostoParte2.html"
+    }
+
+    function voltar(){
+        window.location.href="gerenciarEletroposto.html"
+    }
+</script>
