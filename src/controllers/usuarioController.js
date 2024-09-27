@@ -97,5 +97,6 @@ function cadastrar(req, res) {
 
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    cadastrarEmpresa
 }
