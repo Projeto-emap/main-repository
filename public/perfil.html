@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sua Conta</title>
+    <link rel="stylesheet" href="css/perfil.css">
+    <link rel="stylesheet" href="css/header.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">
+            <img src="assets/img/logoPreta.png" alt="emap." class="imgLogo" onclick="index()">
+        </div>
+
+        <ul class="center">
+            <li><a href="#">sarah</a></li>
+            <li><a href="#">mapa</a></li>
+            <li><a href="#">postos</a></li>
+        </ul>
+
+        <ul class="direita">
+            <li><div class="usuario">Henrique</div></li>
+            <li><img src="assets/img/perfil.png" class="user-icon"></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Sua Conta</h1>
+        <section class="profile">
+            <div>
+                <img src="assets/img/perfil.png" class="profile-pic">
+            </div>
+            <div class="profile-info">
+                <h2>Henrique Pimenta</h2>
+                <p><i>Coordenador Financeiro</i></p>
+            </div>
+            <button class="buttonEditar" id="buttonEditar">Editar Informações</button>
+            <button class="buttonCancelar" id="buttonCancelar" style="display: none">Cancelar</button>
+            <button class="buttonSalvar" id="buttonSalvar" style="display: none">Salvar</button>
+        </section>
+        <hr>
+        <section class="account-info" id="account-info">
+            <div class="inputs">
+                <div class="info-item">
+                    <label>Email</label>
+                    <input type="text" value="henrique.pimenta@email.com" readonly class="inputEmail">
+                </div>
+                <div class="info-item">
+                    <label>Nome</label>
+                    <input type="text" value="Henrique Pimenta" readonly class="inputNome">
+                </div>
+            </div>
+            <div class="inputEBotao">
+                <div class="info-item">
+                    <label>Telefone</label>
+                    <input type="text" value="(11) 91234-5678" readonly class="inputTelefone">
+                </div>
+                <button class="delete-account" id="buttonExcluir">Excluir conta</button>
+            </div>
+        </section>
+        <dialog id="confirm-delete">
+            <div class="warning-icon">⚠️</div>
+            <div class="warning-text">
+                <h2>Deseja excluir a sua conta?</h2>
+                <p>A exclusão de sua conta é uma ação permanente que não poderá ser desfeita. Quer excluir mesmo assim?</p>
+            </div>
+            <div class="modal-buttons">
+                <button class="confirm-button" id="buttonConfirmarExcluir">Excluir</button>
+                <button class="cancel-button" id="buttonCancelarExcluir">Cancelar</button>
+            </div>
+        </dialog>
+    </main>
+    <script src="js/perfil.js"></script>
+</body>
+
+</html>
