@@ -38,6 +38,7 @@ function logar(req, res) {
                         //     })
                     } else if (resultadoLogar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
+                        res.status(401).json({ message: 'Email ou senha incorretos' });
                         
                     } else {
                         res.status(403).send("Mais de um usuário com o mesmo login e senha!");

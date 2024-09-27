@@ -76,7 +76,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         console.error(texto)
                     })
 
-                    alert("Erro ao realizar o login!")
+                    const mensagemErro = resposta.json()
+                    alert(mensagemErro.message)
                 }
             }).catch(function (erro) {
                 console.log(erro)
