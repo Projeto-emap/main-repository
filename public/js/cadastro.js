@@ -1,6 +1,17 @@
 // Input olhos
 
 
+const cnpjInput = document.getElementById('CNPJ');
+    const nomeEmpresaInput = document.getElementById('nomeSocial');
+    const estadoInput = document.getElementById('estado');
+    const cepInput = document.getElementById('cep');
+    const nomeInput = document.getElementById('nome');
+    const cpfInput = document.getElementById('CPF');
+    const emailInput = document.getElementById('email');
+    const celularInput = document.getElementById('celular');
+    const senhaInput = document.getElementById('senha');
+    const senhaConfirmacaoInput = document.getElementById('senhaConfirmacao');
+
 const divRepresentante = document.querySelector('.containerRepresentanteEmpresa');
 const divEmpresa = document.querySelector('#Empresa');
 const divSenha = document.querySelector('.divSenha');
@@ -17,10 +28,10 @@ function verSenha() {
 
     if (senhaInput.type === 'password') {
         senhaInput.type = 'text';
-        olho.src = 'img/visivel.png';
+        olho.src = 'assets/img/visivel.png';
     } else {
         senhaInput.type = 'password';
-        olho.src = 'img/invisivel.png';
+        olho.src = 'assets/img/invisivel.png';
     }
 }
 
@@ -30,10 +41,10 @@ function verSenhaConfirmacao() {
 
     if (senhaInput.type === 'password') {
         senhaInput.type = 'text';
-        olhoConfirmacao.src = 'img/visivel.png';
+        olhoConfirmacao.src = 'assets/img/visivel.png';
     } else {
         senhaInput.type = 'password';
-        olhoConfirmacao.src = 'img/invisivel.png';
+        olhoConfirmacao.src = 'assets/img/invisivel.png';
     }
 }
 
@@ -55,35 +66,31 @@ function passo1(){
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    const cnpjInput = document.getElementById('CNPJ');
-    const nomeInput = document.getElementById('nomeSocial');
-    const estadoInput = document.getElementById('estado');
-    const cepInput = document.getElementById('cep');
     const btnContinuar = document.getElementById('btnContinuar1');
 
-    let cnpj;
-    let nomeEmpresa;
-    let estado;
-    let cep
+    // let cnpj;
+    // let nomeEmpresa;
+    // let estado;
+    // let cep
 
     function validarCampos1() {
 
-        cnpj = cnpjInput.value.replace(/[.\-/]/g, ''); // Remove pontos, barras e traços
+        const cnpj = cnpjInput.value.replace(/[.\-/]/g, ''); // Remove pontos, barras e traços
         const cnpjValido = cnpj.length === 14 && /^\d{14}$/.test(cnpj);
         cnpjInput.classList.toggle('input-invalido', !cnpjValido);
         cnpjInput.classList.toggle('input-valido', cnpjValido);
 
-        nomeEmpresa = nomeInput.value;
+        const nomeEmpresa = nomeEmpresaInput.value;
         const nomeValido = nomeEmpresa.trim() !== '';
         nomeInput.classList.toggle('input-invalido', !nomeValido);
         nomeInput.classList.toggle('input-valido', nomeValido);
 
-        estado = estadoInput.value;
+        const estado = estadoInput.value;
         const estadoValido = estado.trim() !== '';
         estadoInput.classList.toggle('input-invalido', !estadoValido);
         estadoInput.classList.toggle('input-valido', estadoValido);
 
-        cep = cepInput.value.replace(/-/g, ''); // Remove traços
+        const cep = cepInput.value.replace(/-/g, ''); // Remove traços
         const cepValido = cep.length === 8 && /^\d{8}$/.test(cep);
         cepInput.classList.toggle('input-invalido', !cepValido);
         cepInput.classList.toggle('input-valido', cepValido);
@@ -96,42 +103,39 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (validarCampos1()) {
             // passo2();
-            fetch("/usuarios/cadastrar", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  // crie um atributo que recebe o valor recuperado aqui
-                  // Agora vá para o arquivo routes/usuario.js 
-                  cnpjServer: cnpj,
-                  nomeEmpresaServer: nomeEmpresa,
-                  estadoServer: estado,
-                  cepServer: cep,  
+            // fetch("/usuarios/cadastrar", {
+            //     method: "POST",
+            //     headers: {
+            //       "Content-Type": "application/json",
+            //     },
+            //     body: JSON.stringify({
+            //       // crie um atributo que recebe o valor recuperado aqui
+            //       // Agora vá para o arquivo routes/usuario.js 
+            //       cnpjServer: cnpj,
+            //       nomeEmpresaServer: nomeEmpresa,
+            //       estadoServer: estado,
+            //       cepServer: cep,  
         
-                }),
-              })
-                .then(function (resposta) {
-                  console.log("resposta: ", resposta);
+            //     }),
+            //   })
+            //     .then(function (resposta) {
+            //       console.log("resposta: ", resposta);
           
-                  if (resposta.ok) {
-                    console.log("Foi!")
+            //       if (resposta.ok) {
+            //         console.log("Foi!")
                     // setTimeout(() => {
                     //   window.location = "login.html";
                     // }, "2000");
           
-                  } else {
-                    throw "Houve um erro ao tentar realizar o cadastro!";
-                  }
-                })
-                .catch(function (resposta) {
-                  console.log(`#ERRO: ${resposta}`);
-                });
+                //   } else {
+                //     throw "Houve um erro ao tentar realizar o cadastro!";
+                //   }
+                // })
+                // .catch(function (resposta) {
+                //   console.log(`#ERRO: ${resposta}`);
+                // });
+                passo2()
         } else {
-            const cnpjInput = document.getElementById('CNPJ');
-            const nomeInput = document.getElementById('nomeSocial');
-            const estadoInput = document.getElementById('estado');
-            const cepInput = document.getElementById('cep');
             const cnpj = cnpjInput.value.replace(/[.\-/]/g, '');
             const cnpjValido = cnpj.length === 14 && /^\d{14}$/.test(cnpj);
             const nomeValido = nomeInput.value.trim() !== '';
@@ -183,10 +187,6 @@ function passo2() {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    const nomeInput = document.getElementById('nome');
-    const cpfInput = document.getElementById('CPF');
-    const emailInput = document.getElementById('email');
-    const celularInput = document.getElementById('celular');
     const btnContinuar = document.getElementById('btnContinuar2');
 
     function validarCampos2() {
@@ -218,12 +218,41 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
 
         if (validarCampos2()) {
+
+            // fetch("/usuarios/cadastrar", {
+            //     method: "POST",
+            //     headers: {
+            //       "Content-Type": "application/json",
+            //     },
+            //     body: JSON.stringify({
+            //       // crie um atributo que recebe o valor recuperado aqui
+            //       // Agora vá para o arquivo routes/usuario.js 
+            //       nomeServer: nome,
+            //       cpfServer: cpf,
+            //       emailServer: email,
+            //       celularServer: celular,  
+        
+            //     }),
+            //   })
+            //     .then(function (resposta) {
+            //       console.log("resposta: ", resposta);
+          
+            //       if (resposta.ok) {
+            //         console.log("Foi!")
+                    // setTimeout(() => {
+                    //   window.location = "login.html";
+                    // }, "2000");
+          
+                //   } else {
+                //     throw "Houve um erro ao tentar realizar o cadastro!";
+                //   }
+                // })
+                // .catch(function (resposta) {
+                //   console.log(`#ERRO: ${resposta}`);
+                // });
+
             passo3();
         } else {
-            const nomeInput = document.getElementById('nome');
-            const cpfInput = document.getElementById('CPF');
-            const emailInput = document.getElementById('email');
-            const celularInput = document.getElementById('celular');
             const nomeValido = /^[A-Za-z\s]+$/.test(nomeInput.value.trim());
             const cpf = cpfInput.value.replace(/[.\-]/g, '');
             const cpfValido = cpf.length === 11 && /^\d{11}$/.test(cpf);
@@ -274,8 +303,6 @@ function passo3() {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    const senhaInput = document.getElementById('senha');
-    const senhaConfirmacaoInput = document.getElementById('senhaConfirmacao');
     const criterios = document.querySelectorAll('.criterios li');
     const [criterioComprimento, criterioMaiuscula, criterioMinuscula, criterioNumero, criterioCoincidir] = criterios;
     const btnCriar = document.getElementById('btnCriar');
@@ -322,6 +349,7 @@ document.addEventListener('DOMContentLoaded', function () {
             checkbox.classList.remove('notChecked');
         }
         if (senhaValida && senhaConfirmacaoValida && checkboxValue) {
+            cadastrar();
             dialogo.showModal();
         } else {
             let errosModal = "";
@@ -337,7 +365,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             pCadastro.innerHTML = errosModal;
             dialogoCadastro.showModal();
-            cadastrar();
         }
     });
 });
@@ -440,37 +467,54 @@ function validarInputCelular(input) {
     }
 }
 
-// function cadastrar(){
-//     fetch("/usuarios/cadastrar", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({
-//           // crie um atributo que recebe o valor recuperado aqui
-//           // Agora vá para o arquivo routes/usuario.js 
-//           cnpjServer: cnpj,
-//           nomeEmpresaServer: nomeEmpresa,
-//           estadoServer: estado,
-//           cepServer: cep,  
+function cadastrar(){
+    const cnpj = cnpjInput.value.replace(/[.\-/]/g, '');
+    const nomeEmpresa = nomeEmpresaInput.value;
+    const estado = estadoInput.value;
+    const cep = cepInput.value.replace(/-/g, '');
+    const nome = nomeInput.value;
+    const cpf = cpfInput.value.replace(/[.\-]/g, '');
+    const email = emailInput.value;
+    const celular = celularInput.value.replace(/[\(\)\-]/g, '').trim();
+    const senha = senhaInput.value;
 
-//         }),
-//       })
-//         .then(function (resposta) {
-//           console.log("resposta: ", resposta);
-  
-//           if (resposta.ok) {
-  
-//             setTimeout(() => {
-//               window.location = "login.html";
-//             }, "2000");
-  
-//           } else {
-//             throw "Houve um erro ao tentar realizar o cadastro!";
-//           }
-//         })
-//         .catch(function (resposta) {
-//           console.log(`#ERRO: ${resposta}`);
-//         });
 
-// }
+
+    fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js 
+          cnpjServer: cnpj,
+          nomeEmpresaServer: nomeEmpresa,
+          estadoServer: estado,
+          cepServer: cep,
+          nomeServer: nome,
+          cpfServer: cpf,
+          emailServer: email,
+          celularServer: celular,
+          senhaServer: senha  
+
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+  
+          if (resposta.ok) {
+  
+            // setTimeout(() => {
+               window.location = "login.html";
+            // }, "2000");
+  
+          } else {
+            throw "Houve um erro ao tentar realizar o cadastro!";
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+        });
+
+}
