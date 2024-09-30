@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const dialogoErro = document.getElementById('dialogoErro');
 
         if (validacaoEmail && validacaoSenha) {
-            // dialogo.showModal();
 
             fetch("/usuarios/logar", {
                 method: "POST",
@@ -70,14 +69,25 @@ document.addEventListener('DOMContentLoaded', function () {
                     })
                     dialogo.showModal();
                 } else {
-                    console.log("Houve um erro ao tentar realizar o login!");
-                    
-                    resposta.text().then(texto => {
-                        console.error(texto)
-                    })
+                    resposta.json().then(json => {
+                        console.log("Houve um erro ao tentar realizar o login!");
+                        
+                        let errosModal = json.message || "Erro ao realizar o login."
+                        pErro.innerHTML = errosModal;
+                        dialogoErro.showModal();
+                    }).catch(erro => {
+                        console.error("Erro ao processar a resposta de erro:", erro);
+                        pErro.innerHTML = "Erro desconhecido. Por favor, tente novamente mais tarde.";
+                        dialogoErro.showModal();
+                    });
 
-                    const mensagemErro = resposta.json()
-                    alert(mensagemErro.message)
+
+                    // resposta.text().then(texto => {
+                    //     console.error(texto)
+                    // })
+
+                    // const mensagemErro = resposta.json()
+                    // alert(mensagemErro.message)
                 }
             }).catch(function (erro) {
                 console.log(erro)
@@ -87,13 +97,14 @@ document.addEventListener('DOMContentLoaded', function () {
             let errosModal = "";
             if (inputEmail.value == '') {
                 errosModal += "Por favor, insira o seu email.<br>";
-            } else if (!validacaoEmail) {
-                errosModal += "O email inserido não está cadastrado.<br>";       // Atualizar aqui quando tiver acesso ao banco de dados
+            // } else if (!validacaoEmail) {
+            //     errosModal += "O email inserido não está cadastrado.<br>";       // Atualizar aqui quando tiver acesso ao banco de dados
             }else if (inputSenha.value == '') {
                 errosModal += "Por favor, insira a sua senha.<br>";
-            } else if (!validacaoSenha) {
-                errosModal += "A senha inserida não está correta!<br>";              // Atualizar aqui quando tiver acesso ao banco de dados
+            // } else if (!validacaoSenha) {
+            //     errosModal += "A senha inserida não está correta!<br>";              // Atualizar aqui quando tiver acesso ao banco de dados
             }
+            
             pErro.innerHTML = errosModal;
             dialogoErro.showModal();
         }

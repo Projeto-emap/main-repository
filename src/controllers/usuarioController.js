@@ -20,26 +20,8 @@ function logar(req, res) {
                     if (resultadoLogar.length == 1) {
                         console.log(resultadoLogar);
                         res.status(200).send("Login realizado com sucesso!");
-
-
-                        // aquarioModel.buscarAquariosPorEmpresa(resultadoLogar[0].empresaId)
-                        //     .then((resultadoAquarios) => {
-                        //         if (resultadoAquarios.length > 0) {
-                        //             res.json({
-                        //                 id: resultadoLogar[0].id,
-                        //                 email: resultadoLogar[0].email,
-                        //                 nome: resultadoLogar[0].nome,
-                        //                 senha: resultadoLogar[0].senha,
-                        //                 aquarios: resultadoAquarios
-                        //             });
-                        //         } else {
-                        //             res.status(204).json({ aquarios: [] });
-                        //         }
-                        //     })
                     } else if (resultadoLogar.length == 0) {
-                        res.status(403).send("Email e/ou senha inválido(s)");
-                        res.status(401).json({ message: 'Email ou senha incorretos' });
-                        
+                        res.status(404).json({message: "Email e/ou senha inválido(s)!"})
                     } else {
                         res.status(403).send("Mais de um usuário com o mesmo login e senha!");
                     }
