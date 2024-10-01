@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Eletropostos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/cadastroEletropostoParte2.css">
+    <link rel="stylesheet" href="css/header.css">
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <img src="assets/img/logoPreta.png" alt="logo" onclick="index()">
+        </div>
+
+        <ul class="center">
+            <li><a href="cadastroEletropostoParte2.html">sarah</a></li>
+            <li><a href="cadastroEletropostoParte2.html">mapa</a></li>
+            <li><a href="cadastroEletropostoParte2.html" class="sublinhado">postos</a></li>
+        </ul>
+
+        <ul class="direita">
+            <h3>Henrique</h3>
+            <div class="imagem"><img src="assets/img/usuario.png" alt=""></div>
+        </ul>
+
+    </nav>
+
+    <main>
+        <section class="dashboard">
+
+            <h1 class="titulo">Gerenciar eletropostos - São Paulo</h1>
+            <div class="linha-horizontal"></div>
+
+            <div class="elementos">
+                <div class="div1">
+                    <span class="numero">40</span>
+                    <span class="label">Un. Total</span>
+                </div>
+                <div class="div1">
+                    <span class="numero">2</span>
+                    <span class="label">Novas Oportunidades</span>
+                </div>
+            </div>
+
+            <div class="divElementos">
+                <div class="divVoltar">
+                    <button class="btnVoltar" onclick="voltar()">Voltar</button>
+                </div>
+
+                <div class="container">
+                    <h1>ferramentas</h1>
+                    <div class="divContainerIcones">
+                        <div class="divIcones">
+                            <img class="imagemBtn" src="assets/img/recarregar.png" alt="recarregar">
+                        </div>
+                        <div class="divIcones">
+                            <img class="imagemBtn" src="assets/img/carregar.png" alt="recarregar">
+                        </div>
+                        <div class="divIcones">
+                            <img class="imagemBtn" src="assets/img/anexar.png" alt="recarregar">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <ul class="locations">
+                <li class="grupoInformacoes">
+                        <span class="location-name">Jardins</span>
+
+                    <div class="div_group">
+                        <span class="units"><span class="bold">14</span> <br>UNIDADES</span>
+                        <button class="btnEditar">Editar</button>
+                        <button class="btnDeletar">Excluir</button>
+                    </div>
+                </li>
+                <li class="grupoInformacoes">
+                    <span class="location-name">Itaim</span>
+
+                    <div class="div_group">
+                        <span class="units"><span class="bold">14</span> <br> UNIDADES</span>
+                        <button class="btnEditar">Editar</button>
+                        <button class="btnDeletar">Excluir</button>
+                    </div>
+                </li>
+                <li class="grupoInformacoes">
+                    <span class="location-name">Vila Madalena</span>
+
+                    <div class="div_group">
+                        <span class="units"><span class="bold">14</span> <br> UNIDADES</span>
+                        <button class="btnEditar">Editar</button>
+                        <button class="btnDeletar">Excluir</button>
+                    </div>
+                    
+                </li>
+                <li class="grupoInformacoes">
+                    <span class="location-name">Pinheiros</span>
+
+                    <div class="div_group">
+                        <span class="units"><span class="bold">14</span> <br>UNIDADES</span>
+                        <button class="btnEditar">Editar</button>
+                        <button class="btnDeletar">Excluir</button>
+                    </div>
+                </li>
+                <li class="grupoInformacoes">
+                    <span class="location-name">Moema</span>
+
+                    <div class="div_group">
+                        <span class="units"><span class="bold">14</span> <br>UNIDADES</span>
+                        <button class="btnEditar">Editar</button>
+                        <button class="btnDeletar">Excluir</button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
+
+<script>
+    function voltar() {
+    window.location.href="cadastroEletropostoParte1.html"
+    }
+</script>
