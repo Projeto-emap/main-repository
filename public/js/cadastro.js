@@ -2,15 +2,15 @@
 
 
 const cnpjInput = document.getElementById('CNPJ');
-    const nomeEmpresaInput = document.getElementById('nomeSocial');
-    const estadoInput = document.getElementById('estado');
-    const cepInput = document.getElementById('cep');
-    const nomeInput = document.getElementById('nome');
-    const cpfInput = document.getElementById('CPF');
-    const emailInput = document.getElementById('email');
-    const celularInput = document.getElementById('celular');
-    const senhaInput = document.getElementById('senha');
-    const senhaConfirmacaoInput = document.getElementById('senhaConfirmacao');
+const nomeEmpresaInput = document.getElementById('nomeSocial');
+const estadoInput = document.getElementById('estado');
+const cepInput = document.getElementById('cep');
+const nomeInput = document.getElementById('nome');
+const cpfInput = document.getElementById('CPF');
+const emailInput = document.getElementById('email');
+const celularInput = document.getElementById('celular');
+const senhaInput = document.getElementById('senha');
+const senhaConfirmacaoInput = document.getElementById('senhaConfirmacao');
 
 const divRepresentante = document.querySelector('.containerRepresentanteEmpresa');
 const divEmpresa = document.querySelector('#Empresa');
@@ -52,7 +52,7 @@ function verSenhaConfirmacao() {
 // Passo 1
 
 
-function passo1(){
+function passo1() {
     passo.innerHTML = `Passo 1/3`;
     btnContinuar2.style.display = 'none';
     divRepresentante.style.display = 'none';
@@ -77,8 +77,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const nomeEmpresa = nomeEmpresaInput.value;
         const nomeValido = nomeEmpresa.trim() !== '';
-        nomeInput.classList.toggle('input-invalido', !nomeValido);
-        nomeInput.classList.toggle('input-valido', nomeValido);
+        nomeEmpresaInput.classList.toggle('input-invalido', !nomeValido);
+        nomeEmpresaInput.classList.toggle('input-valido', nomeValido);
 
         const estado = estadoInput.value;
         const estadoValido = estado.trim() !== '';
@@ -97,11 +97,11 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
 
         if (validarCampos1()) {
-                passo2()
+            passo2()
         } else {
             const cnpj = cnpjInput.value.replace(/[.\-/]/g, '');
             const cnpjValido = cnpj.length === 14 && /^\d{14}$/.test(cnpj);
-            const nomeValido = nomeInput.value.trim() !== '';
+            const nomeValido = nomeEmpresaInput.value.trim() !== '';
             const estadoValido = estadoInput.value.trim() !== '';
             const cep = cepInput.value.replace(/-/g, '');
             const cepValido = cep.length === 8 && /^\d{8}$/.test(cep);
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
             } else if (!cnpjValido) {
                 errosModal += "O CNPJ inserido não é válido!<br/>";
             }
-            if (nomeInput.value == '') {
+            if (nomeEmpresaInput.value == '') {
                 errosModal += "Por favor, insira o nome social.<br/>";
             } else if (!nomeValido) {
                 errosModal += "O nome social inserido não é válido!<br/>";
@@ -335,8 +335,12 @@ function validarInputcnpj(input) {
     }
 }
 
+function validarInputEmail(input) {
+    input.value = input.value.replace(/[^a-zA-ZÀ-ÿ]/g, '');
+}
+
 function validarInputNomeRepresentante(input) {
-    input.value = input.value.replace(/[^a-zA-ZÀ-ÿ/s]/g, '');
+    input.value = input.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '');
 }
 
 function validarInputEstado(input) {
@@ -397,7 +401,7 @@ function validarInputCelular(input) {
     }
 }
 
-function cadastrar(){
+function cadastrar() {
     const cnpj = cnpjInput.value.replace(/[.\-/]/g, '');
     const nomeEmpresa = nomeEmpresaInput.value;
     const estado = estadoInput.value;
@@ -413,38 +417,38 @@ function cadastrar(){
     fetch("/usuarios/cadastrar", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+            "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          // crie um atributo que recebe o valor recuperado aqui
-          // Agora vá para o arquivo routes/usuario.js 
-          cnpjServer: cnpj,
-          nomeEmpresaServer: nomeEmpresa,
-          estadoServer: estado,
-          cepServer: cep,
-          nomeServer: nome,
-          cpfServer: cpf,
-          emailServer: email,
-          celularServer: celular,
-          senhaServer: senha  
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js 
+            cnpjServer: cnpj,
+            nomeEmpresaServer: nomeEmpresa,
+            estadoServer: estado,
+            cepServer: cep,
+            nomeServer: nome,
+            cpfServer: cpf,
+            emailServer: email,
+            celularServer: celular,
+            senhaServer: senha
 
         }),
-      })
+    })
         .then(function (resposta) {
-          console.log("resposta: ", resposta);
-  
-          if (resposta.ok) {
-  
-            // setTimeout(() => {
-               window.location = "login.html";
-            // }, "2000");
-  
-          } else {
-            throw "Houve um erro ao tentar realizar o cadastro!";
-          }
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+                // setTimeout(() => {
+                window.location = "login.html";
+                // }, "2000");
+
+            } else {
+                throw "Houve um erro ao tentar realizar o cadastro!";
+            }
         })
         .catch(function (resposta) {
-          console.log(`#ERRO: ${resposta}`);
+            console.log(`#ERRO: ${resposta}`);
         });
 
 }
