@@ -336,7 +336,7 @@ function validarInputcnpj(input) {
 }
 
 function validarInputEmail(input) {
-    input.value = input.value.replace(/[^a-zA-ZÀ-ÿ]/g, '');
+    input.value = input.value.replace(/[^a-zA-Z0-9.@_-]/g, '');
 }
 
 function validarInputNomeRepresentante(input) {
