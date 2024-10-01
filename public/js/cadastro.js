@@ -68,11 +68,6 @@ function passo1(){
 document.addEventListener('DOMContentLoaded', function () {
     const btnContinuar = document.getElementById('btnContinuar1');
 
-    // let cnpj;
-    // let nomeEmpresa;
-    // let estado;
-    // let cep
-
     function validarCampos1() {
 
         const cnpj = cnpjInput.value.replace(/[.\-/]/g, ''); // Remove pontos, barras e traços
@@ -102,38 +97,6 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
 
         if (validarCampos1()) {
-            // passo2();
-            // fetch("/usuarios/cadastrar", {
-            //     method: "POST",
-            //     headers: {
-            //       "Content-Type": "application/json",
-            //     },
-            //     body: JSON.stringify({
-            //       // crie um atributo que recebe o valor recuperado aqui
-            //       // Agora vá para o arquivo routes/usuario.js 
-            //       cnpjServer: cnpj,
-            //       nomeEmpresaServer: nomeEmpresa,
-            //       estadoServer: estado,
-            //       cepServer: cep,  
-        
-            //     }),
-            //   })
-            //     .then(function (resposta) {
-            //       console.log("resposta: ", resposta);
-          
-            //       if (resposta.ok) {
-            //         console.log("Foi!")
-                    // setTimeout(() => {
-                    //   window.location = "login.html";
-                    // }, "2000");
-          
-                //   } else {
-                //     throw "Houve um erro ao tentar realizar o cadastro!";
-                //   }
-                // })
-                // .catch(function (resposta) {
-                //   console.log(`#ERRO: ${resposta}`);
-                // });
                 passo2()
         } else {
             const cnpj = cnpjInput.value.replace(/[.\-/]/g, '');
@@ -218,39 +181,6 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
 
         if (validarCampos2()) {
-
-            // fetch("/usuarios/cadastrar", {
-            //     method: "POST",
-            //     headers: {
-            //       "Content-Type": "application/json",
-            //     },
-            //     body: JSON.stringify({
-            //       // crie um atributo que recebe o valor recuperado aqui
-            //       // Agora vá para o arquivo routes/usuario.js 
-            //       nomeServer: nome,
-            //       cpfServer: cpf,
-            //       emailServer: email,
-            //       celularServer: celular,  
-        
-            //     }),
-            //   })
-            //     .then(function (resposta) {
-            //       console.log("resposta: ", resposta);
-          
-            //       if (resposta.ok) {
-            //         console.log("Foi!")
-                    // setTimeout(() => {
-                    //   window.location = "login.html";
-                    // }, "2000");
-          
-                //   } else {
-                //     throw "Houve um erro ao tentar realizar o cadastro!";
-                //   }
-                // })
-                // .catch(function (resposta) {
-                //   console.log(`#ERRO: ${resposta}`);
-                // });
-
             passo3();
         } else {
             const nomeValido = /^[A-Za-z\s]+$/.test(nomeInput.value.trim());
