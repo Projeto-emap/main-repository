@@ -1,6 +1,17 @@
 // Input olhos
 
 
+const cnpjInput = document.getElementById('CNPJ');
+    const nomeEmpresaInput = document.getElementById('nomeSocial');
+    const estadoInput = document.getElementById('estado');
+    const cepInput = document.getElementById('cep');
+    const nomeInput = document.getElementById('nome');
+    const cpfInput = document.getElementById('CPF');
+    const emailInput = document.getElementById('email');
+    const celularInput = document.getElementById('celular');
+    const senhaInput = document.getElementById('senha');
+    const senhaConfirmacaoInput = document.getElementById('senhaConfirmacao');
+
 const divRepresentante = document.querySelector('.containerRepresentanteEmpresa');
 const divEmpresa = document.querySelector('#Empresa');
 const divSenha = document.querySelector('.divSenha');
@@ -17,10 +28,10 @@ function verSenha() {
 
     if (senhaInput.type === 'password') {
         senhaInput.type = 'text';
-        olho.src = 'img/visivel.png';
+        olho.src = 'assets/img/visivel.png';
     } else {
         senhaInput.type = 'password';
-        olho.src = 'img/invisivel.png';
+        olho.src = 'assets/img/invisivel.png';
     }
 }
 
@@ -30,10 +41,10 @@ function verSenhaConfirmacao() {
 
     if (senhaInput.type === 'password') {
         senhaInput.type = 'text';
-        olhoConfirmacao.src = 'img/visivel.png';
+        olhoConfirmacao.src = 'assets/img/visivel.png';
     } else {
         senhaInput.type = 'password';
-        olhoConfirmacao.src = 'img/invisivel.png';
+        olhoConfirmacao.src = 'assets/img/invisivel.png';
     }
 }
 
@@ -55,10 +66,6 @@ function passo1(){
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    const cnpjInput = document.getElementById('CNPJ');
-    const nomeInput = document.getElementById('nomeSocial');
-    const estadoInput = document.getElementById('estado');
-    const cepInput = document.getElementById('cep');
     const btnContinuar = document.getElementById('btnContinuar1');
 
     function validarCampos1() {
@@ -68,11 +75,13 @@ document.addEventListener('DOMContentLoaded', function () {
         cnpjInput.classList.toggle('input-invalido', !cnpjValido);
         cnpjInput.classList.toggle('input-valido', cnpjValido);
 
-        const nomeValido = nomeInput.value.trim() !== '';
+        const nomeEmpresa = nomeEmpresaInput.value;
+        const nomeValido = nomeEmpresa.trim() !== '';
         nomeInput.classList.toggle('input-invalido', !nomeValido);
         nomeInput.classList.toggle('input-valido', nomeValido);
 
-        const estadoValido = estadoInput.value.trim() !== '';
+        const estado = estadoInput.value;
+        const estadoValido = estado.trim() !== '';
         estadoInput.classList.toggle('input-invalido', !estadoValido);
         estadoInput.classList.toggle('input-valido', estadoValido);
 
@@ -88,12 +97,8 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
 
         if (validarCampos1()) {
-            passo2();
+                passo2()
         } else {
-            const cnpjInput = document.getElementById('CNPJ');
-            const nomeInput = document.getElementById('nomeSocial');
-            const estadoInput = document.getElementById('estado');
-            const cepInput = document.getElementById('cep');
             const cnpj = cnpjInput.value.replace(/[.\-/]/g, '');
             const cnpjValido = cnpj.length === 14 && /^\d{14}$/.test(cnpj);
             const nomeValido = nomeInput.value.trim() !== '';
@@ -145,14 +150,11 @@ function passo2() {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    const nomeInput = document.getElementById('nome');
-    const cpfInput = document.getElementById('CPF');
-    const emailInput = document.getElementById('email');
-    const celularInput = document.getElementById('celular');
     const btnContinuar = document.getElementById('btnContinuar2');
 
     function validarCampos2() {
-        const nomeValido = /^[A-Za-z\s]+$/.test(nomeInput.value.trim());
+        const nome = nomeInput.value;
+        const nomeValido = /^[A-Za-z\s]+$/.test(nome.trim());
         nomeInput.classList.toggle('input-invalido', !nomeValido);
         nomeInput.classList.toggle('input-valido', nomeValido);
 
@@ -161,7 +163,8 @@ document.addEventListener('DOMContentLoaded', function () {
         cpfInput.classList.toggle('input-invalido', !cpfValido);
         cpfInput.classList.toggle('input-valido', cpfValido);
 
-        const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim());
+        const email = emailInput.value;
+        const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
         emailInput.classList.toggle('input-invalido', !emailValido);
         emailInput.classList.toggle('input-valido', emailValido);
 
@@ -180,10 +183,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (validarCampos2()) {
             passo3();
         } else {
-            const nomeInput = document.getElementById('nome');
-            const cpfInput = document.getElementById('CPF');
-            const emailInput = document.getElementById('email');
-            const celularInput = document.getElementById('celular');
             const nomeValido = /^[A-Za-z\s]+$/.test(nomeInput.value.trim());
             const cpf = cpfInput.value.replace(/[.\-]/g, '');
             const cpfValido = cpf.length === 11 && /^\d{11}$/.test(cpf);
@@ -234,8 +233,6 @@ function passo3() {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    const senhaInput = document.getElementById('senha');
-    const senhaConfirmacaoInput = document.getElementById('senhaConfirmacao');
     const criterios = document.querySelectorAll('.criterios li');
     const [criterioComprimento, criterioMaiuscula, criterioMinuscula, criterioNumero, criterioCoincidir] = criterios;
     const btnCriar = document.getElementById('btnCriar');
@@ -282,6 +279,7 @@ document.addEventListener('DOMContentLoaded', function () {
             checkbox.classList.remove('notChecked');
         }
         if (senhaValida && senhaConfirmacaoValida && checkboxValue) {
+            cadastrar();
             dialogo.showModal();
         } else {
             let errosModal = "";
@@ -397,4 +395,56 @@ function validarInputCelular(input) {
     if (valorInput.length > 15) {
         input.value = input.value.substring(0, 15);
     }
+}
+
+function cadastrar(){
+    const cnpj = cnpjInput.value.replace(/[.\-/]/g, '');
+    const nomeEmpresa = nomeEmpresaInput.value;
+    const estado = estadoInput.value;
+    const cep = cepInput.value.replace(/-/g, '');
+    const nome = nomeInput.value;
+    const cpf = cpfInput.value.replace(/[.\-]/g, '');
+    const email = emailInput.value;
+    const celular = celularInput.value.replace(/[\(\)\-]/g, '').trim();
+    const senha = senhaInput.value;
+
+
+
+    fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js 
+          cnpjServer: cnpj,
+          nomeEmpresaServer: nomeEmpresa,
+          estadoServer: estado,
+          cepServer: cep,
+          nomeServer: nome,
+          cpfServer: cpf,
+          emailServer: email,
+          celularServer: celular,
+          senhaServer: senha  
+
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+  
+          if (resposta.ok) {
+  
+            // setTimeout(() => {
+               window.location = "login.html";
+            // }, "2000");
+  
+          } else {
+            throw "Houve um erro ao tentar realizar o cadastro!";
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+        });
+
 }
