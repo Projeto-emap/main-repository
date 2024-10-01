@@ -118,3 +118,15 @@ function index() {
 function login() {
     dialogoErro.close();
 }
+
+function recuperarSenha() {
+    let modal = document.getElementById("dialogRecuperacaoSenha")
+
+    modal.showModal()
+}
+
+function fecharModalRecuperarSenha() {
+    let modal = document.getElementById("dialogRecuperacaoSenha")
+    
+    modal.close()
+}

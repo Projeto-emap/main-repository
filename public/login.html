@@ -57,7 +57,7 @@
                 <div class="btns">
                     <button class="btnEntrar">Entrar</button>
                 </div>
-                <a href="login.html" class="esqueceuSenha">Esqueceu a senha?</a>
+                <a class="esqueceuSenha" onclick="recuperarSenha()">Esqueceu a senha?</a>
 
                 <div class="separatorio">
                     <div class="line1"></div>
@@ -90,6 +90,16 @@
             <div class="divBtnErro">
                 <button onclick="login()" class="btnModalErro" style="border-radius: 100px;">Ok</button>
             </div>
+        </div>
+    </dialog>
+
+    <dialog id="dialogRecuperacaoSenha">
+        <div>
+            <p>Digite o seu email para recuperar a senha:</p>
+            <input type="email">
+        </div>
+        <div>
+            <button onclick="fecharModalRecuperarSenha()">Enviar</button>
         </div>
     </dialog>
 
