@@ -1,3 +1,7 @@
+const inputNome = document.getElementById('nome');
+const inputEmail = document.getElementById('email');
+const inputMensagem = document.getElementById('mensagem');
+
 document.addEventListener('DOMContentLoaded', function () {
     const textarea = document.getElementById('mensagem');
     const contador = document.getElementById('contador');
@@ -28,9 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
     btnEnviarMensagem.addEventListener('click', function (event) {
         event.preventDefault();
 
-        const inputNome = document.getElementById('nome');
-        const inputEmail = document.getElementById('email');
-        const inputMensagem = document.getElementById('mensagem');
         const nome = inputNome.value.trim();
         const email = inputEmail.value.trim();
         const mensagem = inputMensagem.value.trim();
@@ -55,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const dialogo = document.getElementById('dialogo');
 
         if (validacaoEmail && validacaoNome && validacaoMensagem) {
+            cadastrarContato();
             dialogo.showModal();
         } else {
             let errosModal = "";
@@ -89,4 +91,41 @@ function contato() {
 
 function fecharModal() {
     dialogoErro.close();
+}
+
+function cadastrarContato(){
+    
+    const nome = inputNome.value.trim();
+    const email = inputEmail.value.trim();
+    const mensagem = inputMensagem.value.trim();
+
+
+    fetch("/contato/cadastrarContato", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            nomeServer: nome,
+            emailServer: email,
+            mensagemServer: mensagem
+
+        }),
+    })
+        .then(function (resposta) {
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+                // setTimeout(() => {
+                window.location = "login.html";
+                // }, "2000");
+
+            } else {
+                throw "Houve um erro ao tentar realizar o cadastro!";
+            }
+        })
+        .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
 }
