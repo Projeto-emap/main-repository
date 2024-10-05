@@ -48,7 +48,7 @@ nav li a:hover {
 
 .div_group{
     display: flex;
-    gap: 80px;
+    gap: 115px;
     justify-content: flex-end;
     text-align: center;
     align-items: center;
@@ -57,6 +57,7 @@ nav li a:hover {
 
 .direita {
     display: flex;
+    align-items: center;
 }
 
 .titulo {
@@ -139,19 +140,42 @@ main {
 }
 
 .divElementos{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   width: 20vw;
+   max-width: 20vw;
+   margin-left: 72vw;
+   margin-top: -10vh;
+   margin-bottom: 6vh;
+}
+
+.h1{
+    width: 15vw;
+    text-align: center;
+}
+
+.divContainerIcones {
     display: flex;
-    justify-content: center;
-    margin-right: -25vw;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 11vw;
+    max-width: 11vw;
+    height: 6vh;
+    max-height: 6vh;
+    background-color: #ccc;
+   
 }
 
-.divVoltar{
-    margin-top: 8vh;
-}
-
-.btnVoltar:hover{
-    background-color: #5271FF;
-    color: #ffffff;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+.imagemBtn{
+    height: 3.5vh;
+    max-width: 2.0vw;
+    max-height: 3.5vh;
+    width: 2.0vw;
+    padding: 6px 4px;
+    cursor: pointer;
 }
 
 .imagem{
@@ -160,28 +184,7 @@ main {
     height: 7.0vh;
 }
 
-.divContainerIcones {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 28vh;
-    max-width: 28vh;
-    height: 5vh;
-    max-height: 5vh;
-    background-color: #ccc;
-    margin-left: 1vw;
-}
 
-.container{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-}
-
-.imagemBtn{
-    height: 4vh;
-    width: 2.5vw;
-}
 
 .divIcones{
     padding: 3px 3px 3px 3px;
@@ -220,15 +223,6 @@ main {
     font-weight: bold;
 }
 
-.btnVoltar{
-    font-size: 2vh;
-    padding: 1vh 2vw;
-    margin-left: 1vw;
-    border-radius: 1.5vh;
-    width: 8.5vw;
-    height: 5vh;
-    cursor: pointer;
-}
 
 .btnAdicionar {
     background-color: #5271FF;
@@ -243,6 +237,25 @@ main {
     border: 2px solid #5271FF;
 }
 
+.setaVoltar{
+    margin-right: 23vw;
+    margin-left: -21vw;
+    height: 7vh;
+    width: 3.5vw;
+    cursor: pointer;
+ }
+ 
+ .grupoInicial{
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+ }
+
+
+ .imgUser {
+    height: 6vh;
+    cursor: pointer;
+}
 
 .be-vietnam-pro-thin {
     font-family: "Be Vietnam Pro", sans-serif;

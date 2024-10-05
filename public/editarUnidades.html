@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Unidades</title>
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/editarUnidades.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href="assets/img/logo fundo preto (1).png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">
+            <img src="assets/img/logoPreta.png" alt="logo" onclick="index()">
+        </div>
+
+        <ul class="center">
+            <li><a href="#">sarah</a></li>
+            <li><a href="#">mapa</a></li>
+            <li><a href="gerenciarEletroposto.html">postos</a></li>
+        </ul>
+
+        <ul class="direita">
+            <li>
+                <div class="usuario">Henrique</div>
+            </li>
+            <li><img src="assets/img/perfil.png" class="imgUser" onclick="perfil()"></li>
+        </ul>
+
+    </nav>
+
+    <div class="cobrirTudo">
+        <div class="unidades">
+            <div>
+                <img class="setaVoltar" onclick="voltar()" src="assets/img/voltar.png" alt="">
+            </div>
+            <div class="grupoTitulo">
+                <h1>Unidade Jardins</h1>
+                <span class="spanID">ID 32430</span>
+            </div>
+
+            <div class="container">
+
+                <div class="nome">
+                    <label class="nomeLabel">Nome</label><br>
+                    <input type="text" id="nome" oninput="validarInputNomeRepresentante(this)" maxlength="100"
+                        placeholder="Insira o nome da unidade aqui.">
+
+                </div>
+
+                <div style="margin-top: 10px;">
+                    <label class="numeroLabel" for="numeroEstacoes">Número de Estações de Carregamento</label><br>
+                    <div class="numeroEstacoes-container">
+                        <input type="number" id="numeroEstacoes" placeholder="Quantos carregadores estão disponíveis no eletroposto">
+                    </div>
+                </div>
+
+                <div style="margin-top: 10px;">
+                    <label class="tipoConectores" for="conectores">Tipos de conectores disponíveis</label><br>
+                    <div class="conectores-container">
+                        <select id="tipoConectores">
+                            <option value="#">Escolher</option>
+                            <option value="teste">teste</option>
+                            <option value="teste1">teste1</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="margin-top: 10px;">
+                    <label class="potenciaLabel" for="potenciaDisponivel">Potência disponível</label><br>
+                    <div class="potencia-container">
+                        <select id="potenciaDisponivel">
+                            <option value="#">Escolher</option>
+                            <option value="10">10 kW</option>
+                            <option value="20">20 kW</option>
+                            <option value="30">30 kW</option>
+                            <option value="40">40 kW</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 10px;">
+                    <label class="velocidadeLabel" for="velocidadeCarregamento">Velocidade de carregamento</label><br>
+                    <div class="velocidade-container">
+                        <select id="velocidadeCarregamento">
+                            <option value="#">Escolher</option>
+                            <option value="slow">Lenta</option>
+                            <option value="medium">Média</option>
+                            <option value="fast">Rápida</option>
+                        </select>
+                    </div>
+                </div>
+            
+
+                <div class="btns">
+                    <button class="btnEditar" id="btnEditar" onclick="editarInformacoes()">Editar Informações</button>
+                    <button class="btnFinalizar" id="btnFinalizar" onclick="finalizarEdicao()" style="display: none;">Finalizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src="js/editarUnidades.js"></script>
+</html>

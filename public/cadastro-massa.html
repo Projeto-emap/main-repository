@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro em Massa</title>
     <link rel="stylesheet" href="css/cadastro-massa.css">
+    <link rel="stylesheet" href="css/header.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&display=swap');
 
@@ -50,14 +51,16 @@
         </div>
 
         <ul class="center">
-            <li><a href="index.html">home</a></li>
-            <li><a href="solucao.html">solução</a></li>
-            <li><a href="contato.html">contato</a></li>
+            <li><a href="cadastroEletropostoParte1.html">sarah</a></li>
+            <li><a href="cadastroEletropostoParte1.html">mapa</a></li>
+            <li><a href="gerenciarEletroposto.html">postos</a></li>
         </ul>
 
         <ul class="direita">
-            <li><a href="login.html" class="btn-voltar">login</a></li>
+            <li><div class="usuario">Henrique</div></li>
+            <li><img src="assets/img/perfil.png" class="imgUser" onclick="perfil()"></li>
         </ul>
+
     </nav>
 
     <div class="titulo">
@@ -96,4 +99,13 @@
     <script src="js/main.js"></script>
 </body>
 
+<script>
+     function index(){
+    window.location.href="index.html"
+}
+
+function perfil(){
+    window.location.href = 'perfil.html';
+}
+</script>
 </html>

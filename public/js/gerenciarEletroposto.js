@@ -7,14 +7,14 @@ function index(){
 }
 
 function editar(){
-    //adicionar
+    window.location.href = 'cadastroEletropostoParte2.html';
 }
 
 function cadastrar(){
-    //adicionar
+    window.location.href = 'cadastroEletropostoParte1.html';
 }
 
 function cadastrarEmMassa(){
-    //adicionar
+    window.location.href = 'cadastro-massa.html';
 }
 
