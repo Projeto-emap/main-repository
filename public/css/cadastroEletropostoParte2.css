@@ -45,10 +45,46 @@ nav li a:hover {
     justify-content: space-between;
     height: 10vh;
 }
-.imagemBtn{
-    height: 4vh;
-    width: 2.5vw;
-}
+
+.divElementos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 20vw;
+    max-width: 20vw;
+    margin-left: 72vw;
+    margin-top: -10vh;
+    margin-bottom: 6vh;
+ }
+ 
+ .h1{
+     width: 15vw;
+     text-align: center;
+ }
+ 
+ .divContainerIcones {
+     display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+     width: 11vw;
+     max-width: 11vw;
+     height: 6vh;
+     max-height: 6vh;
+     background-color: #ccc;
+    
+ }
+ 
+ .imagemBtn{
+     height: 3.5vh;
+     max-width: 2.0vw;
+     max-height: 3.5vh;
+     width: 2.0vw;
+     padding: 6px 4px;
+     cursor: pointer;
+ }
+ 
 
 .divIcones{
     padding: 3px 3px 3px 3px;
@@ -63,8 +99,10 @@ nav li a:hover {
     padding: 10px 30px;
 }
 
+
 .direita {
     display: flex;
+    align-items: center;
 }
 
 .titulo {
@@ -127,16 +165,6 @@ main {
     font-size: 2vh;
 }
 
-.btnVoltar {
-    background-color: #ffffff;
-    color: #5271FF;
-    border: none;
-    border: 2.2px solid #5271FF;
-    width: 13vw !important;
-    font-weight: bold;
-    border-radius: 2.5vh !important;
-}
-
 .linha-horizontal {
     width: 100%; 
     height: 0.1vh; 
@@ -146,21 +174,6 @@ main {
     margin-bottom: 5vh;
 }
 
-.divElementos{
-    display: flex;
-    justify-content: center;
-    margin-right: -25vw;
-}
-
-.divVoltar{
-    margin-top: 8vh;
-}
-
-.btnVoltar:hover{
-    background-color: #5271FF;
-    color: #ffffff;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
-}
 
 .imagem{
     display: flex;
@@ -168,17 +181,6 @@ main {
     height: 7.0vh;
 }
 
-.divContainerIcones {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 28vh;
-    max-width: 28vh;
-    height: 5vh;
-    max-height: 5vh;
-    background-color: #ccc;
-    margin-left: 1vw;
-}
 
 .locations {
     display: flex;
@@ -189,20 +191,21 @@ main {
 }
 
 .location-name {
-    font-size: 2.5vh;
+    font-size: 3.5vh;
     margin-left: 2vw;
+    font-weight: bold;
 }
 
 .units {
-    font-size: 2vh;
+    font-size: 3.0vh;
+    padding: 10px 10px 30px;
+    text-align: center; 
+    width: 100%; 
+    display: flex; 
+    justify-content: center; 
 }
 
-.bold{
-    font-weight: bold;
-    font-size: 22px;
-}
-
-.btnEditar,
+.btnAnalisar,
 .btnDeletar {
     font-size: 2vh;
     padding: 1vh 2vw;
@@ -214,26 +217,15 @@ main {
     font-weight: bold;
 }
 
-.btnVoltar{
-    font-size: 2vh;
-    padding: 1vh 2vw;
-    margin-left: 1vw;
-    border-radius: 1.5vh;
-    width: 8.5vw;
-    height: 5vh;
-    cursor: pointer;
-    
-}
 
-
-.btnEditar {
+.btnAnalisar {
     background-color: #5271FF;
     color: white;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
     border: none;
 }
 
-.btnEditar:hover{
+.btnAnalisar:hover{
     background-color: #ffffff;
     color: #5271FF;
     border: 2px solid #5271FF;
@@ -251,6 +243,31 @@ main {
     border: 2px solid white;
 }
 
+.setaVoltar{
+   margin-right: 13vw;
+   margin-left: -10vw;
+   height: 7vh;
+   width: 3.5vw;
+   cursor: pointer;
+}
+
+.grupoInicial{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.imgUser {
+    height: 6vh;
+    cursor: pointer;
+}
+
+.mensagemVazia{
+    display: none; 
+    text-align: center;
+    font-size: 10.0vw;
+    color: red;
+}
 
 .be-vietnam-pro-thin {
     font-family: "Be Vietnam Pro", sans-serif;
