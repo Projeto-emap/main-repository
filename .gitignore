@@ -3,6 +3,4 @@ node_modules
 package-lock.json
 
 .github
-.env.dev
 .env
-.gitignore
