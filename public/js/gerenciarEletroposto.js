@@ -11,7 +11,7 @@ function editar(){
 }
 
 function cadastrar(){
-    window.location.href = 'cadastroEletropostoParte1.html';
+    window.location.href = 'cadastroUnidade.html';
 }
 
 function cadastrarEmMassa(){

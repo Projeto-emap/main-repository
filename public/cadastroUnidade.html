@@ -16,7 +16,7 @@
         <ul class="center">
             <li><a href="#">sarah</a></li>
             <li><a href="#">mapa</a></li>
-            <li><a href="cadastroEletropostoParte1.html">postos</a></li>
+            <li><a href="gerenciarEletroposto.html">postos</a></li>
         </ul>
 
         <ul class="direita">
@@ -32,22 +32,22 @@
             <span class="passo" id="passo" title="Passos">Passo 1/2</span>
             <form>
                 <label for="nome">Nome</label>
-                <input type="text" id="nome" placeholder="Insira o nome da unidade aqui.">
+                <input type="text" id="nome" oninput="validarInputNome(this)" placeholder="Insira o nome da unidade aqui.">
                 
                 <label for="cep">CEP</label>
-                <input type="text" id="cep" placeholder="Insira o CEP aqui.">
+                <input type="text" id="cep" oninput="validarInputCep(this)" placeholder="Insira o CEP aqui.">
                 
                 <label for="cidade">Cidade</label>
-                <input type="text" id="cidade" placeholder="Insira a cidade em que se localiza o eletroposto">
+                <input type="text" id="cidade" oninput="validarInputCidade(this)" placeholder="Insira a cidade em que se localiza o eletroposto">
                 
                 <div class="row">
                     <div class="column">
                         <label for="rua">Rua</label>
-                        <input type="text" id="rua" placeholder="Insira a rua aqui.">
+                        <input type="text" id="rua" oninput="validarInputRua(this)" placeholder="Insira a rua aqui.">
                     </div>
                     <div class="column">
                         <label for="numero" id="numero">Número</label>
-                        <input type="text" id="numero" placeholder="Insira o número aqui.">
+                        <input type="text" id="numero" oninput="validarInputNumeroRua(this)" placeholder="Insira o número aqui.">
                     </div>
                 </div>
                 <button type="button" id="continuar">Continuar</button>
@@ -60,7 +60,7 @@
             <span class="passo" id="passo" title="Passos">Passo 2/2</span>
             <form>
                 <label for="estacoes">Número de Estações de Carregamento</label>
-                <input min="0" type="number" id="estacoes" placeholder="Quantos carregadores estão disponíveis no eletroposto.">
+                <input min="0" type="number" id="estacoes" oninput="validarInputEstacoes(this)" placeholder="Quantos carregadores estão disponíveis no eletroposto.">
                 
                 <label for="conectores">Tipos de Conectores Disponíveis</label>
                 <select id="conectores">
