@@ -73,17 +73,18 @@ nav li a:hover {
      height: 6vh;
      max-height: 6vh;
      background-color: #ccc;
+     border-radius: 5px;
     
  }
  
  .imagemBtn{
-     height: 3.5vh;
-     max-width: 2.0vw;
-     max-height: 3.5vh;
-     width: 2.0vw;
-     padding: 6px 4px;
-     cursor: pointer;
- }
+    height: 30px;
+    max-width: 30px;
+    max-height: 30px;
+    width: 30px;
+    padding: 4px 4px;
+    cursor: pointer;
+}
  
 
 .divIcones{
