@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&display=swap');
+
 body {
     margin: 0;
     padding: 0;
@@ -36,6 +38,38 @@ nav li a {
 nav li a:hover {
     cursor: pointer;
     text-decoration: underline #000000 !important;
+}
+
+/* Estilos para o modal */
+.modal {
+   display: none;
+   position: fixed;
+   left: 50%;
+   bottom: 30px;
+   transform: translateX(-50%);
+   background-color: #fff;
+   border-radius: 15px; /* Bordas arredondadas */
+   border: 1px solid #ccc;
+   padding: 20px;
+   width: 600px;
+   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+   z-index: 1001;
+   text-align: center;
+}
+
+.success {
+   background-color: #d4edda; 
+   color: #155724; 
+}
+
+.error {
+   background-color: #f8d7da; 
+   color: #721c24; 
+}
+.modal p {
+   margin: 0;
+   padding: 0;
+   color: #333;
 }
 
 .titulo {

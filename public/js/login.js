@@ -118,3 +118,7 @@ function index() {
 function login() {
     dialogoErro.close();
 }
+
+function gerenciar() {
+    window.location.href = 'gerenciarEletroposto.html';
+}
