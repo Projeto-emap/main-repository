@@ -1,6 +1,9 @@
 var usuarioModel = require("../models/usuarioModel");
 var aquarioModel = require("../models/aquarioModel");
 
+const jwt = require('jsonwebtoken')
+const emailService = require()
+
 function logar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;

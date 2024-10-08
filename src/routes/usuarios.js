@@ -12,4 +12,8 @@ router.post("/logar", function (req, res) {
     usuarioController.logar(req, res);
 });
 
+router.post("/solicitar-recuperacao-senha", usuarioController.solicitarRecuperacaoSenha)
+
+router.post("/redefinir-senha", usuarioController.redefinirSenha)
+
 module.exports = router;
