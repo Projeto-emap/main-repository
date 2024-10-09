@@ -7,6 +7,7 @@
     <title>Cadastro em Massa</title>
     <link rel="stylesheet" href="css/cadastro-massa.css">
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/modal.css">
 </head>
 
 <body>
@@ -22,7 +23,9 @@
         </ul>
 
         <ul class="direita">
-            <li><div class="usuario">Henrique</div></li>
+            <li>
+                <div class="usuario">Henrique</div>
+            </li>
             <li><img src="assets/img/perfil.png" class="imgUser" onclick="perfil()"></li>
         </ul>
 
@@ -46,31 +49,35 @@
         <div class="download-box">
             <div class="download-section">
                 <h1 class="titulo-download">Baixar modelo</h1>
-                <img src="./assets/img/download.png" alt="Download Icon" id="download-icon">
+                <a>
+                    <img onclick="modal()" src="./assets/img/download.png" alt="Download Icon" id="download-icon">
+                </a>
                 <p>Clique aqui para baixar nosso modelo de planilha</p>
             </div>
         </div>
     </div>
 
+    <dialog class="dialogo" id="dialogo">
+        <div class="containerModal">
+            <div class="modal">
+                <p id="p">Arquivo baixado com sucesso! <br> Cheque seu dispositivo!</p>
+            </div>
+            <div class="divBtn">
+                <button onclick="fechar()" class="btnModal" style="border-radius: 100px;">Ok</button>
+            </div>
+        </div>
+    </dialog>
+
     <!-- Modal para mensagens -->
-    <div id="modal-success" class="modal success">
+    <div id="modal-success" class="modall success">
         <p>Upload concluido! Redirecionando...</p>
     </div>
 
-    <div id="modal-error" class="modal error">
+    <div id="modal-error" class="modall error">
         <p>Erro no upload, tente novamente.</p>
     </div>
 
     <script src="js/cadastro-massa.js"></script>
 </body>
 
-<script>
-     function index(){
-    window.location.href="index.html"
-}
-
-function perfil(){
-    window.location.href = 'perfil.html';
-}
-</script>
 </html>

@@ -6,14 +6,15 @@
         const modalError = document.getElementById('modal-error');
 
         // Função para download da planilha modelo
-        downloadIcon.addEventListener('click', function () {
-            console.log('Download iniciado.');
-            const link = document.createElement('a');
-            link.href = '../documents/planilha-modelo.xlsx'; // Defina o caminho correto do arquivo
-            link.download = 'planilha-modelo.xlsx';
-            link.click();
-            console.log('Download concluído.');
-        });
+
+        // downloadIcon.addEventListener('click', function () {
+        //     console.log('Download iniciado.');
+        //     const link = document.createElement('a');
+        //     // link.href = '../documents/planilha-modelo.xlsx'; // Defina o caminho correto do arquivo
+        //     link.download = 'planilha-modelo.xlsx';
+        //     link.click();
+        //     console.log('Download concluído.');
+        // });
 
         // Função para redirecionar para o download da planilha modelo
         // downloadIcon.addEventListener('click', function () {
@@ -21,6 +22,34 @@
         //     window.location.href = '../documents/planilha-modelo.xlsx'; // Caminho correto do arquivo
         // });
         
+        function modal() {
+            dialogo.showModal()
+        }
+    
+        function fechar() {
+            dialogo.close()
+            const fileUrl = "../src/database/script-tabelas.sql";
+    
+            // Criar um link temporário
+            const link = document.createElement('a');
+            link.href = fileUrl;
+            link.download = 'script-tabelas.sql'; // Nome do arquivo ao ser baixado
+            document.body.appendChild(link); // Adiciona o link ao DOM
+    
+            // Dispara o clique no link
+            link.click();
+    
+            // Remove o link do DOM
+            document.body.removeChild(link);
+        }
+    
+        function index() {
+            window.location.href = "index.html"
+        }
+    
+        function perfil() {
+            window.location.href = 'perfil.html';
+        }
 
         // Exibir a área de upload quando clicar no ícone de upload
         uploadIcon.addEventListener('click', function () {

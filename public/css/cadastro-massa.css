@@ -41,14 +41,14 @@ nav li a:hover {
 }
 
 /* Estilos para o modal */
-.modal {
+ .modall {
    display: none;
    position: fixed;
    left: 50%;
    bottom: 30px;
    transform: translateX(-50%);
    background-color: #fff;
-   border-radius: 15px; /* Bordas arredondadas */
+   border-radius: 15px;
    border: 1px solid #ccc;
    padding: 20px;
    width: 600px;
@@ -66,11 +66,11 @@ nav li a:hover {
    background-color: #f8d7da; 
    color: #721c24; 
 }
-.modal p {
+.modall p {
    margin: 0;
    padding: 0;
    color: #333;
-}
+} 
 
 .titulo {
     display: flex;
@@ -102,10 +102,18 @@ nav li a:hover {
     margin-left: 18%;
 }
 
+.p{
+    color: black !important;
+}
+
 h1 {
     text-align: center;
     font-size: 24px;
     margin-bottom: 20px;
+}
+
+img {
+    cursor: pointer !important;
 }
 
 .upload-box, .download-box {
