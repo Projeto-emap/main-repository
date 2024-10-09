@@ -21,35 +21,6 @@
         //     console.log('Redirecionando para o download da planilha.');
         //     window.location.href = '../documents/planilha-modelo.xlsx'; // Caminho correto do arquivo
         // });
-        
-        function modal() {
-            dialogo.showModal()
-        }
-    
-        function fechar() {
-            dialogo.close()
-            const fileUrl = "../src/database/script-tabelas.sql";
-    
-            // Criar um link temporário
-            const link = document.createElement('a');
-            link.href = fileUrl;
-            link.download = 'script-tabelas.sql'; // Nome do arquivo ao ser baixado
-            document.body.appendChild(link); // Adiciona o link ao DOM
-    
-            // Dispara o clique no link
-            link.click();
-    
-            // Remove o link do DOM
-            document.body.removeChild(link);
-        }
-    
-        function index() {
-            window.location.href = "index.html"
-        }
-    
-        function perfil() {
-            window.location.href = 'perfil.html';
-        }
 
         // Exibir a área de upload quando clicar no ícone de upload
         uploadIcon.addEventListener('click', function () {
@@ -107,3 +78,32 @@
             }
         });
     });
+
+    function modal() {
+        dialogo.showModal()
+    }
+
+    function fechar() {
+        dialogo.close()
+        const fileUrl = "../src/database/script-tabelas.sql";
+
+        // Criar um link temporário
+        const link = document.createElement('a');
+        link.href = fileUrl;
+        link.download = 'script-tabelas.sql'; // Nome do arquivo ao ser baixado
+        document.body.appendChild(link); // Adiciona o link ao DOM
+
+        // Dispara o clique no link
+        link.click();
+
+        // Remove o link do DOM
+        document.body.removeChild(link);
+    }
+
+    function index() {
+        window.location.href = "index.html"
+    }
+
+    function perfil() {
+        window.location.href = 'perfil.html';
+    }
