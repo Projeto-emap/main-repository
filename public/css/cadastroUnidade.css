@@ -184,6 +184,21 @@ button {
     color: white;
 }
 
+.containerModal {
+    height: 18vh !important;
+}
+
+.diagolo {
+    border-radius: none !important;
+}
+
+.btnModalCadastro,
+.btnModal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* font */
 
 .be-vietnam-pro-thin {

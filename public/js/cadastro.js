@@ -69,31 +69,19 @@ document.addEventListener('DOMContentLoaded', function () {
     const btnContinuar = document.getElementById('btnContinuar1');
 
     function validarCampos1() {
-
         const cnpj = cnpjInput.value.replace(/[.\-/]/g, ''); // Remove pontos, barras e traços
         const cnpjValido = cnpj.length === 14 && /^\d{14}$/.test(cnpj);
-        cnpjInput.classList.toggle('input-invalido', !cnpjValido);
-        cnpjInput.classList.toggle('input-valido', cnpjValido);
-
         const nomeEmpresa = nomeEmpresaInput.value;
         const nomeValido = nomeEmpresa.trim() !== '';
-        nomeEmpresaInput.classList.toggle('input-invalido', !nomeValido);
-        nomeEmpresaInput.classList.toggle('input-valido', nomeValido);
-
         const estado = estadoInput.value;
         const estadoValido = estado.trim() !== '';
-        estadoInput.classList.toggle('input-invalido', !estadoValido);
-        estadoInput.classList.toggle('input-valido', estadoValido);
-
         const cep = cepInput.value.replace(/-/g, ''); // Remove traços
         const cepValido = cep.length === 8 && /^\d{8}$/.test(cep);
-        cepInput.classList.toggle('input-invalido', !cepValido);
-        cepInput.classList.toggle('input-valido', cepValido);
 
         return cnpjValido && nomeValido && estadoValido && cepValido;
     }
 
-    btnContinuar.addEventListener('click', function (event) {
+    btnContinuar.addEventListener('click', async function (event) {
         event.preventDefault();
 
         if (validarCampos1()) {
@@ -104,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const nomeValido = nomeEmpresaInput.value.trim() !== '';
             const estadoValido = estadoInput.value.trim() !== '';
             const cep = cepInput.value.replace(/-/g, '');
-            const cepValido = cep.length === 8 && /^\d{8}$/.test(cep);
+            let cepValido = cep.length === 8 && /^\d{8}$/.test(cep);
 
             let errosModal = "";
             if (cnpjInput.value == '') {
@@ -124,9 +112,36 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             if (cepInput.value == '') {
                 errosModal += "Por favor, insira o CEP.";
-            } else if (!cepValido) {
-                errosModal += "O CEP inserido não é válido!";
+            } else if (cep.length != 8) {
+                errosModal += "Verifique os dígitos do CEP.<br/>"
+            } else {
+                try {
+                    const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+                    if (!response.ok) {
+                        throw new Error('Erro na requisição');
+                    }
+
+                    const data = await response.json();
+
+                    if (!("erro" in data)) {
+                        console.log('Dados do CEP:', data);
+                    } else {
+                        errosModal += "CEP não encontrado.<br/>";
+                        cepValido = false;
+                    }
+                } catch (error) {
+                    console.error('Erro:', error);
+                    errosModal += "Ocorreu um erro ao buscar o CEP.<br/>";
+                }
             }
+            cnpjInput.classList.toggle('input-invalido', !cnpjValido);
+            cnpjInput.classList.toggle('input-valido', cnpjValido);
+            nomeEmpresaInput.classList.toggle('input-invalido', !nomeValido);
+            nomeEmpresaInput.classList.toggle('input-valido', nomeValido);
+            estadoInput.classList.toggle('input-invalido', !estadoValido);
+            estadoInput.classList.toggle('input-valido', estadoValido);
+            cepInput.classList.toggle('input-invalido', !cepValido);
+            cepInput.classList.toggle('input-valido', cepValido);
             pCadastro.innerHTML = errosModal;
             dialogoCadastro.showModal();
         }
