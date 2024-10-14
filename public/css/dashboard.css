@@ -11,10 +11,6 @@ html{
     background-color: #ffffff;
 }
 
-/* .imgLogo {
-    width: 10vw;
-} */
-
 nav {
     background-color: rgba(217, 217, 217, 0.6);
     overflow: hidden;
@@ -123,8 +119,7 @@ aside {
 .dados {
     display: flex;
     flex-direction: column;
-    text-align: center;
-    padding: 15px;
+    padding: 10px;
 }
 
 .dados div{
@@ -150,13 +145,8 @@ aside {
 
 .informacaoTitulo{
     display: flex;
-    align-items: center;
+    align-items:flex-start ;
     padding: 5px;
-}
-
-.informacaoTitulo div{
-    display: flex;
-    align-items: flex-start;
 }
 
 .titulo h2{
