@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/header.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">
+            <img src="assets/img/logoPreta.png" alt="emap." class="imgLogo" onclick="index()">
+        </div>
+
+        <ul class="center">
+            <li><a href="#">sarah</a></li>
+            <li><a class="sublinhado" href="dashboard.html">mapa</a></li>
+            <li><a href="gerenciarEletroposto.html">postos</a></li>
+        </ul>
+
+        <ul class="direita">
+            <li>
+                <div class="usuario">Henrique</div>
+            </li>
+            <li><img src="assets/img/perfil.png" class="user-icon"></li>
+        </ul>
+    </nav>
+    <div>
+        <main>
+            <aside>
+                <div class="tituloAside">Ánalise de municipios
+                    <div class="imgFiltro"><img src="assets/img/anexar.png" alt=""></div>
+                </div>
+                <div class="subTituloAside"><a class="textImportant"><b>IMPORTANTE:</b> O percentual é calculado em
+                        relação aos últimos 2 meses.</a></div>
+
+                <div class="card">
+                    <div class="municipio">
+                        <h3>Jardins</h3>
+                    </div>
+                    <div class="porcentagem">
+                        <div class="dados">
+                            <div class="numeros">
+                                20%
+                                <div class="imgSetaCima"><img src="assets/img/image 58.png" style="display: relative;"
+                                        alt=""></div>
+                                <div class="imgSetaBaixo"><img src="assets/img/fast-forward 1.png" alt=""
+                                        style="display: none;"></div>
+                            </div>
+                            <p>Último Mês</p>
+                        </div>
+
+                        <div class="dados">
+                            <div class="numeros">
+                                20%
+                                <div class="imgSetaCima"><img src="assets/img/image 58.png" style="display: relative;"
+                                        alt=""></div>
+                                <div class="imgSetaBaixo"><img src="assets/img/fast-forward 1.png" alt=""
+                                        style="display: none;"></div>
+                            </div>
+                            <p>Previsão próximo Mês</p>
+                        </div>
+                    </div>
+                    <div class="informacao">
+                        <div class="iagem">
+                            <img src="assets/img/clean (1) 2.png">
+                        </div>
+                        Aumento no emplacamento de carros elétricos na região
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Adamantina</h3>
+                    <div class="percentages">
+                        <div class="dados">
+                            <div class="numeros">
+                                64%
+                                <div class="imgSetaBaixo"><img src="assets/img/fast-forward 1.png"
+                                        style="display: relative;" alt=""></div>
+                                <div class="imgSetaCima"><img src="assets/img/image 58.png" style="display: none;"
+                                        alt=""></div>
+                            </div>
+                            <p>Último Mês</p>
+                        </div>
+                        <div class="dados">
+                            <div class="numeros">
+                                80%
+                                <div class="imgSetaBaixo"><img src="assets/img/fast-forward 1.png"
+                                        style="display: relative;"></div>
+                                <div class="imgSetaCima"><img src="assets/img/image 58.png" style="display: none;"
+                                        alt=""></div>
+                            </div>
+                            <p>Previsão próximo Mês</p>
+                        </div>
+                    </div>
+                    <div class="informacao">
+                        <div class="iagem">
+                            <img src="assets/img/clean (1) 2.png">
+                        </div>
+                        Aumento no emplacamento de carros elétricos na região
+                    </div>
+                </div>
+
+            </aside>
+            <section class="chart-section">
+                <div class="titulo">
+                    <div class="informacaoTitulo">
+                        <div>
+                            <div class="tituloUnidade">Jardins</div>
+                        </div>
+                        <div class="dados">
+                            <div class="numeros">
+                                293
+                                <div class="imgSetaCima"><img src="assets/img/image 58.png" style="display: relative;"
+                                        alt=""></div>
+                                <div class="imgSetaBaixo"><img src="assets/img/fast-forward 1.png" alt=""
+                                        style="display: none;"></div>
+                            </div>
+                            <p>Total emplacamentos</p>
+                        </div>
+
+                        <div class="dados">
+                            <div class="numeros">
+                                20%
+                                <div class="imgSetaCima"><img src="assets/img/image 58.png" style="display: relative;"
+                                        alt=""></div>
+                                <div class="imgSetaBaixo"><img src="assets/img/fast-forward 1.png" alt=""
+                                        style="display: none;"></div>
+                            </div>
+                            <p>Último Mês</p>
+                        </div>
+
+                        <div class="dados">
+                            <div class="numeros">
+                                20%
+                                <div class="imgSetaCima"><img src="assets/img/image 58.png" style="display: relative;"
+                                        alt=""></div>
+                                <div class="imgSetaBaixo"><img src="assets/img/fast-forward 1.png" alt=""
+                                        style="display: none;"></div>
+                            </div>
+                            <p>Previsão próximo Mês</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tabs">
+                    <button id="trimestral">Trimestral</button>
+                    <button>Semestral</button>
+                    <button>Anual</button>
+                </div>
+                <div class="chart" id="curve_chart" style="width: 97%; height: 100%"></div>
+            </section>
+        </main>
+</body>
+
+</html>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Year', 'Sales', 'Expenses'],
+            ['2004', 1000, 400],
+            ['2005', 1170, 460],
+            ['2006', 660, 1120],
+            ['2007', 1030, 540]
+        ]);
+
+        var options = {
+            title: 'Company Performance',
+            legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+    }
+</script>
