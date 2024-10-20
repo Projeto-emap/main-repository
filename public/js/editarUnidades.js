@@ -24,6 +24,7 @@ document.querySelectorAll('input, select').forEach(element => {
     element.setAttribute('disabled', true); 
 });
 
+
 document.querySelector('#btnEditar').style.display = 'block';
 document.querySelector('#btnFinalizar').style.display = 'none';
 }
