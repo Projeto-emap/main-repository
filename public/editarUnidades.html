@@ -24,7 +24,7 @@
 
         <ul class="center">
             <li><a href="#">sarah</a></li>
-            <li><a href="#">mapa</a></li>
+            <li><a href="dashboard.html">mapa</a></li>
             <li><a href="gerenciarEletroposto.html">postos</a></li>
         </ul>
 
@@ -59,14 +59,15 @@
                 <div style="margin-top: 10px;">
                     <label class="numeroLabel" for="numeroEstacoes">Número de Estações de Carregamento</label><br>
                     <div class="numeroEstacoes-container">
-                        <input type="number" id="numeroEstacoes" placeholder="Quantos carregadores estão disponíveis no eletroposto">
+                        <input type="number" id="numeroEstacoes" oninput="validarInputNomeRepresentante(this)" placeholder="Quantos carregadores estão disponíveis no eletroposto" 
+                        oninput="validarNumeroEstacoes()" min="0">
                     </div>
                 </div>
 
                 <div style="margin-top: 10px;">
                     <label class="tipoConectores" for="conectores">Tipos de conectores disponíveis</label><br>
                     <div class="conectores-container">
-                        <select id="tipoConectores">
+                        <select id="tipoConectores" onchange="validarSelecionar(this)">
                             <option value="#">Escolher</option>
                             <option value="tipo2">Tipo 2 (Mennekes) </option>
                             <option value="ccs">CCS (Combined charging system) </option>
@@ -78,7 +79,7 @@
                 <div style="margin-top: 10px;">
                     <label class="potenciaLabel" for="potenciaDisponivel">Potência disponível</label><br>
                     <div class="potencia-container">
-                        <select id="potenciaDisponivel">
+                        <select id="potenciaDisponivel" onchange="validarSelecionar(this)">
                             <option value="#">Escolher</option>
                             <option value="10">10 kW</option>
                             <option value="20">20 kW</option>
@@ -91,7 +92,7 @@
                 <div style="margin-top: 10px;">
                     <label class="velocidadeLabel" for="velocidadeCarregamento">Velocidade de carregamento</label><br>
                     <div class="velocidade-container">
-                        <select id="velocidadeCarregamento">
+                        <select id="velocidadeCarregamento" onchange="validarSelecionar(this)">
                             <option value="#">Escolher</option>
                             <option value="0">Lenta</option>
                             <option value="1">Média</option>
