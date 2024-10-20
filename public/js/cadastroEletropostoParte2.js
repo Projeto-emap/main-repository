@@ -10,7 +10,7 @@ function perfil() {
     window.location.href = 'perfil.html';
 }
 
-function analisar() {
+function editar() {
     window.location.href = 'editarUnidades.html';
 }
 
