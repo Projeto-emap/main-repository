@@ -176,11 +176,49 @@ nav li a:hover {
     border: 2px solid #5271FF;
 }
 
+
 .setaVoltar{
   margin-bottom: -10vh;
   height: 7vh;
   width: 3.5vw;
   cursor: pointer;
+}
+
+.containerModal {
+  height: 12vh !important;
+}
+
+.diagolo {
+  border-radius: none !important;
+}
+
+.btnModalCadastro,
+.btnModal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #5271FF;
+  color: #ffffff;
+  width: 15vw;
+  height: 4vh;
+  font-size: 20px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+  border: 2px solid #5271FF;
+  border-radius: 100px;
+  margin-left: 20%;
+  cursor: pointer !important;
+}
+
+.btnModal{
+  margin-left: 6% !important;
+}
+
+.input-invalido {
+  border: 2px solid red;
+}
+
+.input-valido {
+  border: 2px none;
 }
   
   /* font */

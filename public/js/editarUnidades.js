@@ -1,5 +1,15 @@
+const btnEditar = document.getElementById('btnEditar');
+const btnFinalizar = document.getElementById('btnFinalizar');
+const nomeInput = document.getElementById('nome');
+const numeroEstacoesInput = document.getElementById('numeroEstacoes');
+const conectoresSelect = document.getElementById('tipoConectores');
+const potenciaSelect = document.getElementById('potenciaDisponivel');
+const velocidadeSelect = document.getElementById('velocidadeCarregamento');
+const dialogoCadastroUnidade = document.getElementById('dialogoCadastroUnidade'); // Modal para exibir erros
+const pCadastro = document.getElementById('pCadastro'); // Elemento para mensagens de erro
+
 function index() {
-    window.location.href = "index.html"
+    window.location.href = "index.html";
 }
 
 function perfil() {
@@ -7,60 +17,111 @@ function perfil() {
 }
 
 function voltar() {
-    window.location.href="cadastroEletropostoParte2.html"
-    }
+    window.location.href = "cadastroEletropostoParte2.html";
+}
 
 function editarInformacoes() {
-document.querySelectorAll('input, select').forEach(element => {
-    element.removeAttribute('disabled'); 
-});
+    document.querySelectorAll('input, select').forEach(element => {
+        element.removeAttribute('disabled');
+    });
 
-document.querySelector('#btnEditar').style.display = 'none';
-document.querySelector('#btnFinalizar').style.display = 'block';
+    btnEditar.style.display = 'none';
+    btnFinalizar.style.display = 'block';
 }
 
 function finalizarEdicao() {
-document.querySelectorAll('input, select').forEach(element => {
-    element.setAttribute('disabled', true); 
-});
+    const erros = [];
 
+    // Obtendo referências aos elementos de input
+    const nomeInput = document.getElementById('nome');
+    const numeroEstacoesInput = document.getElementById('numeroEstacoes');
+    const conectoresSelect = document.getElementById('tipoConectores');
+    const potenciaSelect = document.getElementById('potenciaDisponivel');
+    const velocidadeSelect = document.getElementById('velocidadeCarregamento');
 
-document.querySelector('#btnEditar').style.display = 'block';
-document.querySelector('#btnFinalizar').style.display = 'none';
+    const nomeValido = validarInputNomeRepresentante(nomeInput);
+    if (!nomeValido) {
+        erros.push("Insira um nome válido para a unidade.");
+    } 
+
+    const numeroEstacoesValido = validarNumeroEstacoes(numeroEstacoesInput);
+    if (!numeroEstacoesValido) {
+        erros.push("Insira um número de estações de carregamento válido.");
+        numeroEstacoesInput.classList.toggle('input-invalido');
+    } 
+
+    const conectoresValido = validarSelecionar(conectoresSelect);
+    if (!conectoresValido) {
+        erros.push("Selecione um tipo de conector.");
+        conectoresSelect.classList.toggle('input-invalido');
+    } 
+
+    const potenciaValido = validarSelecionar(potenciaSelect);
+    if (!potenciaValido) {
+        erros.push("Selecione uma potência disponível.");
+        potenciaSelect.classList.toggle('input-invalido');
+    }
+
+    const velocidadeValido = validarSelecionar(velocidadeSelect);
+    if (!velocidadeValido) {
+        erros.push("Selecione uma velocidade de carregamento.");
+        velocidadeSelect.classList.toggle('input-invalido');
+    } 
+    nomeInput.classList.toggle('input-invalido', !nomeValido);
+    nomeInput.classList.toggle('input-valido', nomeValido);
+
+    numeroEstacoesInput.classList.toggle('input-valido', numeroEstacoesValido);
+    numeroEstacoesInput.classList.toggle('input-invalido', !numeroEstacoesValido);
+
+    conectoresSelect.classList.toggle('input-valido', conectoresValido);
+    conectoresSelect.classList.toggle('input-invalido', !conectoresValido);
+
+    potenciaSelect.classList.toggle('input-valido', potenciaValido);
+    potenciaSelect.classList.toggle('input-invalido', !potenciaValido);
+
+    velocidadeSelect.classList.toggle('input-valido', velocidadeValido);
+    velocidadeSelect.classList.toggle('input-invalido', !velocidadeValido);
+
+    if (erros.length > 0) {
+        pCadastro.innerHTML = erros.join("<br/>");
+        dialogoCadastroUnidade.showModal();
+    } else {
+        document.querySelectorAll('input, select').forEach(element => {
+            element.setAttribute('disabled', true);
+            element.style.borderColor = '';
+        });
+
+        btnEditar.style.display = 'block';
+        btnFinalizar.style.display = 'none';
+        dialogo.showModal();
+    }
 }
 
-document.querySelectorAll('input, select').forEach(element => {
-element.setAttribute('disabled', true);
-});
 
 function validarInputNomeRepresentante(input) {
     const nome = input.value.trim();
-    const nomeLabel = document.querySelector('.nomeLabel');
-
     if (nome.length === 0 || nome.length > 100) {
-        nomeLabel.style.color = 'red';
+        input.style.borderColor = 'red';
         return false;
     } else {
-        nomeLabel.style.color = '';
+        input.style.borderColor = '';
         return true;
     }
 }
 
 function validarNumeroEstacoes() {
-    const numeroEstacoes = document.getElementById('numeroEstacoes');
-    const valor = parseInt(numeroEstacoes.value);
-    
+    const valor = parseInt(numeroEstacoesInput.value);
     if (isNaN(valor) || valor < 0) {
-        numeroEstacoes.style.borderColor = 'red';
+        numeroEstacoesInput.style.borderColor = 'red';
         return false;
     } else {
-        numeroEstacoes.style.borderColor = '';
+        numeroEstacoesInput.style.borderColor = '';
         return true;
     }
 }
 
 function validarSelecionar(select) {
-    if (select.value === '#') {
+    if (select.value === '#' || select.value === '') {
         select.style.borderColor = 'red';
         return false;
     } else {
@@ -69,12 +130,7 @@ function validarSelecionar(select) {
     }
 }
 
-function validarFormulario() {
-    const nomeValido = validarInputNomeRepresentante(document.getElementById('nome'));
-    const numeroEstacoesValido = validarNumeroEstacoes();
-    const conectoresValido = validarSelecionar(document.getElementById('tipoConectores'));
-    const potenciaValido = validarSelecionar(document.getElementById('potenciaDisponivel'));
-    const velocidadeValido = validarSelecionar(document.getElementById('velocidadeCarregamento'));
-
-    return nomeValido && numeroEstacoesValido && conectoresValido && potenciaValido && velocidadeValido;
-}
+// Desabilitar os campos no carregamento da página
+document.querySelectorAll('input, select').forEach(element => {
+    element.setAttribute('disabled', true);
+});

@@ -100,6 +100,30 @@
                         </select>
                     </div>
                 </div>
+
+                <dialog class="dialogo" id="dialogo">
+                    <div class="containerModal">
+                        <div class="modal">
+                            <p id="p">Cadastro efetuado com sucesso!</p>
+                        </div>
+                        <div class="divBtn">
+                            <button onclick="cadastroRealizado()" id="realizado" class="btnModal"
+                                style="border-radius: 100px;">Seguir</button>
+                        </div>
+                    </div>
+                </dialog>
+
+                <dialog class="dialogoCadastroUnidade" id="dialogoCadastroUnidade">
+                    <div class="containerCadastro">
+                        <div class="modalCadastro">
+                            <p id="pCadastro"></p>
+                        </div>
+                        <div class="divBtnCadastro">
+                            <button onclick="erro()" class="btnModalCadastro" style="border-radius: 100px;">Ok</button>
+                        </div>
+                    </div>
+                </dialog>
+                
             
 
                 <div class="btns">
@@ -113,4 +137,13 @@
 </body>
 
 <script src="js/editarUnidades.js"></script>
+<script>
+    function cadastroRealizado(){
+        dialogo.close();
+    }
+
+    function erro(){
+      dialogoCadastroUnidade.close();
+    }
+</script>
 </html>
