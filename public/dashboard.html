@@ -32,9 +32,7 @@
     <div>
         <main>
             <aside>
-                <div class="tituloAside">Ánalise de municipios
-                    <div class="imgFiltro"><img src="assets/img/anexar.png" alt=""></div>
-                </div>
+                <div class="tituloAside">Ánalise de municipios</div>
                 <div class="subTituloAside"><a class="textImportant"><b>IMPORTANTE:</b> O percentual é calculado em
                         relação aos últimos 2 meses.</a></div>
 
@@ -103,7 +101,7 @@
                         <div class="iagem">
                             <img src="assets/img/clean (1) 2.png">
                         </div>
-                        Aumento no emplacamento de carros elétricos na região
+                        Diminuição no emplacamento de carros elétricos na região
                     </div>
                 </div>
 
@@ -153,7 +151,7 @@
                     <button id="trimestral">Trimestral</button>
                     <button id="Semestral">Semestral</button>
                     <button id="anual">Anual</button>
-                </div>
+                </div>  
                 <div class="chart" id="curve_chart" style="width: 97%; height: 100%"></div>
             </section>
         </main>
@@ -170,7 +168,7 @@
 
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
-            ['Year', 'Sales'],
+            ['Anos', 'Emplacamentos'],
             ['2004', 660],
             ['2005', 1000],
             ['2006', 800],
@@ -179,7 +177,7 @@
         ]);
 
         var options = {
-            title: 'Company Performance',
+            title: 'Emplacamentos ao longo do tempo',
             legend: { position: 'bottom' }
         };
 
