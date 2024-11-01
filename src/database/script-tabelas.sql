@@ -1,39 +1,60 @@
--- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
--- Você precisa executar os comandos no banco de dados para criar as tabelas,
--- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
+-- Criação do banco de dados eMap
 
-/*
-comandos para mysql server
-*/
+CREATE DATABASE IF NOT EXISTS emap;
+USE emap;
 
-create database emap;
-use emap;
-
-create table usuario(
-idUsuario int primary key auto_increment,
-nomeUsuario varchar(100),
-cpf char(11),
-emailUsuario varchar(100),
-numeroCelular char(11),
-senha varchar(100)
+-- Criação da tabela Empresa
+CREATE TABLE empresa (
+    idEmpresa INT AUTO_INCREMENT PRIMARY KEY,
+    razaoSocial VARCHAR(80) NOT NULL,
+    cnpj VARCHAR(14) NOT NULL UNIQUE
 );
 
-create table empresa(
-idEmpresa int primary key auto_increment,
-cnpj char(14),
-nomeEmpresa varchar(100),
-estado varchar(100),
-cep char(8)
+-- Criação da tabela PontoDeRecarga
+CREATE TABLE pontoDeRecarga (
+    idPontoDeRecarga INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(45) NOT NULL,
+    tipoDeLocal VARCHAR(45) NOT NULL,
+    qtdEstacoes INT NOT NULL,
+    tipoConector VARCHAR(45) NOT NULL,
+    redeDeRecarga VARCHAR(45) NOT NULL
 );
 
-create table mensagem(
-idMensagem int primary key auto_increment,
-nomeMensagem varchar(100),
-emailMensagem varchar(100),
-mensagem varchar(500)
+-- Criação da tabela Usuario
+CREATE TABLE usuario (
+    idUsuario INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(80) NOT NULL,
+    cpf VARCHAR(14) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    senha VARCHAR(12) NOT NULL,
+    numeroCelular VARCHAR (13) NOT NULL UNIQUE,
+    fkEmpresa INT,
+    FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa) ON DELETE SET NULL
 );
 
-insert into empresa (cnpj, nomeEmpresa, estado, cep) values ('12345678901234', 'Eletroposto 1', 'São Paulo', '12345678');
-insert into usuario (nomeUsuario, cpf, email, numeroCelular, senha) values ('Usuario 1', '12345678901', 'usuario1@gmail.com', '12345678901', 'usuario1');
+-- Criação da tabela Endereco
+CREATE TABLE endereco (
+    idEndereco INT AUTO_INCREMENT PRIMARY KEY,
+    cep VARCHAR(8) NOT NULL,
+    estado VARCHAR(20) NOT NULL,
+    fkPontoRecarga INT,
+    FOREIGN KEY (fkPontoRecarga) REFERENCES pontoDeRecarga(idPontoDeRecarga) ON DELETE CASCADE
+);
 
-select * from usuario;
+-- Criação da tabela CarrosEmplacados
+CREATE TABLE carrosEmplacados (
+    idCarrosEmplacados INT AUTO_INCREMENT PRIMARY KEY,
+    municipio VARCHAR(45) NOT NULL,
+    qtdCarros INT NOT NULL,
+    tipoCombustivel VARCHAR(45) NOT NULL,
+    mes VARCHAR(45) NOT NULL,
+    procedencia VARCHAR(45) NOT NULL
+);
+
+-- Criação da tabela contatoSite
+CREATE TABLE contatoSite (
+    idLeads INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(45) NOT NULL,
+    email VARCHAR(45) NOT NULL,
+    mensagem VARCHAR(500) NOT NULL
+);
