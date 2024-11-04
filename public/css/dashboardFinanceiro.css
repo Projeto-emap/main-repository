@@ -209,7 +209,12 @@ aside {
 
 .valor{
     font-weight: bold;
-    font-size: 30px;
+    font-size: 35px;
+}
+
+.valorCima{
+    font-weight: bold;
+    font-size: 45px;
 }
 
 .txt{
@@ -236,13 +241,16 @@ aside {
     padding-top: 5px;
     font-weight: bolder;
     justify-content: flex-end;
+    padding-right: 70px;
 }
 
-.tituloAside
+.imgAside img{
+    width: 35px;
+    height: 35px;
+}
 
-.tituloAside div::img{
-    width: 10px;
-    height: 10px;
+.tituloAside div{
+    padding-right: 40px;
 }
 
 .subTituloAside{
@@ -297,7 +305,7 @@ aside {
 
 } */
 
-#anual {
+#trimestral {
     background-color: #999999;
 }
 
