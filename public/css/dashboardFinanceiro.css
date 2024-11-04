@@ -126,7 +126,7 @@ aside {
     flex-direction: column;
     align-items: center;
     padding: 0 30px 0 30px;
-    /* width: 75%; */
+     width: 75%; 
     padding-right: 70px;
 }
 
@@ -163,10 +163,11 @@ aside {
 
 .titulo{
     display: flex;
-    /* justify-content: space-evenly; */
+    justify-content: space-evenly;
     align-items: center;
     background-color: #d9d9d9;
     border-radius: 15px;
+    width: 160%;
 }
 
 .informacaoTitulo{
@@ -196,11 +197,14 @@ aside {
     display: flex;
     align-items: center;
     flex-direction: column;
+    padding-bottom: 15px;
+    padding-top: 15px;
 }
 
 .numeroFinanceiro div{
     display: flex;
     align-items: row;
+    align-items: center;
 }
 
 .valor{
@@ -211,6 +215,10 @@ aside {
 .txt{
     display: flex;
     align-items: flex-end;
+    font-weight: bold;
+}
+
+.texto{
     font-weight: bold;
 }
 
