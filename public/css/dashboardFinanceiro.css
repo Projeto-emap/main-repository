@@ -293,12 +293,7 @@ aside {
     justify-content:center;
     align-items: center;
     font-size: 12px;
-}
-
-.informacao img{
-    
-    padding-right: 9px;
-    
+    margin-bottom: 2px;
 }
 
 /* #trimestral {
