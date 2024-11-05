@@ -120,5 +120,5 @@ function login() {
 }
 
 function gerenciar() {
-    window.location.href = 'gerenciarEletroposto.html';
+    window.location.href = 'dashboard.html';
 }

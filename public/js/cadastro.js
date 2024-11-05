@@ -295,7 +295,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         if (senhaValida && senhaConfirmacaoValida && checkboxValue) {
             cadastrar();
-            dialogo.showModal();
         } else {
             let errosModal = "";
             if (!senhaValida) {
@@ -455,7 +454,8 @@ function cadastrar() {
             if (resposta.ok) {
 
                 // setTimeout(() => {
-                window.location = "login.html";
+                    const dialogo = document.getElementById('dialogo');
+                    dialogo.showModal();
                 // }, "2000");
 
             } else {
