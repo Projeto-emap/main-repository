@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Função para redirecionar para o download da planilha modelo
     downloadIcon.addEventListener('click', function () {
         const link = document.createElement('a');
-        link.href = './documents/planilha-modelo.xlsx';
+        link.href = './documents/planilha-modelo-emap.xlsx';
         link.download = 'planilha-modelo.xlsx';
         document.body.appendChild(link);
         link.click();

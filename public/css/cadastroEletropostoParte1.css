@@ -97,11 +97,11 @@ main {
 .elementos {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
     gap: 4vw;
-    margin-bottom: 2vh;
-    margin-left: 2vw;
-    margin-top: 3vh;
+    margin-bottom: 4vh;
+    margin-top: 4vh;
 }
 
 .div1 {
@@ -139,18 +139,6 @@ main {
     margin-bottom: 5vh;
 }
 
-.divElementos{
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   text-align: center;
-   width: 20vw;
-   max-width: 20vw;
-   margin-left: 72vw;
-   margin-top: -10vh;
-   margin-bottom: 6vh;
-}
 
 .h1{
     width: 15vw;
