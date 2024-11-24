@@ -45,15 +45,48 @@ nav li a:hover {
     justify-content: space-between;
     height: 10vh;
 }
+ 
+ .h1{
+     width: 15vw;
+     text-align: center;
+ }
+ 
+ .divContainerIcones {
+     display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+     width: 11vw;
+     max-width: 11vw;
+     height: 6vh;
+     max-height: 6vh;
+     background-color: #ccc;
+     border-radius: 5px;
+    
+ }
+ 
+ .imagemBtn{
+    height: 30px;
+    max-width: 30px;
+    max-height: 30px;
+    width: 30px;
+    padding: 4px 4px;
+    cursor: pointer;
+}
+ 
+
+.divIcones{
+    padding: 3px 3px 3px 3px;
+}
 
 .div_group{
     display: flex;
-    gap: 115px;
+    gap: 80px;
     justify-content: flex-end;
     text-align: center;
     align-items: center;
     padding: 10px 30px;
 }
+
 
 .direita {
     display: flex;
@@ -120,16 +153,6 @@ main {
     font-size: 2vh;
 }
 
-.btnVoltar {
-    background-color: #ffffff;
-    color: #5271FF;
-    border: none;
-    border: 2.2px solid #5271FF;
-    width: 13vw !important;
-    font-weight: bold;
-    border-radius: 2.5vh !important;
-}
-
 .linha-horizontal {
     width: 100%; 
     height: 0.1vh; 
@@ -140,44 +163,12 @@ main {
 }
 
 
-.h1{
-    width: 15vw;
-    text-align: center;
-}
-
-.divContainerIcones {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 11vw;
-    max-width: 11vw;
-    height: 6vh;
-    max-height: 6vh;
-    background-color: #ccc;
-    border-radius: 5px;
-   
-}
-
-.imagemBtn{
-    height: 30px;
-    max-width: 30px;
-    max-height: 30px;
-    width: 30px;
-    padding: 4px 4px;
-    cursor: pointer;
-}
-
 .imagem{
     display: flex;
     justify-content: flex-end;
     height: 7.0vh;
 }
 
-
-
-.divIcones{
-    padding: 3px 3px 3px 3px;
-}
 
 .locations {
     display: flex;
@@ -188,20 +179,22 @@ main {
 }
 
 .location-name {
-    font-size: 2.5vh;
+    font-size: 3.5vh;
     margin-left: 2vw;
+    font-weight: bold;
 }
 
 .units {
-    font-size: 2vh;
+    font-size: 3.0vh;
+    padding: 10px 10px 30px;
+    text-align: center; 
+    width: 100%; 
+    display: flex; 
+    justify-content: center; 
 }
 
-.bold{
-    font-weight: bold;
-    font-size: 22px;
-}
-
-.btnAdicionar {
+.btnAnalisar,
+.btnDeletar {
     font-size: 2vh;
     padding: 1vh 2vw;
     margin-left: 1vw;
@@ -213,37 +206,55 @@ main {
 }
 
 
-.btnAdicionar {
+.btnAnalisar {
     background-color: #5271FF;
     color: white;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
     border: none;
 }
 
-.btnAdicionar:hover{
+.btnAnalisar:hover{
     background-color: #ffffff;
     color: #5271FF;
     border: 2px solid #5271FF;
 }
 
+.btnDeletar {
+    background-color: #ffffff;
+    color: red;
+    border: 2px solid red;
+}
+
+.btnDeletar:hover {
+    background-color: red;
+    color: white;
+    border: 2px solid white;
+}
+
 .setaVoltar{
-    margin-right: 23vw;
-    margin-left: -21vw;
-    height: 7vh;
-    width: 3.5vw;
-    cursor: pointer;
- }
- 
- .grupoInicial{
-     display: flex;
-     flex-direction: row;
-     justify-content: center;
- }
+   margin-right: 13vw;
+   margin-left: -10vw;
+   height: 7vh;
+   width: 3.5vw;
+   cursor: pointer;
+}
 
+.grupoInicial{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
 
- .imgUser {
+.imgUser {
     height: 6vh;
     cursor: pointer;
+}
+
+.mensagemVazia{
+    display: none; 
+    text-align: center;
+    font-size: 10.0vw;
+    color: red;
 }
 
 .be-vietnam-pro-thin {

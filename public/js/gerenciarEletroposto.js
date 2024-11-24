@@ -7,7 +7,7 @@ function index(){
 }
 
 function editar(){
-    window.location.href = 'cadastroEletropostoParte1.html';
+    window.location.href = 'gerenciarEletropostoParte1.html';
 }
 
 function cadastrar(){

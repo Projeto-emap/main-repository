@@ -33,7 +33,37 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function deletar() {
-        // Aqui adicionar o DELETE no backend
+        fetch("/usuarios/deletar", {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idUsuarioServer: sessionStorage.getItem('ID_USUARIO'), // Pegando o ID do usuário armazenado no sessionStorage
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN da função de deletar login")
+
+            if (resposta.ok) {
+                console.log(resposta)
+
+                resposta.json().then(json => {
+                    console.log(json)
+                    console.log(JSON.stringify(json))
+                })
+                dialogo.showModal();
+            } else {
+                resposta.json().then(json => {
+                    console.log("Houve um erro ao tentar realizar o deletar login!");
+                    
+                    let errosModal = json.message || "Erro ao realizar o deletar login."
+                    pErro.innerHTML = errosModal;
+                    dialogoErro.showModal();
+                }).catch(erro => {
+                    console.error("Erro ao processar a resposta de erro:", erro);
+                    pErro.innerHTML = "Erro desconhecido. Por favor, tente novamente mais tarde.";
+                    dialogoErro.showModal();
+                });
     }
 
     function editarInformacoes() {
@@ -52,7 +82,54 @@ document.addEventListener('DOMContentLoaded', function () {
     function salvarInformacoes() {
 
         //Aqui tem que criar um UPDATE no back-end nas informações Nome, Email e Telefone do representante
+        fetch("/usuarios/atualizar", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idUsuarioServer: sessionStorage.getItem('ID_USUARIO'), // Pegando o ID do usuário armazenado no sessionStorage
+                nomeServer: nomeAtualizado,
+                emailServer: emailAtualizado,
+                telefoneServer: telefoneAtualizado
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN da função de atualização do perfil!")
 
+            if (resposta.ok) {
+                console.log(resposta)
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.setItem('EMAIL_USUARIO', json.email);
+                    sessionStorage.setItem('NOME_USUARIO', json.nome);
+                    sessionStorage.setItem('TELEFONE_USUARIO', json.telefone);
+
+                    alert("Perfil atualizado com sucesso!");
+                     window.location.href = 'perfil.html';
+                });
+            } else {
+                resposta.json().then(json => {
+                    console.log("Houve um erro ao tentar atualizar o perfil!");
+
+                    let errosModal = json.message || "Erro ao atualizar o perfil.";
+                    pErro.innerHTML = errosModal;
+                    dialogoErro.showModal();
+                }).catch(erro => {
+                    console.error("Erro ao processar a resposta de erro:", erro);
+                    pErro.innerHTML = "Erro desconhecido. Por favor, tente novamente mais tarde.";
+                    dialogoErro.showModal();
+                });
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+            alert("Erro ao tentar atualizar o perfil. Por favor, tente novamente.");
+        });
+    }
+
+    });
 
         document.querySelector('.buttonEditar').style.display = 'block';
         document.querySelector('.buttonSalvar').style.display = 'none';
@@ -66,10 +143,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function cancelarInformacoes() {
-        // Criar aqui função backend para NÃO alterar os dados no banco de dados, apenas pegar novamente e atribur nas variáveis:
-        //inputEmail.value = ;
-        //inputNome.value = ;
-        //inputTelefone.value = ;
+    // Implementar o sessionStorage:
+    inputEmail.value = sessionStorage.getItem('EMAIL_USUARIO')
+    inputNome.value = sessionStorage.getItem('NOME_USUARIO') ;
+    inputTelefone.value = sessionStorage.getItem('TELEFONE_USUARIO');
+
+    document.querySelector('.buttonEditar').style.display = 'block';
+    document.querySelector('.buttonSalvar').style.display = 'none';
+    document.querySelector('.buttonCancelar').style.display = 'none';
 
         document.querySelector('.buttonEditar').style.display = 'block';
         document.querySelector('.buttonSalvar').style.display = 'none';

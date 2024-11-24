@@ -18,11 +18,10 @@ var app = express();
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var contatoRouter = require("./src/routes/contato");
+var eletropostoRouter = require("./src/routes/eletroposto");
 // var avisosRouter = require("./src/routes/avisos");
-// var medidasRouter = require("./src/routes/medidas");
 // var aquariosRouter = require("./src/routes/aquarios");
 // var empresasRouter = require("./src/routes/empresas");
-
 
 
 app.use(express.json());
@@ -34,6 +33,7 @@ app.use(cors());
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/contato", contatoRouter);
+app.use("/eletroposto", eletropostoRouter);
 // app.use("/avisos", avisosRouter);
 // app.use("/medidas", medidasRouter);
 // app.use("/aquarios", aquariosRouter);
