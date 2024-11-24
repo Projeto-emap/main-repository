@@ -59,36 +59,65 @@ function cadastrarEletroposto(req, res) {
     }
 }
 
+
 function pegarEletroposto(req, res) {
-    var cidade = req.body.cidadeServer;
+    // Recupera o ID do usuário dos parâmetros da URL
+    var idUsuario = req.params.idUsuario;
+  
+    // Chama o modelo para buscar as unidades associadas ao idUsuario
+    unidadeModel.buscarUnidadesPorUsuario(idUsuario).then((resultado) => {
+      // Se encontrou unidades, retorna elas no formato JSON
+      if (resultado.length > 0) {
+        res.status(200).json(resultado);
+      } else {
+        // Se não encontrou unidades, retorna um status 204 (sem conteúdo)
+        res.status(204).json([]);
+      }
+    }).catch(function (erro) {
+      // Em caso de erro, loga o erro e retorna o status 500 com a mensagem do erro
+      console.log("Erro ao buscar unidades: ", erro);
+      console.log("Houve um erro ao buscar as unidades: ", erro.sqlMessage);
+      res.status(500).json(erro.sqlMessage);
+    });
+  }
+
+  function atualizarEletroposto(req, res) {
+    // var idPontoDeRecarga = req.params.idPontoDeRecarga;
+    var idPontoDeRecarga = sessionStorage.getItem('idPontoDeRecarga');
+    var nome = req.body.nomeServer;
     var qtdEstacoes = req.body.qtdEstacoesServer;
-    var nomeUnidade = req.body.nomeUnidadeServer;
+    var tipoConector = req.body.tipoConectorServer;
+    var potenciaDeRecarga = req.body.potenciaDeRecargaServer;
+    var redeDeRecarga = req.body.redeDeRecargaServer;
 
-    if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
-        res.status(400).send("Sua senha está indefinida!");
+    if (nome == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (qtdEstacoes == undefined) {
+        res.status(400).send("Sua qtdEstacoes está indefinida!");
+    } else if (tipoConector == undefined) {
+        res.status(400).send("Sua tipoConector está indefinida!");
+    } else if (potenciaDeRecarga == undefined) {
+        res.status(400).send("Sua potenciaDeRecarga está indefinida!");
+    } else if (redeDeRecarga == undefined) {
+        res.status(400).send("Sua redeDeRecarga está indefinida!");
     } else {
-
-        eletropostoModel.pegarEletroposto(email, senha)
+        eletropostoModel.atualizarEletroposto(idPontoDeRecarga, nome, qtdEstacoes, tipoConector, potenciaDeRecarga, redeDeRecarga)
             .then(
-                function (resultadoLogar) {
-                    console.log(`\nResultados encontrados: ${resultadoLogar.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultadoLogar)}`); // transforma JSON em String
+                function (resultadoUpdate) {
+                    console.log(`\nResultados encontrados: ${resultadoUpdate.length}`);
+                    console.log(`Resultados: ${JSON.stringify(resultadoUpdate)}`); // transforma JSON em String
 
-                    if (resultadoLogar.length == 1) {
-                        console.log(resultadoLogar);
-                        res.status(200).send("Login realizado com sucesso!");
-                    } else if (resultadoLogar.length == 0) {
-                        res.status(404).json({message: "Email e/ou senha inválido(s)!"})
-                    } else {
-                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+                    if (resultadoUpdate.length == 1) {
+                        console.log(resultadoUpdate);
+                        res.status(200).send("update realizado com sucesso!");
+                    } else if (resultadoUpdate.length == 0) {
+                        res.status(404).json({ message: "alguma informação errada (update)" })
                     }
                 }
             ).catch(
                 function (erro) {
                     console.log(erro);
-                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+                    console.log("\nHouve um erro ao realizar o update! Erro: ", erro.sqlMessage);
                     res.status(500).json(erro.sqlMessage);
                 }
             );
@@ -96,7 +125,40 @@ function pegarEletroposto(req, res) {
 
 }
 
+function deletarEletroposto(req, res) {
+
+    // var idPontoDeRecarga = req.params.idPontoDeRecarga;
+    var idPontoDeRecarga = sessionStorage.getItem('idPontoDeRecarga');
+
+    if (idPontoDeRecarga == undefined) {
+        res.status(400).send("Seu idPontoDeRecarga está undefined!");
+    } else {
+    eletropostoModel.deletarEletroposto(idPontoDeRecarga)
+        .then(
+            function (resultadoDelete) {
+                console.log(`\nResultados encontrados: ${resultadoDelete.length}`);
+                console.log(`Resultados: ${JSON.stringify(resultadoDelete)}`); // transforma JSON em String
+
+                if (resultadoDelete.length == 1) {
+                    console.log(resultadoDelete);
+                    res.status(200).send("delete realizado com sucesso!");
+                } else if (resultadoDelete.length == 0) {
+                    res.status(404).json({ message: "alguma informação errada (delete)" })
+                }
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao realizar o delete! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+    }
+}
+
 module.exports = {
     cadastrarEletroposto,
-    pegarEletroposto
+    pegarEletroposto,
+    atualizarEletroposto,
+    deletarEletroposto
 }

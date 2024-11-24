@@ -21,7 +21,9 @@ CREATE TABLE pontoDeRecarga (
     qtdEstacoes INT NOT NULL,
     tipoConector VARCHAR(45) NOT NULL,
     potenciaDeRecarga INT NOT NULL,
-    redeDeRecarga VARCHAR(45) NOT NULL
+    redeDeRecarga VARCHAR(45) NOT NULL,
+    fkUsuario INT,
+    FOREING KEY (fkUsuario) REFERENCES usuario(idUsuario) ON DELETE CASCADE
 );
 
 -- Criação da tabela Usuario

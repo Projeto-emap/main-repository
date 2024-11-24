@@ -17,7 +17,7 @@ function perfil() {
 }
 
 function voltar() {
-    window.location.href = "gerenciarEletroposto.html";
+    window.location.href = "gerenciarEletropostoParte1.html";
 }
 
 function editarInformacoes() {
@@ -42,19 +42,19 @@ function finalizarEdicao() {
     const nomeValido = validarInputNomeRepresentante(nomeInput);
     if (!nomeValido) {
         erros.push("Insira um nome válido para a unidade.");
-    } 
+    }
 
     const numeroEstacoesValido = validarNumeroEstacoes(numeroEstacoesInput);
     if (!numeroEstacoesValido) {
         erros.push("Insira um número de estações de carregamento válido.");
         numeroEstacoesInput.classList.toggle('input-invalido');
-    } 
+    }
 
     const conectoresValido = validarSelecionar(conectoresSelect);
     if (!conectoresValido) {
         erros.push("Selecione um tipo de conector.");
         conectoresSelect.classList.toggle('input-invalido');
-    } 
+    }
 
     const potenciaValido = validarSelecionar(potenciaSelect);
     if (!potenciaValido) {
@@ -66,7 +66,7 @@ function finalizarEdicao() {
     if (!velocidadeValido) {
         erros.push("Selecione uma velocidade de carregamento.");
         velocidadeSelect.classList.toggle('input-invalido');
-    } 
+    }
     nomeInput.classList.toggle('input-invalido', !nomeValido);
     nomeInput.classList.toggle('input-valido', nomeValido);
 
@@ -89,13 +89,75 @@ function finalizarEdicao() {
         document.querySelectorAll('input, select').forEach(element => {
             element.setAttribute('disabled', true);
             element.style.borderColor = '';
-        });
+
+            nomeAtualizado = nomeInput.value;
+            qtdEstacoesAtualizado = qtdEstacoes.value;
+            tipoConectorAtualizado = conectoresSelect.value;
+            potenciaDeRecargaAtualizado = potenciaSelect.value;
+            redeDeRecargaAtualizado = velocidadeSelect.value;
+
+            fetch("/usuarios/atualizarEletroposto", {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    idUsuarioServer: sessionStorage.getItem('ID_USUARIO'), // Pegando o ID do usuário armazenado no sessionStorage
+                    nomeServer: nomeAtualizado,
+                    qtdEstacoesServer: qtdEstacoesAtualizado,
+                    tipoConectorServer: tipoConectorAtualizado,
+                    potenciaDeRecargaServer: potenciaDeRecargaAtualizado,
+                    redeDeRecargaServer: redeDeRecargaAtualizado
+                })
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN da função de atualização do perfil!")
+
+                if (resposta.ok) {
+                    console.log(resposta)
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+                        sessionStorage.ID_ELETROPOSTO = json.idPontoDeRecarga;
+                        sessionStorage.NOME_ELETROPOSTO = json.nome;
+                        sessionStorage.CONECTOR_ELETROPOSTO = json.conector;
+                        sessionStorage.POTENCIA_ELETROPOSTO = json.potencia;
+                        sessionStorage.REDE_ELETROPOSO = json.rede;
+                        
+                        sessionStorage.setItem('ID_ELETROPOSTO', json.idPontoDeRecarga);
+                        sessionStorage.setItem('NOME_ELETROPOSTO', json.nome);
+                        sessionStorage.setItem('CONECTOR_ELETROPOSTO', json.conector);
+                        sessionStorage.setItem('POTENCIA_ELETROPOSTO', json.potencia);
+                        sessionStorage.setItem('REDE_ELETROPOSTO', json.rede);
+
+                        alert("Perfil atualizado com sucesso!");
+                        window.location.href = 'perfil.html';
+                    });
+                } else {
+                    resposta.json().then(json => {
+                        console.log("Houve um erro ao tentar atualizar o perfil!");
+
+                        let errosModal = json.message || "Erro ao atualizar o perfil.";
+                        pErro.innerHTML = errosModal;
+                        dialogoErro.showModal();
+                    }).catch(erro => {
+                        console.error("Erro ao processar a resposta de erro:", erro);
+                        pErro.innerHTML = "Erro desconhecido. Por favor, tente novamente mais tarde.";
+                        dialogoErro.showModal();
+                    });
+                }
+            }).catch(function (erro) {
+                console.log(erro);
+                alert("Erro ao tentar atualizar o perfil. Por favor, tente novamente.");
+            });
+        }),
 
         btnEditar.style.display = 'block';
         btnFinalizar.style.display = 'none';
         dialogo.showModal();
     }
 }
+
 
 
 function validarInputNomeRepresentante(input) {

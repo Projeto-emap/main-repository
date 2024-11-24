@@ -81,7 +81,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function salvarInformacoes() {
 
-        //Aqui tem que criar um UPDATE no back-end nas informações Nome, Email e Telefone do representante
+        nomeAtualizado = inputNome.value;
+        emailAtualizado = inputEmail.value;
+        telefoneAtualizado = inputTelefone.value;
         fetch("/usuarios/atualizar", {
             method: "PUT",
             headers: {

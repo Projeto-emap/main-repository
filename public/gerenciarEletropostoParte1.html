@@ -83,6 +83,19 @@
             <div id="mensagemVazia" class="mensagemVazia">
                 <h1>Não há unidades cadastradas.</h1>
             </div>
+
+            <dialog id="modalConfirmacaoExclusao">
+                <div class="modal-excluir">
+                  <h3>Tem certeza que deseja excluir esta unidade?</h3>
+                  <p>Essa ação não poderá ser desfeita.</p>
+              
+                  <div class="modal-actions">
+                    <button id="btnCancelar" class="btnCancelar" onclick="fecharModal()">Cancelar</button>
+                    <button id="btnConfirmar" class="btnConfirmar" onclick="excluirUnidade()">Excluir</button>
+                  </div>
+                </div>
+              </dialog>
+              
         </section>
     </main>
 </body>

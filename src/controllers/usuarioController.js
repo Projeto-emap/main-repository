@@ -49,7 +49,7 @@ function atualizar(req, res) {
     } else if (telefone == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
-        usuarioModel.update(email, nome, telefone)
+        usuarioModel.atualizar(email, nome, telefone)
             .then(
                 function (resultadoUpdate) {
                     console.log(`\nResultados encontrados: ${resultadoUpdate.length}`);
@@ -75,7 +75,7 @@ function atualizar(req, res) {
 
 function deletar(req, res) {
 
-    var idUsuario = req.body.idUsuarioServer;
+    var idUsuario = req.params.idUsuario;
 
     if (idUsuario == undefined) {
         res.status(400).send("Seu idUsuario está undefined!");

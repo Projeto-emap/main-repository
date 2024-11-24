@@ -25,6 +25,7 @@ function cadastrar(req, res) {
     res.status(400).send("descricao está undefined!");
   } else if (idUsuario == undefined) {
     res.status(400).send("idUsuario está undefined!");
+    
   } else {
 
 
