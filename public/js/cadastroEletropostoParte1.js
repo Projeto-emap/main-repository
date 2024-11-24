@@ -1,5 +1,5 @@
 function voltar() {
-    window.location.href = "cadastroEletropostoParte1.html";
+    window.location.href = "gerenciarEletroposto.html";
 }
 
 function index() {

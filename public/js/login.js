@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     senhaServer: senha
                 })
             }).then(function (resposta) {
-                console.log("ESTOU NO THEN da funcção de login!")
+                console.log("ESTOU NO THEN da função de login!")
 
                 if (resposta.ok) {
                     console.log(resposta)
@@ -66,6 +66,16 @@ document.addEventListener('DOMContentLoaded', function () {
                         sessionStorage.EMAIL_USUARIO = json.email;
                         sessionStorage.NOME_USUARIO = json.nome;
                         sessionStorage.ID_USUARIO = json.idUsuario;
+                        sessionStorage.TELEFONE_USUARIO = json.telefone;
+
+                        // sessionStorage.setItem('EMAIL_USUARIO', json.email);
+                        // sessionStorage.setItem('NOME_USUARIO', json.nome);
+                        // sessionStorage.setItem('ID_USUARIO', json.idUsuario);
+                        console.log("Dados armazenados no sessionStorage:");
+                        console.log("EMAIL_USUARIO:", sessionStorage.EMAIL_USUARIO);
+                        console.log("NOME_USUARIO:", sessionStorage.NOME_USUARIO);
+                        console.log("ID_USUARIO:", sessionStorage.ID_USUARIO);
+                        console.log("TELEFONE:", sessionStorage.TELEFONE_USUARIO);
                     })
                     dialogo.showModal();
                 } else {

@@ -17,7 +17,7 @@ function perfil() {
 }
 
 function voltar() {
-    window.location.href = "cadastroEletropostoParte2.html";
+    window.location.href = "gerenciarEletroposto.html";
 }
 
 function editarInformacoes() {

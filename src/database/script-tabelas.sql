@@ -14,9 +14,13 @@ CREATE TABLE empresa (
 CREATE TABLE pontoDeRecarga (
     idPontoDeRecarga INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(45) NOT NULL,
-    tipoDeLocal VARCHAR(45) NOT NULL,
+    cep CHAR(8) NOT NULL,
+    cidade VARCHAR(50) NOT NULL,
+    rua VARCHAR(50) NOT NULL,
+    numero VARCHAR(8) NOT NULL,
     qtdEstacoes INT NOT NULL,
     tipoConector VARCHAR(45) NOT NULL,
+    potenciaDeRecarga INT NOT NULL,
     redeDeRecarga VARCHAR(45) NOT NULL
 );
 
@@ -35,7 +39,7 @@ CREATE TABLE usuario (
 -- Criação da tabela Endereco
 CREATE TABLE endereco (
     idEndereco INT AUTO_INCREMENT PRIMARY KEY,
-    cep VARCHAR(8) NOT NULL,
+    cep CHAR(8) NOT NULL,
     estado VARCHAR(20) NOT NULL,
     fkPontoRecarga INT,
     FOREIGN KEY (fkPontoRecarga) REFERENCES pontoDeRecarga(idPontoDeRecarga) ON DELETE CASCADE

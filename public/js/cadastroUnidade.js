@@ -173,14 +173,54 @@ function finalizar() {
 
 
 
-    // colocar a função back-end de cadastro aqui
 
 
 
     if (estacoesValido && conectoresValido && potenciaValido && velocidadeValido) {
+
+        fetch("/usuarios/cadastrarEletroposto", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js 
+                nomeServer: nome,
+                cepServer: cep,
+                cidadeServer: cidade,
+                ruaServer: rua,
+                numeroServer: numero,
+                qtdEstacoesServer: qtdEstacoes,
+                tipoConectorServer: tipoConector,
+                potenciaDeRecargaServer: potenciaDeRecarga,
+                redeDeRecargaServer: redeDeRecarga
+    
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+    
+                if (resposta.ok) {
+    
+                    // setTimeout(() => {
+                        const dialogo = document.getElementById('dialogo');
+                        dialogo.showModal();
+                    // }, "2000");
+    
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+
+
         dialogo.showModal();
     }
 }
 function cadastroRealizado() {
-    window.location.href = 'cadastroEletropostoParte1.html';
+    window.location.href = 'gerenciarEletropostoParte1.html';
 }

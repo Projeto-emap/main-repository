@@ -21,7 +21,7 @@ function logar(req, res) {
                         console.log(resultadoLogar);
                         res.status(200).send("Login realizado com sucesso!");
                     } else if (resultadoLogar.length == 0) {
-                        res.status(404).json({message: "Email e/ou senha inválido(s)!"})
+                        res.status(404).json({ message: "Email e/ou senha inválido(s)!" })
                     } else {
                         res.status(403).send("Mais de um usuário com o mesmo login e senha!");
                     }
@@ -37,6 +37,72 @@ function logar(req, res) {
 
 }
 
+function atualizar(req, res) {
+    var email = req.body.emailServer;
+    var nome = req.body.nomeServer;
+    var telefone = req.body.telefoneServer;
+
+    if (email == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (nome == undefined) {
+        res.status(400).send("Sua nome está indefinida!");
+    } else if (telefone == undefined) {
+        res.status(400).send("Sua senha está indefinida!");
+    } else {
+        usuarioModel.update(email, nome, telefone)
+            .then(
+                function (resultadoUpdate) {
+                    console.log(`\nResultados encontrados: ${resultadoUpdate.length}`);
+                    console.log(`Resultados: ${JSON.stringify(resultadoUpdate)}`); // transforma JSON em String
+
+                    if (resultadoUpdate.length == 1) {
+                        console.log(resultadoUpdate);
+                        res.status(200).send("update realizado com sucesso!");
+                    } else if (resultadoUpdate.length == 0) {
+                        res.status(404).json({ message: "alguma informação errada (update)" })
+                    }
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao realizar o update! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+}
+
+function deletar(req, res) {
+
+    var idUsuario = req.body.idUsuarioServer;
+
+    if (idUsuario == undefined) {
+        res.status(400).send("Seu idUsuario está undefined!");
+    } else {
+    usuarioModel.deletar(idUsuario)
+        .then(
+            function (resultadoDelete) {
+                console.log(`\nResultados encontrados: ${resultadoDelete.length}`);
+                console.log(`Resultados: ${JSON.stringify(resultadoDelete)}`); // transforma JSON em String
+
+                if (resultadoDelete.length == 1) {
+                    console.log(resultadoDelete);
+                    res.status(200).send("delete realizado com sucesso!");
+                } else if (resultadoDelete.length == 0) {
+                    res.status(404).json({ message: "alguma informação errada (delete)" })
+                }
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao realizar o delete! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+    }
+}
+
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     // var nome = req.body.nomeServer; 
@@ -45,7 +111,7 @@ function cadastrar(req, res) {
     // var numeroCelular = req.body.numeroCelularServer;
     // var senha = req.body.senhaServer;
 
-    var cnpj = req.body.cnpjServer; 
+    var cnpj = req.body.cnpjServer;
     var nomeEmpresa = req.body.nomeEmpresaServer;
     var estado = req.body.estadoServer;
     var cep = req.body.cepServer;
@@ -59,21 +125,21 @@ function cadastrar(req, res) {
     // Faça as validações dos valores
     if (cnpj == undefined) {
         res.status(400).send("Seu cnpj está undefined!");
-    }else if(nomeEmpresa == undefined){
+    } else if (nomeEmpresa == undefined) {
         res.status(400).send("Seu nomeEmpresa está undefined!");
-    }else if (estado == undefined) {
+    } else if (estado == undefined) {
         res.status(400).send("Seu estado está undefined!");
-    }else if(cep == undefined){
+    } else if (cep == undefined) {
         res.status(400).send("Seu cep está undefined!");
-    }else if(nome == undefined){
+    } else if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
-    }else if(cpf == undefined){
+    } else if (cpf == undefined) {
         res.status(400).send("Seu cpf está undefined!");
-    } else if(email == undefined){
+    } else if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
-    }else if(celular == undefined){
+    } else if (celular == undefined) {
         res.status(400).send("Seu celular está undefined!");
-    }else if(senha == undefined){
+    } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined");
     } else {
 
@@ -98,5 +164,7 @@ function cadastrar(req, res) {
 
 module.exports = {
     logar,
-    cadastrar
+    cadastrar,
+    atualizar,
+    deletar
 }
