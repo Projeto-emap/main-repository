@@ -5,8 +5,8 @@ function cadastrarEletroposto(nome, cep, cidade, rua, numero, qtdEstacoes, tipoC
 
     var instrucaoSql = `
     INSERT INTO pontoDeRecarga (nome, cep, cidade, rua, numero, qtdEstacoes, tipoConector,
-    potenciaDeRecarga, redeDeRecarga) VALUES ('${nome}', '${cep}', '${cidade}', '${rua}', '${numero}', '${tipoConector},
-     '${potenciaDeRecarga}, '${redeDeRecarga}');
+    potenciaDeRecarga, redeDeRecarga, fkUsuario) VALUES ('${nome}', '${cep}', '${cidade}', '${rua}', '${numero}', '${tipoConector}',
+     '${potenciaDeRecarga}', '${redeDeRecarga}', '${fkUsuario}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
 

@@ -63,14 +63,15 @@ document.addEventListener('DOMContentLoaded', function () {
                     resposta.json().then(json => {
                         console.log(json)
                         console.log(JSON.stringify(json))
-                        sessionStorage.EMAIL_USUARIO = json.email;
-                        sessionStorage.NOME_USUARIO = json.nome;
-                        sessionStorage.ID_USUARIO = json.idUsuario;
-                        sessionStorage.TELEFONE_USUARIO = json.telefone;
+                        // sessionStorage.EMAIL_USUARIO = json.email;
+                        // sessionStorage.NOME_USUARIO = json.nome;
+                        // sessionStorage.ID_USUARIO = json.idUsuario;
+                        // sessionStorage.TELEFONE_USUARIO = json.telefone;
 
-                        // sessionStorage.setItem('EMAIL_USUARIO', json.email);
-                        // sessionStorage.setItem('NOME_USUARIO', json.nome);
-                        // sessionStorage.setItem('ID_USUARIO', json.idUsuario);
+                        sessionStorage.setItem('EMAIL_USUARIO', json.email);
+                        sessionStorage.setItem('NOME_USUARIO', json.nome);
+                        sessionStorage.setItem('ID_USUARIO', json.idUsuario);
+                        sessionStorage.setItem('TELEFONE_USUARIO', json.telefone);
                         console.log("Dados armazenados no sessionStorage:");
                         console.log("EMAIL_USUARIO:", sessionStorage.EMAIL_USUARIO);
                         console.log("NOME_USUARIO:", sessionStorage.NOME_USUARIO);

@@ -16,7 +16,8 @@ function cadastrarEletroposto(req, res) {
     var qtdEstacoes = req.body.qtdEstacoesServer;
     var tipoConector = req.body.tipoConectorServer;
     var potenciaDeRecarga = req.body.potenciaDeRecargaServer;
-    var redeDeRecarga = req.body.senhaServer;
+    var redeDeRecarga = req.body.redeDeRecargaServer;
+    var fkUsuario = sessionStorage.getItem('idUsuario');
 
 
     // Faça as validações dos valores
@@ -38,10 +39,12 @@ function cadastrarEletroposto(req, res) {
         res.status(400).send("Seu potenciaDeRecarga está undefined!");
     } else if (redeDeRecarga == undefined) {
         res.status(400).send("Sua redeDeRecarga está undefined");
+    } else if (fkUsuario == undefined) {
+        res.status(400).send("Sua fkUsuario está undefined");
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        eletropostoModel.cadastrarEletroposto(nome, cep, cidade, rua, numero, qtdEstacoes, tipoConector, potenciaDeRecarga, redeDeRecarga)
+        eletropostoModel.cadastrarEletroposto(nome, cep, cidade, rua, numero, qtdEstacoes, tipoConector, potenciaDeRecarga, redeDeRecarga, fkUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -63,25 +66,25 @@ function cadastrarEletroposto(req, res) {
 function pegarEletroposto(req, res) {
     // Recupera o ID do usuário dos parâmetros da URL
     var idUsuario = req.params.idUsuario;
-  
+
     // Chama o modelo para buscar as unidades associadas ao idUsuario
     unidadeModel.buscarUnidadesPorUsuario(idUsuario).then((resultado) => {
-      // Se encontrou unidades, retorna elas no formato JSON
-      if (resultado.length > 0) {
-        res.status(200).json(resultado);
-      } else {
-        // Se não encontrou unidades, retorna um status 204 (sem conteúdo)
-        res.status(204).json([]);
-      }
+        // Se encontrou unidades, retorna elas no formato JSON
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            // Se não encontrou unidades, retorna um status 204 (sem conteúdo)
+            res.status(204).json([]);
+        }
     }).catch(function (erro) {
-      // Em caso de erro, loga o erro e retorna o status 500 com a mensagem do erro
-      console.log("Erro ao buscar unidades: ", erro);
-      console.log("Houve um erro ao buscar as unidades: ", erro.sqlMessage);
-      res.status(500).json(erro.sqlMessage);
+        // Em caso de erro, loga o erro e retorna o status 500 com a mensagem do erro
+        console.log("Erro ao buscar unidades: ", erro);
+        console.log("Houve um erro ao buscar as unidades: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
     });
-  }
+}
 
-  function atualizarEletroposto(req, res) {
+function atualizarEletroposto(req, res) {
     // var idPontoDeRecarga = req.params.idPontoDeRecarga;
     var idPontoDeRecarga = sessionStorage.getItem('idPontoDeRecarga');
     var nome = req.body.nomeServer;
@@ -133,26 +136,26 @@ function deletarEletroposto(req, res) {
     if (idPontoDeRecarga == undefined) {
         res.status(400).send("Seu idPontoDeRecarga está undefined!");
     } else {
-    eletropostoModel.deletarEletroposto(idPontoDeRecarga)
-        .then(
-            function (resultadoDelete) {
-                console.log(`\nResultados encontrados: ${resultadoDelete.length}`);
-                console.log(`Resultados: ${JSON.stringify(resultadoDelete)}`); // transforma JSON em String
+        eletropostoModel.deletarEletroposto(idPontoDeRecarga)
+            .then(
+                function (resultadoDelete) {
+                    console.log(`\nResultados encontrados: ${resultadoDelete.length}`);
+                    console.log(`Resultados: ${JSON.stringify(resultadoDelete)}`); // transforma JSON em String
 
-                if (resultadoDelete.length == 1) {
-                    console.log(resultadoDelete);
-                    res.status(200).send("delete realizado com sucesso!");
-                } else if (resultadoDelete.length == 0) {
-                    res.status(404).json({ message: "alguma informação errada (delete)" })
+                    if (resultadoDelete.length == 1) {
+                        console.log(resultadoDelete);
+                        res.status(200).send("delete realizado com sucesso!");
+                    } else if (resultadoDelete.length == 0) {
+                        res.status(404).json({ message: "alguma informação errada (delete)" })
+                    }
                 }
-            }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                console.log("\nHouve um erro ao realizar o delete! Erro: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao realizar o delete! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
     }
 }
 

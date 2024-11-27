@@ -10,6 +10,18 @@ CREATE TABLE empresa (
     cnpj VARCHAR(14) NOT NULL UNIQUE
 );
 
+-- Criação da tabela Usuario
+CREATE TABLE usuario (
+    idUsuario INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(80) NOT NULL,
+    cpf VARCHAR(14) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    senha VARCHAR(12) NOT NULL,
+    numeroCelular VARCHAR (13) NOT NULL UNIQUE,
+    fkEmpresa INT,
+    FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa) ON DELETE SET NULL
+);
+
 -- Criação da tabela PontoDeRecarga
 CREATE TABLE pontoDeRecarga (
     idPontoDeRecarga INT AUTO_INCREMENT PRIMARY KEY,
@@ -23,19 +35,7 @@ CREATE TABLE pontoDeRecarga (
     potenciaDeRecarga INT NOT NULL,
     redeDeRecarga VARCHAR(45) NOT NULL,
     fkUsuario INT,
-    FOREING KEY (fkUsuario) REFERENCES usuario(idUsuario) ON DELETE CASCADE
-);
-
--- Criação da tabela Usuario
-CREATE TABLE usuario (
-    idUsuario INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(80) NOT NULL,
-    cpf VARCHAR(14) NOT NULL UNIQUE,
-    email VARCHAR(255) NOT NULL UNIQUE,
-    senha VARCHAR(12) NOT NULL,
-    numeroCelular VARCHAR (13) NOT NULL UNIQUE,
-    fkEmpresa INT,
-    FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa) ON DELETE SET NULL
+	FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario) ON DELETE CASCADE
 );
 
 -- Criação da tabela Endereco

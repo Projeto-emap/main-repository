@@ -11,6 +11,7 @@ const estacoesInput = document.getElementById('estacoes');
 const conectoresSelect = document.getElementById('conectores');
 const potenciaSelect = document.getElementById('potencia');
 const velocidadeSelect = document.getElementById('velocidade');
+const fkUsuario = sessionStorage.getItem('idUsuario');
 
 btnVoltar.addEventListener('click', function () {
     document.getElementById('parte2').style.display = 'none';
@@ -138,18 +139,22 @@ function erro() {
 
 function finalizar() {
     const estacoesValido = estacoesInput.value.trim() !== '';
+    let qtdEstacoes = Number(estacoesInput.value);
     estacoes.classList.toggle('input-invalido', !estacoesValido);
     estacoes.classList.toggle('input-valido', estacoesValido);
 
     const conectoresValido = conectoresSelect.value !== '#';
+    let tipoConector = conectoresSelect.value;
     conectores.classList.toggle('input-invalido', !conectoresValido);
     conectores.classList.toggle('input-valido', conectoresValido);
 
     const potenciaValido = potenciaSelect.value !== '#';
+    let potenciaDeRecarga = Number(potenciaSelect.value);
     potencia.classList.toggle('input-invalido', !potenciaValido);
     potencia.classList.toggle('input-valido', potenciaValido);
 
     const velocidadeValido = velocidadeSelect.value !== '#';
+    let redeDeRecarga = velocidadeSelect.value;
     velocidade.classList.toggle('input-invalido', !velocidadeValido);
     velocidade.classList.toggle('input-valido', velocidadeValido);
 
@@ -178,14 +183,12 @@ function finalizar() {
 
     if (estacoesValido && conectoresValido && potenciaValido && velocidadeValido) {
 
-        fetch("/usuarios/cadastrarEletroposto", {
+        fetch("/eletroposto/cadastrarEletroposto", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js 
                 nomeServer: nome,
                 cepServer: cep,
                 cidadeServer: cidade,
@@ -194,28 +197,24 @@ function finalizar() {
                 qtdEstacoesServer: qtdEstacoes,
                 tipoConectorServer: tipoConector,
                 potenciaDeRecargaServer: potenciaDeRecarga,
-                redeDeRecargaServer: redeDeRecarga
-    
-            }),
+                redeDeRecargaServer: redeDeRecarga,
+                fkUsuarioServer: fkUsuario
+            })
         })
             .then(function (resposta) {
-                console.log("resposta: ", resposta);
-    
                 if (resposta.ok) {
-    
-                    // setTimeout(() => {
-                        const dialogo = document.getElementById('dialogo');
-                        dialogo.showModal();
-                    // }, "2000");
-    
+                    const dialogo = document.getElementById('dialogo');
+                    dialogo.showModal();
                 } else {
-                    throw "Houve um erro ao tentar realizar o cadastro!";
+                    return resposta.text().then(errorMessage => {
+                        throw new Error(errorMessage || "Houve um erro ao tentar realizar o cadastro!");
+                    });
                 }
             })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
+            .catch(function (erro) {
+                console.error(`#ERRO: ${erro.message}`);
+                alert(erro.message); // Exibir mensagem ao usuário
             });
-
 
 
         dialogo.showModal();
