@@ -16,7 +16,7 @@ body {
     gap: 2%;
     padding: 1%;
     padding-top: 2%;
-    background-color: #111;
+    background-color: #e0e0e0;
 }
 
 .left-content-sidebar {
@@ -126,14 +126,52 @@ body {
     padding: 1%;
 }
 
+.top-right{
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+#donutchart{
+  width: 500px; 
+  height: 300px;
+}
+.legend {
+  background-color: #222222;
+  display: flex;
+  flex-direction: column;
+  width: 90%; 
+  border-radius: 10px;
+  padding-left: 20px;
+  transform:translate(0px, -8px) ;  
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin: 5px;
+  color: #ffff;
+}
+.legend-color {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
 .right-content {
     display: flex;
     width: 55.25%;
     height: 100%;
     gap: 2.25%;
     align-items: flex-start;
+    justify-content: center;
     flex-direction: column;
 }
+
+/* #curve_chart {
+  background-color: #333333;
+}#curve_chart {
+  background-color: #333333;
+} */
 
 .bottom-right {
     background-color: #111;

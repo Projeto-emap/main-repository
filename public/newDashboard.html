@@ -22,22 +22,99 @@
                         <div class="bottom-left">*Texto aqui*</div>
                     </div>
                     <div class="right-content">
-                        <div class="top-right">GRAFICO AQUI</div>
-                        <div class="bottom-right">*Texto aqui*</div>
+                        <div class="top-right">
+                            <div id="donutchart"></div>
+                            
+                            <div class="legend">
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background-color: #FF005C;"></div>
+                                    Bairros com potencial, sem seus eletropostos
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background-color: #dc3912;"></div>
+                                    Bairros com potencial, com seus eletropostos
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
                     </div>
                 </div>
             </div>
             <div class="bottom-bar">
                 <div class="title" style="color: white;">Title</div>
-                <div class="dashboard" style="color: white;">*DASHBOARD HERE*</div>
+                <div class="dashboard" style="color: white;">
+                    <div class="chart" id="curve_chart" style="width: 97%; height: 100%"></div>
+                </div>
             </div>
         </div>
         <div class="right-content-sidebar">
             <div class="sidebar-right-top">*Texto aqui*</div>
             <div class="sidebar-right-middle">*Texto aqui*</div>
             <div class="sidebar-right-bottom">*Texto aqui*</div>
-    </div>
+        </div>
     </div>
 </body>
 
 </html>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Category', 'Value'],
+            ['Bairros com potencial, sem seus eletropostos', 1],
+            ['Bairros com potencial, com seus eletropostos', 3],
+        ]);
+
+        var options = {
+            pieHole: 0.6,
+            backgroundColor: '#333333',
+            legend: 'none',
+            slices: {
+                0: { color: '#FF005C' },
+                4: { color: '#00AAFF' }
+            }
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+    }
+
+</script>
+
+<script src="js/dashboard.js"></script>
+<script src="js/voltarIndex.js"></script>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+ google.charts.load('current', { 'packages': ['corechart'] });
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Anos', 'Emplacamentos'],
+          ['2004', 660],
+          ['2005', 1000],
+          ['2006', 800],
+          ['2007', 1170]
+        ]);
+
+        var options = {
+          title: 'Emplacamentos ao longo do tempo',
+          legend: { position: 'bottom' },
+          backgroundColor: '#333333',
+          titleTextStyle: { color: 'white' },
+          legendTextStyle: { color: 'white' },
+          hAxis: { textStyle: { color: 'white' } }, // Cor dos anos
+          vAxis: { textStyle: { color: 'white' } }  // Cor dos emplacamentos
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
