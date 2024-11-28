@@ -105,9 +105,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     console.log(json);
                     console.log(JSON.stringify(json));
 
-                    sessionStorage.setItem('EMAIL_USUARIO', json.email);
-                    sessionStorage.setItem('NOME_USUARIO', json.nome);
-                    sessionStorage.setItem('TELEFONE_USUARIO', json.telefone);
+                    sessionStorage.setItem('EMAIL_USUARIO', json[0].email);
+                    sessionStorage.setItem('NOME_USUARIO', json[0].nome);
+                    sessionStorage.setItem('TELEFONE_USUARIO', json[0].telefone);
 
                     alert("Perfil atualizado com sucesso!");
                      window.location.href = 'perfil.html';
