@@ -1,8 +1,15 @@
-function index(){
+function index() {
     window.location.href = 'index.html';
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+
+    const nomeUsuarioMain = document.querySelector("#usuarioMain");
+    const nomeUsuarioEditar = document.querySelector("#usuarioEditar");
+    const telefoneUsuarioEditar = document.querySelector("#telefoneEditar");
+    const emailUsuarioEditar = document.querySelector("#emailEditar");
+
+    const deletarConta = document.querySelector('#confirm-delete');
     const inputEmail = document.querySelector('.inputEmail');
     const inputNome = document.querySelector('.inputNome');
     const inputTelefone = document.querySelector('.inputTelefone');
@@ -12,15 +19,55 @@ document.addEventListener('DOMContentLoaded', function () {
     const buttonCancelar = document.getElementById('buttonCancelar');
     const buttonExcluir = document.getElementById('buttonExcluir');
     const buttonCancelarExcluir = document.getElementById('buttonCancelarExcluir');
-    const buttonConfirmarExcluir =  document.getElementById('buttonConfirmarExcluir');
+    const buttonConfirmarExcluir = document.getElementById('buttonConfirmarExcluir');
+
+
+    fetch("/usuarios/carregarInfo", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+        .then(function (resposta) {
+            console.log("ESTOU NO THEN da função de carregarInfo!");
+
+            if (resposta.ok) {
+                return resposta.json();
+            } else {
+                return resposta.json().then(json => {
+                    throw new Error(json.message || "Erro ao realizar o login.");
+                });
+            }
+        })
+        .then(function (json) {
+            console.log("CarregarInfo realizado com sucesso:", json);
+
+            sessionStorage.setItem('NOME_USUARIO', json.nome);
+            localStorage.setItem("TELEFONE_USUARIO", json.numeroCelular);
+            localStorage.setItem("EMAIL_USUARIO", json.email);
+
+            console.log("Dados armazenados no sessionStorage:");
+            console.log("NOME_USUARIO:", sessionStorage.getItem('NOME_USUARIO'));
+
+            
+
+        })
+        .catch(function (erro) {
+            console.error("Erro durante o login:", erro.message);
+        });
+
+        nomeUsuarioMain.innerHTML = sessionStorage.getItem("NOME_USUARIO");
+        nomeUsuarioEditar.value = sessionStorage.getItem("NOME_USUARIO");
+        telefoneUsuarioEditar.value = localStorage.getItem("TELEFONE_USUARIO");
+        emailUsuarioEditar.value = localStorage.getItem("EMAIL_USUARIO");
+
+
 
     function confirmDelete() {
         document.getElementById('confirm-delete').style.display = 'flex';
         document.querySelector('.cancel-button').style.display = 'block';
         document.querySelector('.confirm-button').style.display = 'block';
         document.querySelector('.delete-account').style.display = 'none';
-
-        modal.showModal();
     }
 
     function cancelDelete() {
@@ -28,8 +75,15 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('confirm-delete').style.display = 'none';
         document.querySelector('.cancel-button').style.display = 'none';
         document.querySelector('.confirm-button').style.display = 'none';
+    }
 
-        modal.close();
+    function deletarContaUsuario() {
+        deletarConta.showModal();
+    }
+
+
+    function closeModal() {
+        deletarConta.close();
     }
 
     function deletar() {
@@ -51,20 +105,16 @@ document.addEventListener('DOMContentLoaded', function () {
                     console.log(json)
                     console.log(JSON.stringify(json))
                 })
-                dialogo.showModal();
             } else {
                 resposta.json().then(json => {
                     console.log("Houve um erro ao tentar realizar o deletar login!");
-                    
-                    let errosModal = json.message || "Erro ao realizar o deletar login."
-                    pErro.innerHTML = errosModal;
-                    dialogoErro.showModal();
                 }).catch(erro => {
                     console.error("Erro ao processar a resposta de erro:", erro);
-                    pErro.innerHTML = "Erro desconhecido. Por favor, tente novamente mais tarde.";
-                    dialogoErro.showModal();
                 });
+            }
+        })
     }
+
 
     function editarInformacoes() {
         document.querySelector('.buttonEditar').style.display = 'none';
@@ -76,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
         inputEmail.style.color = 'black';
         inputNome.style.color = 'black';
         inputTelefone.style.color = 'black';
-        
+
     }
 
     function salvarInformacoes() {
@@ -84,6 +134,17 @@ document.addEventListener('DOMContentLoaded', function () {
         nomeAtualizado = inputNome.value;
         emailAtualizado = inputEmail.value;
         telefoneAtualizado = inputTelefone.value;
+
+        document.querySelector('.buttonEditar').style.display = 'block';
+        document.querySelector('.buttonSalvar').style.display = 'none';
+        document.querySelector('.buttonCancelar').style.display = 'none';
+
+        toggleInputReadonly();
+
+        inputEmail.style.color = 'gray';
+        inputNome.style.color = 'gray';
+        inputTelefone.style.color = 'gray';
+
         fetch("/usuarios/atualizar", {
             method: "PUT",
             headers: {
@@ -105,24 +166,15 @@ document.addEventListener('DOMContentLoaded', function () {
                     console.log(json);
                     console.log(JSON.stringify(json));
 
-                    sessionStorage.setItem('EMAIL_USUARIO', json[0].email);
-                    sessionStorage.setItem('NOME_USUARIO', json[0].nome);
-                    sessionStorage.setItem('TELEFONE_USUARIO', json[0].telefone);
-
                     alert("Perfil atualizado com sucesso!");
-                     window.location.href = 'perfil.html';
+                    window.location.href = 'perfil.html';
                 });
             } else {
                 resposta.json().then(json => {
                     console.log("Houve um erro ao tentar atualizar o perfil!");
 
-                    let errosModal = json.message || "Erro ao atualizar o perfil.";
-                    pErro.innerHTML = errosModal;
-                    dialogoErro.showModal();
                 }).catch(erro => {
                     console.error("Erro ao processar a resposta de erro:", erro);
-                    pErro.innerHTML = "Erro desconhecido. Por favor, tente novamente mais tarde.";
-                    dialogoErro.showModal();
                 });
             }
         }).catch(function (erro) {
@@ -131,28 +183,16 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    });
+
+    function cancelarInformacoes() {
+        // Implementar o sessionStorage:
+        inputEmail.value = sessionStorage.getItem('EMAIL_USUARIO')
+        inputNome.value = sessionStorage.getItem('NOME_USUARIO');
+        inputTelefone.value = sessionStorage.getItem('TELEFONE_USUARIO');
 
         document.querySelector('.buttonEditar').style.display = 'block';
         document.querySelector('.buttonSalvar').style.display = 'none';
         document.querySelector('.buttonCancelar').style.display = 'none';
-
-        toggleInputReadonly();
-
-        inputEmail.style.color = 'gray';
-        inputNome.style.color = 'gray';
-        inputTelefone.style.color = 'gray';
-    }
-
-    function cancelarInformacoes() {
-    // Implementar o sessionStorage:
-    inputEmail.value = sessionStorage.getItem('EMAIL_USUARIO')
-    inputNome.value = sessionStorage.getItem('NOME_USUARIO') ;
-    inputTelefone.value = sessionStorage.getItem('TELEFONE_USUARIO');
-
-    document.querySelector('.buttonEditar').style.display = 'block';
-    document.querySelector('.buttonSalvar').style.display = 'none';
-    document.querySelector('.buttonCancelar').style.display = 'none';
 
         document.querySelector('.buttonEditar').style.display = 'block';
         document.querySelector('.buttonSalvar').style.display = 'none';
@@ -169,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function () {
         inputEmail.toggleAttribute('readonly');
         inputNome.toggleAttribute('readonly');
         inputTelefone.toggleAttribute('readonly');
-        
+
     }
 
     buttonSalvar.addEventListener('click', salvarInformacoes);

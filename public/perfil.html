@@ -25,7 +25,7 @@
         </ul>
 
         <ul class="direita">
-            <li><div class="usuario">Henrique</div></li>
+            <li><div class="usuario" id="usuario">default</div></li>
             <li><img src="assets/img/perfil.png" class="user-icon"></li>
         </ul>
     </nav>
@@ -37,7 +37,7 @@
                 <img src="assets/img/perfil.png" class="profile-pic">
             </div>
             <div class="profile-info">
-                <h2>Henrique Pimenta</h2>
+                <h2 id="usuarioMain">default</h2>
                 <p><i>Coordenador Financeiro</i></p>
             </div>
             <button class="buttonEditar" id="buttonEditar">Editar Informações</button>
@@ -49,19 +49,19 @@
             <div class="inputs">
                 <div class="info-item">
                     <label>Email</label>
-                    <input type="text" value="henrique.pimenta@email.com" readonly class="inputEmail">
+                    <input id="emailEditar" type="text" value="henrique.pimenta@email.com" readonly class="inputEmail">
                 </div>
                 <div class="info-item">
                     <label>Nome</label>
-                    <input type="text" value="Henrique Pimenta" readonly class="inputNome">
+                    <input id="usuarioEditar" type="text" value="Henrique Pimenta" readonly class="inputNome">
                 </div>
             </div>
             <div class="inputEBotao">
                 <div class="info-item">
                     <label>Telefone</label>
-                    <input type="text" value="(11) 91234-5678" readonly class="inputTelefone">
+                    <input id="telefoneEditar" type="text" value="(11) 91234-5678" readonly class="inputTelefone">
                 </div>
-                <button class="delete-account" id="buttonExcluir">Excluir conta</button>
+                <button class="delete-account" id="buttonExcluir" onclick="deletarContaUsuario()">Excluir conta</button>
             </div>
         </section>
         <dialog id="confirm-delete">
@@ -71,12 +71,13 @@
                 <p>A exclusão de sua conta é uma ação permanente que não poderá ser desfeita. Quer excluir mesmo assim?</p>
             </div>
             <div class="modal-buttons">
-                <button class="confirm-button" id="buttonConfirmarExcluir">Excluir</button>
-                <button class="cancel-button" id="buttonCancelarExcluir">Cancelar</button>
+                <button class="confirm-button" id="buttonConfirmarExcluir" onclick="deletar()">Excluir</button>
+                <button class="cancel-button" id="buttonCancelarExcluir" onclick="closeModal()">Cancelar</button>
             </div>
         </dialog>
     </main>
     <script src="js/perfil.js"></script>
+    <script src="js/headerCrud.js"></script>
 </body>
 
 </html>

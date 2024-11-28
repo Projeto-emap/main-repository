@@ -20,5 +20,9 @@ router.put("/atualizar", function (req, res) {
     usuarioController.atualizar(req, res);
 });
 
+router.get("/carregarInfo", function (req, res) {
+    usuarioController.carregarInfo(req, res);
+})
+
 
 module.exports = router;

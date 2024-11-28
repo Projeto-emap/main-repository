@@ -3,7 +3,7 @@ var database = require("../database/config")
 function logar(email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
     var instrucaoSql = `
-        SELECT idUsuario, nome, email, numeroCelular FROM usuario WHERE email = '${email}' AND senha = '${senha}';
+        SELECT idUsuario, nome FROM usuario WHERE email = '${email}' AND senha = '${senha}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -39,13 +39,24 @@ function deletar(idUsuario) {
     return database.executar(instrucaoSql);
 }
 
-function atualizar(idUsuario, nome, cpf, email, celular, senha) {
+function atualizar(idUsuario, nome, email, celular) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function atualizar(): ", idUsuario, nome, cpf, email, celular, senha);
 
     var instrucaoSql = `
         UPDATE usuario 
-        SET nome = '${nome}', cpf = '${cpf}', email = '${email}', numeroCelular = '${celular}', senha = '${senha}' 
+        SET nome = '${nome}', email = '${email}', numeroCelular = '${celular}' 
         WHERE idUsuario = ${idUsuario};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+
+    return database.executar(instrucaoSql);
+}
+
+function carregarInfo(idUsuario) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function atualizar(): ", idUsuario, nome, cpf, email, celular, senha);
+
+    var instrucaoSql = `
+        SELECT email, numeroCelular usuario FROM usuario WHERE idUsuario = ${idUsuario};
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
 
@@ -56,5 +67,6 @@ module.exports = {
     logar,
     cadastrar,
     atualizar,
-    deletar
+    deletar,
+    carregarInfo
 };

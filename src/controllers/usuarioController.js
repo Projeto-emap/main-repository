@@ -12,35 +12,29 @@ function logar(req, res) {
     } else {
 
         usuarioModel.logar(email, senha)
-            .then(
-                function (resultadoLogar) {
-                    console.log(`\nResultados encontrados: ${resultadoLogar.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultadoLogar)}`); // transforma JSON em String
-
-                    if (resultadoLogar.length == 1) {
-                        console.log(resultadoLogar);
-                        res.status(200).send("Login realizado com sucesso!");
-                    } else if (resultadoLogar.length == 0) {
-                        res.status(404).json({ message: "Email e/ou senha inválido(s)!" })
-                    } else {
-                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
-                    }
+            .then(function (resultadoLogar) {
+                if (resultadoLogar.length == 1) {
+                    res.status(200).json({
+                        idUsuario: resultadoLogar[0].idUsuario,
+                        nome: resultadoLogar[0].nome
+                    });
+                } else if (resultadoLogar.length == 0) {
+                    res.status(404).json({ message: "Email e/ou senha inválido(s)!" })
+                } else {
+                    res.status(403).send("Mais de um usuário com o mesmo login e senha!");
                 }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
+            }).catch(function (erro) {
+                console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            });
     }
-
 }
 
 function atualizar(req, res) {
+    var idUsuario = req.params.idUsuario;
     var email = req.body.emailServer;
     var nome = req.body.nomeServer;
-    var telefone = req.body.telefoneServer;
+    var celular = req.body.telefoneServer;
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
@@ -49,7 +43,7 @@ function atualizar(req, res) {
     } else if (telefone == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
-        usuarioModel.atualizar(email, nome, telefone)
+        usuarioModel.atualizar(idUsuario, email, nome, celular)
             .then(
                 function (resultadoUpdate) {
                     console.log(`\nResultados encontrados: ${resultadoUpdate.length}`);
@@ -162,9 +156,36 @@ function cadastrar(req, res) {
     }
 }
 
+function carregarInfo(req, res) {
+    var idUsuario = req.params.idUsuario;
+
+    if (idUsuario == undefined) {
+        res.status(400).send("Seu idUsuario está undefined!");
+    } else {
+        usuarioModel.carregarInfo(idUsuario)
+        .then(function (resultadoLogar) {
+            if (resultadoLogar.length == 1) {
+                res.status(200).json({
+                    nome: resultadoLogar[0].nome,
+                    numeroCelular: resultadoLogar[0].numeroCelular,
+                    email: resultadoLogar[0].email
+                });
+            } else if (resultadoLogar.length == 0) {
+                res.status(404).json({ message: "Email e/ou senha inválido(s)!" })
+            } else {
+                res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+            }
+        }).catch(function (erro) {
+            console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+}
+
 module.exports = {
     logar,
     cadastrar,
     atualizar,
-    deletar
+    deletar,
+    carregarInfo
 }
