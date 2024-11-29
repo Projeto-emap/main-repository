@@ -11,14 +11,12 @@
 <body>
     <div class="container">
         <div class="left-content-sidebar">
-            
             <div class="sidebar-left-top">
                 <div class="sidebar-left-top-bottom-img"> <img src="assets/img/usuario.png" alt=""></div>
                 <div class="sidebar-left-top-txt">
                     <div id="nomeUsuario">Henrique</div>
                     <div id="nomeEmpresa">Empresa</div>
                 </div>
-
             </div>
             <div class="sidebar-left-bottom">
                 <div class="sidebar-left-bottom-txt">
@@ -26,21 +24,58 @@
                     <div class="sidebar-left-bottom-img"> <img src="assets/img/interrogacao-azul.png" alt=""></div>
                 </div>
                 <div class="sidebar-left-bottom-center">
-
-                </div>    
+                    <div class="saidbar-card-center">
+                        <div class="card-bairro">
+                            <div class="card-bairro-txt">Tatuapé</div>
+                            <div class="card-bairro-img">
+                                <div class="card-bairro-img" id="imgUp"><img src="assets/img/image 58.png" alt=""></div>
+                                <div class="card-bairro-img" id="imgDown"><img src="assets/img/fast-forward 1.png" alt=""></div>
+                            </div>
+                        </div>
+                        <div class="card-bairro">
+                            <div class="card-bairro-txt">Itaquera</div>
+                            <div class="card-bairro-img">
+                                <div id="imgUp"><img src="assets/img/image 58.png" alt=""></div>
+                                <div id="imgDown"><img src="assets/img/fast-forward 1.png" alt=""></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="main-content">
             <div class="top-bar">
                 <div class="center-content">
+                    
                     <div class="left-content">
-                        <div class="top-left"> *texto aqui*</div>
-                        <div class="bottom-left">*Texto aqui*</div>
+                        <div class="top-left">
+                            <div class="tipo-perfil">
+                                Seu perfil está <a>INTERMEDIÁRIO</a>
+                            </div>
+                            <div class="top-left-txt">
+                                Construa eletropostos nos pontos de oportunidade para aumentar seus ganhos e subir seu perfil
+                            </div>
+                        </div>
+                        <div class="bottom-left">
+                            <div class="bottom-left-titulo">
+                                <div id="nomeEmpresa">[nomeDaEmpresa]</div>
+                                <div id="atendeRequisito">atende</div>
+                            </div>
+
+                            <div id="porcentagem">
+                                <a>60%</a>
+                            </div>
+
+                            <div class="txt-bottom">
+                                <a>Do total de Oportunidades disponíveis </a>
+                            </div>
+
+                        </div>
                     </div>
+                    
                     <div class="right-content">
                         <div class="top-right">
                             <div id="donutchart"></div>
-                            
                             <div class="legend">
                                 <div class="legend-item">
                                     <div class="legend-color" style="background-color: #FF005C;"></div>
@@ -52,13 +87,13 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        
+
+
                     </div>
                 </div>
             </div>
             <div class="bottom-bar">
-                <div class="title" style="color: white;">Title</div>
+                <div class="title" style="color: white;"><a id="graficoBairro">Tatuapé</a></div>
                 <div class="dashboard" style="color: white;">
                     <div class="chart" id="curve_chart" style="width: 97%; height: 100%"></div>
                 </div>
@@ -111,30 +146,30 @@
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
- google.charts.load('current', { 'packages': ['corechart'] });
-      google.charts.setOnLoadCallback(drawChart);
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
 
-      function drawChart() {
+    function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Anos', 'Emplacamentos'],
-          ['2004', 660],
-          ['2005', 1000],
-          ['2006', 800],
-          ['2007', 1170]
+            ['Anos', 'Emplacamentos'],
+            ['2004', 660],
+            ['2005', 1000],
+            ['2006', 800],
+            ['2007', 1170]
         ]);
 
         var options = {
-          title: 'Emplacamentos ao longo do tempo',
-          legend: { position: 'bottom' },
-          backgroundColor: '#333333',
-          titleTextStyle: { color: 'white' },
-          legendTextStyle: { color: 'white' },
-          hAxis: { textStyle: { color: 'white' } }, // Cor dos anos
-          vAxis: { textStyle: { color: 'white' } }  // Cor dos emplacamentos
+            title: 'Emplacamentos ao longo do tempo',
+            legend: { position: 'bottom' },
+            backgroundColor: '#333333',
+            titleTextStyle: { color: 'white' },
+            legendTextStyle: { color: 'white' },
+            hAxis: { textStyle: { color: 'white' } }, // Cor dos anos
+            vAxis: { textStyle: { color: 'white' } }  // Cor dos emplacamentos
         };
 
         var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
 
         chart.draw(data, options);
-      }
-    </script>
+    }
+</script>

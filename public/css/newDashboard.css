@@ -128,32 +128,96 @@ body {
 #nomeUsuario{
   color: #ffff;
   font-family: "Be Vietnam Pro", sans-serif;
-  font-size: 25px;
-  padding-bottom: 0.25rem;
+  font-size: 30px;
+
 }
 
 #nomeEmpresa{
   color: #ffff;
   font-family: "Be Vietnam Pro", sans-serif;
-  font-size: 18px;
-  padding-top: 0.25rem;
 }
 
-
 .top-left {
-    background-color: #222;
-    width: 100%;
-    height: 59.4%;
-    border-radius: 20px;
-    padding: 1%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  background-color: #222;
+  width: 100%;
+  height: 37.6%;
+  border-radius: 20px;
+  padding: 1%;
+}
+
+.tipo-perfil{
+  margin-left: 0.5rem;
+  color:#ffff;
+  font-size: 20px;
+}
+
+.tipo-perfil a{
+  color:#FFAB00;
+  font-size: 25px;
+}
+
+.top-left-txt{
+  margin-top: 0.8rem;
+  width: 87%;
+  height: 70%;
+  flex-wrap: wrap;
+  margin-left: 0.5rem;
+  color:#ffff;
+  font-size: 17px;
 }
 
 .bottom-left {
-    background-color: #222;
-    width: 100%;
-    height: 40.6%;
-    border-radius: 20px;
-    padding: 1%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #222;
+  width: 100%;
+  height: 70%;
+  border-radius: 20px;
+  padding: 1%;
+}
+
+.bottom-left-titulo{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;  
+  margin-top: 1rem;
+  height: 15%;
+}
+
+.bottom-left-titulo #nomeEmpresa{
+  font-size: 150%;
+}
+
+#atendeRequisito{
+  color:#ffff;  
+  font-size: 150%;
+}
+
+#porcentagem{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  height: 40%;
+  padding: 1.5rem;
+}
+
+#porcentagem a{
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  color:#ffff;
+  font-size: 80px;
+}
+
+.txt-bottom{
+  color:#ffff;
+  font-size: 100%;
 }
 
 .sidebar-left-bottom{
@@ -162,7 +226,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
-  padding-bottom: 40px;
+  padding-bottom: 15%;
 }
 
 .sidebar-left-bottom-txt{
@@ -175,13 +239,9 @@ body {
 .sidebar-left-bottom-txt a{
   display: flex;
   align-items: center;
-  padding-left: 2.5rem;
+  margin-left: 0.5rem;
   color:#ffff;
-  font-size: 25px;
-}
-
-.sidebar-left-bottom-img{
-  padding: 0.5rem;
+  font-size: 30px;
 }
 
 .sidebar-left-bottom-center{
@@ -189,6 +249,47 @@ body {
   width: 100%;
   height: 83%;
 }
+
+.sidebar-left-bottom-img{
+  margin: 0.5rem;
+}
+
+.saidbar-card-center{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+  width: 100%;
+  height: 100%;
+}
+
+.card-bairro{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 98%;
+  height: 12%;
+  border-radius: 15px;
+  background-color: #e4e4e4;
+  margin-bottom: 1rem;
+}
+
+.card-bairro-txt{
+  margin-left: 0.5rem;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.card-bairro-img{
+  margin-right: 7%;
+}
+
+
+.card-bairro-img #imgDown{
+  display: none;
+
+}
+
 
 .top-right{
 display: flex;
