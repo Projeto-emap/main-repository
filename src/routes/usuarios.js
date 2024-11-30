@@ -12,15 +12,15 @@ router.post("/logar", function (req, res) {
     usuarioController.logar(req, res);
 });
 
-router.delete("/deletar", function (req, res) {
+router.delete("/deletar/:idUsuario", function (req, res) {
     usuarioController.deletar(req, res);
 });
 
-router.put("/atualizar", function (req, res) {
+router.put("/atualizar/:idUsuario", function (req, res) {
     usuarioController.atualizar(req, res);
 });
 
-router.get("/carregarInfo", function (req, res) {
+router.get("/carregarInfo/:idUsuario", function (req, res) {
     usuarioController.carregarInfo(req, res);
 })
 

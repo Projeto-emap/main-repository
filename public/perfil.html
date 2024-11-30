@@ -49,19 +49,20 @@
             <div class="inputs">
                 <div class="info-item">
                     <label>Email</label>
-                    <input id="emailEditar" type="text" value="henrique.pimenta@email.com" readonly class="inputEmail">
+                    <input id="emailEditar" type="text" value="henrique.pimenta@email.com" readonly class="inputEmail" maxlength="100">
                 </div>
                 <div class="info-item">
                     <label>Nome</label>
-                    <input id="usuarioEditar" type="text" value="Henrique Pimenta" readonly class="inputNome">
+                    <input id="usuarioEditar" type="text" value="Henrique Pimenta" readonly class="inputNome" maxlength="45">
                 </div>
-            </div>
-            <div class="inputEBotao">
-                <div class="info-item">
-                    <label>Telefone</label>
-                    <input id="telefoneEditar" type="text" value="(11) 91234-5678" readonly class="inputTelefone">
                 </div>
-                <button class="delete-account" id="buttonExcluir" onclick="deletarContaUsuario()">Excluir conta</button>
+                <div class="inputEBotao">
+                    <div class="info-item">
+                        <label>Telefone</label>
+                        <input id="telefoneEditar" type="text" value="(11) 91234-5678" readonly class="inputTelefone" maxlength="15">
+                    </div>
+                    <button class="delete-account" id="buttonExcluir">Excluir conta</button>
+                </div>
             </div>
         </section>
         <dialog id="confirm-delete">
@@ -71,7 +72,7 @@
                 <p>A exclusão de sua conta é uma ação permanente que não poderá ser desfeita. Quer excluir mesmo assim?</p>
             </div>
             <div class="modal-buttons">
-                <button class="confirm-button" id="buttonConfirmarExcluir" onclick="deletar()">Excluir</button>
+                <button class="confirm-button" id="buttonConfirmarExcluir">Excluir</button>
                 <button class="cancel-button" id="buttonCancelarExcluir" onclick="closeModal()">Cancelar</button>
             </div>
         </dialog>
