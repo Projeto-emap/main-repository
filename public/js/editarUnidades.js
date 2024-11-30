@@ -96,7 +96,7 @@ function finalizarEdicao() {
             potenciaDeRecargaAtualizado = potenciaSelect.value;
             redeDeRecargaAtualizado = velocidadeSelect.value;
 
-            fetch("/usuarios/atualizarEletroposto", {
+            fetch("/eletroposto/atualizarEletroposto", {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"

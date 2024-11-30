@@ -11,4 +11,12 @@ router.get("/pegarEletroposto", function (req, res) {
     eletropostoController.pegarEletroposto(req, res);
 });
 
+router.put("/atualizarEletroposto", function (req, res) {
+    eletropostoController.atualizarEletroposto(req, res);
+});
+
+router.delete("/deletarEletroposto", function (req, res) {
+    eletropostoController.deletarEletroposto(req, res);
+});
+
 module.exports = router;
