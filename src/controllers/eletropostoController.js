@@ -145,9 +145,44 @@ function deletarEletroposto(req, res) {
     }
 }
 
+function pegarInfoUnidade(req, res) {
+    const idUnidade = req.params.idUnidade; 
+
+    if (!idUnidade) {
+        return res.status(400).json({ message: "ID do usuário não fornecido!" });
+    }
+
+    eletropostoModel.pegarInfoUnidade(idUnidade)
+        .then(function (resultado) {
+            if (resultado.length === 1) {
+                // Retorna os dados do usuário, considerando que o retorno é um array com um único objeto
+                res.status(200).json({
+                    nome: resultado[0].nome,
+                    qtdEstacoes: resultado[0].qtdEstacoes,
+                    tipoConector: resultado[0].tipoConector,
+                    potenciaDeRecarga: resultado[0].potenciaDeRecarga,
+                    redeDeRecarga: resultado[0].redeDeRecarga,
+                });
+            } else if (resultado.length === 0) {
+                // Caso não encontre o usuário
+                res.status(404).json({ message: "Info de unidade não encontrado." });
+            } else {
+                // Caso encontre mais de um usuário (deve ser evitado, mas se acontecer, retorna erro)
+                res.status(403).json({ message: "Mais de uma unidade com o mesmo ID encontrado!" });
+            }
+        })
+        .catch(function (erro) {
+            // Tratamento de erro geral
+            console.error("Erro ao buscar informações da unidade:", erro);
+            res.status(500).json({ message: erro.sqlMessage || "Erro interno do servidor." });
+        });
+}
+
+
 module.exports = {
     cadastrarEletroposto,
     pegarEletroposto,
     atualizarEletroposto,
-    deletarEletroposto
+    deletarEletroposto,
+    pegarInfoUnidade,
 }

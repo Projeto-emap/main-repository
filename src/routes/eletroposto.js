@@ -20,4 +20,13 @@ router.get("/pegarEletroposto/:idUsuario", (req, res) => {
     eletropostoController.pegarEletroposto(req, res);
 });
 
+// Rota GET para pesquisar eletropostos por nome
+
+router.get("/pegarInfoUnidade/:idUnidade", (req, res) => {
+    eletropostoController.pegarInfoUnidade(req, res);
+});
+
+module.exports = router;
+
+
 module.exports = router;

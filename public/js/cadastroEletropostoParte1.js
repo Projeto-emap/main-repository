@@ -18,7 +18,7 @@ if (!idUsuario) {
       return response.json();
     })
     .then((data) => {
-      console.log("Dados recebidos:", data);
+      console.log("Dados recebidos:", data);''
 
       // Verifica se 'data' é um array
       if (!Array.isArray(data)) {
