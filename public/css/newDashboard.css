@@ -247,14 +247,14 @@ body {
 
 }
 
-#nomeUsuario{
+#nomeUsuariohtml{
   color: #ffff;
   font-family: "Be Vietnam Pro", sans-serif;
   font-size: 30px;
 
 }
 
-#nomeEmpresa{
+#nomeEmpresa, #nomeEmpresaDash{
   color: #ffff;
   font-family: "Be Vietnam Pro", sans-serif;
 }
@@ -310,7 +310,7 @@ body {
   height: 15%;
 }
 
-.bottom-left-titulo #nomeEmpresa{
+.bottom-left-titulo #nomeEmpresa #nomeEmpresaDash{
   font-size: 150%;
 }
 
