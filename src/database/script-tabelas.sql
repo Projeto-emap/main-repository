@@ -7,7 +7,9 @@ USE emap;
 CREATE TABLE empresa (
     idEmpresa INT AUTO_INCREMENT PRIMARY KEY,
     razaoSocial VARCHAR(80) NOT NULL,
-    cnpj VARCHAR(14) NOT NULL UNIQUE
+    cnpj VARCHAR(14) NOT NULL UNIQUE,
+    estado VARCHAR(40) NOT NULL,
+    cep VARCHAR(8) NOT NULL
 );
 
 -- Criação da tabela Usuario
@@ -64,3 +66,6 @@ CREATE TABLE contatoSite (
     email VARCHAR(45) NOT NULL,
     mensagem VARCHAR(500) NOT NULL
 );
+
+INSERT INTO usuario VALUES
+(0, 'adm', '00000000000', 'a@a.a', '0', '00000000000', null);

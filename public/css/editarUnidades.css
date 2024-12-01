@@ -60,7 +60,6 @@ nav li a:hover {
   }
   
   .unidades {
-    margin-top: 2vh;
     padding-bottom: 2vh;
     width: 50%;
     border-radius: 20px;
@@ -179,8 +178,8 @@ nav li a:hover {
 
 .setaVoltar{
   margin-bottom: -10vh;
-  height: 7vh;
-  width: 3.5vw;
+  height: 5vh;
+  width: 2.5vw;
   cursor: pointer;
 }
 
