@@ -136,27 +136,27 @@ function validarInputEstacoes(input) {
 function erro() {
     dialogoCadastroUnidade.close();
 }
-
+ 
 function finalizar() {
     const estacoesValido = estacoesInput.value.trim() !== '';
     let qtdEstacoes = Number(estacoesInput.value);
-    estacoes.classList.toggle('input-invalido', !estacoesValido);
-    estacoes.classList.toggle('input-valido', estacoesValido);
+    estacoesInput.classList.toggle('input-invalido', !estacoesValido);
+    estacoesInput.classList.toggle('input-valido', estacoesValido);
 
     const conectoresValido = conectoresSelect.value !== '#';
     let tipoConector = conectoresSelect.value;
-    conectores.classList.toggle('input-invalido', !conectoresValido);
-    conectores.classList.toggle('input-valido', conectoresValido);
+    conectoresSelect.classList.toggle('input-invalido', !conectoresValido);
+    conectoresSelect.classList.toggle('input-valido', conectoresValido);
 
     const potenciaValido = potenciaSelect.value !== '#';
     let potenciaDeRecarga = Number(potenciaSelect.value);
-    potencia.classList.toggle('input-invalido', !potenciaValido);
-    potencia.classList.toggle('input-valido', potenciaValido);
+    potenciaSelect.classList.toggle('input-invalido', !potenciaValido);
+    potenciaSelect.classList.toggle('input-valido', potenciaValido);
 
     const velocidadeValido = velocidadeSelect.value !== '#';
     let redeDeRecarga = velocidadeSelect.value;
-    velocidade.classList.toggle('input-invalido', !velocidadeValido);
-    velocidade.classList.toggle('input-valido', velocidadeValido);
+    velocidadeSelect.classList.toggle('input-invalido', !velocidadeValido);
+    velocidadeSelect.classList.toggle('input-valido', velocidadeValido);
 
     let errosModal = "";
     if (estacoesInput.value == '') {
@@ -176,50 +176,41 @@ function finalizar() {
     pCadastro.innerHTML = errosModal;
     dialogoCadastroUnidade.showModal();
 
-
-
-
-
-
     if (estacoesValido && conectoresValido && potenciaValido && velocidadeValido) {
-
         fetch("/eletroposto/cadastrarEletroposto", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                nomeServer: nome,
-                cepServer: cep,
-                cidadeServer: cidade,
-                ruaServer: rua,
-                numeroServer: numero,
+                nomeServer: nomeInput.value,
+                cepServer: cepInput.value,
+                cidadeServer: cidadeInput.value,
+                ruaServer: ruaInput.value,
+                numeroServer: numeroRuaInput.value,
                 qtdEstacoesServer: qtdEstacoes,
                 tipoConectorServer: tipoConector,
                 potenciaDeRecargaServer: potenciaDeRecarga,
                 redeDeRecargaServer: redeDeRecarga,
-                fkUsuarioServer: fkUsuario
+                fkUsuarioServer: sessionStorage.getItem('ID_USUARIO')
             })
         })
-            .then(function (resposta) {
-                if (resposta.ok) {
-                    const dialogo = document.getElementById('dialogo');
-                    dialogo.showModal();
-                } else {
-                    return resposta.text().then(errorMessage => {
-                        throw new Error(errorMessage || "Houve um erro ao tentar realizar o cadastro!");
-                    });
-                }
-            })
-            .catch(function (erro) {
-                console.error(`#ERRO: ${erro.message}`);
-                alert(erro.message); // Exibir mensagem ao usuário
-            });
-
-
-        dialogo.showModal();
+        .then(function (resposta) {
+            if (resposta.ok) {
+                const dialogo = document.querySelector('.dialogo');
+                dialogo.showModal();
+            } else {
+                const dialogoCadastroUnidade = document.querySelector('.dialogoCadastroUnidade');
+                dialogoCadastroUnidade.showModal();
+            }
+        })
+        .catch(function (erro) {
+            console.error(`#ERRO: ${erro.message}`);
+            alert(erro.message);
+        });
     }
 }
+
 function cadastroRealizado() {
     window.location.href = 'gerenciarEletropostoParte1.html';
 }

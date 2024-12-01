@@ -1,13 +1,6 @@
 var eletropostoModel = require("../models/eletropostoModel");
 
 function cadastrarEletroposto(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    // var nome = req.body.nomeServer; 
-    // var cpf = req.body.cpfServer;
-    // var email = req.body.emailServer;
-    // var numeroCelular = req.body.numeroCelularServer;
-    // var senha = req.body.senhaServer;
-
     var nome = req.body.nomeServer;
     var cep = req.body.cepServer;
     var cidade = req.body.cidadeServer;
@@ -17,10 +10,9 @@ function cadastrarEletroposto(req, res) {
     var tipoConector = req.body.tipoConectorServer;
     var potenciaDeRecarga = req.body.potenciaDeRecargaServer;
     var redeDeRecarga = req.body.redeDeRecargaServer;
-    var fkUsuario = sessionStorage.getItem('idUsuario');
+    var fkUsuario = req.body.fkUsuarioServer;
 
-
-    // Faça as validações dos valores
+    // Validações
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
     } else if (cep == undefined) {
@@ -42,8 +34,6 @@ function cadastrarEletroposto(req, res) {
     } else if (fkUsuario == undefined) {
         res.status(400).send("Sua fkUsuario está undefined");
     } else {
-
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
         eletropostoModel.cadastrarEletroposto(nome, cep, cidade, rua, numero, qtdEstacoes, tipoConector, potenciaDeRecarga, redeDeRecarga, fkUsuario)
             .then(
                 function (resultado) {
@@ -61,7 +51,6 @@ function cadastrarEletroposto(req, res) {
             );
     }
 }
-
 
 function pegarEletroposto(req, res) {
     // Recupera o ID do usuário dos parâmetros da URL
