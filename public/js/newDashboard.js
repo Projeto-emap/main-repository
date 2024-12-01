@@ -5,7 +5,7 @@ const nomeUsuario = sessionStorage.getItem("NOME_USUARIO");
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("/dashboard/listarBairros")
+    fetch(`/dashboard/listarBairros/${idUsuario}`)
         .then((response) => {
             if (response.ok) {
                 return response.json();
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 divBairro.classList.add("card-bairro");
 
                 divBairro.innerHTML = `
-                    <div class="card-bairro-txt">${bairro.cidade}</div>
+                    <div class="card-bairro-txt">${bairro.nome}</div>
                     <div class="card-bairro-img">
                         <div id="imgUp"><img src="assets/img/image 58.png" alt=""></div>
                         <div id="imgDown"><img src="assets/img/fast-forward 1.png" alt=""></div>

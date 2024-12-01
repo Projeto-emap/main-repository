@@ -3,10 +3,11 @@
 
 var database = require("../database/config");
 
-function listarBairros() {
+function listarBairros(idUsuario) {
     const instrucaoSql = `
-        SELECT DISTINCT cidade 
-        FROM pontoDeRecarga;
+        SELECT DISTINCT nome 
+        FROM pontoDeRecarga
+        WHERE fkUsuario = ${idUsuario};
     `;
     return database.executar(instrucaoSql);
 }

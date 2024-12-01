@@ -3,7 +3,10 @@
 var dashboardModel = require("../models/dashboardModel");
 
 function listarBairros(req, res) {
-    dashboardModel.listarBairros()
+    var idUsuario = req.params.idUsuario;
+    
+
+    dashboardModel.listarBairros(idUsuario)
         .then(function (resultado) {
             res.status(200).json(resultado);
         })
