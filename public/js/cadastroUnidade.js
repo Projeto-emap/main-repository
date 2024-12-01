@@ -34,7 +34,7 @@ function perfil() {
 async function continuar() {
     const nomeEletroposto = nomeInput.value;
     const nomeValido = nomeEletroposto.trim() !== '';
-    const cepEletroposto = cepInput.value.replace(/-/g, ''); // Remove traços
+    const cepEletroposto = cepInput.value.replace(/-/g, '').trim(); // Remove traços
     let cepValido = cepEletroposto.length === 8 && /^\d{8}$/.test(cepEletroposto);
     const cidadeValido = cidadeInput.value.trim() !== '';
     const ruaValido = ruaInput.value.trim() !== '';
@@ -139,6 +139,7 @@ function erro() {
  
 function finalizar() {
     const estacoesValido = estacoesInput.value.trim() !== '';
+    const cepEletroposto = cepInput.value.replace(/-/g, '').trim(); // Removendo os traços do CEP
     let qtdEstacoes = Number(estacoesInput.value);
     estacoesInput.classList.toggle('input-invalido', !estacoesValido);
     estacoesInput.classList.toggle('input-valido', estacoesValido);
@@ -177,6 +178,19 @@ function finalizar() {
     dialogoCadastroUnidade.showModal();
 
     if (estacoesValido && conectoresValido && potenciaValido && velocidadeValido) {
+        console.log({
+            nomeServer: nomeInput.value,
+            cepServer: cepEletroposto, // Usando a variável corrigida
+            cidadeServer: cidadeInput.value,
+            ruaServer: ruaInput.value,
+            numeroServer: numeroRuaInput.value,
+            qtdEstacoesServer: qtdEstacoes,
+            tipoConectorServer: tipoConector,
+            potenciaDeRecargaServer: potenciaDeRecarga,
+            redeDeRecargaServer: redeDeRecarga,
+            fkUsuarioServer: sessionStorage.getItem('ID_USUARIO')
+        });
+
         fetch("/eletroposto/cadastrarEletroposto", {
             method: "POST",
             headers: {
@@ -184,7 +198,7 @@ function finalizar() {
             },
             body: JSON.stringify({
                 nomeServer: nomeInput.value,
-                cepServer: cepInput.value,
+                cepServer: cepEletroposto,  // Usando a variável corretamente
                 cidadeServer: cidadeInput.value,
                 ruaServer: ruaInput.value,
                 numeroServer: numeroRuaInput.value,
@@ -210,6 +224,7 @@ function finalizar() {
         });
     }
 }
+
 
 function cadastroRealizado() {
     window.location.href = 'gerenciarEletropostoParte1.html';

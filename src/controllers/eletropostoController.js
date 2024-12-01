@@ -10,15 +10,9 @@ function cadastrarEletroposto(req, res) {
     var tipoConector = req.body.tipoConectorServer;
     var potenciaDeRecarga = req.body.potenciaDeRecargaServer;
     var redeDeRecarga = req.body.redeDeRecargaServer;
-<<<<<<< HEAD
     var fkUsuario = req.body.fkUsuarioServer;
 
     // Validações
-=======
-    var fkUsuario = req.params.idUsuario;
-
-    // Faça as validações dos valores
->>>>>>> 789f2a1f553daf7ed792a637dd4183f0f1cb2cb8
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
     } else if (cep == undefined) {
@@ -57,10 +51,7 @@ function cadastrarEletroposto(req, res) {
             );
     }
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> 789f2a1f553daf7ed792a637dd4183f0f1cb2cb8
 function pegarEletroposto(req, res) {
     const idUsuario = req.params.idUsuario;
 
