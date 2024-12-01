@@ -162,28 +162,21 @@ function finalizarEdicao() {
           return resposta.json().then((json) => {
             if (resposta.ok) {
               console.log(json);
-              sessionStorage.setItem("ID_ELETROPOSTO", json.idPontoDeRecarga);
-              sessionStorage.setItem("NOME_ELETROPOSTO", json.nome);
-              sessionStorage.setItem("CONECTOR_ELETROPOSTO", json.conector);
-              sessionStorage.setItem("POTENCIA_ELETROPOSTO", json.potencia);
-              sessionStorage.setItem("REDE_ELETROPOSTO", json.rede);
-      
-              alert("Perfil atualizado com sucesso!");
+              
+              nomeInput.value = json.nome;
+              numeroEstacoesInput.value = json.qtdEstacoes;
+              conectoresSelect.value = json.tipoConector;
+              potenciaSelect.value = json.potenciaDeRecarga;
+              velocidadeSelect.value = json.redeDeRecarga;
+              
               window.location.href = "perfil.html";
             } else {
               console.error("Erro ao tentar atualizar o perfil:", json);
-              alert(
-                json.mensagem ||
-                  "Houve um erro ao tentar atualizar o perfil. Por favor, tente novamente."
-              );
             }
           });
         })
         .catch((erro) => {
           console.error("Erro ao tentar atualizar o perfil:", erro);
-          alert(
-            "Erro ao tentar atualizar o perfil. Por favor, tente novamente mais tarde."
-          );
         });      
     }),
       (btnEditar.style.display = "block");

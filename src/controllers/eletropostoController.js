@@ -96,19 +96,21 @@ function atualizarEletroposto(req, res) {
         res.status(400).send("Sua redeDeRecarga está indefinida!");
     } else {
         eletropostoModel.atualizarEletroposto(idUnidade, nome, qtdEstacoes, tipoConector, potenciaDeRecarga, redeDeRecarga)
-            .then(
-                function (resultadoUpdate) {
-                    console.log(`\nResultados encontrados: ${resultadoUpdate.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultadoUpdate)}`); // transforma JSON em String
-
-                    if (resultadoUpdate.length == 1) {
-                        console.log(resultadoUpdate);
-                        res.status(200).send("update realizado com sucesso!");
-                    } else if (resultadoUpdate.length == 0) {
-                        res.status(404).json({ message: "alguma informação errada (update)" })
-                    }
+            .then(function (resultado) {
+                if (resultado.length == 1) {
+                    res.status(200).json({
+                        nome: resultado[0].nome,
+                        qtdEstacoes: resultado[0].qtdEstacoes,
+                        tipoConector: resultado[0].tipoConector,
+                        potenciaDeRecarga: resultado[0].potenciaDeRecarga,
+                        redeDeRecarga: resultado[0].redeDeRecarga
+                    });
+                } else if (resultadoLogar.length == 0) {
+                    res.status(404).json({ message: "Usuário não encontrado." });
+                } else {
+                    res.status(403).json({ message: "Mais de um usuário com o mesmo ID encontrado!" });
                 }
-            ).catch(
+            }).catch(
                 function (erro) {
                     console.log(erro);
                     console.log("\nHouve um erro ao realizar o update! Erro: ", erro.sqlMessage);
@@ -121,7 +123,7 @@ function atualizarEletroposto(req, res) {
 
 function deletarEletroposto(req, res) {
     const idPontoDeRecarga = req.params.idPontoDeRecarga;
-   
+
     if (idPontoDeRecarga == undefined) {
         res.status(400).send("Seu idPontoDeRecarga está undefined!");
     } else {
@@ -145,7 +147,7 @@ function deletarEletroposto(req, res) {
 }
 
 function pegarInfoUnidade(req, res) {
-    const idUnidade = req.params.idUnidade; 
+    const idUnidade = req.params.idUnidade;
 
     if (!idUnidade) {
         return res.status(400).json({ message: "ID do usuário não fornecido!" });
