@@ -14,22 +14,22 @@ function cadastrarEletroposto(nome, cep, cidade, rua, numero, qtdEstacoes, tipoC
     return resultado;
 }
 
-function pegarEletroposto(idUsuario){
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, cep, cidade, rua, numero, qtdEstacoes, potenciaDeRecarga, tipoConector, redeDeRecarga)
+function pegarEletroposto(idUsuario) {
+    console.log("Buscando pontos de recarga para o usuário:", idUsuario);
 
-    var instrucaoSql = `
-    SELECT idPontoDeRecarga, nome, cidade, qtdEstacoes, tipoConector, potenciaDeRecarga, redeDeRecarga 
-    FROM pontoDeRecarga WHERE fkUsuario = ${idUsuario};
-    ;
+    const instrucaoSql = `
+        SELECT 
+            idPontoDeRecarga, 
+            nome
+        FROM pontoDeRecarga 
+        WHERE fkUsuario = ${idUsuario};
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
 
-    var resultado = database.executar(instrucaoSql);
-    return resultado;
+    return database.executar(instrucaoSql);
 }
-
 function deletarEletroposto(idPontoDeRecarga) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletar(): ", idUsuario);
+    console.log("Function deletar(): ", idPontoDeRecarga);
 
     var instrucaoSql = `
         DELETE FROM pontoDeRecarga WHERE idPontoDeRecarga = '${idPontoDeRecarga}';

@@ -1,13 +1,6 @@
 var eletropostoModel = require("../models/eletropostoModel");
 
 function cadastrarEletroposto(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    // var nome = req.body.nomeServer; 
-    // var cpf = req.body.cpfServer;
-    // var email = req.body.emailServer;
-    // var numeroCelular = req.body.numeroCelularServer;
-    // var senha = req.body.senhaServer;
-
     var nome = req.body.nomeServer;
     var cep = req.body.cepServer;
     var cidade = req.body.cidadeServer;
@@ -17,8 +10,7 @@ function cadastrarEletroposto(req, res) {
     var tipoConector = req.body.tipoConectorServer;
     var potenciaDeRecarga = req.body.potenciaDeRecargaServer;
     var redeDeRecarga = req.body.redeDeRecargaServer;
-    var fkUsuario = sessionStorage.getItem('idUsuario');
-
+    var fkUsuario = req.params.idUsuario;
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -61,27 +53,27 @@ function cadastrarEletroposto(req, res) {
             );
     }
 }
-
-
 function pegarEletroposto(req, res) {
-    // Recupera o ID do usuário dos parâmetros da URL
-    var idUsuario = req.params.idUsuario;
+    const idUsuario = req.params.idUsuario;
 
-    // Chama o modelo para buscar as unidades associadas ao idUsuario
-    unidadeModel.buscarUnidadesPorUsuario(idUsuario).then((resultado) => {
-        // Se encontrou unidades, retorna elas no formato JSON
-        if (resultado.length > 0) {
-            res.status(200).json(resultado);
-        } else {
-            // Se não encontrou unidades, retorna um status 204 (sem conteúdo)
-            res.status(204).json([]);
-        }
-    }).catch(function (erro) {
-        // Em caso de erro, loga o erro e retorna o status 500 com a mensagem do erro
-        console.log("Erro ao buscar unidades: ", erro);
-        console.log("Houve um erro ao buscar as unidades: ", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-    });
+    if (!idUsuario) {
+        res.status(400).send("idUsuario não fornecido.");
+        return;
+    }
+
+    eletropostoModel.pegarEletroposto(idUsuario)
+        .then((resultado) => {
+            if (Array.isArray(resultado)) {
+                res.status(200).json(resultado); // Retorna o array inteiro
+            } else {
+                // Caso o resultado não seja um array, tratar como erro
+                res.status(500).json({ mensagem: "Formato de dados inválido retornado do banco de dados." });
+            }
+        })
+        .catch((erro) => {
+            console.error("Erro ao buscar pontos de recarga:", erro);
+            res.status(500).json({ mensagem: "Erro ao buscar pontos de recarga.", erro: erro.sqlMessage });
+        });
 }
 
 function atualizarEletroposto(req, res) {
@@ -129,33 +121,27 @@ function atualizarEletroposto(req, res) {
 }
 
 function deletarEletroposto(req, res) {
-
-    // var idPontoDeRecarga = req.params.idPontoDeRecarga;
-    var idPontoDeRecarga = sessionStorage.getItem('idPontoDeRecarga');
-
+    const idPontoDeRecarga = req.params.idPontoDeRecarga;
+   
     if (idPontoDeRecarga == undefined) {
         res.status(400).send("Seu idPontoDeRecarga está undefined!");
     } else {
         eletropostoModel.deletarEletroposto(idPontoDeRecarga)
-            .then(
-                function (resultadoDelete) {
-                    console.log(`\nResultados encontrados: ${resultadoDelete.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultadoDelete)}`); // transforma JSON em String
+            .then(function (resultadoDelete) {
+                console.log(`\nLinhas afetadas: ${resultadoDelete.affectedRows}`);
+                console.log(`Resultado: ${JSON.stringify(resultadoDelete)}`);
 
-                    if (resultadoDelete.length == 1) {
-                        console.log(resultadoDelete);
-                        res.status(200).send("delete realizado com sucesso!");
-                    } else if (resultadoDelete.length == 0) {
-                        res.status(404).json({ message: "alguma informação errada (delete)" })
-                    }
+                if (resultadoDelete.affectedRows > 0) {
+                    res.status(200).json({ message: "Delete realizado com sucesso!" });
+                } else {
+                    res.status(404).json({ message: "Ponto de recarga não encontrado." });
                 }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao realizar o delete! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao realizar o delete! Erro: ", erro.sqlMessage);
+                res.status(500).json({ mensagem: erro.sqlMessage });
+            });
     }
 }
 

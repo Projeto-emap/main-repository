@@ -1,159 +1,192 @@
+// cadastroEletropostoParte1.js
+
 // Seleciona o elemento <ul> onde as <li> serão adicionadas
-const locationsList = document.getElementById('locations');
+const locationsList = document.getElementById("locations");
 const idUsuario = sessionStorage.ID_USUARIO;
 
 // Faz uma requisição ao backend para buscar os eletropostos
-fetch(`/pegarEletroposto/${idUsuario}`)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Erro na resposta do servidor.');
-        }
-        return response.json();
+if (!idUsuario) {
+  console.error("ID_USUARIO não encontrado no sessionStorage.");
+} else {
+  // Faz uma requisição ao backend para buscar os pontos de recarga
+  fetch(`/eletroposto/pegarEletroposto/${idUsuario}`)
+    .then((response) => {
+      if (!response.ok) {
+        console.log(response);
+        throw new Error("Erro na resposta do servidor.");
+      }
+      return response.json();
     })
-    .then(data => {
-        if (data.length === 0) {
-            console.log("Nenhum eletroposto encontrado.");
-            return;
-        }
+    .then((data) => {
+      console.log("Dados recebidos:", data);
 
-        // Limpa a lista antes de adicionar novos elementos
-        locationsList.innerHTML = '';
+      // Verifica se 'data' é um array
+      if (!Array.isArray(data)) {
+        console.error("Esperava-se um array, mas recebeu:", typeof data, data);
+        // Opcional: Exiba uma mensagem de erro para o usuário
+        pErro.innerHTML = "Dados recebidos estão em um formato inválido.";
+        dialogoErro.showModal();
+        return;
+      }
 
-        data.forEach(eletroposto => {
-            // Criar a estrutura HTML de cada elemento
-            const li = document.createElement('li');
-            li.classList.add('grupoInformacoes');
-            li.setAttribute('data-id', eletroposto.id);  // Atribui o ID da unidade ao <li>
+      if (data.length === 0) {
+        console.log("Nenhum ponto de recarga encontrado.");
+        return;
+      }
 
-            const span = document.createElement('span');
-            span.classList.add('location-name');
-            span.textContent = eletroposto.nome;
+      // Limpa a lista antes de adicionar novos elementos
+      locationsList.innerHTML = "";
 
-            const divGroup = document.createElement('div');
-            divGroup.classList.add('div_group');
+      data.forEach((ponto) => {
+        // Criar a estrutura HTML de cada elemento
+        const li = document.createElement("li");
+        li.classList.add("grupoInformacoes");
+        li.setAttribute("data-id", ponto.idPontoDeRecarga); // Atribui o ID do ponto ao <li>
 
-            const btnEditar = document.createElement('button');
-            btnEditar.classList.add('btnAnalisar');
-            btnEditar.textContent = 'Editar';
-            btnEditar.onclick = () => editar(eletroposto.idUsuario);
+        const span = document.createElement("span");
+        span.classList.add("location-name");
+        span.textContent = ponto.nome;
 
-            const btnExcluir = document.createElement('button');
-            btnExcluir.classList.add('btnDeletar');
-            btnExcluir.textContent = 'Excluir';
-            btnExcluir.onclick = (e) => excluir(e, eletroposto.id);  // Passa o evento e o id
+        const divGroup = document.createElement("div");
+        divGroup.classList.add("div_group");
 
-            divGroup.appendChild(btnEditar);
-            divGroup.appendChild(btnExcluir);
+        const btnEditar = document.createElement("button");
+        btnEditar.classList.add("btnAnalisar");
+        btnEditar.textContent = "Editar";
+        btnEditar.onclick = () => editar(ponto.idPontoDeRecarga);
 
-            li.appendChild(span);
-            li.appendChild(divGroup);
+        const btnExcluir = document.createElement("button");
+        btnExcluir.classList.add("btnDeletar");
+        btnExcluir.textContent = "Excluir";
+        btnExcluir.onclick = () => excluir(btnExcluir, ponto.idPontoDeRecarga); // Passa o evento e o id
 
-            locationsList.appendChild(li);
-        });
+        divGroup.appendChild(btnEditar);
+        divGroup.appendChild(btnExcluir);
+
+        li.appendChild(span);
+        li.appendChild(divGroup);
+
+        locationsList.appendChild(li);
+      });
     })
-    .catch(error => console.error('Erro ao carregar eletropostos:', error));
+    .catch((error) =>
+      console.error("Erro ao carregar pontos de recarga:", error)
+    );
+}
 
 // Função chamada ao clicar no botão "Excluir"
+// Função chamada ao confirmar a exclusão no modal
 function excluirUnidade() {
-    // Obtém o botão clicado que foi armazenado em 'window.itemExclusao'
-    const itemExclusao = window.itemExclusao;
+  const itemExclusao = window.itemExclusao;
+  const idExclusao = window.idExclusao
 
-    if (itemExclusao) {
-        // Encontra o elemento .grupoInformacoes correspondente ao botão clicado
-        const grupoInformacoes = itemExclusao.closest('.grupoInformacoes');
+  if (itemExclusao) {
+    const grupoInformacoes = itemExclusao.closest(".grupoInformacoes");
 
-        if (grupoInformacoes) {
+    if (grupoInformacoes) {
+      fetch(`/eletroposto/deletarEletroposto/${idExclusao}`, {
+        // Alterado para o endpoint correto
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          idPontoDeRecarga: window.idExclusao, // Alterado para a chave correta
+        }),
+      })
+        .then(function (resposta) {
+          console.log("ESTOU NO THEN da função de deletar login");
 
-            fetch("/usuarios/deletar", {
-                method: "DELETE",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    idPontoDeRecargaServer: sessionStorage.getItem('ID_ELETROPOSTO'), // Pegando o ID do eletroposto armazenado no sessionStorage
-                })
-            }).then(function (resposta) {
-                console.log("ESTOU NO THEN da função de deletar login")
+          // Verifica se a resposta é JSON antes de parsear
+          const contentType = resposta.headers.get("content-type");
+          if (contentType && contentType.includes("application/json")) {
+            return resposta.json().then((json) => {
+              return { ok: resposta.ok, json };
+            });
+          } else {
+            return resposta.text().then((text) => {
+              throw new Error(text);
+            });
+          }
+        })
+        .then(function ({ ok, json }) {
+          if (ok) {
+            // Caso a resposta seja bem-sucedida (status 2xx)
+            console.log(json);
+            console.log(JSON.stringify(json));
 
-                if (resposta.ok) {
-                    console.log(resposta)
+            fecharModal()
+            window.location.reload(true)
+          } else {
+            // Caso a resposta contenha um erro (status não 2xx)
+            console.log("Houve um erro ao tentar deletar o ponto de recarga!");
 
-                    resposta.json().then(json => {
-                        console.log(json)
-                        console.log(JSON.stringify(json))
-                    })
-                    dialogo.showModal();
-                } else {
-                    resposta.json().then(json => {
-                        console.log("Houve um erro ao tentar realizar o deletar login!");
+            let errosModal =
+              json.message || "Erro ao deletar o ponto de recarga.";
 
-                        let errosModal = json.message || "Erro ao realizar o deletar login."
-                        pErro.innerHTML = errosModal;
-                        dialogoErro.showModal();
-                    }).catch(erro => {
-                        console.error("Erro ao processar a resposta de erro:", erro);
-                        pErro.innerHTML = "Erro desconhecido. Por favor, tente novamente mais tarde.";
-                        dialogoErro.showModal();
-                    });
 
-                    // Remove o item da lista
-                    grupoInformacoes.remove();
+            // Remove o item da lista
+            grupoInformacoes.remove();
 
-                    // Atualiza a contagem de unidades após a remoção
-                    atualizarContagem();
+            // Atualiza a contagem de unidades após a remoção
+            atualizarContagem();
 
-                    // Fecha o modal após a exclusão
-                    fecharModal();
-                }
-            })
-        }
+            // Fecha o modal após a exclusão
+            fecharModal();
+          }
+        })
+        .catch(function (erro) {
+          // Captura erros de rede ou outros erros inesperados
+          console.error("Erro ao tentar deletar o ponto de recarga:", erro);    
+            erro.message ||
+            "Erro desconhecido. Por favor, tente novamente mais tarde.";
+        });
     }
+  }
 }
 
 // Função para fechar o modal de confirmação de exclusão
 function fecharModal() {
-    const modal = document.getElementById('modalConfirmacaoExclusao');
-    modal.close();  // Fecha o modal
+  const modal = document.getElementById("modalConfirmacaoExclusao");
+  modal.close(); // Fecha o modal
 }
 
 // Função para exibir o modal de confirmação de exclusão
-function excluir(button) {
-    // Armazena o botão clicado em uma variável global para uso posterior
-    window.itemExclusao = button;
+function excluir(button, idPontoDeRecarga) {
+  window.itemExclusao = button;
+  window.idExclusao = idPontoDeRecarga; // Armazena o ID para uso na exclusão
 
-    // Abre o modal de confirmação
-    const modal = document.getElementById('modalConfirmacaoExclusao');
-    modal.showModal();
+  // Abre o modal de confirmação
+  const modal = document.getElementById("modalConfirmacaoExclusao");
+  modal.showModal();
 }
 
 // Função para atualizar a contagem das unidades
 function atualizarContagem() {
-    const totalUnidades = document.querySelectorAll('.grupoInformacoes').length;
-    document.querySelector('.numero').textContent = totalUnidades;
+  const totalUnidades = document.querySelectorAll(".grupoInformacoes").length;
+  document.querySelector(".numero").textContent = totalUnidades;
 
-    // Verifica se não há unidades e exibe a mensagem de lista vazia
-    const mensagemVazia = document.getElementById('mensagemVazia');
-    if (totalUnidades === 0) {
-        mensagemVazia.style.display = 'block';
-    } else {
-        mensagemVazia.style.display = 'none';
-    }
+  // Verifica se não há unidades e exibe a mensagem de lista vazia
+  const mensagemVazia = document.getElementById("mensagemVazia");
+  if (totalUnidades === 0) {
+    mensagemVazia.style.display = "block";
+  } else {
+    mensagemVazia.style.display = "none";
+  }
 }
 
-
 function editar(id) {
-    window.location.href = `editarUnidades.html?id=${id}`;
+  window.location.href = `editarUnidades.html?id=${id}`;
 }
 
 function voltar() {
-    window.location.href = "gerenciarEletroposto.html";
+  window.location.href = "gerenciarEletroposto.html";
 }
 
 function index() {
-    window.location.href = "index.html";
+  window.location.href = "index.html";
 }
 
 function perfil() {
-    window.location.href = 'perfil.html';
+  window.location.href = "perfil.html";
 }
-
