@@ -34,7 +34,7 @@ function perfil() {
 async function continuar() {
     const nomeEletroposto = nomeInput.value;
     const nomeValido = nomeEletroposto.trim() !== '';
-    const cepEletroposto = cepInput.value.replace(/-/g, ''); // Remove traços
+    const cepEletroposto = cepInput.value.replace(/-/g, '').trim(); // Remove traços
     let cepValido = cepEletroposto.length === 8 && /^\d{8}$/.test(cepEletroposto);
     const cidadeValido = cidadeInput.value.trim() !== '';
     const ruaValido = ruaInput.value.trim() !== '';
@@ -136,27 +136,28 @@ function validarInputEstacoes(input) {
 function erro() {
     dialogoCadastroUnidade.close();
 }
-
+ 
 function finalizar() {
     const estacoesValido = estacoesInput.value.trim() !== '';
+    const cepEletroposto = cepInput.value.replace(/-/g, '').trim(); // Removendo os traços do CEP
     let qtdEstacoes = Number(estacoesInput.value);
-    estacoes.classList.toggle('input-invalido', !estacoesValido);
-    estacoes.classList.toggle('input-valido', estacoesValido);
+    estacoesInput.classList.toggle('input-invalido', !estacoesValido);
+    estacoesInput.classList.toggle('input-valido', estacoesValido);
 
     const conectoresValido = conectoresSelect.value !== '#';
     let tipoConector = conectoresSelect.value;
-    conectores.classList.toggle('input-invalido', !conectoresValido);
-    conectores.classList.toggle('input-valido', conectoresValido);
+    conectoresSelect.classList.toggle('input-invalido', !conectoresValido);
+    conectoresSelect.classList.toggle('input-valido', conectoresValido);
 
     const potenciaValido = potenciaSelect.value !== '#';
     let potenciaDeRecarga = Number(potenciaSelect.value);
-    potencia.classList.toggle('input-invalido', !potenciaValido);
-    potencia.classList.toggle('input-valido', potenciaValido);
+    potenciaSelect.classList.toggle('input-invalido', !potenciaValido);
+    potenciaSelect.classList.toggle('input-valido', potenciaValido);
 
     const velocidadeValido = velocidadeSelect.value !== '#';
     let redeDeRecarga = velocidadeSelect.value;
-    velocidade.classList.toggle('input-invalido', !velocidadeValido);
-    velocidade.classList.toggle('input-valido', velocidadeValido);
+    velocidadeSelect.classList.toggle('input-invalido', !velocidadeValido);
+    velocidadeSelect.classList.toggle('input-valido', velocidadeValido);
 
     let errosModal = "";
     if (estacoesInput.value == '') {
@@ -176,12 +177,19 @@ function finalizar() {
     pCadastro.innerHTML = errosModal;
     dialogoCadastroUnidade.showModal();
 
-
-
-
-
-
     if (estacoesValido && conectoresValido && potenciaValido && velocidadeValido) {
+        console.log({
+            nomeServer: nomeInput.value,
+            cepServer: cepEletroposto, // Usando a variável corrigida
+            cidadeServer: cidadeInput.value,
+            ruaServer: ruaInput.value,
+            numeroServer: numeroRuaInput.value,
+            qtdEstacoesServer: qtdEstacoes,
+            tipoConectorServer: tipoConector,
+            potenciaDeRecargaServer: potenciaDeRecarga,
+            redeDeRecargaServer: redeDeRecarga,
+            fkUsuarioServer: sessionStorage.getItem('ID_USUARIO')
+        });
 
         fetch("/eletroposto/cadastrarEletroposto", {
             method: "POST",
@@ -189,37 +197,35 @@ function finalizar() {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                nomeServer: nome,
-                cepServer: cep,
-                cidadeServer: cidade,
-                ruaServer: rua,
-                numeroServer: numero,
+                nomeServer: nomeInput.value,
+                cepServer: cepEletroposto,  // Usando a variável corretamente
+                cidadeServer: cidadeInput.value,
+                ruaServer: ruaInput.value,
+                numeroServer: numeroRuaInput.value,
                 qtdEstacoesServer: qtdEstacoes,
                 tipoConectorServer: tipoConector,
                 potenciaDeRecargaServer: potenciaDeRecarga,
                 redeDeRecargaServer: redeDeRecarga,
-                fkUsuarioServer: fkUsuario
+                fkUsuarioServer: sessionStorage.getItem('ID_USUARIO')
             })
         })
-            .then(function (resposta) {
-                if (resposta.ok) {
-                    const dialogo = document.getElementById('dialogo');
-                    dialogo.showModal();
-                } else {
-                    return resposta.text().then(errorMessage => {
-                        throw new Error(errorMessage || "Houve um erro ao tentar realizar o cadastro!");
-                    });
-                }
-            })
-            .catch(function (erro) {
-                console.error(`#ERRO: ${erro.message}`);
-                alert(erro.message); // Exibir mensagem ao usuário
-            });
-
-
-        dialogo.showModal();
+        .then(function (resposta) {
+            if (resposta.ok) {
+                const dialogo = document.querySelector('.dialogo');
+                dialogo.showModal();
+            } else {
+                const dialogoCadastroUnidade = document.querySelector('.dialogoCadastroUnidade');
+                dialogoCadastroUnidade.showModal();
+            }
+        })
+        .catch(function (erro) {
+            console.error(`#ERRO: ${erro.message}`);
+            alert(erro.message);
+        });
     }
 }
+
+
 function cadastroRealizado() {
     window.location.href = 'gerenciarEletropostoParte1.html';
 }
