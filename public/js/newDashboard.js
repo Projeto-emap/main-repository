@@ -5,6 +5,9 @@ const nomeUsuarioStorage = sessionStorage.getItem('NOME_USUARIO');
 const divNomeUsuario = document.getElementById("nomeUsuario");
 const divNomeEmpresa = document.querySelector('.nomeEmpresaEletroposto');
 
+google.charts.load('current', { 'packages': ['corechart'] });
+google.charts.setOnLoadCallback(drawChart);
+
 divNomeUsuario.innerHTML = `${nomeUsuarioStorage}`;
 
 function carregarDadosUsuario() {
@@ -60,6 +63,36 @@ function ajustarPerfil(totalPontos) {
         tipoPerfilDiv.innerHTML = `Seu perfil está <a style="color: darkgreen;">EXCELENTE</a>`;
         topLeftTxtDiv.innerText = "Seu eletroposto contém diversas unidades por São Paulo e atende a maioria das oportunidades!";
     }
+}
+
+
+
+function drawChart() {
+    // Substitua com a URL do seu servidor para pegar os dados do gráfico
+    fetch(`dashboard/potenciais-bairros/${idUsuario}`)
+        .then(response => response.json())
+        .then(data => {
+            // Preparar os dados para o gráfico
+            var dataChart = google.visualization.arrayToDataTable([
+                ['Category', 'Value'],
+                ['Bairros com todos os potenciais atendidos', data.bairrosComPotencialAtendido],
+                ['Bairros com potencial sobrando', data.bairrosComPotencialSobrando]
+            ]);
+            console.log(data.bairrosComPotencialAtendido, data.bairrosComPotencialSobrando);
+            var options = {
+                pieHole: 0.6,
+                backgroundColor: '#333333',
+                legend: 'none',
+                slices: {
+                    0: { color: '#FF005C' },
+                    1: { color: '#DC3912' }
+                }
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+            chart.draw(dataChart, options);
+        })
+        .catch(error => console.error('Erro ao carregar os dados do gráfico:', error));
 }
 
 // Inicialização

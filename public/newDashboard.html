@@ -70,11 +70,11 @@
                             <div class="legend">
                                 <div class="legend-item">
                                     <div class="legend-color" style="background-color: #FF005C;"></div>
-                                    Bairros com potencial, sem seus eletropostos
+                                    Bairros com todos os potenciais atendidos
                                 </div>
                                 <div class="legend-item">
                                     <div class="legend-color" style="background-color: #dc3912;"></div>
-                                    Bairros com potencial, com seus eletropostos
+                                    Bairros com potencial sobrando
                                 </div>
                             </div>
                         </div>
@@ -136,8 +136,8 @@
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
             ['Category', 'Value'],
-            ['Bairros com potencial, sem seus eletropostos', 1],
-            ['Bairros com potencial, com seus eletropostos', 3],
+            ['Bairros com todos os potenciais atendidos', 1],
+            ['Bairros com potencial sobrando', 3],
         ]);
 
         var options = {

@@ -32,8 +32,20 @@ function obterDadosUsuario(req, res) {
         });
 }
 
+function listarPotenciaisBairros(req, res) {
+    const idUsuario = req.params.idUsuario;  // Pega o ID do usuário da URL
+    dashboardModel.listarPotenciaisBairros(idUsuario)
+        .then(result => {
+            res.status(200).json(result);
+        })
+        .catch(error => {
+            console.error("Erro ao listar bairros: ", error);
+            res.status(500).json({ message: 'Erro ao buscar bairros com potenciais' });
+        });
+}
 
 module.exports = {
     listarBairrosEmPotencial,
     obterDadosUsuario,
+    listarPotenciaisBairros
 };

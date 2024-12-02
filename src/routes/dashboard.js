@@ -5,6 +5,7 @@ var dashboardController = require("../controllers/dashboardController");
 
 router.get("/bairros/:idUsuario", dashboardController.listarBairrosEmPotencial);
 router.get("/dadosUsuario/:idUsuario", dashboardController.obterDadosUsuario);
+router.get("/potenciais-bairros/:idUsuario", dashboardController.listarPotenciaisBairros);
 
 module.exports = router;
 
