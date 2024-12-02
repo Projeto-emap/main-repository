@@ -90,7 +90,7 @@ body {
   justify-content: center;
   color: #ffff;
   font-family: "Be Vietnam Pro", sans-serif;
-  font-size: 30px;
+  font-size: 23px;
   height: 33.3%;
 
 }
@@ -106,6 +106,7 @@ body {
   height: 25%;
   transition: 0.3s;
   padding-left: 1rem;
+  border-radius: 5px;
 }
 
 .sidebar-rigth-buton a{
@@ -118,11 +119,9 @@ body {
 
 .sidebar-rigth-buton:hover{
   background-color: #5271FF;
-  border-radius: 7px;
-  transform: scale(1.05);
+  border-radius: 5px;
+  color: white;
 }
-
-
 
 .sidebar-right-bottom {
     display: flex;
@@ -132,7 +131,7 @@ body {
     background-color: #222222;
     width: 100%;
     height: 100%;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 1.5%;
 
   }
@@ -147,18 +146,16 @@ body {
   border-radius: 10px;
 }
 
-
 .sara-top img{
-  width: 35%;
-  height: 75%;
-  margin-left: 0.5rem;  
+  scale: 0.6;
+  margin-left: -1.1rem;  
 }
 
 .sara-top div{
   margin-left: 2rem;
   color: #ffff;
   font-family: "Be Vietnam Pro", sans-serif;
-  font-size: 10px;
+  font-size: 15px;
 }
 
 .sara-center{
@@ -183,21 +180,15 @@ body {
   align-items: center;
   color: #ffff;
   font-family: "Be Vietnam Pro", sans-serif;
-  font-size: 20px;
+  font-size: 15px;
   background-color: #5271FF;
   width: 90%;
   height: 80%;
-  border-radius:10px;
-  cursor: pointer;
+  border-radius: 5px;
 }
 
-/* .sara-bottom div :active{
-  background-color: #2c5dce;
-  transform: sacale(0.95);
-} */
-
  .sara-bottom div a{
-  margin-left: 1rem;
+  margin-left: 1.6rem;
 } 
 
 .main-content {
@@ -269,20 +260,21 @@ body {
   align-items: center;  
   background-color: #222;
   width: 100%;
-  height: 37.6%;
+  height: 39.6%;
   border-radius: 10px;
   padding: 1%;
 }
 
 .tipo-perfil{
-  margin-left: 0.5rem;
+  margin-top: 6px;
+  margin-left: -1rem;
   color:#ffff;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .tipo-perfil a{
   color:#FFAB00;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .top-left-txt{
@@ -315,12 +307,12 @@ body {
 }
 
 .bottom-left-titulo #nomeEmpresa{
-  font-size: 150%;
+  font-size: 90%;
 }
 
 #atendeRequisito{
   color:#ffff;  
-  font-size: 150%;
+  font-size: 90%;
 }
 
 #porcentagem{
@@ -338,12 +330,13 @@ body {
   height: 100%;
   width: 100%;
   color:#ffff;
-  font-size: 80px;
+  font-size: 50px;
 }
 
 .txt-bottom{
   color:#ffff;
-  font-size: 100%;
+  font-size: 90%;
+  margin-bottom: 7px;
 }
 
 .sidebar-left-bottom{
@@ -468,12 +461,6 @@ align-items: center;
     justify-content: center;
     flex-direction: column;
 }
-
-/* #curve_chart {
-  background-color: #333333;
-}#curve_chart {
-  background-color: #333333;
-} */
 
 .bottom-right {
     background-color: #111;
