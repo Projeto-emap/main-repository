@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciar Eletropostos</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="css/cadastroEletropostoParte1.css">
     <link rel="stylesheet" href="css/header.css">
 </head>
@@ -16,12 +17,12 @@
         </div>
 
         <ul class="center">
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="gerenciarEletroposto.html">Postos</a></li>
+            <li><a href="dashboard.html">dashboard</a></li>
+            <li><a href="gerenciarEletroposto.html">postos</a></li>
         </ul>
 
         <ul class="direita">
-            <li><div class="usuario" id="usuario">default</div></li>
+            <li><div class="usuario">Henrique</div></li>
             <li><img src="assets/img/perfil.png" class="imgUser" onclick="perfil()"></li>
         </ul>
     </nav>
@@ -30,7 +31,7 @@
         <section class="dashboard">
             <div class="grupoInicial">
                 <img class="setaVoltar" onclick="voltar()" src="assets/img/voltar.png" alt="">
-                <h1 class="titulo">Gerenciar Eletropostos</h1>
+                <h1 class="titulo">Gerenciar eletropostos</h1>
             </div>
             <div class="linha-horizontal"></div>
 
@@ -41,42 +42,51 @@
                 </div>
             </div>
 
-            <!-- Adicionado ID 'locations' -->
-            <ul id="locations" class="locations">
-                <!-- Os <li> serão adicionados dinamicamente via JavaScript -->
+            <ul class="locations">
+                <li class="grupoInformacoes">
+                    <span class="location-name">Unidade Jardins</span>
+                    <div class="div_group">
+                        <button class="btnAnalisar" onclick="editar()">Editar</button>
+                        <button class="btnDeletar" onclick="excluir(this)">Excluir</button>
+                    </div>
+                </li>
+                <li class="grupoInformacoes">
+                    <span class="location-name">Unidade Itaim</span>
+                    <div class="div_group">
+                        <button class="btnAnalisar" onclick="editar()">Editar</button>
+                        <button class="btnDeletar" onclick="excluir(this)">Excluir</button>
+                    </div>
+                </li>
+                <li class="grupoInformacoes">
+                    <span class="location-name">Unidade Vila Madalena</span>
+                    <div class="div_group">
+                        <button class="btnAnalisar" onclick="editar()">Editar</button>
+                        <button class="btnDeletar" onclick="excluir(this)">Excluir</button>
+                    </div>
+                </li>
+                <li class="grupoInformacoes">
+                    <span class="location-name">Unidade Pinheiros</span>
+                    <div class="div_group">
+                        <button class="btnAnalisar" onclick="editar()">Editar</button>
+                        <button class="btnDeletar" onclick="excluir(this)">Excluir</button>
+                    </div>
+                </li>
+                <li class="grupoInformacoes">
+                    <span class="location-name">Unidade Moema</span>
+                    <div class="div_group">
+                        <button class="btnAnalisar" onclick="editar()">Editar</button>
+                        <button class="btnDeletar" onclick="excluir(this)">Excluir</button>
+                    </div>
+                </li>
             </ul>
 
-            <div id="mensagemVazia" class="mensagemVazia" style="display: none;">
+            <div id="mensagemVazia" class="mensagemVazia">
                 <h1>Não há unidades cadastradas.</h1>
             </div>
-
-            <!-- Modal de Confirmação de Exclusão -->
-            <dialog id="modalConfirmacaoExclusao">
-                <div class="modal-excluir">
-                    <h3>Tem certeza que deseja excluir esta unidade?</h3>
-                    <p>Essa ação não poderá ser desfeita.</p>
-
-                    <div class="modal-actions">
-                        <button id="btnCancelar" class="btnCancelar" onclick="fecharModal()">Cancelar</button>
-                        <button id="btnConfirmar" class="btnConfirmar" onclick="excluirUnidade()">Excluir</button>
-                    </div>
-                </div>
-            </dialog>
-
-            <!-- Modal de Erro (Adicionado) -->
-            <dialog id="dialogoErro">
-                <div class="modal-erro">
-                    <p id="pErro"></p>
-                    <button onclick="fecharModal()">Fechar</button>
-                </div>
-            </dialog>
-
         </section>
     </main>
 </body>
 
-<!-- Scripts carregados após o corpo para garantir que o DOM esteja pronto -->
 <script src="js/cadastroEletropostoParte1.js"></script>
-<script src="js/headerCrud.js"></script>
 
 </html>

@@ -19,6 +19,9 @@ var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var contatoRouter = require("./src/routes/contato");
 var eletropostoRouter = require("./src/routes/eletroposto");
+// var avisosRouter = require("./src/routes/avisos");
+// var aquariosRouter = require("./src/routes/aquarios");
+// var empresasRouter = require("./src/routes/empresas");
 
 
 app.use(express.json());
