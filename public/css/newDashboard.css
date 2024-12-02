@@ -29,24 +29,25 @@ body {
 }
 
 .sidebar-left-top {
-    background-color: #333;
+    display: flex;
+    justify-content: start;
+    background-color: #222222;
     width: 100%;
-    height: 15%;
-    border-radius: 20px;
+    height: 10%;
+    border-radius: 10px;
     padding: 1.5%;
 }
 
 .sidebar-left-top-bottom-img img{
-  margin-left: 1rem;
-  width: 65%;
-  height: 65%;
+  margin-left: -0.5rem;
+  scale: 0.6;
 }
 
 .sidebar-left-bottom {
     background-color: #333;
     width: 100%;
     height: 100%;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 1.5%;
 }
 
@@ -125,10 +126,10 @@ body {
 
 .sidebar-right-bottom {
     display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;    
-  background-color: #222222;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;    
+    background-color: #222222;
     width: 100%;
     height: 100%;
     border-radius: 20px;
@@ -157,7 +158,7 @@ body {
   margin-left: 2rem;
   color: #ffff;
   font-family: "Be Vietnam Pro", sans-serif;
-  font-size: 20px;
+  font-size: 10px;
 }
 
 .sara-center{
@@ -209,7 +210,7 @@ body {
 .top-bar {
     background-color: #333;
     height: 50%;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 1% 2% 1% 2%;
 
 }
@@ -243,20 +244,23 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-left: 1rem;
+  gap: 4px;
+  padding-left: 0.1rem;
 
 }
 
 #nomeUsuario{
   color: #ffff;
   font-family: "Be Vietnam Pro", sans-serif;
-  font-size: 30px;
+  font-size: 17px;
 
 }
 
 #nomeEmpresa{
   color: #ffff;
   font-family: "Be Vietnam Pro", sans-serif;
+  font-size: 12px;
+  font-weight: 200;
 }
 
 .top-left {
@@ -266,7 +270,7 @@ body {
   background-color: #222;
   width: 100%;
   height: 37.6%;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 1%;
 }
 
@@ -282,13 +286,13 @@ body {
 }
 
 .top-left-txt{
-  margin-top: 0.8rem;
+  margin-top: 0.4rem;
   width: 87%;
   height: 70%;
   flex-wrap: wrap;
   margin-left: 0.5rem;
   color:#ffff;
-  font-size: 17px;
+  font-size: 14px;
 }
 
 .bottom-left {
@@ -298,7 +302,7 @@ body {
   background-color: #222;
   width: 100%;
   height: 70%;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 1%;
 }
 
@@ -353,27 +357,38 @@ body {
 
 .sidebar-left-bottom-txt{
  display: flex;
- justify-content:flex-end ;
-  width: 100%;
-  height: 17%;
+ justify-content: center;
+ text-align: center;
+  width: 90%;  
+  height: 17%;  
+  /* border: #111 1px solid; */
 }
 
 .sidebar-left-bottom-txt a{
   display: flex;
+  justify-content: center;
   align-items: center;
-  margin-left: 0.5rem;
+  margin-left: 0.8rem;
   color:#ffff;
-  font-size: 30px;
+  font-size: 19px;
+}
+
+.texto-bairro{
+  margin-top: 10%;
+  width: 200px;
+  height: 50px;
+  /* border: #111 1px solid; */
 }
 
 .sidebar-left-bottom-center{
   background-color: #222;
   width: 100%;
-  height: 83%;
+  height: 100%;
 }
 
 .sidebar-left-bottom-img{
-  margin: 0.5rem;
+  margin-top: -0.4rem;
+  scale: 0.8;
 }
 
 .saidbar-card-center{
@@ -391,7 +406,7 @@ body {
   justify-content: space-between;
   width: 98%;
   height: 12%;
-  border-radius: 15px;
+  border-radius: 10px;
   background-color: #e4e4e4;
   margin-bottom: 1rem;
 }
@@ -399,7 +414,7 @@ body {
 .card-bairro-txt{
   margin-left: 0.5rem;
   font-size: 20px;
-  font-weight: bold;
+ 
 }
 
 .card-bairro-img{
