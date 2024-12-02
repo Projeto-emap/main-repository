@@ -24,11 +24,17 @@ CREATE TABLE usuario (
     FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa) ON DELETE SET NULL
 );
 
+-- Criação da tabela Endereco
+CREATE TABLE endereco (
+    idEndereco INT AUTO_INCREMENT PRIMARY KEY,
+    cep CHAR(8) NOT NULL,
+    municipio VARCHAR(20) NOT NULL
+);
+
 -- Criação da tabela PontoDeRecarga
 CREATE TABLE pontoDeRecarga (
     idPontoDeRecarga INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(45) NOT NULL,
-    cep CHAR(8) NOT NULL,
     bairro VARCHAR(50) NOT NULL,
     rua VARCHAR(50) NOT NULL,
     numero VARCHAR(8) NOT NULL,
@@ -37,7 +43,9 @@ CREATE TABLE pontoDeRecarga (
     potenciaDeRecarga INT NOT NULL,
     redeDeRecarga VARCHAR(45) NOT NULL,
     fkUsuario INT,
+    fkEndereco INT,
 	FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario) ON DELETE CASCADE
+    FOREIGN KEY (fkEndereco) REFERENCES endereco(idEndereco) ON DELETE CASCADE
 );
 
 -- Criação da tabela CarrosEmplacados
@@ -48,7 +56,9 @@ CREATE TABLE carrosEmplacados (
     dataEmplacamento VARCHAR(45) NOT NULL,
     procedencia VARCHAR(45) NOT NULL,
     fkPontoDeRecarga INT,
+    fkEndereco INT,
     FOREIGN KEY (fkPontoDeRecarga) REFERENCES pontoDeRecarga(idPontoDeRecarga) ON DELETE SET NULL
+    FOREIGN KEY (fkEndereco) REFERENCES endereco(idEndereco) ON DELETE CASCADE
 );
 
 -- Criação da tabela contatoSite
