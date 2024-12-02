@@ -3,7 +3,7 @@ var eletropostoModel = require("../models/eletropostoModel");
 function cadastrarEletroposto(req, res) {
     var nome = req.body.nomeServer;
     var cep = req.body.cepServer;
-    var cidade = req.body.cidadeServer;
+    var bairro = req.body.bairroServer;
     var rua = req.body.ruaServer;
     var numero = req.body.numeroServer;
     var qtdEstacoes = req.body.qtdEstacoesServer;
@@ -17,8 +17,8 @@ function cadastrarEletroposto(req, res) {
         res.status(400).send("Seu nome está undefined!");
     } else if (cep == undefined) {
         res.status(400).send("Seu cep está undefined!");
-    } else if (cidade == undefined) {
-        res.status(400).send("Seu cidade está undefined!");
+    } else if (bairro == undefined) {
+        res.status(400).send("Seu bairro está undefined!");
     } else if (rua == undefined) {
         res.status(400).send("Seu rua está undefined!");
     } else if (numero == undefined) {
@@ -34,7 +34,7 @@ function cadastrarEletroposto(req, res) {
     } else if (fkUsuario == undefined) {
         res.status(400).send("Sua fkUsuario está undefined");
     } else {
-        eletropostoModel.cadastrarEletroposto(nome, cep, cidade, rua, numero, qtdEstacoes, tipoConector, potenciaDeRecarga, redeDeRecarga, fkUsuario)
+        eletropostoModel.cadastrarEletroposto(nome, cep, bairro, rua, numero, qtdEstacoes, tipoConector, potenciaDeRecarga, redeDeRecarga, fkUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);

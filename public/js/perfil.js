@@ -93,13 +93,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function deletar() {
         const idUsuario = sessionStorage.getItem('ID_USUARIO');
-    
+
         if (!idUsuario) {
             console.error("ID_USUARIO não encontrado no sessionStorage.");
             window.location.href = 'login.html';
             return;
         }
-    
+
         fetch(`/usuarios/deletar/${idUsuario}`, {
             method: "DELETE",
             headers: {
@@ -109,32 +109,32 @@ document.addEventListener('DOMContentLoaded', function () {
                 idUsuarioServer: idUsuario,
             })
         })
-        .then(function (resposta) {
-            console.log("ESTOU NO THEN da função de deletar login");
-    
-            // Chama resposta.json() uma única vez
-            return resposta.json().then(json => {
-                if (resposta.ok) {
-                    // Processamento para resposta de sucesso
-                    console.log("Deleção bem-sucedida:", json);
-    
-                    // Limpeza do armazenamento
-                    sessionStorage.removeItem('ID_USUARIO');
-                    sessionStorage.removeItem('NOME_USUARIO');
-                    localStorage.removeItem('TELEFONE_USUARIO');
-                    localStorage.removeItem("EMAIL_USUARIO");
-    
-                    index(); // Redireciona para 'index.html'
-                } else {
-                    // Processamento para resposta de erro
-                    console.log("Houve um erro ao tentar realizar o deletar login!", json.message);
-                }
+            .then(function (resposta) {
+                console.log("ESTOU NO THEN da função de deletar login");
+
+                // Chama resposta.json() uma única vez
+                return resposta.json().then(json => {
+                    if (resposta.ok) {
+                        // Processamento para resposta de sucesso
+                        console.log("Deleção bem-sucedida:", json);
+
+                        // Limpeza do armazenamento
+                        sessionStorage.removeItem('ID_USUARIO');
+                        sessionStorage.removeItem('NOME_USUARIO');
+                        localStorage.removeItem('TELEFONE_USUARIO');
+                        localStorage.removeItem("EMAIL_USUARIO");
+
+                        index(); // Redireciona para 'index.html'
+                    } else {
+                        // Processamento para resposta de erro
+                        console.log("Houve um erro ao tentar realizar o deletar login!", json.message);
+                    }
+                });
+            })
+            .catch(function (erro) {
+                // Tratamento de erros de rede ou outros erros inesperados
+                console.error("Erro na requisição de deletar:", erro);
             });
-        })
-        .catch(function (erro) {
-            // Tratamento de erros de rede ou outros erros inesperados
-            console.error("Erro na requisição de deletar:", erro);
-        });
     }
 
 
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Recupera os valores dos inputs
             const nomeAtualizado = inputNome.value.trim();
             const emailAtualizado = inputEmail.value.trim();
-            const telefoneAtualizado = inputTelefone.value.trim();
+            let telefoneAtualizado = inputTelefone.value.trim();
             const idUsuario = sessionStorage.getItem('ID_USUARIO');
 
             // Validações
@@ -181,6 +181,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!validatePhone(telefoneAtualizado)) {
                 erros.push("O telefone não é válido. Deve seguir o formato (XX) XXXXX-XXXX.");
             }
+            telefoneAtualizado = inputTelefone.value.trim().replace(/\D/g, '');
 
             if (erros.length > 0) {
                 alert(erros.join("\n"));
@@ -232,15 +233,23 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
         } catch (erro) {
-            console.error("Erro ao salvar informações:", erro);
-            alert("Ocorreu um erro ao salvar as informações. Por favor, tente novamente.");
+            document.querySelector('.buttonEditar').style.display = 'block';
+            document.querySelector('.buttonSalvar').style.display = 'none';
+            document.querySelector('.buttonCancelar').style.display = 'none';
+
+            toggleInputReadonly();
+
+            inputEmail.style.color = 'gray';
+            inputNome.style.color = 'gray';
+            inputTelefone.style.color = 'gray';
         }
     }
 
     function cancelarInformacoes() {
+        const telefoneFormatado = localStorage.getItem('TELEFONE_USUARIO').replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
         // Implementar o sessionStorage:
         inputNome.value = sessionStorage.getItem('NOME_USUARIO');
-        inputTelefone.value = localStorage.getItem('TELEFONE_USUARIO');
+        inputTelefone.value = telefoneFormatado;
         inputEmail.value = localStorage.getItem('EMAIL_USUARIO')
 
         document.querySelector('.buttonEditar').style.display = 'block';
@@ -278,23 +287,23 @@ document.addEventListener('DOMContentLoaded', function () {
         if (digits.length > 1) {
             telefoneFormatado += ') ';
         }
-    
+
         // Adiciona o número principal
         if (digits.length > 2) {
             telefoneFormatado += digits.substring(2, Math.min(7, digits.length));
         }
-    
+
         // Adiciona o traço e a parte final do número
         if (digits.length > 7) {
             telefoneFormatado += '-' + digits.substring(7, 11);
         }
-    
+
         // Retorna ao número do parêntese se todos os outros dígitos forem apagados
         if (digits.length <= 2) {
             telefoneFormatado = '(' + digits.substring(0, digits.length);
         }
 
-        if(telefoneFormatado == '(') {
+        if (telefoneFormatado == '(') {
             telefoneFormatado = "";
         }
         input.value = telefoneFormatado;
@@ -329,21 +338,21 @@ document.addEventListener('DOMContentLoaded', function () {
     function formatarTelefone(numero) {
         // Converte o número para string, caso ainda não seja
         let numStr = numero.toString();
-    
+
         // Remove quaisquer caracteres não numéricos (se houver)
         numStr = numStr.replace(/\D/g, '');
-    
+
         // Verifica se o número possui exatamente 11 dígitos
         if (numStr.length !== 11) {
             console.error("Número de telefone inválido. Deve conter exatamente 11 dígitos.");
             return numero; // Retorna o número original sem formatação
         }
-    
+
         // Aplica a formatação
         const ddd = numStr.slice(0, 2);
         const parte1 = numStr.slice(2, 7);
         const parte2 = numStr.slice(7, 11);
-    
+
         return `(${ddd}) ${parte1}-${parte2}`;
     }
 

@@ -1,11 +1,11 @@
 var database = require("../database/config")
 
-function cadastrarEletroposto(nome, cep, cidade, rua, numero, qtdEstacoes, tipoConector, potenciaDeRecarga, redeDeRecarga, fkUsuario) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, cep, cidade, rua, numero, qtdEstacoes, tipoConector, potenciaDeRecarga, redeDeRecarga, fkUsuario);
+function cadastrarEletroposto(nome, cep, bairro, rua, numero, qtdEstacoes, tipoConector, potenciaDeRecarga, redeDeRecarga, fkUsuario) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, cep, bairro, rua, numero, qtdEstacoes, tipoConector, potenciaDeRecarga, redeDeRecarga, fkUsuario);
 
     var instrucaoSql = `
-    INSERT INTO pontoDeRecarga (nome, cep, cidade, rua, numero, qtdEstacoes, tipoConector, potenciaDeRecarga, redeDeRecarga, fkUsuario) 
-    VALUES ('${nome}', '${cep}', '${cidade}', '${rua}', '${numero}', ${qtdEstacoes}, '${tipoConector}', ${potenciaDeRecarga}, '${redeDeRecarga}', ${fkUsuario});
+    INSERT INTO pontoDeRecarga (nome, cep, bairro, rua, numero, qtdEstacoes, tipoConector, potenciaDeRecarga, redeDeRecarga, fkUsuario) 
+    VALUES ('${nome}', '${cep}', '${bairro}', '${rua}', '${numero}', ${qtdEstacoes}, '${tipoConector}', ${potenciaDeRecarga}, '${redeDeRecarga}', ${fkUsuario});
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
 
