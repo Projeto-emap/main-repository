@@ -22,9 +22,7 @@
         </ul>
 
         <ul class="direita">
-            <li>
-                <div class="usuario">Henrique</div>
-            </li>
+            <li><div class="usuario" id="usuario">default</div></li>
             <li><img src="assets/img/perfil.png" class="user-icon" onclick="perfil()"></li>
         </ul>
     </nav>
@@ -91,9 +89,9 @@
                 <label for="velocidade">Velocidade de Carregamento</label>
                 <select id="velocidade">
                     <option value="#">Escolher</option>
-                    <option value="0">Lenta</option>
-                    <option value="1">Média</option>
-                    <option value="2">Rápida</option>
+                    <option value="Lenta">Lenta</option>
+                    <option value="Media">Média</option>
+                    <option value="Rapida">Rápida</option>
                 </select>
 
                 <div class="row">
@@ -126,6 +124,7 @@
         </dialog>
     </main>
     <script src="js/cadastroUnidade.js"></script>
+    <script src="js/headerCrud.js"></script>
 </body>
 
 </html>

@@ -28,9 +28,7 @@
         </ul>
 
         <ul class="direita">
-            <li>
-                <div class="usuario">Henrique</div>
-            </li>
+            <li><div class="usuario" id="usuario">default</div></li>
             <li><img src="assets/img/perfil.png" class="imgUser" onclick="perfil()"></li>
         </ul>
 
@@ -42,8 +40,8 @@
                 <img class="setaVoltar" onclick="voltar()" src="assets/img/voltar.png" alt="">
             </div>
             <div class="grupoTitulo">
-                <h1>Unidade Jardins</h1>
-                <span class="spanID">ID 32430</span>
+                <h1 id="h1-Unidade">Unidade Jardins</h1>
+                <span id="span-id-Unidade" class="spanID">ID: </span>
             </div>
 
             <div class="container">
@@ -93,9 +91,9 @@
                     <div class="velocidade-container">
                         <select id="velocidadeCarregamento" onchange="validarSelecionar(this)">
                             <option value="#">Escolher</option>
-                            <option value="0">Lenta</option>
-                            <option value="1">Média</option>
-                            <option value="2">Rápida</option>
+                            <option value="Lenta">Lenta</option>
+                            <option value="Media">Média</option>
+                            <option value="Rapida">Rápida</option>
                         </select>
                     </div>
                 </div>
@@ -136,6 +134,7 @@
 </body>
 
 <script src="js/editarUnidades.js"></script>
+<script src="js/headerCrud.js"></script>
 <script>
     function cadastroRealizado(){
         dialogo.close();
