@@ -16,7 +16,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 20px;
+  padding: 2vh;
 }
 
 .container {
@@ -25,14 +25,14 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 80px;
+  margin-top: 8vh;
 }
 
 .textoTecnologias {
   display: flex;
   align-items: center;
-  border-radius: 10px;
-  backdrop-filter: blur(10px);
+  border-radius: 1vh;
+  backdrop-filter: blur(1vh);
   background: rgba(255, 255, 255, 0);
   color: white;
   width: 18vw;
@@ -43,7 +43,7 @@ body {
   box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
-.textoTecnologias>h2 {
+.textoTecnologias > h2 {
   font-size: 1.5vw;
   position: relative;
   text-align: center;
@@ -51,15 +51,15 @@ body {
 }
 
 .caixa {
-  border-radius: 25px;
-  backdrop-filter: blur(10px);
+  border-radius: 2.5vh;
+  backdrop-filter: blur(1vh);
   background: rgba(255, 255, 255, 0);
-  padding: 20px;
+  padding: 2vh;
   text-align: center;
   color: white;
   box-shadow: inset 0px -2px rgba(0, 0, 0, 0.3);
   flex: 1;
-  margin: 50px;
+  margin: 5vh;
   max-width: 25vw;
   max-height: 21vh;
 }
@@ -110,7 +110,7 @@ body {
 @media (max-width: 992px) {
   .agrupamentoCaixas1,
   .agrupamentoCaixas2 {
-    gap: 20px;
+    gap: 2vh;
   }
 
   .caixa {
@@ -157,10 +157,9 @@ body {
   }
 }
 
-
 nav {
   background-color: rgba(217, 217, 217, 0.6);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(1vh);
   overflow: hidden;
   display: flex;
   justify-content: space-between;
@@ -193,9 +192,9 @@ nav li a {
   display: block;
   color: black !important;
   text-align: center;
-  padding: 14px 16px;
+  padding: 1.4vh 1.6vw;
   text-decoration: none;
-  font-size: 19px;
+  font-size: 1.9vh;
 }
 
 nav li a:hover {
@@ -215,24 +214,24 @@ nav li a:hover {
   color: black;
   text-align: center;
 }
+
 .card {
   display: flex;
   justify-content: center;
-  width: 350px;
-  height: 300px;
+  width: 35vw;
+  height: 30vh;
   position: relative;
-  border-radius: 20px;
-  box-shadow: 0px 35px 80px rgba(0, 0, 0, 0.15);
+  border-radius: 2vh;
+  box-shadow: 0px 3.5vh 8vh rgba(0, 0, 0, 0.15);
   transition: 0.5s;
 }
 
 .card:hover {
-  height: 400px;
+  height: 40vh;
 }
 
 .card:hover .img-box {
   top: -28%;
-
 }
 
 .card .img-box img {
@@ -243,11 +242,11 @@ nav li a:hover {
 .card .content {
   display: flex;
   flex-direction: column;
-  gap: 3%; 
+  gap: 3%;
   position: absolute;
   top: 60%;
   width: 95%;
-  padding: 0px 30px;
+  padding: 0px 3vw;
   text-align: center;
   height: 25%;
   overflow: hidden;
@@ -255,10 +254,9 @@ nav li a:hover {
 }
 
 .card:hover .content {
-  top: 135px;
-  height: 300px;
+  top: 13.5vh;
+  height: 30vh;
 }
-
 
 .texto {
   display: flex;
@@ -269,7 +267,7 @@ nav li a:hover {
   max-height: 15vh;
   min-width: 7vw;
   min-height: 8vh;
-} 
+}
 
 .logoRetangulo {
   margin-top: 2vh;
@@ -282,22 +280,11 @@ nav li a:hover {
   box-sizing: border-box;
 }
 
-.spanTexto{
+.spanTexto {
   flex-wrap: wrap;
   font-size: 1%;
   line-height: 1.5;
   font-size: 100%;
-}
-
-.logoRetangulo {
-  margin-top: 2vh;
-  width: 7vw;
-  height: 15vh;
-  max-width: 7vw;
-  max-height: 15vh;
-  min-width: 7vw;
-  min-height: 15vh;
-  box-sizing: border-box;
 }
 
 .retangulosSolucao {
@@ -311,15 +298,15 @@ nav li a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px;
+  padding: 0.5vh;
 }
 
 .retangulo1Solucao,
 .retangulo2Solucao,
 .retangulo3Solucao,
 .retangulo4Solucao {
-  border-radius: 10px;
-  border: 3px black solid;
+  border-radius: 1vh;
+  border: 0.3vh black solid;
   height: 55vh;
   width: 20vw;
   margin-bottom: 3vh;
@@ -328,7 +315,6 @@ nav li a:hover {
   min-height: 45vh;
   min-width: 18vw;
   box-sizing: border-box;
-
 }
 
 .h2 {
@@ -350,12 +336,11 @@ nav li a:hover {
 }
 
 .linha {
-  border: 1px solid black;
+  border: 0.1vh solid black;
   display: flex;
   flex-direction: column;
   width: 100vw;
 }
-
 
 button {
   background-color: #5271FF;
@@ -365,8 +350,8 @@ button {
   max-height: 7vh;
   height: 7vh;
   font-size: 1.5vw;
-  border-radius: 100px;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 10vh;
+  box-shadow: 0.4vh 0.4vh 0.4vh rgba(0, 0, 0, 0.2);
   border: none;
   margin-top: -7vh;
   margin-bottom: 3vh;

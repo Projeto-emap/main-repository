@@ -1,13 +1,9 @@
-html{
+html {
   overflow-y: auto;
   overflow-x: hidden;
 }
 
 body {
-  /* background-image: url(../img/logincadastro-background.png);
-  background-size: cover; 
-  background-repeat: no-repeat;
-  background-position: center; */
   width: 100%;
   height: 100%;
   padding: 0;
@@ -22,7 +18,7 @@ body {
 }
 
 nav {
-  background-color: rgba(217, 217, 217, 0.6); 
+  background-color: rgba(217, 217, 217, 0.6);
   overflow: hidden;
   display: flex;
   justify-content: space-between;
@@ -39,7 +35,7 @@ nav li a {
   text-align: center;
   padding: 0.8vh 1vw;
   text-decoration: none;
-  font-size: 1.3vw; 
+  font-size: 1.3vw;
   max-width: 100vw;
   box-sizing: border-box;
   white-space: nowrap;
@@ -57,16 +53,18 @@ nav li a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  margin-top: -5vh;
 }
 
 .logar {
   margin-top: 2vh;
   padding-bottom: 2vh;
   width: 50%;
-  border-radius: 20px;
-  backdrop-filter: blur(20px);
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
-  border: 2px solid black;
+  border-radius: 2vh;
+  backdrop-filter: blur(2vh);
+  box-shadow: 0.2vh 0.2vh 0.2vh 0.2vh rgba(0, 0, 0, 0.2);
+  border: 0.2vh solid black;
 }
 
 .login {
@@ -84,26 +82,26 @@ input {
   height: 8vh;
   background: rgba(217, 217, 217, 0.6);
   border: 0px solid;
-  border-radius: 10px;
-  box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.5);
-  font-size: 15px;
-  padding: 0 10px;
+  border-radius: 1vh;
+  box-shadow: inset 0px 0.1vh 0.4vh rgba(0, 0, 0, 0.5);
+  font-size: 1.5vh;
+  padding: 0 1vw;
   box-sizing: border-box;
   max-width: 50vw;
   min-width: 40vw;
 }
 
 .input-invalido {
-  border: 2px solid red;
+  border: 0.2vh solid red;
 }
 
 .input-valido {
-  border: 2px none;
+  border: 0.2vh none;
 }
 
 button {
-  border-radius: 100px;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 10vh;
+  box-shadow: 0.4vh 0.4vh 0.4vh rgba(0, 0, 0, 0.2);
   border: none;
 }
 
@@ -158,12 +156,11 @@ button {
   display: flex;
   justify-content: center;
   margin-top: 1vh;
-  font-size: 20px;
-  line-height: 51px;
+  font-size: 2vh;
+  line-height: 5.1vh;
   text-align: center;
   text-decoration-line: underline;
   color: #222222;
-  
 }
 
 .separatorio {
@@ -177,7 +174,7 @@ button {
   position: absolute;
   width: 20vw;
   height: 0px;
-  border: 1px solid #000000;
+  border: 0.1vh solid #000000;
   margin-right: 25vw;
   max-width: 30vw;
   min-width: 10vw;
@@ -187,7 +184,7 @@ button {
   position: absolute;
   width: 20vw;
   height: 0px;
-  border: 1px solid #000000;
+  border: 0.1vh solid #000000;
   margin-left: 25vw;
   max-width: 30vw;
   min-width: 10vw;
@@ -206,6 +203,7 @@ button {
   margin-right: -2vw;
   text-decoration: none;
 }
+
 .senha-container {
   position: relative;
   width: 45vw;
@@ -214,31 +212,31 @@ button {
 
 .olhoSenha {
   position: absolute;
-  right: 10px; 
+  right: 1vw;
   top: 50%;
   transform: translateY(-40%);
   cursor: pointer;
-  z-index: 1; 
+  z-index: 1;
   max-width: 4vw;
 }
 
 .olho {
-  width: 2vw; 
+  width: 2vw;
   height: 5vh;
   max-width: 3vw;
   max-height: 6vh;
   min-width: 1vw;
   min-height: 4vh;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .olho:hover {
   opacity: 0.5;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .criarConta {
-  margin-bottom: 15px;
+  margin-bottom: 1.5vh;
 }
 
 /* font */

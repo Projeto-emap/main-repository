@@ -1,13 +1,9 @@
-html{
-  overflow-y: auto; 
+html {
+  overflow-y: auto;
   overflow-x: hidden;
 }
 
 body {
-  /* background-image: url(../img/logincadastro-background.png);
-  background-size: cover; 
-  background-repeat: no-repeat;
-  background-position: center; */
   width: 100%;
   height: 100%;
   padding: 0;
@@ -20,7 +16,7 @@ body {
 }
 
 .tamanhoFontePequeno {
-  font-size: .7vw;
+  font-size: 0.7vw;
 }
 
 .btn-voltar {
@@ -55,10 +51,10 @@ nav li a:hover {
 
 .cadastrar {
   width: 50%;
-  border-radius: 30px;
-  backdrop-filter: blur(20px);
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
-  border: 2px solid black;
+  border-radius: 3vh;
+  backdrop-filter: blur(2vh);
+  box-shadow: 0.2vh 0.2vh 0.2vh 0.2vh rgba(0, 0, 0, 0.2);
+  border: 0.2vh solid black;
 }
 
 .cadastro {
@@ -73,36 +69,36 @@ nav li a:hover {
 
 input {
   width: 45vw;
-  height: 15vh;
+  height: 8vh;
   max-width: 45vw;
   max-height: 50px;
   min-width: 30vw;
   min-height: 4vh;
   background: rgba(217, 217, 217, 0.6);
   border: 0px solid;
-  border-radius: 10px;
-  box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.5);
-  font-size: 15px;
-  padding: 0 10px;
+  border-radius: 1vh;
+  box-shadow: inset 0px 0.1vh 0.4vh rgba(0, 0, 0, 0.5);
+  font-size: 1.5vh;
+  padding: 0 1vw;
   box-sizing: border-box;
 }
 
 button {
-  border-radius: 100px;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 10vh;
+  box-shadow: 0.4vh 0.4vh 0.4vh rgba(0, 0, 0, 0.2);
   border: none;
 }
 
 .input-invalido {
-  border: 2px solid red;
+  border: 0.2vh solid red;
 }
 
 .input-valido {
-  border: 2px none;
+  border: 0.2vh none;
 }
 
 .inputEspacamento {
-  margin-top: 5px;;
+  margin-top: 0.5vh;
 }
 
 .btnContinuar1,
@@ -111,7 +107,7 @@ button {
   background-color: #5271FF;
   color: white;
   width: 45vw;
-  height: 15vh;
+  height: 8vh;
   max-width: 45vw;
   max-height: 50px;
   min-height: 4vh;
@@ -134,7 +130,7 @@ button > a {
 
 .btnVoltar {
   color: #5271FF;
-  border: 2px solid #5271FF;
+  border: 0.2vh solid #5271FF;
   background-color: transparent;
 }
 
@@ -143,8 +139,7 @@ button > a {
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  /* margin-top: 2vh; */
-  padding-bottom: 20px;
+  padding-bottom: 2vh;
 }
 
 .container {
@@ -163,7 +158,7 @@ button > a {
 }
 
 .passo {
-  font-size: 1.7vw;;
+  font-size: 1.7vw;
   font-weight: bold;
   white-space: nowrap;
   position: absolute;
@@ -231,29 +226,29 @@ button:hover {
 .olhoSenha,
 .olhoSenhaConfirmacao {
   position: absolute;
-  right: 10px; 
+  right: 1vw;
   top: 50%;
   transform: translateY(-40%);
   cursor: pointer;
-  z-index: 1; 
+  z-index: 1;
   max-width: 4vw;
 }
 
 .olho,
 .olhoConfirmacao {
-  width: 2vw; 
+  width: 2vw;
   height: 5vh;
   max-width: 3vw;
   max-height: 6vh;
   min-width: 1vw;
   min-height: 4vh;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .olho:hover,
 .olhoConfirmacao:hover {
   opacity: 0.5;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .informacaoSenha {
@@ -268,21 +263,21 @@ button:hover {
   flex-wrap: wrap;
 }
 
-.criterios>ul {
+.criterios > ul {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-@media (max-width: 768px){
-  .criterios{
+@media (max-width: 768px) {
+  .criterios {
     flex-direction: column;
   }
 }
 
 .barra {
   background-color: black;
-  border-radius: 2px;
+  border-radius: 0.2vh;
   height: 0.1%;
   width: 45vw;
   max-width: 60vw;
@@ -298,13 +293,13 @@ button:hover {
   justify-content: center;
 }
 
-.termos{
+.termos {
   line-height: auto;
 }
 
-.termos>p {
+.termos > p {
   text-align: center;
-  font-size: 10px;
+  font-size: 1vh;
   max-width: 20vw;
   min-width: 20vw;
 }
@@ -312,12 +307,12 @@ button:hover {
 .linkTermo {
   text-decoration: underline;
   color: black;
-  transition: .1s;
+  transition: 0.1s;
 }
 
 .linkTermo:hover {
-  opacity: .8;
-  transition: .1s;
+  opacity: 0.8;
+  transition: 0.1s;
 }
 
 .checkboxdiv {
@@ -329,20 +324,20 @@ button:hover {
   margin-bottom: 2vh;
 }
 
-.checkboxdiv>p {
+.checkboxdiv > p {
   height: 2vh;
   width: 100%;
   text-align: center;
 }
 
 input[type="checkbox"] {
-  padding: 0 0 0 0;
+  padding: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   box-shadow: none;
-  border-radius: 5px;
-  border: 2px solid black;
+  border-radius: 0.5vh;
+  border: 0.2vh solid black;
   min-height: 2.3vh;
   max-height: 2.3vh;
   width: 1vw;
@@ -353,8 +348,8 @@ input[type="checkbox"] {
   transition: background-color 0.3s, border-color 0.3s;
 }
 
-input[type="checkbox"].notChecked{
-  border: 2px solid red !important;
+input[type="checkbox"].notChecked {
+  border: 0.2vh solid red !important;
 }
 
 input[type="checkbox"]:checked {
@@ -370,7 +365,6 @@ input[type="checkbox"]:checked::after {
   width: 100%;
   height: 100%;
 }
-
 
 /* font */
 
