@@ -7,7 +7,21 @@ USE emap;
 CREATE TABLE empresa (
     idEmpresa INT AUTO_INCREMENT PRIMARY KEY,
     razaoSocial VARCHAR(80) NOT NULL,
-    cnpj VARCHAR(14) NOT NULL UNIQUE
+    cnpj VARCHAR(14) NOT NULL UNIQUE,
+    estado VARCHAR(40) NOT NULL,
+    cep VARCHAR(8) NOT NULL
+);
+
+-- Criação da tabela Usuario
+CREATE TABLE usuario (
+    idUsuario INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(80) NOT NULL,
+    cpf VARCHAR(14) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    senha VARCHAR(12) NOT NULL,
+    numeroCelular VARCHAR (13) NOT NULL UNIQUE,
+    fkEmpresa INT,
+    FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa) ON DELETE SET NULL
 );
 
 -- Criação da tabela PontoDeRecarga
@@ -21,19 +35,9 @@ CREATE TABLE pontoDeRecarga (
     qtdEstacoes INT NOT NULL,
     tipoConector VARCHAR(45) NOT NULL,
     potenciaDeRecarga INT NOT NULL,
-    redeDeRecarga VARCHAR(45) NOT NULL
-);
-
--- Criação da tabela Usuario
-CREATE TABLE usuario (
-    idUsuario INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(80) NOT NULL,
-    cpf VARCHAR(14) NOT NULL UNIQUE,
-    email VARCHAR(255) NOT NULL UNIQUE,
-    senha VARCHAR(12) NOT NULL,
-    numeroCelular VARCHAR (13) NOT NULL UNIQUE,
-    fkEmpresa INT,
-    FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa) ON DELETE SET NULL
+    redeDeRecarga VARCHAR(45) NOT NULL,
+    fkUsuario INT,
+	FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario) ON DELETE CASCADE
 );
 
 -- Criação da tabela Endereco
@@ -62,3 +66,6 @@ CREATE TABLE contatoSite (
     email VARCHAR(45) NOT NULL,
     mensagem VARCHAR(500) NOT NULL
 );
+
+INSERT INTO usuario VALUES
+(0, 'adm', '00000000000', 'a@a.a', '0', '00000000000', null);
