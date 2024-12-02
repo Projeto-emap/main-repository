@@ -3,22 +3,22 @@ var eletropostoModel = require("../models/eletropostoModel");
 function cadastrarEletroposto(req, res) {
     var nome = req.body.nomeServer;
     var cep = req.body.cepServer;
-    var cidade = req.body.cidadeServer;
+    var bairro = req.body.bairroServer;
     var rua = req.body.ruaServer;
     var numero = req.body.numeroServer;
     var qtdEstacoes = req.body.qtdEstacoesServer;
     var tipoConector = req.body.tipoConectorServer;
     var potenciaDeRecarga = req.body.potenciaDeRecargaServer;
     var redeDeRecarga = req.body.redeDeRecargaServer;
-    var fkUsuario = req.params.idUsuario;
+    var fkUsuario = req.body.fkUsuarioServer;
 
     // Faça as validações dos valores
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
     } else if (cep == undefined) {
         res.status(400).send("Seu cep está undefined!");
-    } else if (cidade == undefined) {
-        res.status(400).send("Seu cidade está undefined!");
+    } else if (bairro == undefined) {
+        res.status(400).send("Seu bairro está undefined!");
     } else if (rua == undefined) {
         res.status(400).send("Seu rua está undefined!");
     } else if (numero == undefined) {
@@ -36,7 +36,7 @@ function cadastrarEletroposto(req, res) {
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        eletropostoModel.cadastrarEletroposto(nome, cep, cidade, rua, numero, qtdEstacoes, tipoConector, potenciaDeRecarga, redeDeRecarga, fkUsuario)
+        eletropostoModel.cadastrarEletroposto(nome, cep, bairro, rua, numero, qtdEstacoes, tipoConector, potenciaDeRecarga, redeDeRecarga, fkUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);

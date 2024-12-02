@@ -4,14 +4,14 @@ const btnFinalizar = document.getElementById('finalizar');
 const btnRealizado = document.getElementById('realizado');
 const nomeInput = document.getElementById('nome');
 const cepInput = document.getElementById('cep');
-const cidadeInput = document.getElementById('cidade');
+const bairroInput = document.getElementById('bairro');
 const ruaInput = document.getElementById('rua');
 const numeroRuaInput = document.getElementById('numero');
 const estacoesInput = document.getElementById('estacoes');
 const conectoresSelect = document.getElementById('conectores');
 const potenciaSelect = document.getElementById('potencia');
 const velocidadeSelect = document.getElementById('velocidade');
-const fkUsuario = sessionStorage.getItem('idUsuario');
+const fkUsuario = sessionStorage.getItem('ID_USUARIO');
 
 btnVoltar.addEventListener('click', function () {
     document.getElementById('parte2').style.display = 'none';
@@ -36,11 +36,11 @@ async function continuar() {
     const nomeValido = nomeEletroposto.trim() !== '';
     const cepEletroposto = cepInput.value.replace(/-/g, ''); // Remove traços
     let cepValido = cepEletroposto.length === 8 && /^\d{8}$/.test(cepEletroposto);
-    const cidadeValido = cidadeInput.value.trim() !== '';
+    const bairroValido = bairroInput.value.trim() !== '';
     const ruaValido = ruaInput.value.trim() !== '';
     const numeroRuaValido = numeroRuaInput.value.trim() !== '';
 
-    if (nomeValido && cepValido && cidadeValido) {
+    if (nomeValido && cepValido && bairroValido) {
         document.getElementById('parte1').style.display = 'none';
         document.getElementById('parte2').style.display = 'block';
     } else {
@@ -72,10 +72,10 @@ async function continuar() {
                 errosModal += "Ocorreu um erro ao buscar o CEP.<br/>";
             }
         }
-        if (cidadeInput.value == '') {
-            errosModal += "Insira a cidade dessa unidade.<br/>";
-        } else if (!cidadeValido) {
-            errosModal += "A cidade inserida não é válida!<br/>";
+        if (bairroInput.value == '') {
+            errosModal += "Insira a bairro dessa unidade.<br/>";
+        } else if (!bairroValido) {
+            errosModal += "A bairro inserida não é válida!<br/>";
         }
         if (ruaInput.value == '') {
             errosModal += "Insira o nome da rua dessa unidade.<br/>";
@@ -91,8 +91,8 @@ async function continuar() {
         nome.classList.toggle('input-valido', nomeValido);
         cep.classList.toggle('input-invalido', !cepValido);
         cep.classList.toggle('input-valido', cepValido);
-        cidade.classList.toggle('input-invalido', !cidadeValido);
-        cidade.classList.toggle('input-valido', cidadeValido);
+        bairro.classList.toggle('input-invalido', !bairroValido);
+        bairro.classList.toggle('input-valido', bairroValido);
         rua.classList.toggle('input-invalido', !ruaValido);
         rua.classList.toggle('input-valido', ruaValido);
         numero.classList.toggle('input-invalido', !numeroRuaValido);
@@ -117,7 +117,7 @@ function validarInputCep(input) {
     }
 }
 
-function validarInputCidade(input) {
+function validarInputBairro(input) {
     input.value = input.value.replace(/[^a-zA-ZÀ-ÿ-\s]/g, '');
 }
 
@@ -191,7 +191,7 @@ function finalizar() {
             body: JSON.stringify({
                 nomeServer: nome,
                 cepServer: cep,
-                cidadeServer: cidade,
+                bairroServer: bairro,
                 ruaServer: rua,
                 numeroServer: numero,
                 qtdEstacoesServer: qtdEstacoes,

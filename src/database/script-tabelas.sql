@@ -1,4 +1,4 @@
--- Criação do banco de dados eMap
+-- Criação do banco de dados emap
 
 CREATE DATABASE IF NOT EXISTS emap;
 USE emap;
@@ -29,7 +29,7 @@ CREATE TABLE pontoDeRecarga (
     idPontoDeRecarga INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(45) NOT NULL,
     cep CHAR(8) NOT NULL,
-    cidade VARCHAR(50) NOT NULL,
+    bairro VARCHAR(50) NOT NULL,
     rua VARCHAR(50) NOT NULL,
     numero VARCHAR(8) NOT NULL,
     qtdEstacoes INT NOT NULL,
@@ -40,23 +40,15 @@ CREATE TABLE pontoDeRecarga (
 	FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario) ON DELETE CASCADE
 );
 
--- Criação da tabela Endereco
-CREATE TABLE endereco (
-    idEndereco INT AUTO_INCREMENT PRIMARY KEY,
-    cep CHAR(8) NOT NULL,
-    estado VARCHAR(20) NOT NULL,
-    fkPontoRecarga INT,
-    FOREIGN KEY (fkPontoRecarga) REFERENCES pontoDeRecarga(idPontoDeRecarga) ON DELETE CASCADE
-);
-
 -- Criação da tabela CarrosEmplacados
 CREATE TABLE carrosEmplacados (
     idCarrosEmplacados INT AUTO_INCREMENT PRIMARY KEY,
-    municipio VARCHAR(45) NOT NULL,
     qtdCarros INT NOT NULL,
     tipoCombustivel VARCHAR(45) NOT NULL,
-    mes VARCHAR(45) NOT NULL,
-    procedencia VARCHAR(45) NOT NULL
+    dataEmplacamento VARCHAR(45) NOT NULL,
+    procedencia VARCHAR(45) NOT NULL,
+    fkPontoDeRecarga INT,
+    FOREIGN KEY (fkPontoDeRecarga) REFERENCES pontoDeRecarga(idPontoDeRecarga) ON DELETE SET NULL
 );
 
 -- Criação da tabela contatoSite
@@ -66,6 +58,3 @@ CREATE TABLE contatoSite (
     email VARCHAR(45) NOT NULL,
     mensagem VARCHAR(500) NOT NULL
 );
-
-INSERT INTO usuario VALUES
-(0, 'adm', '00000000000', 'a@a.a', '0', '00000000000', null);
