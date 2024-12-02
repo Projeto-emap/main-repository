@@ -3,6 +3,8 @@
 // Seleciona o elemento <ul> onde as <li> serão adicionadas
 const locationsList = document.getElementById("locations");
 const idUsuario = sessionStorage.ID_USUARIO;
+const qtdUnidadeshtml = document.querySelector(".numero");
+let qtdUnidades = 0;
 
 // Faz uma requisição ao backend para buscar os eletropostos
 if (!idUsuario) {
@@ -67,7 +69,9 @@ if (!idUsuario) {
         li.appendChild(divGroup);
 
         locationsList.appendChild(li);
+        qtdUnidades++;
       });
+      qtdUnidadeshtml.innerHTML = `${qtdUnidades}`;
     })
     .catch((error) =>
       console.error("Erro ao carregar pontos de recarga:", error)
