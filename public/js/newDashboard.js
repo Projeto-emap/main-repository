@@ -1,102 +1,106 @@
 // newDashboard.js (frontEnd)
 
-const idUsuario = sessionStorage.getItem('ID_USUARIO');
-const nomeUsuarioStorage = sessionStorage.getItem('NOME_USUARIO');
-const divNomeUsuario = document.getElementById("nomeUsuario");
-const divNomeEmpresa = document.querySelector('.nomeEmpresaEletroposto');
+document.addEventListener("DOMContentLoaded", function () {
+    const idUsuario = sessionStorage.getItem("ID_USUARIO");
+    atualizarPerfil(idUsuario);
+    const nomeUsuario = sessionStorage.getItem("NOME_USUARIO");
 
-google.charts.load('current', { 'packages': ['corechart'] });
-google.charts.setOnLoadCallback(drawChart);
+    const divNomeUsuario = document.getElementById("nomeUsuariohtml");
+    const divNomeEmpresa = document.getElementById("nomeEmpresa");
+    const graficoBairro = document.getElementById("graficoBairro");
+    const curveChart = document.getElementById("curve_chart");
+    const divDashNomeEmpresa = document.getElementById("nomeEmpresaDash");
 
-divNomeUsuario.innerHTML = `${nomeUsuarioStorage}`;
+    divNomeUsuario.innerHTML = `${nomeUsuario}`;
 
-function carregarDadosUsuario() {
-    fetch(`/dashboard/dadosUsuario/${idUsuario}`)
-        .then(response => response.json())
-        .then(dados => {
-            document.getElementById("nomeEmpresa").innerText = dados.nomeEmpresa || "Empresa";
-            divNomeEmpresa.innerText = dados.nomeEmpresa || "nomeEmpresa";
-            document.getElementById("qtdEletropostos").innerText = `${dados.totalPontos || 0}`;
-            ajustarPerfil(dados.totalPontos);
+    // Fetch para obter o nome da empresa
+    fetch(`/dashboard/empresa/${idUsuario}`)
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                console.error("Erro ao buscar empresa.");
+            }
         })
-        .catch(erro => console.error("Erro ao carregar dados do usuário:", erro));
-}
-
-function carregarBairrosEmPotencial() {
-    fetch(`/dashboard/bairros/${idUsuario}`)
-        .then(response => response.json())
-        .then(bairros => {
-            const container = document.querySelector(".saidbar-card-center");
-            container.innerHTML = "";
-
-            bairros.forEach(bairro => {
-                const card = document.createElement("div");
-                card.classList.add("card-bairro");
-
-                card.innerHTML = `
-                    <div class="card-bairro-txt">${bairro.bairro}</div>
-                    <div class="card-bairro-img">
-                        <div id="imgUp"><img src="assets/img/image 58.png" alt=""></div>
-                        <div id="imgDown"><img src="assets/img/fast-forward 1.png" alt=""></div>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
+        .then((empresa) => {
+            if (empresa && empresa.nome) {
+                divNomeEmpresa.innerHTML = empresa.nome;
+                divDashNomeEmpresa.innerHTML = empresa.nome;
+            }
         })
-        .catch(erro => console.error("Erro ao carregar bairros em potencial:", erro));
-}
+        .catch((erro) => {
+            console.error("Erro na requisição de empresa:", erro);
+        });
 
-function ajustarPerfil(totalPontos) {
-    const tipoPerfilDiv = document.querySelector(".tipo-perfil");
-    const topLeftTxtDiv = document.querySelector(".top-left-txt");
+    // Função para carregar dados do bairro no gráfico
 
-    if (totalPontos <= 5) {
-        tipoPerfilDiv.innerHTML = `Seu perfil está <a style="color: red;">BAIXO</a>`;
-        topLeftTxtDiv.innerText = "Seu eletroposto está com poucas unidades para resultados precisos!";
-    } else if (totalPontos <= 8) {
-        tipoPerfilDiv.innerHTML = `Seu perfil está <a style="color: yellow;">INTERMEDIÁRIO</a>`;
-        topLeftTxtDiv.innerText = "Construa eletropostos nos pontos de oportunidade para aumentar seus ganhos e subir seu perfil";
-    } else if (totalPontos <= 12) {
-        tipoPerfilDiv.innerHTML = `Seu perfil está <a style="color: lightgreen;">BOM</a>`;
-        topLeftTxtDiv.innerText = "Você tem unidades suficientes para trazer várias oportunidades e dados com alta precisão!";
-    } else {
-        tipoPerfilDiv.innerHTML = `Seu perfil está <a style="color: darkgreen;">EXCELENTE</a>`;
-        topLeftTxtDiv.innerText = "Seu eletroposto contém diversas unidades por São Paulo e atende a maioria das oportunidades!";
-    }
-}
-
-
-
-function drawChart() {
-    // Substitua com a URL do seu servidor para pegar os dados do gráfico
-    fetch(`dashboard/potenciais-bairros/${idUsuario}`)
-        .then(response => response.json())
-        .then(data => {
-            // Preparar os dados para o gráfico
-            var dataChart = google.visualization.arrayToDataTable([
-                ['Category', 'Value'],
-                ['Bairros com todos os potenciais atendidos', data.bairrosComPotencialAtendido],
-                ['Bairros com potencial sobrando', data.bairrosComPotencialSobrando]
-            ]);
-            console.log(data.bairrosComPotencialAtendido, data.bairrosComPotencialSobrando);
-            var options = {
-                pieHole: 0.6,
-                backgroundColor: '#333333',
-                legend: 'none',
-                slices: {
-                    0: { color: '#FF005C' },
-                    1: { color: '#DC3912' }
+        fetch(`/dashboard/dadosBairro/${bairro}`)
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    console.error("Erro ao buscar dados do bairro.");
                 }
-            };
+            })
+            .then((dados) => {
+                if (dados && dados.length > 0) {
+                    const dataChart = [['Anos', 'Emplacamentos']];
+                    dados.forEach((item) => {
+                        dataChart.push([item.dataEmplacamento, item.qtdCarros]);
+                    });
 
-            var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-            chart.draw(dataChart, options);
+                    const data = google.visualization.arrayToDataTable(dataChart);
+                    const options = {
+                        title: `Dados de Emplacamentos para ${bairro}`,
+                        legend: { position: 'bottom' },
+                        backgroundColor: '#333333',
+                        titleTextStyle: { color: 'white' },
+                        legendTextStyle: { color: 'white' },
+                        hAxis: { textStyle: { color: 'white' } },
+                        vAxis: { textStyle: { color: 'white' } },
+                    };
+
+                    const chart = new google.visualization.LineChart(curveChart);
+                    chart.draw(data, options);
+                } else {
+                    console.error("Nenhum dado encontrado para o bairro.");
+                }
+            })
+            .catch((erro) => {
+                console.error("Erro ao carregar dados do bairro:", erro);
+            });
+    }
+)
+
+function atualizarPerfil(idUsuario) {
+    fetch(`/dashboard/listarBairros/${idUsuario}`)
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                console.error("Erro ao buscar bairros.");
+            }
         })
-        .catch(error => console.error('Erro ao carregar os dados do gráfico:', error));
-}
+        .then((bairros) => {
+            const qtdBairros = bairros.length;
+            const tipoPerfilDiv = document.querySelector(".tipo-perfil");
+            const textoPerfilDiv = document.querySelector(".top-left-txt");
 
-// Inicialização
-document.addEventListener("DOMContentLoaded", () => {
-    carregarDadosUsuario();
-    carregarBairrosEmPotencial();
-});
+            if (qtdBairros <= 5) {
+                tipoPerfilDiv.innerHTML = `Seu nível de perfil está <a style="color: red;">BAIXO</a>`;
+                textoPerfilDiv.innerHTML = "Seu eletroposto está com poucas unidades para resultados precisos!";
+            } else if (qtdBairros > 5 && qtdBairros <= 8) {
+                tipoPerfilDiv.innerHTML = `Seu nível de perfil está <a style="color: yellow;">INTERMEDIÁRIO</a>`;
+                textoPerfilDiv.innerHTML = "Adicione mais eletropostos para melhorar ainda mais o resultado!";
+            } else if (qtdBairros > 8 && qtdBairros <= 12) {
+                tipoPerfilDiv.innerHTML = `Seu nível de perfil está <a style="color: lightgreen;">BOM</a>`;
+                textoPerfilDiv.innerHTML = "Você tem unidades suficientes para trazer você várias oportunidades e dados com alta precisão!";
+            } else {
+                tipoPerfilDiv.innerHTML = `Seu nível de perfil está <a style="color: darkgreen;">EXCELENTE</a>`;
+                textoPerfilDiv.innerHTML = "Seu eletroposto contém diversas unidades por São Paulo e atende a maioria das oportunidades!";
+            }
+        })
+        .catch((erro) => {
+            console.error("Erro ao atualizar perfil:", erro);
+        });
+}
