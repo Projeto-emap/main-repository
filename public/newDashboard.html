@@ -10,17 +10,20 @@
         .perfil-baixo a {
             color: red;
         }
+
         .perfil-intermediario a {
             color: yellow;
         }
+
         .perfil-bom a {
             color: lightgreen;
         }
+
         .perfil-excelente a {
             color: darkgreen;
         }
     </style>
-    
+
 </head>
 
 <body>
@@ -35,11 +38,11 @@
             </div>
             <div class="sidebar-left-bottom">
                 <div class="sidebar-left-bottom-txt">
-                    
+
                     <div class="texto-bairro">
                         <a>Bairros com potencial</a>
                     </div>
-                   
+
                     <div class="sidebar-left-bottom-img"> <img src="assets/img/interrogacao-azul.png" alt=""></div>
                 </div>
                 <div class="sidebar-left-bottom-center">
@@ -48,7 +51,8 @@
                             <div class="card-bairro-txt">Tatuapé</div>
                             <div class="card-bairro-img">
                                 <div class="card-bairro-img" id="imgUp"><img src="assets/img/image 58.png" alt=""></div>
-                                <div class="card-bairro-img" id="imgDown"><img src="assets/img/fast-forward 1.png" alt=""></div>
+                                <div class="card-bairro-img" id="imgDown"><img src="assets/img/fast-forward 1.png"
+                                        alt=""></div>
                             </div>
                         </div>
                         <div class="card-bairro">
@@ -65,14 +69,15 @@
         <div class="main-content">
             <div class="top-bar">
                 <div class="center-content">
-                    
+
                     <div class="left-content">
                         <div class="top-left">
                             <div class="tipo-perfil">
                                 Seu perfil está <a>INTERMEDIÁRIO</a>
                             </div>
                             <div class="top-left-txt">
-                                Construa eletropostos nos pontos de oportunidade para aumentar seus ganhos e subir seu perfil
+                                Construa eletropostos nos pontos de oportunidade para aumentar seus ganhos e subir seu
+                                perfil
                             </div>
                         </div>
                         <div class="bottom-left">
@@ -91,7 +96,7 @@
 
                         </div>
                     </div>
-                    
+
                     <div class="right-content">
                         <div class="top-right">
                             <div id="donutchart"></div>
@@ -112,7 +117,53 @@
                 </div>
             </div>
             <div class="bottom-bar">
-                <div class="title" style="color: white;"><a id="graficoBairro">Tatuapé</a></div>
+                <div class="filter">
+                    <div class="title" style="color: white;"><a id="graficoBairro">Tatuapé</a></div>
+
+
+                    <div class="select">
+                        <select name="" id="">
+                            <option value="#">Ordenar</option>
+                            <option value="janeiro">Mensal</option>
+                            <option value="fevereiro">Trimestral</option>
+                            <option value="marco">Semestral</option>
+                        </select>
+                    </div>
+
+                    <!-- <div class="radio-inputs">
+                        <label class="radio">
+                          <input type="radio" name="radio" checked="">
+                          <span class="name">Janeiro</span>
+                        </label>
+                
+                        <label class="radio">
+                          <input type="radio" name="radio">
+                          <span class="name">Fevereiro</span>
+                        </label>
+                            
+                        <label class="radio">
+                          <input type="radio" name="radio">
+                          <span class="name">Março</span>
+                        </label>
+                        
+                            <label class="radio">
+                            <input type="radio" name="radio">
+                            <span class="name">Abril</span>
+                            </label>
+
+                            <label class="radio">
+                            <input type="radio" name="radio">
+                            <span class="name">Maio</span>
+                            </label>
+
+                            <label class="radio">
+                            <input type="radio" name="radio">
+                            <span class="name">Junho</span>
+                            </label>
+                      </div> -->
+
+                </div>
+
                 <div class="dashboard" style="color: white;">
                     <div class="chart" id="curve_chart" style="width: 97%; height: 100%"></div>
                 </div>

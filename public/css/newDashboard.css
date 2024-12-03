@@ -61,11 +61,22 @@ body {
 }
 
 .sidebar-right-top {
+  display: flex;
+  justify-content: center;
     background-color: #333;
     width: 100%;
-    height: 13%;
+    height: 8%;
     border-radius: 15px;
     padding: 1.5%;
+}
+
+ .img-sidebar {
+  margin-left: 1em;
+} 
+
+.img-sidebar img{
+  height: 95%;
+  width: 75%;
 }
 
 .sidebar-right-middle {
@@ -417,6 +428,7 @@ height: 75%;
 }
 
 .saidbar-card-center{
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -508,7 +520,70 @@ align-items: center;
     border-radius: 20px;
 }
 
-/* Responsividade */
+.select select {
+  margin: 1rem;
+    background-color: #222222;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.5rem;
+    font-size: 1rem;
+    outline: none; 
+    appearance: none; 
+    cursor: pointer;
+}
+.select {
+    display: inline-block;
+}
+
+/* .radio-inputs {
+  position: relative; 
+  display: flex;
+  border-radius: 0.5rem;
+  background-color: #222222;
+  box-sizing: border-box;
+  box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
+  padding: 0.25rem;
+  margin: 1em 1em 0 0;
+  width: 35%;
+  font-size: 14px;  
+  height: 15%;
+}
+
+.radio-inputs .radio {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.radio-inputs .radio input {
+  display: none;
+}
+
+.radio-inputs .radio .name {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  border: none;
+  padding: .5rem 0;
+  color: white;
+  transition: all .15s ease-in-out;
+}
+
+.radio-inputs .radio input:checked + .name {
+  background-color: #E4E4E4;
+  color: #111;
+  font-weight: 600;
+} */
+
+.filter{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
 @media (max-width: 1024px) {
   .container {
       flex-direction: column;
@@ -560,11 +635,6 @@ align-items: center;
   .sidebar-right-bottom div {
       font-size: 0.8rem;
   }
-}
-
-.sidebar-right-top{
-  display: flex;
-  justify-content: center;
 }
 
 .title {
