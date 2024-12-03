@@ -1,3 +1,4 @@
+<!-- newDashboard.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -6,21 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Layout</title>
     <link rel="stylesheet" href="css/newDashboard.css">
-    <style>
-        .perfil-baixo a {
-            color: red;
-        }
-        .perfil-intermediario a {
-            color: yellow;
-        }
-        .perfil-bom a {
-            color: lightgreen;
-        }
-        .perfil-excelente a {
-            color: darkgreen;
-        }
-    </style>
-    
 </head>
 
 <body>
@@ -44,20 +30,6 @@
                 </div>
                 <div class="sidebar-left-bottom-center">
                     <div class="saidbar-card-center">
-                        <div class="card-bairro">
-                            <div class="card-bairro-txt">Tatuapé</div>
-                            <div class="card-bairro-img">
-                                <div class="card-bairro-img" id="imgUp"><img src="assets/img/image 58.png" alt=""></div>
-                                <div class="card-bairro-img" id="imgDown"><img src="assets/img/fast-forward 1.png" alt=""></div>
-                            </div>
-                        </div>
-                        <div class="card-bairro">
-                            <div class="card-bairro-txt">Itaquera</div>
-                            <div class="card-bairro-img">
-                                <div id="imgUp"><img src="assets/img/image 58.png" alt=""></div>
-                                <div id="imgDown"><img src="assets/img/fast-forward 1.png" alt=""></div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -69,24 +41,24 @@
                     <div class="left-content">
                         <div class="top-left">
                             <div class="tipo-perfil">
-                                Seu perfil está <a>INTERMEDIÁRIO</a>
+                                Seu perfil está <a style="color: red;">BAIXO</a>
                             </div>
                             <div class="top-left-txt">
-                                Construa eletropostos nos pontos de oportunidade para aumentar seus ganhos e subir seu perfil
+                                Seu eletroposto está com poucas unidades para resultados precisos!
                             </div>
                         </div>
                         <div class="bottom-left">
                             <div class="bottom-left-titulo">
-                                <div id="nomeEmpresa">[nomeDaEmpresa]</div>
-                                <div id="atendeRequisito">atende</div>
+                                <div id="nomeEmpresa" class="nomeEmpresaEletroposto">[nomeDaEmpresa]</div>
+                                <div id="atendeRequisito">tem</div>
                             </div>
 
                             <div id="porcentagem">
-                                <a>60%</a>
+                                <a id="qtdEletropostos">60%</a>
                             </div>
 
                             <div class="txt-bottom">
-                                <a>Do total de Oportunidades disponíveis </a>
+                                <a>Unidades cadastradas</a>
                             </div>
 
                         </div>
@@ -98,11 +70,11 @@
                             <div class="legend">
                                 <div class="legend-item">
                                     <div class="legend-color" style="background-color: #FF005C;"></div>
-                                    Bairros com potencial, sem seus eletropostos
+                                    Bairros com todos os potenciais atendidos
                                 </div>
                                 <div class="legend-item">
                                     <div class="legend-color" style="background-color: #dc3912;"></div>
-                                    Bairros com potencial, com seus eletropostos
+                                    Bairros com potencial sobrando
                                 </div>
                             </div>
                         </div>
@@ -126,13 +98,13 @@
             </div>
             <div class="sidebar-right-middle">
                 <div class="sidebar-right-titulo">Dashboard</div>
-                <div class="sidebar-rigth-buton-fixo">
-                    <div class="sidebar-rigth-img"><img src="assets/img/home (2) 2.png" alt=""></div>
-                    <div class="sidebar-rigth-txt"><a href="#">Visão Geral</a></div>
+                <div class="sidebar-rigth-buton">
+                    <div class="sidebar-rigth-img"><img src="assets/img/home (2) 2.png" alt="" href="gerenciarEletroposto.html"></div>
+                    <div class="sidebar-rigth-txt"><a href="gerenciarEletroposto.html">Visão Geral</a></div>
                 </div>
                 <div class="sidebar-rigth-buton">
-                    <div class="sidebar-rigth-img"><img src="assets/img/dashboard 1.png" alt=""></a></div>
-                    <div class="sidebar-rigth-txt"><a href="gerenciarEletroposto.html">Gerenciar Postos</a></div>
+                    <div class="sidebar-rigth-img"><img src="assets/img/dashboard 1.png" alt="" href="gerenciarEletropostoParte1.html"></div>
+                    <div class="sidebar-rigth-txt"><a href="gerenciarEletropostoParte1.html">Gerenciar Postos</a></div>
                 </div>
 
             </div>
@@ -164,8 +136,8 @@
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
             ['Category', 'Value'],
-            ['Bairros com potencial, sem seus eletropostos', 1],
-            ['Bairros com potencial, com seus eletropostos', 3],
+            ['Bairros com todos os potenciais atendidos', 1],
+            ['Bairros com potencial sobrando', 3],
         ]);
 
         var options = {
@@ -186,6 +158,7 @@
 
 <script src="js/dashboard.js"></script>
 <script src="js/voltarIndex.js"></script>
+<script src="js/newDashboard.js"></script>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">

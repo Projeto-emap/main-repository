@@ -1,11 +1,11 @@
-// ROUTER dashboard.js
+// ../src/routes/dashboard.js
 var express = require("express");
 var router = express.Router();
-
 var dashboardController = require("../controllers/dashboardController");
 
-router.get("/listarBairros/:idUsuario", dashboardController.listarBairros);
-router.get("/empresa/:idUsuario", dashboardController.obterNomeEmpresa);
-router.get("/dadosBairro/:bairro", dashboardController.listarDadosBairro);
+router.get("/bairros/:idUsuario", dashboardController.listarBairrosEmPotencial);
+router.get("/dadosUsuario/:idUsuario", dashboardController.obterDadosUsuario);
+router.get("/potenciais-bairros/:idUsuario", dashboardController.listarPotenciaisBairros);
 
 module.exports = router;
+
