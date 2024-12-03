@@ -1,141 +1,164 @@
+<!-- newDashboard.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="css/dashboard.css">
-    <link rel="stylesheet" href="css/header.css">
+    <title>Layout</title>
+    <link rel="stylesheet" href="css/newDashboard.css">
 </head>
 
 <body>
-
-    <nav>
-        <div class="logo">
-            <img src="assets/img/logoPreta.png" alt="emap." class="imgLogo" onclick="index()">
+    <div class="container">
+        <div class="left-content-sidebar">
+            <div class="sidebar-left-top">
+                <div class="sidebar-left-top-bottom-img"> <img src="assets/img/usuario.png" alt=""></div>
+                <div class="sidebar-left-top-txt">
+                    <div id="nomeUsuario"><b>Henrique</b></div>
+                    <div id="nomeEmpresa">Empresa</div>
+                </div>
+            </div>
+            <div class="sidebar-left-bottom">
+                <div class="sidebar-left-bottom-txt">
+                    
+                    <div class="texto-bairro">
+                        <a>Bairros com potencial</a>
+                    </div>
+                   
+                    <div class="sidebar-left-bottom-img"> <img src="assets/img/interrogacao-azul.png" alt=""></div>
+                </div>
+                <div class="sidebar-left-bottom-center">
+                    <div class="saidbar-card-center">
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <ul class="center">
-            <li><a class="sublinhado" href="dashboardFinanceiro.html">dashboard</a></li>
-            <li><a href="gerenciarEletroposto.html">postos</a></li>
-        </ul>
-
-        <ul class="direita">
-            <li><div class="usuario" id="usuario">default</div></li>
-            <li><img src="assets/img/perfil.png" class="user-icon" onclick="perfil()"></li>
-        </ul>
-    </nav>
-    <div>
-        <main>
-            <aside>
-                <div class="tituloAside">Ánalise de municipios</div>
-                <div class="subTituloAside"><a class="textImportant"><b>IMPORTANTE:</b> O percentual é calculado em
-                        relação aos últimos 2 meses.</a></div>
-
-                <div class="card">
-                    <div class="municipio">
-                        Jardins
-                    </div>
-                    <div class="porcentagem">
-                        <div class="dados">
-                            <div class="numeros">
-                                20%
-                                <div class="imgSetaCima"><img src="assets/img/image 58.png" style="display: relative;"
-                                        alt=""></div>
-                                <div class="imgSetaBaixo"><img src="assets/img/fast-forward 1.png" alt=""
-                                        style="display: none;"></div>
+        <div class="main-content">
+            <div class="top-bar">
+                <div class="center-content">
+                    
+                    <div class="left-content">
+                        <div class="top-left">
+                            <div class="tipo-perfil">
+                                Seu perfil está <a style="color: red;">BAIXO</a>
                             </div>
-                            <p>Último Mês</p>
-                        </div>
-
-                        <div class="dados">
-                            <div class="numeros">
-                                20%
-                                <div class="imgSetaCima"><img src="assets/img/image 58.png" style="display: relative;"
-                                        alt=""></div>
-                                <div class="imgSetaBaixo"><img src="assets/img/fast-forward 1.png" alt=""
-                                        style="display: none;"></div>
+                            <div class="top-left-txt">
+                                Seu eletroposto está com poucas unidades para resultados precisos!
                             </div>
-                            <p>Previsão próximo Mês</p>
                         </div>
-                    </div>
-                    <div class="informacao">
-                        Aumento no emplacamento de carros elétricos na região
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="municipio">
-                        Adamantina
-                    </div>
-                    <div class="porcentagem">
-                        <div class="dados">
-                            <div class="numeros">
-                                64%
-                                <div class="imgSetaBaixo"><img src="assets/img/fast-forward 1.png"
-                                        style="display: relative;" alt=""></div>
-                                <div class="imgSetaCima"><img src="assets/img/image 58.png" style="display: none;"
-                                        alt=""></div>
+                        <div class="bottom-left">
+                            <div class="bottom-left-titulo">
+                                <div id="nomeEmpresa" class="nomeEmpresaEletroposto">[nomeDaEmpresa]</div>
+                                <div id="atendeRequisito">tem</div>
                             </div>
-                            <p>Último Mês</p>
-                        </div>
-                        <div class="dados">
-                            <div class="numeros">
-                                80%
-                                <div class="imgSetaBaixo"><img src="assets/img/fast-forward 1.png"
-                                        style="display: relative;"></div>
-                                <div class="imgSetaCima"><img src="assets/img/image 58.png" style="display: none;"
-                                        alt=""></div>
+
+                            <div id="porcentagem">
+                                <a id="qtdEletropostos">60%</a>
                             </div>
-                            <p>Previsão próximo Mês</p>
+
+                            <div class="txt-bottom">
+                                <a>Unidades cadastradas</a>
+                            </div>
+
                         </div>
                     </div>
-                    <div class="informacao">
-                        Diminuição no emplacamento de carros elétricos na região
-                    </div>
-                </div>
-
-            </aside>
-
-            <section class="chart-section">
-                <div class="kpis">
-                    <div class="tituloKpais">
-                        <div class="unidade">
-                            <div class="tituloUnidade">Jardins</div>
-                        </div>
-                        <div class="titulo">
-                            <div class="informacaoTitulo">
-                                <div class="dados">
-                                    <div class="numeros">
-                                        293
-                                        <div class="imgSetaCima"><img src="assets/img/image 58.png"
-                                                style="display: relative;" alt=""></div>
-                                        <div class="imgSetaBaixo"><img src="assets/img/fast-forward 1.png" alt=""
-                                                style="display: none;"></div>
-                                    </div>
-                                    <p>Total emplacamentos</p>
+                    
+                    <div class="right-content">
+                        <div class="top-right">
+                            <div id="donutchart"></div>
+                            <div class="legend">
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background-color: #FF005C;"></div>
+                                    Bairros com todos os potenciais atendidos
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background-color: #dc3912;"></div>
+                                    Bairros com potencial sobrando
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="tabs">
-                        <button id="trimestral">Trimestral</button>
-                        <button id="Semestral">Semestral</button>
-                        <button id="anual">Anual</button>
+
                     </div>
                 </div>
-                <div class="chart" id="curve_chart" style="width: 97%; height: 100%"></div>
-            </section>
-        </main>
+            </div>
+            <div class="bottom-bar">
+                <div class="title" style="color: white;"><a id="graficoBairro">Emplacamentos ao longo do tempo</a></div>
+                <div class="dashboard" style="color: white;">   
+                    <div class="chart" id="curve_chart" style="width: 97%; height: 100%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="right-content-sidebar">
+            <div class="sidebar-right-top">
+                <div class="img-sidebar">
+                    <img src="assets/img/logo_fundo_preto-removebg-preview 1.png" alt="">
+                </div>
+            </div>
+            <div class="sidebar-right-middle">
+                <div class="sidebar-right-titulo">Dashboard</div>
+                <div class="sidebar-rigth-buton">
+                    <div class="sidebar-rigth-img"><img src="assets/img/home (2) 2.png" alt="" href="gerenciarEletroposto.html"></div>
+                    <div class="sidebar-rigth-txt"><a href="gerenciarEletroposto.html">Visão Geral</a></div>
+                </div>
+                <div class="sidebar-rigth-buton">
+                    <div class="sidebar-rigth-img"><img src="assets/img/dashboard 1.png" alt="" href="gerenciarEletropostoParte1.html"></div>
+                    <div class="sidebar-rigth-txt"><a href="gerenciarEletropostoParte1.html">Gerenciar Postos</a></div>
+                </div>
+
+            </div>
+            <div class="sidebar-right-bottom">
+                <div class="sara-top">
+                    <img src="assets/img/sarah__12_-removebg-preview 1.png" alt="">
+                    <div class="sara-titulo">Chat</div>
+                </div>
+                <div class="sara-center">
+                    <img src="assets/img/Group 67.png" alt="">
+                </div>
+                <div class="sara-bottom">
+                    <div><a>Gerar Análise por IA</a></div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
 
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Category', 'Value'],
+            ['Bairros com todos os potenciais atendidos', 1],
+            ['Bairros com potencial sobrando', 3],
+        ]);
+
+        var options = {
+            pieHole: 0.6,
+            backgroundColor: '#333333',
+            legend: 'none',
+            slices: {
+                0: { color: '#FF005C' },
+                4: { color: '#00AAFF' }
+            }
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+    }
+
+</script>
+
 <script src="js/dashboard.js"></script>
 <script src="js/voltarIndex.js"></script>
-<script src="js/headerCrud.js"></script>
+<script src="js/newDashboard.js"></script>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
@@ -149,12 +172,16 @@
             ['2005', 1000],
             ['2006', 800],
             ['2007', 1170]
-
         ]);
 
         var options = {
             title: 'Emplacamentos ao longo do tempo',
-            legend: { position: 'bottom' }
+            legend: { position: 'bottom' },
+            backgroundColor: '#333333',
+            titleTextStyle: { color: 'white' },
+            legendTextStyle: { color: 'white' },
+            hAxis: { textStyle: { color: 'white' } }, // Cor dos anos
+            vAxis: { textStyle: { color: 'white' } }  // Cor dos emplacamentos
         };
 
         var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
