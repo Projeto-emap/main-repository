@@ -1,4 +1,3 @@
-<!-- newDashboard.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -7,6 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Layout</title>
     <link rel="stylesheet" href="css/newDashboard.css">
+    <style>
+        .perfil-baixo a {
+            color: red;
+        }
+
+        .perfil-intermediario a {
+            color: yellow;
+        }
+
+        .perfil-bom a {
+            color: lightgreen;
+        }
+
+        .perfil-excelente a {
+            color: darkgreen;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -21,15 +38,30 @@
             </div>
             <div class="sidebar-left-bottom">
                 <div class="sidebar-left-bottom-txt">
-                    
+
                     <div class="texto-bairro">
                         <a>Bairros com potencial</a>
                     </div>
-                   
+
                     <div class="sidebar-left-bottom-img"> <img src="assets/img/interrogacao-azul.png" alt=""></div>
                 </div>
                 <div class="sidebar-left-bottom-center">
                     <div class="saidbar-card-center">
+                        <div class="card-bairro">
+                            <div class="card-bairro-txt">Tatuapé</div>
+                            <div class="card-bairro-img">
+                                <div class="card-bairro-img" id="imgUp"><img src="assets/img/image 58.png" alt=""></div>
+                                <div class="card-bairro-img" id="imgDown"><img src="assets/img/fast-forward 1.png"
+                                        alt=""></div>
+                            </div>
+                        </div>
+                        <div class="card-bairro">
+                            <div class="card-bairro-txt">Itaquera</div>
+                            <div class="card-bairro-img">
+                                <div id="imgUp"><img src="assets/img/image 58.png" alt=""></div>
+                                <div id="imgDown"><img src="assets/img/fast-forward 1.png" alt=""></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -37,44 +69,45 @@
         <div class="main-content">
             <div class="top-bar">
                 <div class="center-content">
-                    
+
                     <div class="left-content">
                         <div class="top-left">
                             <div class="tipo-perfil">
-                                Seu perfil está <a style="color: red;">BAIXO</a>
+                                Seu perfil está <a>INTERMEDIÁRIO</a>
                             </div>
                             <div class="top-left-txt">
-                                Seu eletroposto está com poucas unidades para resultados precisos!
+                                Construa eletropostos nos pontos de oportunidade para aumentar seus ganhos e subir seu
+                                perfil
                             </div>
                         </div>
                         <div class="bottom-left">
                             <div class="bottom-left-titulo">
-                                <div id="nomeEmpresa" class="nomeEmpresaEletroposto">[nomeDaEmpresa]</div>
-                                <div id="atendeRequisito">tem</div>
+                                <div id="nomeEmpresa">[nomeDaEmpresa]</div>
+                                <div id="atendeRequisito">atende</div>
                             </div>
 
                             <div id="porcentagem">
-                                <a id="qtdEletropostos">60%</a>
+                                <a>60%</a>
                             </div>
 
                             <div class="txt-bottom">
-                                <a>Unidades cadastradas</a>
+                                <a>Do total de Oportunidades disponíveis </a>
                             </div>
 
                         </div>
                     </div>
-                    
+
                     <div class="right-content">
                         <div class="top-right">
                             <div id="donutchart"></div>
                             <div class="legend">
                                 <div class="legend-item">
                                     <div class="legend-color" style="background-color: #FF005C;"></div>
-                                    Bairros com todos os potenciais atendidos
+                                    Bairros com potencial, sem seus eletropostos
                                 </div>
                                 <div class="legend-item">
                                     <div class="legend-color" style="background-color: #dc3912;"></div>
-                                    Bairros com potencial sobrando
+                                    Bairros com potencial, com seus eletropostos
                                 </div>
                             </div>
                         </div>
@@ -84,7 +117,53 @@
                 </div>
             </div>
             <div class="bottom-bar">
-                <div class="title" style="color: white;"><a id="graficoBairro">Tatuapé</a></div>
+                <div class="filter">
+                    <div class="title" style="color: white;"><a id="graficoBairro">Tatuapé</a></div>
+
+
+                    <div class="select">
+                        <select name="" id="">
+                            <option value="#">Ordenar</option>
+                            <option value="janeiro">Mensal</option>
+                            <option value="fevereiro">Trimestral</option>
+                            <option value="marco">Semestral</option>
+                        </select>
+                    </div>
+
+                    <!-- <div class="radio-inputs">
+                        <label class="radio">
+                          <input type="radio" name="radio" checked="">
+                          <span class="name">Janeiro</span>
+                        </label>
+                
+                        <label class="radio">
+                          <input type="radio" name="radio">
+                          <span class="name">Fevereiro</span>
+                        </label>
+                            
+                        <label class="radio">
+                          <input type="radio" name="radio">
+                          <span class="name">Março</span>
+                        </label>
+                        
+                            <label class="radio">
+                            <input type="radio" name="radio">
+                            <span class="name">Abril</span>
+                            </label>
+
+                            <label class="radio">
+                            <input type="radio" name="radio">
+                            <span class="name">Maio</span>
+                            </label>
+
+                            <label class="radio">
+                            <input type="radio" name="radio">
+                            <span class="name">Junho</span>
+                            </label>
+                      </div> -->
+
+                </div>
+
                 <div class="dashboard" style="color: white;">
                     <div class="chart" id="curve_chart" style="width: 97%; height: 100%"></div>
                 </div>
@@ -98,13 +177,13 @@
             </div>
             <div class="sidebar-right-middle">
                 <div class="sidebar-right-titulo">Dashboard</div>
-                <div class="sidebar-rigth-buton">
-                    <div class="sidebar-rigth-img"><img src="assets/img/home (2) 2.png" alt="" href="gerenciarEletroposto.html"></div>
-                    <div class="sidebar-rigth-txt"><a href="gerenciarEletroposto.html">Visão Geral</a></div>
+                <div class="sidebar-rigth-buton-fixo">
+                    <div class="sidebar-rigth-img"><img src="assets/img/home (2) 2.png" alt=""></div>
+                    <div class="sidebar-rigth-txt"><a href="#">Visão Geral</a></div>
                 </div>
                 <div class="sidebar-rigth-buton">
-                    <div class="sidebar-rigth-img"><img src="assets/img/dashboard 1.png" alt="" href="gerenciarEletropostoParte1.html"></div>
-                    <div class="sidebar-rigth-txt"><a href="gerenciarEletropostoParte1.html">Gerenciar Postos</a></div>
+                    <div class="sidebar-rigth-img"><img src="assets/img/dashboard 1.png" alt=""></a></div>
+                    <div class="sidebar-rigth-txt"><a href="gerenciarEletroposto.html">Gerenciar Postos</a></div>
                 </div>
 
             </div>
@@ -136,8 +215,8 @@
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
             ['Category', 'Value'],
-            ['Bairros com todos os potenciais atendidos', 1],
-            ['Bairros com potencial sobrando', 3],
+            ['Bairros com potencial, sem seus eletropostos', 1],
+            ['Bairros com potencial, com seus eletropostos', 3],
         ]);
 
         var options = {
@@ -158,7 +237,6 @@
 
 <script src="js/dashboard.js"></script>
 <script src="js/voltarIndex.js"></script>
-<script src="js/newDashboard.js"></script>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
