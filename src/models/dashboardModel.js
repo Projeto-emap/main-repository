@@ -71,8 +71,8 @@ function listarPotenciaisBairros(idUsuario) {
     // Passando o parâmetro corretamente para a consulta preparada
     return database.executar(query, [idUsuario])
         .then(bairros => {
-            const bairrosComPotencialAtendido = bairros.filter(bairro => bairro.potencialAtendido > 0);
-            const bairrosComPotencialSobrando = bairros.filter(bairro => bairro.potencialAtendido == 0);
+            const bairrosComPotencialAtendido = bairros.filter(bairro => bairro.potencialAtendido == 0);
+            const bairrosComPotencialSobrando = bairros.filter(bairro => bairro.potencialAtendido > 0);
             return {
                 bairrosComPotencialAtendido: bairrosComPotencialAtendido.length,
                 bairrosComPotencialSobrando: bairrosComPotencialSobrando.length
@@ -80,8 +80,45 @@ function listarPotenciaisBairros(idUsuario) {
         });
 }
 
+// function obterEmplacamentos(periodo) {
+//     let groupBy;
+//     let selectExtra = '';
+
+//     switch (periodo) {
+//         case 'trimestral':
+//             groupBy = "CONCAT(YEAR(emplacamento.anoEmplacamento), '-', QUARTER(STR_TO_DATE(emplacamento.mesEmplacamento, '%M')))"; 
+//             selectExtra = ", QUARTER(STR_TO_DATE(emplacamento.mesEmplacamento, '%M')) AS trimestre";
+//             break;
+//         case 'semestral':
+//             groupBy = "CONCAT(YEAR(emplacamento.anoEmplacamento), '-', IF(MONTH(STR_TO_DATE(emplacamento.mesEmplacamento, '%M')) <= 6, 1, 2))";
+//             selectExtra = ", IF(MONTH(STR_TO_DATE(emplacamento.mesEmplacamento, '%M')) <= 6, 1, 2) AS semestre";
+//             break;
+//         default:
+//             // Mensal é o padrão
+//             groupBy = "CONCAT(emplacamento.anoEmplacamento, '-', LPAD(MONTH(STR_TO_DATE(emplacamento.mesEmplacamento, '%M')), 2, '0'))";
+//             selectExtra = ", MONTH(STR_TO_DATE(emplacamento.mesEmplacamento, '%M')) AS mes";
+//             break;
+//     }
+
+//     const query = `
+//         SELECT 
+//             COUNT(emplacamento.idEmplacamento) AS qtdCarros,
+//             emplacamento.anoEmplacamento,
+//             emplacamento.mesEmplacamento ${selectExtra}
+//         FROM 
+//             emplacamento
+//         GROUP BY 
+//             ${groupBy}
+//         ORDER BY 
+//             emplacamento.anoEmplacamento, ${selectExtra}
+//     `;
+
+//     return database.executar(query);
+// }
+
 module.exports = {
     listarBairrosEmPotencial,
     obterDadosUsuario,
-    listarPotenciaisBairros
+    listarPotenciaisBairros,
+    // obterEmplacamentos,
 };
