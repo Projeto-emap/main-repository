@@ -75,8 +75,8 @@ function drawChart() {
             // Preparar os dados para o gráfico
             var dataChart = google.visualization.arrayToDataTable([
                 ['Category', 'Value'],
-                ['Bairros com todos os potenciais atendidos', data.bairrosComPotencialAtendido],
-                ['Bairros com potencial sobrando', data.bairrosComPotencialSobrando]
+                ['Bairros com potencial sobrando', data.bairrosComPotencialSobrando],
+                ['Bairros com todos os potenciais atendidos', data.bairrosComPotencialAtendido]
             ]);
             console.log(data.bairrosComPotencialAtendido, data.bairrosComPotencialSobrando);
             var options = {
@@ -84,8 +84,8 @@ function drawChart() {
                 backgroundColor: '#333333',
                 legend: 'none',
                 slices: {
-                    0: { color: '#FF005C' },
-                    1: { color: '#DC3912' }
+                    1: { color: '#FF005D' },
+                    0: { color: '#59D96B' }
                 }
             };
 
@@ -95,8 +95,10 @@ function drawChart() {
         .catch(error => console.error('Erro ao carregar os dados do gráfico:', error));
 }
 
+
 // Inicialização
 document.addEventListener("DOMContentLoaded", () => {
     carregarDadosUsuario();
     carregarBairrosEmPotencial();
+    carregarEmplacamentos();
 });

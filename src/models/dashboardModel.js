@@ -71,8 +71,8 @@ function listarPotenciaisBairros(idUsuario) {
     // Passando o parâmetro corretamente para a consulta preparada
     return database.executar(query, [idUsuario])
         .then(bairros => {
-            const bairrosComPotencialAtendido = bairros.filter(bairro => bairro.potencialAtendido > 0);
-            const bairrosComPotencialSobrando = bairros.filter(bairro => bairro.potencialAtendido == 0);
+            const bairrosComPotencialAtendido = bairros.filter(bairro => bairro.potencialAtendido == 0);
+            const bairrosComPotencialSobrando = bairros.filter(bairro => bairro.potencialAtendido > 0);
             return {
                 bairrosComPotencialAtendido: bairrosComPotencialAtendido.length,
                 bairrosComPotencialSobrando: bairrosComPotencialSobrando.length
@@ -83,5 +83,5 @@ function listarPotenciaisBairros(idUsuario) {
 module.exports = {
     listarBairrosEmPotencial,
     obterDadosUsuario,
-    listarPotenciaisBairros
+    listarPotenciaisBairros,
 };

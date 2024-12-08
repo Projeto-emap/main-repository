@@ -21,11 +21,11 @@
             </div>
             <div class="sidebar-left-bottom">
                 <div class="sidebar-left-bottom-txt">
-                    
+
                     <div class="texto-bairro">
                         <a>Bairros com potencial</a>
                     </div>
-                   
+
                     <div class="sidebar-left-bottom-img"> <img src="assets/img/interrogacao-azul.png" alt=""></div>
                 </div>
                 <div class="sidebar-left-bottom-center">
@@ -37,7 +37,7 @@
         <div class="main-content">
             <div class="top-bar">
                 <div class="center-content">
-                    
+
                     <div class="left-content">
                         <div class="top-left">
                             <div class="tipo-perfil">
@@ -63,17 +63,17 @@
 
                         </div>
                     </div>
-                    
+
                     <div class="right-content">
                         <div class="top-right">
                             <div id="donutchart"></div>
                             <div class="legend">
                                 <div class="legend-item">
-                                    <div class="legend-color" style="background-color: #FF005C;"></div>
+                                    <div class="legend-color" style="background-color: #FF005D;"></div>
                                     Bairros com todos os potenciais atendidos
                                 </div>
                                 <div class="legend-item">
-                                    <div class="legend-color" style="background-color: #dc3912;"></div>
+                                    <div class="legend-color" style="background-color: #59D96B;"></div>
                                     Bairros com potencial sobrando
                                 </div>
                             </div>
@@ -84,8 +84,18 @@
                 </div>
             </div>
             <div class="bottom-bar">
-                <div class="title" style="color: white;"><a id="graficoBairro">Emplacamentos ao longo do tempo</a></div>
-                <div class="dashboard" style="color: white;">   
+                <div class="filter">
+                    <div class="title" style="color: white;"><a id="graficoBairro">Emplacamentos ao longo do tempo</a></div>
+                    <div class="select">
+                        <select name="" id="">
+                            <option value="#">Ordenar</option>
+                            <option value="mensal">Mensal</option>
+                            <option value="trimestral">Trimestral</option>
+                            <option value="semestral">Semestral</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="dashboard" style="color: white;">
                     <div class="chart" id="curve_chart" style="width: 97%; height: 100%"></div>
                 </div>
             </div>
@@ -98,12 +108,14 @@
             </div>
             <div class="sidebar-right-middle">
                 <div class="sidebar-right-titulo">Dashboard</div>
-                <div class="sidebar-rigth-buton">
-                    <div class="sidebar-rigth-img"><img src="assets/img/home (2) 2.png" alt="" href="gerenciarEletroposto.html"></div>
+                <div class="sidebar-rigth-buton-fixo">
+                    <div class="sidebar-rigth-img"><img src="assets/img/home (2) 2.png" alt=""
+                            href="gerenciarEletroposto.html"></div>
                     <div class="sidebar-rigth-txt"><a href="gerenciarEletroposto.html">Visão Geral</a></div>
                 </div>
                 <div class="sidebar-rigth-buton">
-                    <div class="sidebar-rigth-img"><img src="assets/img/dashboard 1.png" alt="" href="gerenciarEletropostoParte1.html"></div>
+                    <div class="sidebar-rigth-img"><img src="assets/img/dashboard 1.png" alt=""
+                            href="gerenciarEletropostoParte1.html"></div>
                     <div class="sidebar-rigth-txt"><a href="gerenciarEletropostoParte1.html">Gerenciar Postos</a></div>
                 </div>
 
@@ -129,38 +141,12 @@
 </html>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
-    google.charts.load('current', { 'packages': ['corechart'] });
-    google.charts.setOnLoadCallback(drawChart);
-
-    function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-            ['Category', 'Value'],
-            ['Bairros com todos os potenciais atendidos', 1],
-            ['Bairros com potencial sobrando', 3],
-        ]);
-
-        var options = {
-            pieHole: 0.6,
-            backgroundColor: '#333333',
-            legend: 'none',
-            slices: {
-                0: { color: '#FF005C' },
-                4: { color: '#00AAFF' }
-            }
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-        chart.draw(data, options);
-    }
-
-</script>
 
 <script src="js/dashboard.js"></script>
 <script src="js/voltarIndex.js"></script>
-<script src="js/newDashboard.js"></script>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="js/newDashboard.js"></script>
 <script type="text/javascript">
     google.charts.load('current', { 'packages': ['corechart'] });
     google.charts.setOnLoadCallback(drawChart);
