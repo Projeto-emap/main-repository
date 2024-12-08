@@ -5,6 +5,8 @@ const nomeUsuarioStorage = sessionStorage.getItem('NOME_USUARIO');
 const divNomeUsuario = document.getElementById("nomeUsuario");
 const divNomeEmpresa = document.querySelector('.nomeEmpresaEletroposto');
 
+document.getElementById('periodoSelect').addEventListener('change', drawChart);
+
 google.charts.load('current', { 'packages': ['corechart'] });
 google.charts.setOnLoadCallback(drawChart);
 
@@ -93,12 +95,42 @@ function drawChart() {
             chart.draw(dataChart, options);
         })
         .catch(error => console.error('Erro ao carregar os dados do gráfico:', error));
-}
 
+        const periodo = document.getElementById('periodoSelect').value;
+
+    // fetch(`dashboard/emplacamentos/${periodo}`)
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         const formattedData = data.map(item => {
+    //             const periodoLabel = periodo === 'mensal' ? `${item.mesEmplacamento} ${item.anoEmplacamento}` :
+    //                                 periodo === 'trimestral' ? `Trimestre ${item.trimestre} ${item.anoEmplacamento}` :
+    //                                 `Semestre ${item.semestre} ${item.anoEmplacamento}`;
+    //             return [periodoLabel, item.qtdCarros];
+    //         });
+
+    //         const dataTable = google.visualization.arrayToDataTable([
+    //             ['Periodo', 'Emplacamentos'],
+    //             ...formattedData
+    //         ]);
+
+    //         const options = {
+    //             title: 'Emplacamentos ao longo do tempo',
+    //             legend: { position: 'bottom' },
+    //             backgroundColor: '#333333',
+    //             titleTextStyle: { color: 'white' },
+    //             legendTextStyle: { color: 'white' },
+    //             hAxis: { textStyle: { color: 'white' } },
+    //             vAxis: { textStyle: { color: 'white' } }
+    //         };
+
+    //         const chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+    //         chart.draw(dataTable, options);
+    //     })
+    //     .catch(error => console.error('Erro ao carregar os dados do gráfico:', error));
+}
 
 // Inicialização
 document.addEventListener("DOMContentLoaded", () => {
     carregarDadosUsuario();
     carregarBairrosEmPotencial();
-    carregarEmplacamentos();
 });
