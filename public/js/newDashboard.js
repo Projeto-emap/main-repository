@@ -67,11 +67,11 @@ function ajustarPerfil(totalPontos) {
     }
 }
 
-
+// newDashboard.js
 
 function drawChart() {
     // Substitua com a URL do seu servidor para pegar os dados do gráfico
-    fetch(`dashboard/potenciais-bairros/${idUsuario}`)
+    fetch(`/dashboard/potenciais-bairros/${idUsuario}`)
         .then(response => response.json())
         .then(data => {
             // Preparar os dados para o gráfico
@@ -94,13 +94,22 @@ function drawChart() {
             var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
             chart.draw(dataChart, options);
         })
-        .catch(error => console.error('Erro ao carregar os dados do gráfico:', error));
+        .catch(error => console.error('Erro ao carregar os dados do gráfico de bairros:', error));
 
-        const periodo = document.getElementById('periodoSelect').value;
+    const periodo = document.getElementById('periodoSelect').value;
 
-    fetch(`dashboard/emplacamentos/${periodo}`)
-        .then(response => response.json())
+    fetch(`/dashboard/emplacamentos/${periodo}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Erro na rede: ${response.statusText}`);
+            }
+            return response.json();
+        })
         .then(data => {
+            if (!Array.isArray(data)) {
+                throw new Error('Dados retornados não são um array.');
+            }
+
             const formattedData = data.map(item => {
                 const periodoLabel = periodo === 'mensal' ? `${item.mesEmplacamento} ${item.anoEmplacamento}` :
                                     periodo === 'trimestral' ? `Trimestre ${item.trimestre} ${item.anoEmplacamento}` :
@@ -126,7 +135,7 @@ function drawChart() {
             const chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
             chart.draw(dataTable, options);
         })
-        .catch(error => console.error('Erro ao carregar os dados do gráfico:', error));
+        .catch(error => console.error('Erro ao carregar os dados do gráfico de emplacamentos:', error));
 }
 
 // Inicialização

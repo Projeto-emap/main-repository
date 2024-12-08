@@ -60,7 +60,7 @@ VALUES
 -- Inserindo dados na tabela usuario
 INSERT INTO usuario (nome, cpf, email, senha, numeroCelular, fkEmpresa)
 VALUES 
-('João Silva', '12345678901', 'joao.silva@email.com', 'senha123', '11987654321', 1),
+('João Silva', '12345678901', 'joao.silva@email.com', 'senha123A', '11987654321', 1),
 ('Maria Oliveira', '98765432100', 'maria.oliveira@email.com', 'senha456', '11976543210', 2),
 ('Carlos Souza', '45612378902', 'carlos.souza@email.com', 'senha789', '11965498732', 3);
 
@@ -83,3 +83,4 @@ SELECT * FROM empresa;
 SELECT * FROM usuario;
 SELECT * FROM pontoDeRecarga;
 SELECT * FROM emplacamento;
+

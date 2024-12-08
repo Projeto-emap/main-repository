@@ -18,8 +18,8 @@ WHERE
     p.fkUsuario = ${idUsuario}
     AND (
         (p.redeDeRecarga = 'lenta' AND p.qtdEstacoes < 12) OR
-        (p.redeDeRecarga = 'média' AND p.qtdEstacoes < 8) OR
-        (p.redeDeRecarga = 'rápida' AND p.qtdEstacoes < 4)
+        (p.redeDeRecarga = 'media' AND p.qtdEstacoes < 8) OR
+        (p.redeDeRecarga = 'rapida' AND p.qtdEstacoes < 4)
     )
 GROUP BY 
     p.bairro  -- Agrupa por bairro
@@ -83,20 +83,53 @@ function listarPotenciaisBairros(idUsuario) {
 function obterEmplacamentos(periodo) {
     let groupBy;
     let selectExtra = '';
+    
+    const mesMapping = `
+        CASE emplacamento.mesEmplacamento
+            WHEN 'Janeiro' THEN 1
+            WHEN 'Fevereiro' THEN 2
+            WHEN 'Março' THEN 3
+            WHEN 'Abril' THEN 4
+            WHEN 'Maio' THEN 5
+            WHEN 'Junho' THEN 6
+            WHEN 'Julho' THEN 7
+            WHEN 'Agosto' THEN 8
+            WHEN 'Setembro' THEN 9
+            WHEN 'Outubro' THEN 10
+            WHEN 'Novembro' THEN 11
+            WHEN 'Dezembro' THEN 12
+            ELSE 0
+        END
+    `;
 
     switch (periodo) {
         case 'trimestral':
-            groupBy = "CONCAT(YEAR(emplacamento.anoEmplacamento), '-', QUARTER(STR_TO_DATE(emplacamento.mesEmplacamento, '%M')))"; 
-            selectExtra = ", QUARTER(STR_TO_DATE(emplacamento.mesEmplacamento, '%M')) AS trimestre";
+            groupBy = `
+                CONCAT(
+                    emplacamento.anoEmplacamento, '-', 
+                    QUARTER(${mesMapping})
+                )
+            `;
+            selectExtra = `, QUARTER(${mesMapping}) AS trimestre`;
             break;
         case 'semestral':
-            groupBy = "CONCAT(YEAR(emplacamento.anoEmplacamento), '-', IF(MONTH(STR_TO_DATE(emplacamento.mesEmplacamento, '%M')) <= 6, 1, 2))";
-            selectExtra = ", IF(MONTH(STR_TO_DATE(emplacamento.mesEmplacamento, '%M')) <= 6, 1, 2) AS semestre";
+            groupBy = `
+                CONCAT(
+                    emplacamento.anoEmplacamento, '-', 
+                    IF(${mesMapping} <= 6, 1, 2)
+                )
+            `;
+            selectExtra = `, IF(${mesMapping} <= 6, 1, 2) AS semestre`;
             break;
         default:
             // Mensal é o padrão
-            groupBy = "CONCAT(emplacamento.anoEmplacamento, '-', LPAD(MONTH(STR_TO_DATE(emplacamento.mesEmplacamento, '%M')), 2, '0'))";
-            selectExtra = ", MONTH(STR_TO_DATE(emplacamento.mesEmplacamento, '%M')) AS mes";
+            groupBy = `
+                CONCAT(
+                    emplacamento.anoEmplacamento, '-', 
+                    LPAD(${mesMapping}, 2, '0')
+                )
+            `;
+            selectExtra = `, ${mesMapping} AS mes`;
             break;
     }
 
@@ -110,7 +143,12 @@ function obterEmplacamentos(periodo) {
         GROUP BY 
             ${groupBy}
         ORDER BY 
-            emplacamento.anoEmplacamento, ${selectExtra}
+            emplacamento.anoEmplacamento, 
+            ${periodo === 'trimestral' 
+                ? 'trimestre' 
+                : (periodo === 'semestral' 
+                    ? 'semestre' 
+                    : 'mes')}
     `;
 
     return database.executar(query);
