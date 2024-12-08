@@ -44,21 +44,21 @@ function listarPotenciaisBairros(req, res) {
         });
 }
 
-// function obterEmplacamentos(req, res) {
-//     const periodo = req.params.periodo; // 'mensal', 'trimestral', ou 'semestral'
+function obterEmplacamentos(req, res) {
+    const periodo = req.params.periodo; // 'mensal', 'trimestral', ou 'semestral'
 
-//     dashboardModel.obterEmplacamentos(periodo)
-//         .then((resultado) => {
-//             res.status(200).json(resultado);
-//         })
-//         .catch((erro) => {
-//             res.status(500).json({ mensagem: "Erro ao obter dados de emplacamentos.", erro });
-//         });
-// }
+    dashboardModel.obterEmplacamentos(periodo)
+        .then((resultado) => {
+            res.status(200).json(resultado);
+        })
+        .catch((erro) => {
+            res.status(500).json({ mensagem: "Erro ao obter dados de emplacamentos.", erro });
+        });
+}
 
 module.exports = {
     listarBairrosEmPotencial,
     obterDadosUsuario,
     listarPotenciaisBairros,
-    // obterEmplacamentos
+    obterEmplacamentos
 };
