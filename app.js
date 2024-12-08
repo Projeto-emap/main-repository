@@ -1,3 +1,4 @@
+// app.js
 // var ambiente_processo = 'producao';
 var ambiente_processo = 'desenvolvimento';
 
@@ -19,6 +20,7 @@ var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var contatoRouter = require("./src/routes/contato");
 var eletropostoRouter = require("./src/routes/eletroposto");
+var dashboardRouter = require("./src/routes/dashboard")
 
 
 app.use(express.json());
@@ -31,10 +33,7 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/contato", contatoRouter);
 app.use("/eletroposto", eletropostoRouter);
-// app.use("/avisos", avisosRouter);
-// app.use("/medidas", medidasRouter);
-// app.use("/aquarios", aquariosRouter);
-// app.use("/empresas", empresasRouter);
+app.use("/dashboard", dashboardRouter)
 
 app.listen(PORTA_APP, function () {
     console.log(`
