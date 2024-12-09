@@ -17,9 +17,9 @@ JOIN
 WHERE 
     p.fkUsuario = ${idUsuario}
     AND (
-        (p.redeDeRecarga = 'lenta' AND p.qtdEstacoes < 12) OR
-        (p.redeDeRecarga = 'media' AND p.qtdEstacoes < 8) OR
-        (p.redeDeRecarga = 'rapida' AND p.qtdEstacoes < 4)
+        (p.redeDeRecarga = 'lenta' OR p.redeDeRecarga = 'Rede Zletric' OR p.redeDeRecarga = 'Rede Power2Go' OR p.redeDeRecarga = 'Rede Intelbras' AND p.qtdEstacoes < 12) OR
+        (p.redeDeRecarga = 'media' OR p.redeDeRecarga = 'Rede WEMOB' OR p.redeDeRecarga = 'Rede Autocharge' AND p.qtdEstacoes < 8) OR
+        (p.redeDeRecarga = 'rapida' OR p.redeDeRecarga = 'Rede Tupinambá' OR p.redeDeRecarga = 'Rede Enel X Way' AND p.qtdEstacoes < 4)
     )
 GROUP BY 
     p.bairro  -- Agrupa por bairro
@@ -50,9 +50,9 @@ function listarPotenciaisBairros(idUsuario) {
             e.razaoSocial AS nomeEmpresa,
             SUM(
                 CASE 
-                    WHEN p.redeDeRecarga = 'lenta' AND p.qtdEstacoes < 12 THEN 1
-                    WHEN p.redeDeRecarga = 'media' AND p.qtdEstacoes < 8 THEN 1
-                    WHEN p.redeDeRecarga = 'rapida' AND p.qtdEstacoes < 4 THEN 1
+                    WHEN p.redeDeRecarga = 'lenta' OR p.redeDeRecarga = 'Rede Zletric' OR p.redeDeRecarga = 'Rede Power2Go' OR p.redeDeRecarga = 'Rede Intelbras' AND p.qtdEstacoes < 12 THEN 1
+                    WHEN p.redeDeRecarga = 'media' OR p.redeDeRecarga = 'Rede WEMOB' OR p.redeDeRecarga = 'Rede Autocharge' AND p.qtdEstacoes < 8 THEN 1
+                    WHEN p.redeDeRecarga = 'rapida' OR p.redeDeRecarga = 'Rede Tupinambá' OR p.redeDeRecarga = 'Rede Enel X Way' AND p.qtdEstacoes < 4 THEN 1
                     ELSE 0
                 END
             ) AS potencialAtendido
