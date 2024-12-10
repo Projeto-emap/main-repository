@@ -146,28 +146,4 @@
 <script type="text/javascript">
     google.charts.load('current', { 'packages': ['corechart'] });
     google.charts.setOnLoadCallback(drawChart);
-
-    function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-            ['Anos', 'Emplacamentos'],
-            ['2004', 660],
-            ['2005', 1000],
-            ['2006', 800],
-            ['2007', 1170]
-        ]);
-
-        var options = {
-            title: 'Emplacamentos ao longo do tempo',
-            legend: { position: 'bottom' },
-            backgroundColor: '#333333',
-            titleTextStyle: { color: 'white' },
-            legendTextStyle: { color: 'white' },
-            hAxis: { textStyle: { color: 'white' } }, // Cor dos anos
-            vAxis: { textStyle: { color: 'white' } }  // Cor dos emplacamentos
-        };
-
-        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
-        chart.draw(data, options);
-    }
 </script>

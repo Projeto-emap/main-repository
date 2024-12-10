@@ -80,79 +80,50 @@ function listarPotenciaisBairros(idUsuario) {
         });
 }
 
-function obterEmplacamentos(periodo) {
-    let groupBy;
-    let selectExtra = '';
-    
-    const mesMapping = `
-        CASE emplacamento.mesEmplacamento
-            WHEN 'Janeiro' THEN 1
-            WHEN 'Fevereiro' THEN 2
-            WHEN 'Março' THEN 3
-            WHEN 'Abril' THEN 4
-            WHEN 'Maio' THEN 5
-            WHEN 'Junho' THEN 6
-            WHEN 'Julho' THEN 7
-            WHEN 'Agosto' THEN 8
-            WHEN 'Setembro' THEN 9
-            WHEN 'Outubro' THEN 10
-            WHEN 'Novembro' THEN 11
-            WHEN 'Dezembro' THEN 12
-            ELSE 0
-        END
-    `;
-
-    switch (periodo) {
-        case 'trimestral':
-            groupBy = `
-                CONCAT(
-                    emplacamento.anoEmplacamento, '-', 
-                    QUARTER(${mesMapping})
-                )
-            `;
-            selectExtra = `, QUARTER(${mesMapping}) AS trimestre`;
-            break;
-        case 'semestral':
-            groupBy = `
-                CONCAT(
-                    emplacamento.anoEmplacamento, '-', 
-                    IF(${mesMapping} <= 6, 1, 2)
-                )
-            `;
-            selectExtra = `, IF(${mesMapping} <= 6, 1, 2) AS semestre`;
-            break;
-        default:
-            // Mensal é o padrão
-            groupBy = `
-                CONCAT(
-                    emplacamento.anoEmplacamento, '-', 
-                    LPAD(${mesMapping}, 2, '0')
-                )
-            `;
-            selectExtra = `, ${mesMapping} AS mes`;
-            break;
-    }
-
+function obterEmplacamentos() {
     const query = `
-        SELECT 
-            COUNT(emplacamento.idEmplacamento) AS qtdCarros,
-            emplacamento.anoEmplacamento,
-            emplacamento.mesEmplacamento ${selectExtra}
-        FROM 
-            emplacamento
-        GROUP BY 
-            ${groupBy}
-        ORDER BY 
-            emplacamento.anoEmplacamento, 
-            ${periodo === 'trimestral' 
-                ? 'trimestre' 
-                : (periodo === 'semestral' 
-                    ? 'semestre' 
-                    : 'mes')}
-    `;
+SELECT 
+    mesAno,
+    totalCarros
+FROM (
+    SELECT 
+        CONCAT(anoEmplacamento, '-', 
+            CASE 
+                WHEN mesEmplacamento = 'janeiro' THEN '01'
+                WHEN mesEmplacamento = 'fevereiro' THEN '02'
+                WHEN mesEmplacamento = 'março' THEN '03'
+                WHEN mesEmplacamento = 'abril' THEN '04'
+                WHEN mesEmplacamento = 'maio' THEN '05'
+                WHEN mesEmplacamento = 'junho' THEN '06'
+                WHEN mesEmplacamento = 'julho' THEN '07'
+                WHEN mesEmplacamento = 'agosto' THEN '08'
+                WHEN mesEmplacamento = 'setembro' THEN '09'
+                WHEN mesEmplacamento = 'outubro' THEN '10'
+                WHEN mesEmplacamento = 'novembro' THEN '11'
+                WHEN mesEmplacamento = 'dezembro' THEN '12'
+            END
+        ) AS mesAno,
+        SUM(qtdCarros) AS totalCarros
+    FROM emplacamento
+    GROUP BY 
+        anoEmplacamento,
+        mesEmplacamento
+    ORDER BY 
+        anoEmplacamento DESC, 
+        FIELD(mesEmplacamento, 
+            'janeiro', 'fevereiro', 'março', 'abril', 
+            'maio', 'junho', 'julho', 'agosto', 
+            'setembro', 'outubro', 'novembro', 'dezembro') DESC
+    LIMIT 10
+) AS subquery
+ORDER BY mesAno ASC;
 
+
+    `;
     return database.executar(query);
 }
+
+
 
 module.exports = {
     listarBairrosEmPotencial,

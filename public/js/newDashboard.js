@@ -96,46 +96,31 @@ function drawChart() {
         })
         .catch(error => console.error('Erro ao carregar os dados do gráfico de bairros:', error));
 
-    const periodo = document.getElementById('periodoSelect').value;
-
-    fetch(`/dashboard/emplacamentos/${periodo}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Erro na rede: ${response.statusText}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (!Array.isArray(data)) {
-                throw new Error('Dados retornados não são um array.');
-            }
-
-            const formattedData = data.map(item => {
-                const periodoLabel = periodo === 'mensal' ? `${item.mesEmplacamento} ${item.anoEmplacamento}` :
-                                    periodo === 'trimestral' ? `Trimestre ${item.trimestre} ${item.anoEmplacamento}` :
-                                    `Semestre ${item.semestre} ${item.anoEmplacamento}`;
-                return [periodoLabel, item.qtdCarros];
-            });
-
-            const dataTable = google.visualization.arrayToDataTable([
-                ['Periodo', 'Emplacamentos'],
-                ...formattedData
-            ]);
-
-            const options = {
+        fetch(`/dashboard/emplacamentos`)
+        .then(response => response.json())
+        .then(dados => {
+            var data = google.visualization.arrayToDataTable(dados);
+            console.log(dados);
+            var options = {
                 title: 'Emplacamentos ao longo do tempo',
                 legend: { position: 'bottom' },
                 backgroundColor: '#333333',
                 titleTextStyle: { color: 'white' },
                 legendTextStyle: { color: 'white' },
-                hAxis: { textStyle: { color: 'white' } },
-                vAxis: { textStyle: { color: 'white' } }
+                hAxis: {
+                    format: 'MMM yyyy',  // Formato de exibição no eixo horizontal (Mês/Ano)
+                    textStyle: { color: 'white' }
+                },
+                vAxis: {
+                    textStyle: { color: 'white' }
+                }
             };
-
-            const chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-            chart.draw(dataTable, options);
+            
+            // Criação do gráfico
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+            chart.draw(data, options);
         })
-        .catch(error => console.error('Erro ao carregar os dados do gráfico de emplacamentos:', error));
+        .catch(error => console.error('Erro ao carregar dados para o gráfico:', error));
 }
 
 // Inicialização
